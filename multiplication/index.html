@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>مهرجان جدول الضرب</title>
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@500;700;900&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#FFF8E6;--surface:#FFFFFF;--ink:#1D2B3A;--muted:#5B6B7B;--teal:#0F7B8A;--yellow:#FFC93C;--violet:#6C4AB6;--ok:#1E9E5A;--bad:#D64550;--line:#E6DCC0;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#14202B;--surface:#1E2E3D;--ink:#F4EFE0;--muted:#A9B8C6;--teal:#3FC1D2;--yellow:#FFC93C;--violet:#A58BF0;--ok:#4AD18A;--bad:#FF7B85;--line:#33475A}}
+:root[data-theme="dark"]{--bg:#14202B;--surface:#1E2E3D;--ink:#F4EFE0;--muted:#A9B8C6;--teal:#3FC1D2;--yellow:#FFC93C;--violet:#A58BF0;--ok:#4AD18A;--bad:#FF7B85;--line:#33475A}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:"Cairo",Tahoma,Arial,sans-serif;line-height:1.7}
+.wrap{max-width:760px;margin:0 auto;padding:16px}
+.ltr{direction:ltr;unicode-bidi:isolate;display:inline-block}
+header{background:var(--teal);color:#fff;border-radius:24px;padding:28px 20px;text-align:center;position:relative;overflow:hidden}
+header h1{margin:0;font-size:clamp(30px,8vw,48px);font-weight:900;line-height:1.3}
+header p{margin:6px 0 0;font-size:17px;opacity:.95}
+.logo{width:130px;height:130px;object-fit:contain;background:#fff;border-radius:18px;padding:4px;display:block;margin:0 auto 12px}
+.gov{font-weight:700;font-size:15px;line-height:1.6;margin-bottom:14px;padding-bottom:10px;border-bottom:2px solid rgba(255,255,255,.35)}
+.tiles{display:flex;justify-content:center;gap:8px;margin-bottom:12px;flex-wrap:wrap}
+.tiles span{background:var(--yellow);color:#1D2B3A;font-weight:900;border-radius:12px;padding:2px 12px;font-size:22px;transform:rotate(-4deg)}
+.tiles span:nth-child(even){transform:rotate(4deg);background:#fff}
+section{background:var(--surface);border:2px solid var(--line);border-radius:20px;padding:18px;margin-top:16px}
+h2{margin:0 0 10px;font-size:22px;font-weight:900}
+.goals{margin:0;padding:0;list-style:none;display:grid;gap:8px}
+.goals li{display:flex;gap:10px;align-items:flex-start}
+.goals li::before{content:"✓";flex:none;width:26px;height:26px;border-radius:50%;background:var(--ok);color:#fff;font-weight:900;display:grid;place-items:center;margin-top:3px}
+.chips{display:flex;flex-wrap:wrap;gap:8px}
+.chip,.tab,button.btn{font:inherit;cursor:pointer;border:2px solid var(--teal);background:transparent;color:var(--ink);border-radius:14px;padding:6px 14px;font-weight:700;min-height:44px}
+.chip{min-width:48px;padding:6px 8px}
+.chip[aria-pressed="true"]{background:var(--teal);color:#fff}
+button.btn{background:var(--violet);border-color:var(--violet);color:#fff;font-size:18px;padding:8px 22px}
+button.btn.alt{background:transparent;color:var(--ink);border-color:var(--line)}
+button:focus-visible{outline:3px solid var(--yellow);outline-offset:2px}
+.tabs{display:flex;gap:8px;margin-top:16px;flex-wrap:wrap}
+.tab{flex:1;text-align:center;border-color:var(--line)}
+.tab[aria-selected="true"]{background:var(--yellow);color:#1D2B3A;border-color:var(--yellow)}
+.hud{display:flex;justify-content:space-between;gap:8px;font-weight:700;color:var(--muted);flex-wrap:wrap}
+.bar{height:10px;background:var(--line);border-radius:6px;overflow:hidden;margin:8px 0}
+.bar i{display:block;height:100%;width:100%;background:var(--teal);transition:width 1s linear}
+.q{font-size:clamp(44px,13vw,76px);font-weight:900;text-align:center;margin:8px 0;color:var(--violet)}
+.opts{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.opts button{font:inherit;font-size:28px;font-weight:900;min-height:64px;border-radius:16px;border:2px solid var(--line);background:var(--surface);color:var(--ink);cursor:pointer}
+.opts button.ok{background:var(--ok);color:#fff;border-color:var(--ok)}
+.opts button.bad{background:var(--bad);color:#fff;border-color:var(--bad)}
+.center{text-align:center}
+.big{font-size:48px;letter-spacing:6px}
+.grid{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin-top:10px}
+.card{aspect-ratio:1/1;border-radius:14px;border:2px solid var(--teal);background:var(--teal);color:transparent;font:inherit;font-size:clamp(16px,5vw,26px);font-weight:900;cursor:pointer;display:grid;place-items:center;padding:2px}
+.card.up{background:var(--surface);color:var(--ink)}
+.card.done{background:var(--ok);border-color:var(--ok);color:#fff}
+.teams{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:10px}
+.team{border:2px solid var(--line);border-radius:16px;padding:10px;text-align:center}
+.team input{font:inherit;font-weight:700;width:100%;text-align:center;border:0;border-bottom:2px dashed var(--line);background:transparent;color:var(--ink)}
+.team .pts{font-size:48px;font-weight:900;line-height:1.2}
+.team button{width:100%;margin-top:6px}
+.name{display:flex;gap:8px;align-items:center;flex-wrap:wrap;margin:0 0 10px}.name select{font:inherit;font-weight:700;flex:1;min-width:160px;min-height:44px;border:2px solid var(--line);border-radius:12px;padding:4px 12px;background:var(--bg);color:var(--ink)}
+.info{display:flex;gap:8px;flex-wrap:wrap;margin:0 0 12px}.info span{background:var(--bg);border:2px solid var(--line);border-radius:12px;padding:4px 12px;font-weight:700}.info b{color:var(--teal)}
+#certWrap{position:fixed;inset:0;background:rgba(20,32,43,.88);overflow:auto;padding:16px;z-index:50}
+.cert{max-width:760px;margin:0 auto;background:#fff;color:#1D2B3A;border:8px solid #0F7B8A;border-radius:22px;padding:8px}
+.cert .ci{border:3px solid #FFC93C;border-radius:14px;text-align:center;padding:14px 16px}
+.cert .ct{display:flex;justify-content:space-between;align-items:center;font-weight:700;font-size:13px;line-height:1.6}
+.cert .ct img{width:72px;height:72px;border:4px solid #0F7B8A;border-radius:14px}
+.cert h2{font-size:clamp(26px,7vw,42px);color:#6C4AB6;margin:6px 0}
+.cert .st{color:#FFC93C;font-size:24px;letter-spacing:8px}
+.cert .nm{font-size:clamp(26px,7vw,40px);font-weight:900;color:#0F7B8A;border-bottom:3px dotted #0F7B8A;display:inline-block;min-width:60%;margin:6px 0}
+.cert p{margin:6px 0;font-size:clamp(15px,4vw,19px);font-weight:700}
+.cert .cs{display:flex;justify-content:space-around;margin-top:14px;font-weight:900;font-size:clamp(14px,3.5vw,17px)}.cert .cs small{display:block;color:#5B6B7B;font-size:12px}
+.cbtn{text-align:center;margin:14px 0}
+@media print{.wrap,.cbtn{display:none}#certWrap{position:static;background:none;padding:0}@page{size:A4 landscape;margin:8mm}}
+.msg{min-height:28px;text-align:center;font-weight:700}
+.sign{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:16px;text-align:center}
+.sign div{background:var(--surface);border:2px solid var(--line);border-radius:16px;padding:10px}
+.sign small{display:block;color:var(--muted);font-size:14px}
+.sign b{font-size:18px}
+footer{text-align:center;color:var(--muted);padding:18px 0 8px;font-size:14px}
+@media (prefers-reduced-motion:reduce){.bar i{transition:none}}
+</style>
+</head>
+<body>
+<div class="wrap">
+<header>
+  <img class="logo" alt="شعار وزارة التعليم" src="data:image/png;base64,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">
+  <div class="gov">المملكة العربية السعودية<br>وزارة التعليم<br>إدارة التعليم بحائل<br>المدرسة المركزية الابتدائية</div>
+  <div class="tiles" aria-hidden="true"><span>٣ × ٤</span><span>٧ × ٨</span><span>٦ × ٩</span><span>١٢ × ٥</span></div>
+  <h1>مهرجان جدول الضرب</h1>
+  <p>سباقات وتحديات… ومن يحفظ الجدول يفوز!</p>
+</header>
+
+<section>
+  <h2>أهداف المهرجان</h2>
+  <ul class="goals">
+    <li>أن يحفظ الطالب جدول الضرب من ١ إلى ١٢ ويستدعي نواتجه بسرعة ودقة.</li>
+    <li>أن يستنتج الطالب نواتج الضرب باستخدام الجمع المتكرر وخاصية التبديل.</li>
+    <li>أن يستخدم الطالب حقائق الضرب في حل مسائل حياتية بسيطة.</li>
+    <li>أن ينمّي الطالب مهارة الحساب الذهني والتركيز تحت الوقت.</li>
+    <li>أن يتعاون الطالب مع فريقه ويتنافس بروح رياضية.</li>
+  </ul>
+</section>
+
+<section>
+  <h2>اختر الجداول</h2>
+  <div class="chips" id="chips" role="group" aria-label="اختيار الجداول"></div>
+  <p class="center" style="margin:10px 0 0"><button class="btn alt" id="allBtn">كل الجداول</button></p>
+</section>
+
+<div class="tabs" role="tablist">
+  <button class="tab" role="tab" aria-selected="true" data-t="quiz">سباق الإجابة</button>
+  <button class="tab" role="tab" aria-selected="false" data-t="match">مطابقة البطاقات</button>
+  <button class="tab" role="tab" aria-selected="false" data-t="team">تحدي الفريقين</button>
+</div>
+
+<section id="quiz">
+  <h2>سباق الإجابة</h2>
+  <p style="margin:0 0 8px;color:var(--muted)">١٠ أسئلة، ولكل سؤال ١٢ ثانية. كلما أجبت أسرع زادت نقاطك!</p>
+  <div class="name"><label for="sname">اسم الطالب:</label><select id="sname"><option value="">— اختر اسمك —</option></select><span id="nameMsg" style="color:var(--bad);font-weight:700"></span></div>
+  <div class="info" id="sinfo" hidden><span>الصف: <b id="sClass"></b></span><span>المدرسة: <b id="sSchool"></b></span></div>
+  <div id="quizBody" class="center"><button class="btn" id="startQuiz">ابدأ السباق</button></div>
+</section>
+
+<section id="match" hidden>
+  <h2>مطابقة البطاقات</h2>
+  <p style="margin:0 0 8px;color:var(--muted)">اقلب بطاقتين: طابق عملية الضرب مع ناتجها.</p>
+  <div class="hud"><span>المحاولات: <b id="moves">0</b></span><span>المتطابق: <b id="found">0</b> / 8</span></div>
+  <div class="grid" id="grid"></div>
+  <p class="msg" id="matchMsg"></p>
+  <p class="center"><button class="btn" id="newMatch">لعبة جديدة</button></p>
+</section>
+
+<section id="team" hidden>
+  <h2>تحدي الفريقين</h2>
+  <p style="margin:0 0 8px;color:var(--muted)">تعرض المعلمة السؤال، وأول فريق يجيب إجابة صحيحة يحصل على نقطة.</p>
+  <div class="q ltr" style="display:block" id="tq">؟</div>
+  <p class="center"><button class="btn alt" id="showAns">أظهر الإجابة</button> <button class="btn" id="nextQ">سؤال جديد</button></p>
+  <p class="msg" id="tAns"></p>
+  <div class="teams">
+    <div class="team"><input id="n1" value="فريق النجوم" aria-label="اسم الفريق الأول"><div class="pts" id="p1">0</div><button class="btn" data-team="1">+ نقطة</button></div>
+    <div class="team"><input id="n2" value="فريق الصقور" aria-label="اسم الفريق الثاني"><div class="pts" id="p2">0</div><button class="btn" data-team="2">+ نقطة</button></div>
+  </div>
+  <p class="msg" id="tWin"></p>
+  <p class="center"><button class="btn alt" id="resetTeams">تصفير النقاط</button></p>
+</section>
+
+<div class="sign"><div><small>المعلم</small><b>فريح عبدالله الوهبي</b></div><div><small>مدير المدرسة</small><b>طلال خليف الشمري</b></div></div>
+<footer>مهرجان جدول الضرب · للمرحلة الابتدائية</footer>
+</div>
+
+<div id="certWrap" hidden>
+<div class="cert"><div class="ci">
+<div class="ct"><div>المملكة العربية السعودية<br>وزارة التعليم<br>إدارة التعليم بحائل</div><img id="cLogo" alt="شعار وزارة التعليم"><div>المدرسة المركزية الابتدائية<br>مهرجان جدول الضرب</div></div>
+<div class="st">★ ★ ★ ★ ★</div>
+<h2>شهادة إتقان دورة جدول الضرب</h2>
+<p>تشهد المدرسة المركزية الابتدائية بأن الطالب/ـة</p>
+<div class="nm" id="cName"></div>
+<p>من الصف <span id="cClass"></span> — مدرسة <span id="cSchool"></span></p>
+<p>قد أتقن/ت جدول الضرب بتفوّق في مهرجان جدول الضرب،<br>وحقق/ت <span id="cScore"></span> من ١٠ في الاختبار.<br>متمنين له/ا دوام النجاح والتميّز.</p>
+<div class="cs"><div><small>المعلم</small>فريح عبدالله الوهبي</div><div><small>التاريخ</small><span id="cDate"></span></div><div><small>مدير المدرسة</small>طلال خليف الشمري</div></div>
+</div></div>
+<div class="cbtn"><button class="btn" id="printCert">طباعة الشهادة</button> <button class="btn alt" id="closeCert" style="background:#fff">إغلاق</button></div>
+</div>
+
+<script>
+const $=s=>document.querySelector(s);
+const rnd=n=>Math.floor(Math.random()*n);
+const sel=new Set([2,3,4,5,6,7,8,9]);
+const shuffle=a=>{a=a.slice();for(let i=a.length-1;i>0;i--){const j=rnd(i+1);[a[i],a[j]]=[a[j],a[i]]}return a};
+const nums=n=>String(n);
+
+// قائمة الطلاب
+const STUDENTS=[
+  {n:'أنس عياده الشمري',c:'خامس-1',s:'الحدق'},
+  {n:'عارف غربي الشمري',c:'خامس-1',s:'الجبيلي'},
+  {n:'مصعب جايز الشمري',c:'رابع-1',s:'الجبيلي'},
+  {n:'نواف جهز الشمري',c:'رابع-1',s:'الجبيلي'},
+  {n:'هيثم محمد الشمري',c:'رابع-1',s:'الجبيلي'}
+];
+STUDENTS.forEach((st,i)=>{const o=document.createElement('option');o.value=i;o.textContent=st.n;$('#sname').appendChild(o)});
+const student=()=>{const v=$('#sname').value;return v===''?null:STUDENTS[+v]};
+$('#sname').onchange=()=>{const st=student();$('#sinfo').hidden=!st;$('#nameMsg').textContent='';if(st){$('#sClass').textContent=st.c;$('#sSchool').textContent=st.s}};
+
+// الجداول
+const chips=$('#chips');
+for(let i=1;i<=12;i++){const b=document.createElement('button');b.className='chip';b.textContent=i;b.setAttribute('aria-pressed',sel.has(i));
+  b.onclick=()=>{if(sel.has(i)&&sel.size===1)return;sel.has(i)?sel.delete(i):sel.add(i);b.setAttribute('aria-pressed',sel.has(i))};chips.appendChild(b)}
+$('#allBtn').onclick=()=>{for(let i=1;i<=12;i++)sel.add(i);chips.querySelectorAll('.chip').forEach(c=>c.setAttribute('aria-pressed','true'))};
+const pickQ=()=>{const t=[...sel];const a=t[rnd(t.length)],b=1+rnd(12);return{a,b,ans:a*b}};
+
+// التبويبات
+document.querySelectorAll('.tab').forEach(t=>t.onclick=()=>{
+  document.querySelectorAll('.tab').forEach(x=>x.setAttribute('aria-selected',x===t));
+  ['quiz','match','team'].forEach(id=>$('#'+id).hidden=id!==t.dataset.t);
+  if(t.dataset.t==='match')newMatch();
+  clearInterval(timer);if(t.dataset.t!=='quiz')$('#quizBody').innerHTML='<button class="btn" id="startQuiz">ابدأ السباق</button>',$('#startQuiz').onclick=startQuiz;
+});
+
+// سباق الإجابة
+let timer,qi,score,streak,right,left,cur,locked;
+const TOTAL=10,SECS=12;
+function startQuiz(){const nm=student();if(!nm){$('#nameMsg').textContent='اختر اسمك أولاً';$('#sname').focus();return}$('#nameMsg').textContent='';qi=0;score=0;streak=0;right=0;nextQuiz()}
+$('#startQuiz').onclick=startQuiz;
+function nextQuiz(){
+  if(qi>=TOTAL)return endQuiz();
+  cur=pickQ();locked=false;left=SECS;qi++;
+  const o=new Set([cur.ans]);
+  [cur.a,cur.b,1,2,10].forEach(d=>{[cur.ans+d,cur.ans-d].forEach(v=>{if(v>0&&o.size<4&&rnd(2))o.add(v)})});
+  let k=1;while(o.size<4){o.add(cur.ans+k);k++}
+  $('#quizBody').innerHTML=`<div class="hud"><span>السؤال ${qi} / ${TOTAL}</span><span>النقاط: <b id="sc">${score}</b></span><span>🔥 ${streak}</span></div>
+  <div class="bar"><i id="tb"></i></div>
+  <div class="q ltr" style="display:block">${cur.a} × ${cur.b}</div>
+  <div class="opts">${shuffle([...o]).map(v=>`<button data-v="${v}">${v}</button>`).join('')}</div>
+  <p class="msg" id="qm"></p>`;
+  $('#quizBody').querySelectorAll('.opts button').forEach(b=>b.onclick=()=>answer(+b.dataset.v,b));
+  clearInterval(timer);
+  requestAnimationFrame(()=>{const tb=$('#tb');if(tb){tb.style.transition='none';tb.style.width='100%';tb.offsetWidth;tb.style.transition='width '+SECS+'s linear';tb.style.width='0%'}});
+  timer=setInterval(()=>{left--;if(left<=0){clearInterval(timer);answer(null)}},1000);
+}
+function answer(v,btn){
+  if(locked)return;locked=true;clearInterval(timer);
+  const okAns=v===cur.ans;
+  document.querySelectorAll('.opts button').forEach(b=>{b.disabled=true;if(+b.dataset.v===cur.ans)b.classList.add('ok')});
+  if(okAns){right++;streak++;score+=10+Math.max(left,0)+(streak>=3?5:0);$('#qm').textContent=streak>=3?'ممتاز! سلسلة إجابات صحيحة 🔥':'أحسنت! إجابة صحيحة ✅'}
+  else{streak=0;if(btn)btn.classList.add('bad');$('#qm').textContent=(v===null?'انتهى الوقت! ':'حاول مرة أخرى! ')+'الناتج: '+cur.ans}
+  $('#sc').textContent=score;
+  setTimeout(nextQuiz,1400);
+}
+function endQuiz(){
+  const st=right>=9?3:right>=6?2:1;
+  const t=st===3?'بطل الجدول 🏆':st===2?'نجم واعد 🌟':'تدرّب أكثر وستصبح بطلاً 💪';
+  $('#quizBody').innerHTML=`<div class="big" aria-label="${st} نجوم">${'⭐'.repeat(st)}</div>
+  <h2>${t}</h2><p>إجاباتك الصحيحة: <b>${right}</b> من ${TOTAL}<br>مجموع النقاط: <b>${score}</b></p>
+  ${right>=8?'<p style="font-weight:900;color:var(--ok)">مبروك! أتقنت جدول الضرب 🎓</p><button class="btn" id="cert">احصل على شهادتك</button> ':'<p>لتحصل على الشهادة أجب ٨ أسئلة صحيحة على الأقل. حاول مرة أخرى! 💪</p>'}<button class="btn alt" id="again">العب مرة أخرى</button>`;
+  $('#again').onclick=startQuiz;const cb=$('#cert');if(cb)cb.onclick=showCert;
+}
+
+// مطابقة البطاقات
+let open=[],moves=0,found=0,busy=false;
+function newMatch(){
+  moves=0;found=0;open=[];busy=false;$('#moves').textContent=0;$('#found').textContent=0;$('#matchMsg').textContent='';
+  const used=new Set(),pairs=[];let guard=0;
+  while(pairs.length<8&&guard++<500){const q=pickQ();if(!used.has(q.ans)){used.add(q.ans);pairs.push(q)}}
+  while(pairs.length<8){const q={a:1+rnd(12),b:1+rnd(12)};q.ans=q.a*q.b;if(!used.has(q.ans)){used.add(q.ans);pairs.push(q)}}
+  const cards=[];pairs.forEach((p,i)=>{cards.push({id:i,txt:p.a+' × '+p.b,ex:true},{id:i,txt:String(p.ans)})});
+  const g=$('#grid');g.innerHTML='';
+  shuffle(cards).forEach(c=>{const b=document.createElement('button');b.className='card';b.innerHTML=`<span class="ltr">${c.txt}</span>`;b.setAttribute('aria-label','بطاقة مقلوبة');
+    b.onclick=()=>flip(b,c);g.appendChild(b)});
+}
+function flip(b,c){
+  if(busy||b.classList.contains('up')||b.classList.contains('done'))return;
+  b.classList.add('up');open.push({b,c});
+  if(open.length===2){moves++;$('#moves').textContent=moves;busy=true;
+    const [x,y]=open;
+    if(x.c.id===y.c.id){setTimeout(()=>{x.b.classList.replace('up','done');y.b.classList.replace('up','done');found++;$('#found').textContent=found;open=[];busy=false;
+      if(found===8)$('#matchMsg').textContent='أحسنت! أنهيت اللعبة في '+moves+' محاولة 🎉'},500)}
+    else setTimeout(()=>{x.b.classList.remove('up');y.b.classList.remove('up');open=[];busy=false},900)}
+}
+$('#newMatch').onclick=newMatch;
+
+// تحدي الفريقين
+function showCert(){const st=student();$('#cName').textContent=st.n;$('#cClass').textContent=st.c;$('#cSchool').textContent=st.s;$('#cScore').textContent=right;let d='';try{d=new Date().toLocaleDateString('ar-SA')}catch(e){}$('#cDate').textContent=d;$('#cLogo').src=document.querySelector('.logo').src;$('#certWrap').hidden=false;$('#certWrap').scrollTop=0}
+$('#closeCert').onclick=()=>{$('#certWrap').hidden=true};
+$('#printCert').onclick=()=>{try{window.print()}catch(e){}};
+const pts=[0,0,0];let tcur;
+function nextT(){tcur=pickQ();$('#tq').textContent=tcur.a+' × '+tcur.b;$('#tAns').textContent=''}
+$('#nextQ').onclick=nextT;
+$('#showAns').onclick=()=>{if(tcur)$('#tAns').textContent='الناتج: '+tcur.ans};
+document.querySelectorAll('[data-team]').forEach(b=>b.onclick=()=>{const t=+b.dataset.team;pts[t]++;$('#p'+t).textContent=pts[t];
+  const w=pts[1]===pts[2]?'تعادل بين الفريقين 🤝':(pts[1]>pts[2]?$('#n1').value:$('#n2').value)+' يتقدّم! 🏅';$('#tWin').textContent=w});
+$('#resetTeams').onclick=()=>{pts[1]=pts[2]=0;$('#p1').textContent=0;$('#p2').textContent=0;$('#tWin').textContent=''};
+nextT();
+</script>
+</body>
+</html>
