@@ -854,6 +854,14 @@
                   <a href="#g6-u3-l2-enrich">الإثراءات</a>
                 </div>
               </details>
+              <details class="lesson-group">
+                <summary>الثالث: الفرز والتصفية</summary>
+                <div class="lesson-sub">
+                  <a href="#g6-u3-l3-explain">شرح الدرس</a>
+                  <a href="#g6-u3-l3-hw">الواجب</a>
+                  <a href="#g6-u3-l3-enrich">الإثراءات</a>
+                </div>
+              </details>
             </div>
           </details>
         </div>
@@ -6002,6 +6010,568 @@ $(&#x27;tf&#x27;).querySelectorAll(&#x27;button&#x27;).forEach(b=&gt;b.onclick=(
             </div>
           </div>
 
+
+          <div class="lesson-block" id="g6-u3-l3">
+            <h4>
+              <svg class="icon" viewBox="0 0 24 24" style="width:17px;height:17px"><path d="M6 2h9l5 5v15H6z"/><path d="M15 2v5h5"/></svg>
+              الدرس الثالث: الفرز والتصفية
+            </h4>
+            <div class="tab-panel" id="g6-u3-l3-explain">
+              <h5>شرح الدرس</h5>
+              <p><a class="book-cta-link" href="https://www.youtube.com/watch?v=J-n1BODYMZ0&list=PLxUJ-_vAd_lUOtMHLAiEHVBU46ASatnVy&index=8" target="_blank" rel="noopener">شرح فيديو للدرس</a></p>
+              <p style="margin:10px 0 8px;">الدرس التفاعلي بتصميم سهل القراءة: خط كبير، وجمل قصيرة، وزر 🔊 لسماع كل فقرة، ومختبر إكسل للفرز والتصفية، وتدريبات بالضغط دون كتابة.</p>
+              <iframe class="lesson-frame" id="frame-g6-u3-l3" title="الدرس التفاعلي" loading="lazy" style="width:100%;height:900px;border:0;display:block;border-radius:10px;" srcdoc="&lt;!DOCTYPE html&gt;
+&lt;html lang=&quot;ar&quot; dir=&quot;rtl&quot;&gt;
+&lt;head&gt;
+&lt;meta charset=&quot;UTF-8&quot;&gt;
+&lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot;&gt;
+&lt;title&gt;الفرز والتصفية – الصف السادس&lt;/title&gt;
+&lt;link href=&quot;https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@400;500;600;700&amp;display=swap&quot; rel=&quot;stylesheet&quot;&gt;
+&lt;style&gt;
+:root{
+  --base:#012B28; --base2:#023d39; --green:#00894A; --green-l:#e6f5ee;
+  --gold:#C68A2E; --gold-l:#fbf3e6; --crimson:#C43D6B; --crimson-l:#fbeaf0;
+  --blue:#1e6fb8; --blue-l:#e8f1fa; --purple:#6b4fbb; --purple-l:#f0ecfb; --xl:#217346;
+  --ink:#1b2b29; --muted:#5d6f6c; --line:#dfe7e5; --bg:#fbfaf4; --card:#fff;
+  --fs:19px;
+}
+*{box-sizing:border-box}
+html{font-size:var(--fs)}
+body{margin:0;font-family:&#x27;IBM Plex Sans Arabic&#x27;,Tahoma,sans-serif;background:var(--bg);color:var(--ink);line-height:2;letter-spacing:.2px;word-spacing:2px}
+.wrap{max-width:960px;margin:0 auto;padding:14px}
+header.lesson-hero{background:linear-gradient(135deg,var(--base),var(--base2));color:#fff;border-radius:20px;padding:22px}
+.lesson-hero .crumb{font-size:.8rem;opacity:.8}
+.lesson-hero h1{margin:4px 0;font-size:1.7rem}
+.zig{height:8px;margin-top:12px;background:repeating-linear-gradient(135deg,var(--gold) 0 8px,transparent 8px 16px);opacity:.8;border-radius:4px}
+.access{display:flex;gap:8px;flex-wrap:wrap;margin-top:12px}
+.access button{background:#fff;color:var(--base);border:2px solid var(--base);border-radius:12px;padding:4px 12px;font:inherit;font-size:.85rem;cursor:pointer}
+nav.tabs{display:flex;gap:8px;flex-wrap:wrap;margin:14px 0}
+nav.tabs button{flex:1;min-width:120px;border:3px solid var(--green);background:#fff;color:var(--green);font:inherit;font-weight:700;padding:10px;border-radius:16px;cursor:pointer;font-size:1rem}
+nav.tabs button.active{background:var(--green);color:#fff}
+section.panel{display:none} section.panel.active{display:block}
+.card{background:var(--card);border:2px solid var(--line);border-radius:20px;padding:18px;margin-bottom:16px}
+.card h2{margin:0 0 8px;font-size:1.3rem;color:var(--base);display:flex;align-items:center;gap:8px}
+.tag{display:inline-block;background:var(--gold-l);color:var(--gold);font-weight:700;font-size:.78rem;padding:2px 12px;border-radius:20px;margin-bottom:6px}
+.say{position:relative;padding-left:52px}
+.spk{position:absolute;left:0;top:2px;width:42px;height:42px;border-radius:50%;border:2px solid var(--blue);background:var(--blue-l);font-size:1.1rem;cursor:pointer;display:grid;place-items:center}
+.spk.on{background:var(--blue);color:#fff}
+.big{font-size:1.15rem;font-weight:600}
+.kw{background:#fff3c4;border-radius:6px;padding:0 6px;font-weight:700}
+.vs{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.box{border-radius:18px;padding:14px;text-align:center}
+.box .ic{font-size:2.6rem;line-height:1.2}
+.box b{display:block;font-size:1.2rem}
+.b-sort{background:var(--blue-l);border:3px solid var(--blue)}
+.b-filter{background:var(--purple-l);border:3px solid var(--purple)}
+.chipsrow{display:flex;gap:6px;justify-content:center;flex-wrap:wrap;margin:6px 0;direction:rtl}
+.chipsrow span{background:#fff;border:2px solid #ccd;border-radius:10px;padding:0 10px;font-weight:700}
+.chipsrow span.dim{opacity:.25}
+.benef{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+.benef div{background:var(--green-l);border-radius:16px;padding:12px;text-align:center;font-weight:600}
+.benef .ic{font-size:2rem;display:block}
+.types{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+.types div{border:2px solid var(--line);border-radius:16px;padding:10px;text-align:center}
+.types .ic{font-size:2rem;display:block}
+.types .ex{direction:ltr;font-weight:700;color:var(--blue)}
+.updown{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:10px}
+.updown div{border-radius:16px;padding:12px;font-weight:600}
+.stepsx{display:grid;gap:10px;margin:8px 0}
+.stp{display:grid;grid-template-columns:54px 1fr;gap:10px;align-items:center;border:2px solid var(--line);border-radius:16px;padding:8px 10px}
+.stp .n{width:46px;height:46px;border-radius:50%;background:var(--gold);color:#fff;font-weight:700;font-size:1.3rem;display:grid;place-items:center}
+.note{background:var(--crimson-l);border-right:6px solid var(--crimson);padding:10px 14px;border-radius:14px;margin:10px 0}
+.tip{background:var(--green-l);border-right:6px solid var(--green);padding:10px 14px;border-radius:14px;margin:10px 0}
+.video{position:relative;padding-top:56.25%;border-radius:16px;overflow:hidden;background:#000}
+.video iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
+.btn{display:inline-block;border:0;font:inherit;font-weight:700;padding:10px 18px;border-radius:14px;cursor:pointer;text-decoration:none}
+.btn-green{background:var(--green);color:#fff}
+.btn-out{background:#fff;color:var(--base);border:2px solid var(--base)}
+.fb{margin-top:10px;font-weight:700;min-height:1.8em;font-size:1.05rem}
+.ok{color:var(--green)} .bad{color:var(--crimson)}
+svg{max-width:100%;height:auto}
+.icon-az{display:inline-flex;align-items:center;gap:2px;direction:ltr;font-weight:700;font-family:Arial;border:2px solid #9ab;border-radius:8px;padding:0 6px;background:#fff;line-height:1.1}
+.icon-az small{display:flex;flex-direction:column;font-size:.7rem;line-height:1}
+
+/* Excel lab */
+.tasks{list-style:none;padding:0;margin:8px 0;display:grid;gap:6px}
+.tasks li{border:2px solid var(--line);border-radius:14px;padding:6px 12px;font-size:.95rem}
+.tasks li.cur{border-color:var(--gold);background:var(--gold-l);font-weight:700}
+.tasks li.done{border-color:var(--green);background:var(--green-l)}
+.hint{background:var(--blue-l);border-radius:14px;padding:10px 14px;margin:8px 0;font-size:1rem}
+.xlw{position:relative;border:2px solid #b8c4c1;border-radius:14px;overflow:visible;background:#fff}
+.xlt{background:var(--xl);color:#fff;padding:4px 12px;font-size:.8rem;border-radius:12px 12px 0 0}
+.xlg{overflow-x:auto}
+table.g{border-collapse:collapse;width:100%;min-width:640px;font-size:.92rem}
+table.g th{background:#5d9e72;color:#fff;padding:6px 6px;border:1px solid #cfe0d6;white-space:nowrap;position:relative}
+table.g th .arw{margin-right:6px;border:2px solid #fff;background:#fff;color:#2c5f3c;border-radius:6px;width:30px;height:28px;cursor:pointer;font-size:.8rem;vertical-align:middle}
+table.g th .arw.act{background:#ffd166;border-color:#ffd166}
+table.g td{border:1px solid #dde7e2;padding:5px 8px;text-align:center}
+table.g td.rn{background:#eef0ef;color:#666;width:34px}
+table.g tr:nth-child(even) td:not(.rn){background:#f1f8f3}
+table.g tr.flash td{animation:fl .8s}
+@keyframes fl{from{background:#fff3c4}}
+.menu{position:absolute;z-index:10;background:#fff;border:2px solid #9ab;border-radius:14px;box-shadow:0 10px 24px rgba(0,0,0,.2);width:270px;padding:8px;font-size:.95rem}
+.menu button.mi{display:flex;gap:8px;align-items:center;width:100%;text-align:right;border:0;background:none;font:inherit;padding:8px 10px;border-radius:10px;cursor:pointer}
+.menu button.mi:hover{background:var(--blue-l)}
+.menu button.mi:disabled{opacity:.4;cursor:not-allowed}
+.menu .vals{border:1px solid #ccd;border-radius:10px;max-height:170px;overflow:auto;padding:4px 8px;margin:6px 0}
+.menu .vals label{display:flex;gap:8px;align-items:center;cursor:pointer;padding:2px 0}
+.menu .vals input{width:20px;height:20px}
+.menu .ft{display:flex;gap:6px}
+.xls{font-size:.8rem;color:var(--muted);padding:4px 12px;border-top:1px solid #e3e3e3}
+
+/* exercises */
+.q{border:2px solid var(--line);border-radius:16px;padding:12px;margin-bottom:12px}
+.q .os{display:grid;gap:8px;margin-top:8px}
+.q button.o{font:inherit;text-align:right;padding:10px 14px;border-radius:14px;border:3px solid var(--line);background:#fff;cursor:pointer;font-size:1rem}
+.q button.o.r{border-color:var(--green);background:var(--green-l)} .q button.o.w{border-color:var(--crimson);background:var(--crimson-l)}
+.pair{display:grid;grid-template-columns:1fr auto;gap:10px;align-items:center;border:2px solid var(--line);border-radius:16px;padding:8px 12px;margin-bottom:8px}
+.pair .opts2{display:flex;gap:8px}
+.pair button{font:inherit;border:3px solid var(--line);background:#fff;border-radius:14px;padding:4px 12px;cursor:pointer;font-weight:700}
+.pair button.r{border-color:var(--green);background:var(--green-l)} .pair button.w{border-color:var(--crimson);background:var(--crimson-l)}
+.bank{display:flex;flex-wrap:wrap;gap:8px;margin:8px 0;direction:rtl}
+.bank button{font:inherit;font-weight:700;border:3px solid var(--blue);background:var(--blue-l);border-radius:14px;padding:6px 14px;cursor:pointer}
+.bank button.sel{background:var(--blue);color:#fff}
+.bank button.used{opacity:.35}
+.blank{display:inline-block;min-width:110px;border-bottom:3px dashed var(--gold);text-align:center;cursor:pointer;padding:0 6px;font-weight:700;color:var(--blue)}
+.blank.r{border-color:var(--green);color:var(--green)} .blank.w{border-color:var(--crimson);color:var(--crimson)}
+.fill{border:2px solid var(--line);border-radius:16px;padding:10px 12px;margin-bottom:8px;line-height:2.4}
+.namecards{display:flex;flex-wrap:wrap;gap:8px;direction:rtl}
+.namecards button{font:inherit;font-size:1.15rem;font-weight:700;border:3px solid var(--gold);background:var(--gold-l);border-radius:16px;padding:8px 16px;cursor:pointer}
+.namecards button.done{background:var(--green);border-color:var(--green);color:#fff}
+.sorted{display:flex;flex-wrap:wrap;gap:8px;min-height:56px;border:3px dashed var(--green);border-radius:16px;padding:8px;margin:8px 0;direction:rtl}
+.sorted span{background:var(--green);color:#fff;border-radius:12px;padding:4px 14px;font-weight:700;font-size:1.1rem}
+.score{font-size:1.15rem;font-weight:700;color:var(--base)}
+.shake{animation:shake .35s}
+@keyframes shake{25%{transform:translateX(-6px)}75%{transform:translateX(6px)}}
+@media (max-width:640px){.vs,.benef,.types,.updown{grid-template-columns:1fr}.lesson-hero h1{font-size:1.35rem}.pair{grid-template-columns:1fr}}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+body{background:transparent}.wrap{padding:4px 0}&lt;/style&gt;
+&lt;/head&gt;
+&lt;body&gt;
+&lt;div class=&quot;wrap&quot;&gt;
+
+
+  &lt;div class=&quot;access&quot; style=&quot;margin:10px 0 0&quot;&gt;
+    &lt;button id=&quot;fsUp&quot; aria-label=&quot;تكبير الخط&quot;&gt;🔠 تكبير الخط&lt;/button&gt;
+    &lt;button id=&quot;fsDown&quot; aria-label=&quot;تصغير الخط&quot;&gt;🔡 تصغير الخط&lt;/button&gt;
+    &lt;button id=&quot;stopAll&quot; aria-label=&quot;إيقاف القراءة&quot;&gt;⏹️ إيقاف الصوت&lt;/button&gt;
+  &lt;/div&gt;
+
+&lt;nav class=&quot;tabs&quot;&gt;
+  &lt;button class=&quot;active&quot; data-p=&quot;p-explain&quot;&gt;📘 الشرح&lt;/button&gt;
+  &lt;button data-p=&quot;p-lab&quot;&gt;🧮 جرّب بنفسك&lt;/button&gt;
+  &lt;button data-p=&quot;p-practice&quot;&gt;🎯 التدريبات&lt;/button&gt;
+&lt;/nav&gt;
+
+&lt;!-- ================= الشرح ================= --&gt;
+&lt;section class=&quot;panel active&quot; id=&quot;p-explain&quot;&gt;
+
+  &lt;div class=&quot;card&quot;&gt;
+    &lt;div class=&quot;say big&quot;&gt;🔊 اضغط زر السماعة بجانب أي فقرة لتسمعها.&lt;/div&gt;
+  &lt;/div&gt;
+
+  &lt;div class=&quot;card&quot;&gt;
+    &lt;h2&gt;🎬 فيديو الشرح&lt;/h2&gt;
+    &lt;div class=&quot;video&quot;&gt;&lt;iframe src=&quot;https://www.youtube.com/embed/J-n1BODYMZ0?list=PLxUJ-_vAd_lUOtMHLAiEHVBU46ASatnVy&amp;index=8&quot; title=&quot;شرح درس الفرز والتصفية&quot; allow=&quot;accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture&quot; allowfullscreen&gt;&lt;/iframe&gt;&lt;/div&gt;
+    &lt;p style=&quot;margin:8px 0 0&quot;&gt;&lt;a class=&quot;btn btn-out&quot; href=&quot;https://www.youtube.com/watch?v=J-n1BODYMZ0&amp;list=PLxUJ-_vAd_lUOtMHLAiEHVBU46ASatnVy&amp;index=8&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;فتح الفيديو في يوتيوب ↗&lt;/a&gt;&lt;/p&gt;
+  &lt;/div&gt;
+
+  &lt;div class=&quot;card&quot;&gt;
+    &lt;h2&gt;🖼️ شرح الدرس في صورة&lt;/h2&gt;
+    &lt;svg viewBox=&quot;0 0 900 760&quot; xmlns=&quot;http://www.w3.org/2000/svg&quot; font-family=&quot;IBM Plex Sans Arabic, Tahoma&quot; role=&quot;img&quot; aria-label=&quot;ملخص مصور: الفرز يرتب البيانات، والتصفية تظهر جزءًا منها&quot;&gt;
+      &lt;rect width=&quot;900&quot; height=&quot;760&quot; rx=&quot;24&quot; fill=&quot;#012B28&quot;/&gt;
+      &lt;text x=&quot;450&quot; y=&quot;50&quot; text-anchor=&quot;middle&quot; fill=&quot;#fff&quot; font-size=&quot;30&quot; font-weight=&quot;700&quot;&gt;الفرز والتصفية&lt;/text&gt;
+      &lt;rect x=&quot;370&quot; y=&quot;64&quot; width=&quot;160&quot; height=&quot;5&quot; rx=&quot;2&quot; fill=&quot;#C68A2E&quot;/&gt;
+
+      &lt;!-- SORT --&gt;
+      &lt;g transform=&quot;translate(460,92)&quot;&gt;
+        &lt;rect width=&quot;410&quot; height=&quot;370&quot; rx=&quot;22&quot; fill=&quot;#e8f1fa&quot; stroke=&quot;#1e6fb8&quot; stroke-width=&quot;4&quot;/&gt;
+        &lt;text x=&quot;205&quot; y=&quot;48&quot; text-anchor=&quot;middle&quot; font-size=&quot;28&quot; font-weight=&quot;700&quot; fill=&quot;#1e6fb8&quot;&gt;الفرز = ترتيب ↕️&lt;/text&gt;
+        &lt;g font-size=&quot;20&quot; font-weight=&quot;700&quot; text-anchor=&quot;middle&quot; fill=&quot;#012B28&quot;&gt;
+          &lt;rect x=&quot;300&quot; y=&quot;72&quot; width=&quot;80&quot; height=&quot;40&quot; rx=&quot;10&quot; fill=&quot;#fff&quot; stroke=&quot;#c9d3d1&quot; stroke-width=&quot;2&quot;/&gt;&lt;text x=&quot;340&quot; y=&quot;99&quot;&gt;فهد&lt;/text&gt;
+          &lt;rect x=&quot;300&quot; y=&quot;118&quot; width=&quot;80&quot; height=&quot;40&quot; rx=&quot;10&quot; fill=&quot;#fff&quot; stroke=&quot;#c9d3d1&quot; stroke-width=&quot;2&quot;/&gt;&lt;text x=&quot;340&quot; y=&quot;145&quot;&gt;أحمد&lt;/text&gt;
+          &lt;rect x=&quot;300&quot; y=&quot;164&quot; width=&quot;80&quot; height=&quot;40&quot; rx=&quot;10&quot; fill=&quot;#fff&quot; stroke=&quot;#c9d3d1&quot; stroke-width=&quot;2&quot;/&gt;&lt;text x=&quot;340&quot; y=&quot;191&quot;&gt;خالد&lt;/text&gt;
+          &lt;text x=&quot;205&quot; y=&quot;150&quot; font-size=&quot;44&quot; fill=&quot;#C68A2E&quot;&gt;←&lt;/text&gt;
+          &lt;rect x=&quot;30&quot; y=&quot;72&quot; width=&quot;80&quot; height=&quot;40&quot; rx=&quot;10&quot; fill=&quot;#1e6fb8&quot;/&gt;&lt;text x=&quot;70&quot; y=&quot;99&quot; fill=&quot;#fff&quot;&gt;أحمد&lt;/text&gt;
+          &lt;rect x=&quot;30&quot; y=&quot;118&quot; width=&quot;80&quot; height=&quot;40&quot; rx=&quot;10&quot; fill=&quot;#1e6fb8&quot;/&gt;&lt;text x=&quot;70&quot; y=&quot;145&quot; fill=&quot;#fff&quot;&gt;خالد&lt;/text&gt;
+          &lt;rect x=&quot;30&quot; y=&quot;164&quot; width=&quot;80&quot; height=&quot;40&quot; rx=&quot;10&quot; fill=&quot;#1e6fb8&quot;/&gt;&lt;text x=&quot;70&quot; y=&quot;191&quot; fill=&quot;#fff&quot;&gt;فهد&lt;/text&gt;
+        &lt;/g&gt;
+        &lt;g font-size=&quot;17&quot; fill=&quot;#012B28&quot; text-anchor=&quot;middle&quot;&gt;
+          &lt;rect x=&quot;20&quot; y=&quot;230&quot; width=&quot;120&quot; height=&quot;56&quot; rx=&quot;12&quot; fill=&quot;#fff&quot;/&gt;&lt;text x=&quot;80&quot; y=&quot;254&quot; font-weight=&quot;700&quot;&gt;🔤 نصوص&lt;/text&gt;&lt;text x=&quot;80&quot; y=&quot;276&quot; font-size=&quot;14&quot;&gt;أ ← ي&lt;/text&gt;
+          &lt;rect x=&quot;145&quot; y=&quot;230&quot; width=&quot;120&quot; height=&quot;56&quot; rx=&quot;12&quot; fill=&quot;#fff&quot;/&gt;&lt;text x=&quot;205&quot; y=&quot;254&quot; font-weight=&quot;700&quot;&gt;🔢 أرقام&lt;/text&gt;&lt;text x=&quot;205&quot; y=&quot;276&quot; font-size=&quot;14&quot;&gt;صغير ← كبير&lt;/text&gt;
+          &lt;rect x=&quot;270&quot; y=&quot;230&quot; width=&quot;120&quot; height=&quot;56&quot; rx=&quot;12&quot; fill=&quot;#fff&quot;/&gt;&lt;text x=&quot;330&quot; y=&quot;254&quot; font-weight=&quot;700&quot;&gt;📅 تواريخ&lt;/text&gt;&lt;text x=&quot;330&quot; y=&quot;276&quot; font-size=&quot;14&quot;&gt;قديم ← حديث&lt;/text&gt;
+        &lt;/g&gt;
+        &lt;rect x=&quot;20&quot; y=&quot;300&quot; width=&quot;370&quot; height=&quot;54&quot; rx=&quot;14&quot; fill=&quot;#1e6fb8&quot;/&gt;
+        &lt;text x=&quot;205&quot; y=&quot;334&quot; text-anchor=&quot;middle&quot; fill=&quot;#fff&quot; font-size=&quot;17&quot; font-weight=&quot;700&quot;&gt;▾ السهم ← الفرز من أ إلى ي&lt;/text&gt;
+      &lt;/g&gt;
+
+      &lt;!-- FILTER --&gt;
+      &lt;g transform=&quot;translate(30,92)&quot;&gt;
+        &lt;rect width=&quot;410&quot; height=&quot;370&quot; rx=&quot;22&quot; fill=&quot;#f0ecfb&quot; stroke=&quot;#6b4fbb&quot; stroke-width=&quot;4&quot;/&gt;
+        &lt;text x=&quot;205&quot; y=&quot;48&quot; text-anchor=&quot;middle&quot; font-size=&quot;28&quot; font-weight=&quot;700&quot; fill=&quot;#6b4fbb&quot;&gt;التصفية = إظهار جزء 🔍&lt;/text&gt;
+        &lt;g transform=&quot;translate(0,20)&quot;&gt;&lt;path d=&quot;M120 80 h170 l-60 70 v55 l-50 22 v-77 z&quot; fill=&quot;#6b4fbb&quot; opacity=&quot;.85&quot;/&gt;
+        &lt;g font-size=&quot;18&quot; font-weight=&quot;700&quot; text-anchor=&quot;middle&quot;&gt;
+          &lt;circle cx=&quot;150&quot; cy=&quot;70&quot; r=&quot;16&quot; fill=&quot;#fff&quot; stroke=&quot;#6b4fbb&quot; stroke-width=&quot;2&quot;/&gt;&lt;text x=&quot;150&quot; y=&quot;77&quot; fill=&quot;#012B28&quot;&gt;1&lt;/text&gt;
+          &lt;circle cx=&quot;205&quot; cy=&quot;62&quot; r=&quot;16&quot; fill=&quot;#fff&quot; stroke=&quot;#6b4fbb&quot; stroke-width=&quot;2&quot;/&gt;&lt;text x=&quot;205&quot; y=&quot;69&quot; fill=&quot;#012B28&quot;&gt;2&lt;/text&gt;
+          &lt;circle cx=&quot;260&quot; cy=&quot;70&quot; r=&quot;16&quot; fill=&quot;#fff&quot; stroke=&quot;#6b4fbb&quot; stroke-width=&quot;2&quot;/&gt;&lt;text x=&quot;260&quot; y=&quot;77&quot; fill=&quot;#012B28&quot;&gt;1&lt;/text&gt;
+          &lt;circle cx=&quot;205&quot; cy=&quot;246&quot; r=&quot;16&quot; fill=&quot;#00894A&quot;/&gt;&lt;text x=&quot;205&quot; y=&quot;253&quot; fill=&quot;#fff&quot;&gt;1&lt;/text&gt;
+        &lt;/g&gt;&lt;/g&gt;
+        &lt;text x=&quot;205&quot; y=&quot;296&quot; text-anchor=&quot;middle&quot; font-size=&quot;15&quot; fill=&quot;#012B28&quot; font-weight=&quot;700&quot;&gt;أختار «رقم الفصل = 1» فقط&lt;/text&gt;
+        &lt;rect x=&quot;20&quot; y=&quot;300&quot; width=&quot;370&quot; height=&quot;54&quot; rx=&quot;14&quot; fill=&quot;#6b4fbb&quot;/&gt;
+        &lt;text x=&quot;205&quot; y=&quot;334&quot; text-anchor=&quot;middle&quot; fill=&quot;#fff&quot; font-size=&quot;17&quot; font-weight=&quot;700&quot;&gt;▾ السهم ← أختار ✔ ← موافق&lt;/text&gt;
+      &lt;/g&gt;
+
+      &lt;!-- bottom strip --&gt;
+      &lt;g transform=&quot;translate(30,482)&quot;&gt;
+        &lt;rect width=&quot;840&quot; height=&quot;120&quot; rx=&quot;20&quot; fill=&quot;#fff&quot;/&gt;
+        &lt;text x=&quot;420&quot; y=&quot;40&quot; text-anchor=&quot;middle&quot; font-size=&quot;20&quot; font-weight=&quot;700&quot; fill=&quot;#C43D6B&quot;&gt;🧹 إلغاء التصفية&lt;/text&gt;
+        &lt;text x=&quot;420&quot; y=&quot;76&quot; text-anchor=&quot;middle&quot; font-size=&quot;17&quot; fill=&quot;#012B28&quot;&gt;▾ السهم ← «إلغاء تطبيق عامل التصفية من…»&lt;/text&gt;
+        &lt;text x=&quot;420&quot; y=&quot;104&quot; text-anchor=&quot;middle&quot; font-size=&quot;15&quot; fill=&quot;#5d6f6c&quot;&gt;التصفية لا تحذف الصفوف 🙈 هي تُخفيها فقط&lt;/text&gt;
+      &lt;/g&gt;
+      &lt;g transform=&quot;translate(30,620)&quot;&gt;
+        &lt;rect width=&quot;840&quot; height=&quot;118&quot; rx=&quot;20&quot; fill=&quot;#00894A&quot;/&gt;
+        &lt;text x=&quot;420&quot; y=&quot;38&quot; text-anchor=&quot;middle&quot; font-size=&quot;19&quot; font-weight=&quot;700&quot; fill=&quot;#fff&quot;&gt;💡 طريق آخر&lt;/text&gt;
+        &lt;text x=&quot;420&quot; y=&quot;74&quot; text-anchor=&quot;middle&quot; font-size=&quot;16.5&quot; fill=&quot;#fff&quot;&gt;الشريط الرئيسي ← تحرير ← فرز وتصفية ← تصفية&lt;/text&gt;
+        &lt;text x=&quot;420&quot; y=&quot;104&quot; text-anchor=&quot;middle&quot; font-size=&quot;15&quot; fill=&quot;#e6f5ee&quot; font-family=&quot;Arial&quot;&gt;Ctrl + A = تحديد كل البيانات&lt;/text&gt;
+      &lt;/g&gt;
+    &lt;/svg&gt;
+  &lt;/div&gt;
+
+  &lt;div class=&quot;card&quot;&gt;
+    &lt;h2&gt;🤔 ما الفرق؟&lt;/h2&gt;
+    &lt;div class=&quot;vs&quot;&gt;
+      &lt;div class=&quot;box b-sort say&quot;&gt;&lt;div class=&quot;ic&quot;&gt;↕️&lt;/div&gt;&lt;b&gt;الفرز&lt;/b&gt;يرتّب البيانات.&lt;div class=&quot;chipsrow&quot;&gt;&lt;span&gt;أحمد&lt;/span&gt;&lt;span&gt;خالد&lt;/span&gt;&lt;span&gt;فهد&lt;/span&gt;&lt;/div&gt;&lt;/div&gt;
+      &lt;div class=&quot;box b-filter say&quot;&gt;&lt;div class=&quot;ic&quot;&gt;🔍&lt;/div&gt;&lt;b&gt;التصفية&lt;/b&gt;تُظهر جزءًا فقط.&lt;div class=&quot;chipsrow&quot;&gt;&lt;span&gt;فصل 1&lt;/span&gt;&lt;span class=&quot;dim&quot;&gt;فصل 2&lt;/span&gt;&lt;span class=&quot;dim&quot;&gt;فصل 3&lt;/span&gt;&lt;/div&gt;&lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+
+  &lt;div class=&quot;card&quot;&gt;
+    &lt;h2&gt;🌟 لماذا نفرز ونصفّي؟&lt;/h2&gt;
+    &lt;div class=&quot;benef&quot;&gt;
+      &lt;div class=&quot;say&quot;&gt;&lt;span class=&quot;ic&quot;&gt;🧠&lt;/span&gt;نفهم بياناتنا وننظّمها.&lt;/div&gt;
+      &lt;div class=&quot;say&quot;&gt;&lt;span class=&quot;ic&quot;&gt;🎯&lt;/span&gt;نصل إلى ما نريد بسهولة.&lt;/div&gt;
+      &lt;div class=&quot;say&quot;&gt;&lt;span class=&quot;ic&quot;&gt;✅&lt;/span&gt;نتخذ قرارات صحيحة.&lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+
+  &lt;div class=&quot;card&quot;&gt;
+    &lt;h2&gt;↕️ أنواع الفرز&lt;/h2&gt;
+    &lt;div class=&quot;types&quot;&gt;
+      &lt;div class=&quot;say&quot;&gt;&lt;span class=&quot;ic&quot;&gt;🔤&lt;/span&gt;&lt;b&gt;النصوص&lt;/b&gt;&lt;br&gt;من أ إلى ي&lt;br&gt;أو من ي إلى أ&lt;/div&gt;
+      &lt;div class=&quot;say&quot;&gt;&lt;span class=&quot;ic&quot;&gt;🔢&lt;/span&gt;&lt;b&gt;الأرقام&lt;/b&gt;&lt;br&gt;من الأصغر إلى الأكبر&lt;br&gt;أو العكس&lt;/div&gt;
+      &lt;div class=&quot;say&quot;&gt;&lt;span class=&quot;ic&quot;&gt;📅&lt;/span&gt;&lt;b&gt;التواريخ&lt;/b&gt;&lt;br&gt;من الأقدم إلى الأحدث&lt;br&gt;أو العكس&lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div class=&quot;updown&quot;&gt;
+      &lt;div class=&quot;say&quot; style=&quot;background:var(--green-l)&quot;&gt;⬆️ &lt;b&gt;تصاعدي:&lt;/b&gt; من الأصغر إلى الأكبر، أو من أ إلى ي. &lt;span class=&quot;icon-az&quot;&gt;&lt;small&gt;&lt;span style=&quot;color:#1e6fb8&quot;&gt;A&lt;/span&gt;&lt;span&gt;Z&lt;/span&gt;&lt;/small&gt;↓&lt;/span&gt;&lt;/div&gt;
+      &lt;div class=&quot;say&quot; style=&quot;background:var(--gold-l)&quot;&gt;⬇️ &lt;b&gt;تنازلي:&lt;/b&gt; من الأكبر إلى الأصغر، أو من ي إلى أ. &lt;span class=&quot;icon-az&quot;&gt;&lt;small&gt;&lt;span&gt;Z&lt;/span&gt;&lt;span style=&quot;color:#1e6fb8&quot;&gt;A&lt;/span&gt;&lt;/small&gt;↓&lt;/span&gt;&lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+
+  &lt;div class=&quot;card&quot;&gt;
+    &lt;h2&gt;🔤 كيف أرتّب الأسماء أبجديًا؟&lt;/h2&gt;
+    &lt;div class=&quot;stepsx&quot;&gt;
+      &lt;div class=&quot;stp&quot;&gt;&lt;span class=&quot;n&quot;&gt;1&lt;/span&gt;&lt;div class=&quot;say&quot;&gt;أضغط السهم &lt;span class=&quot;kw&quot;&gt;▾&lt;/span&gt; بجانب كلمة «الاسم».&lt;/div&gt;&lt;/div&gt;
+      &lt;div class=&quot;stp&quot;&gt;&lt;span class=&quot;n&quot;&gt;2&lt;/span&gt;&lt;div class=&quot;say&quot;&gt;أضغط &lt;span class=&quot;kw&quot;&gt;الفرز من أ إلى ي&lt;/span&gt;.&lt;/div&gt;&lt;/div&gt;
+      &lt;div class=&quot;stp&quot;&gt;&lt;span class=&quot;n&quot;&gt;3&lt;/span&gt;&lt;div class=&quot;say&quot;&gt;تترتّب الأسماء. ويتغيّر شكل السهم.&lt;/div&gt;&lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div class=&quot;tip say&quot;&gt;🖐️ جرّب بنفسك: رتّب الأسماء من ي إلى أ (تنازلي).&lt;/div&gt;
+  &lt;/div&gt;
+
+  &lt;div class=&quot;card&quot;&gt;
+    &lt;h2&gt;🔍 كيف أصفّي البيانات؟&lt;/h2&gt;
+    &lt;div class=&quot;say&quot;&gt;مثال: أريد طلاب &lt;span class=&quot;kw&quot;&gt;الفصل 1&lt;/span&gt; فقط.&lt;/div&gt;
+    &lt;div class=&quot;stepsx&quot;&gt;
+      &lt;div class=&quot;stp&quot;&gt;&lt;span class=&quot;n&quot;&gt;1&lt;/span&gt;&lt;div class=&quot;say&quot;&gt;أضغط السهم &lt;span class=&quot;kw&quot;&gt;▾&lt;/span&gt; بجانب «رقم الفصل».&lt;/div&gt;&lt;/div&gt;
+      &lt;div class=&quot;stp&quot;&gt;&lt;span class=&quot;n&quot;&gt;2&lt;/span&gt;&lt;div class=&quot;say&quot;&gt;أترك علامة ✔ على &lt;span class=&quot;kw&quot;&gt;1&lt;/span&gt; فقط.&lt;/div&gt;&lt;/div&gt;
+      &lt;div class=&quot;stp&quot;&gt;&lt;span class=&quot;n&quot;&gt;3&lt;/span&gt;&lt;div class=&quot;say&quot;&gt;أضغط &lt;span class=&quot;kw&quot;&gt;موافق&lt;/span&gt;.&lt;/div&gt;&lt;/div&gt;
+      &lt;div class=&quot;stp&quot;&gt;&lt;span class=&quot;n&quot;&gt;4&lt;/span&gt;&lt;div class=&quot;say&quot;&gt;يظهر طلاب الفصل 1 فقط. ويظهر شكل قمع 🔽 على السهم.&lt;/div&gt;&lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div class=&quot;note say&quot;&gt;🙈 الصفوف الأخرى لا تُحذف. هي مخفية فقط.&lt;/div&gt;
+    &lt;div class=&quot;tip say&quot;&gt;✅ «تحديد الكل» يُظهر كل الصفوف مرة أخرى.&lt;/div&gt;
+  &lt;/div&gt;
+
+  &lt;div class=&quot;card&quot;&gt;
+    &lt;h2&gt;🧹 كيف ألغي التصفية؟&lt;/h2&gt;
+    &lt;div class=&quot;stepsx&quot;&gt;
+      &lt;div class=&quot;stp&quot;&gt;&lt;span class=&quot;n&quot;&gt;1&lt;/span&gt;&lt;div class=&quot;say&quot;&gt;أضغط السهم &lt;span class=&quot;kw&quot;&gt;▾&lt;/span&gt; بجانب «رقم الفصل».&lt;/div&gt;&lt;/div&gt;
+      &lt;div class=&quot;stp&quot;&gt;&lt;span class=&quot;n&quot;&gt;2&lt;/span&gt;&lt;div class=&quot;say&quot;&gt;أضغط &lt;span class=&quot;kw&quot;&gt;إلغاء تطبيق عامل التصفية من «رقم الفصل»&lt;/span&gt;.&lt;/div&gt;&lt;/div&gt;
+      &lt;div class=&quot;stp&quot;&gt;&lt;span class=&quot;n&quot;&gt;3&lt;/span&gt;&lt;div class=&quot;say&quot;&gt;ترجع كل الصفوف. 🎉&lt;/div&gt;&lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div class=&quot;tip say&quot;&gt;💡 طريق آخر: الشريط الرئيسي ← تحرير ← فرز وتصفية ← تصفية.&lt;/div&gt;
+  &lt;/div&gt;
+&lt;/section&gt;
+
+&lt;!-- ================= جرّب بنفسك ================= --&gt;
+&lt;section class=&quot;panel&quot; id=&quot;p-lab&quot;&gt;
+  &lt;div class=&quot;card&quot;&gt;
+    &lt;span class=&quot;tag&quot;&gt;مختبر إكسل&lt;/span&gt;
+    &lt;h2&gt;🧮 جرّب بنفسك&lt;/h2&gt;
+    &lt;div class=&quot;say&quot;&gt;نفّذ المهمة الملوّنة بالأصفر. استخدم الأسهم ▾ في رؤوس الأعمدة.&lt;/div&gt;
+    &lt;ul class=&quot;tasks&quot; id=&quot;tasks&quot;&gt;&lt;/ul&gt;
+    &lt;div class=&quot;hint say&quot; id=&quot;hint&quot;&gt;&lt;/div&gt;
+    &lt;div class=&quot;xlw&quot; id=&quot;xlw&quot;&gt;
+      &lt;div class=&quot;xlt&quot;&gt;📗 دفتر عناوين الصف السادس – Excel&lt;/div&gt;
+      &lt;div class=&quot;xlg&quot;&gt;&lt;table class=&quot;g&quot; id=&quot;grid&quot;&gt;&lt;/table&gt;&lt;/div&gt;
+      &lt;div class=&quot;xls&quot; id=&quot;xls&quot;&gt;تم عرض 10 من 10 سجلات&lt;/div&gt;
+      &lt;div class=&quot;menu&quot; id=&quot;menu&quot; hidden&gt;&lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div class=&quot;fb&quot; id=&quot;labFb&quot; aria-live=&quot;polite&quot;&gt;&lt;/div&gt;
+  &lt;/div&gt;
+&lt;/section&gt;
+
+&lt;!-- ================= التدريبات ================= --&gt;
+&lt;section class=&quot;panel&quot; id=&quot;p-practice&quot;&gt;
+
+  &lt;div class=&quot;card&quot;&gt;
+    &lt;span class=&quot;tag&quot;&gt;لعبة سريعة&lt;/span&gt;
+    &lt;h2&gt;🎮 فرز أم تصفية؟&lt;/h2&gt;
+    &lt;div class=&quot;say&quot;&gt;اقرأ (أو اسمع) الموقف، ثم اختر: ↕️ فرز أو 🔍 تصفية.&lt;/div&gt;
+    &lt;div id=&quot;game&quot;&gt;&lt;/div&gt;
+    &lt;div class=&quot;score&quot; id=&quot;gameScore&quot;&gt;&lt;/div&gt;
+  &lt;/div&gt;
+
+  &lt;div class=&quot;card&quot;&gt;
+    &lt;span class=&quot;tag&quot;&gt;تدريب 1 – من الكتاب&lt;/span&gt;
+    &lt;h2&gt;✅ اختر الإجابة الصحيحة&lt;/h2&gt;
+    &lt;div id=&quot;t1&quot;&gt;&lt;/div&gt;
+    &lt;div class=&quot;score&quot; id=&quot;t1Score&quot;&gt;&lt;/div&gt;
+  &lt;/div&gt;
+
+  &lt;div class=&quot;card&quot;&gt;
+    &lt;span class=&quot;tag&quot;&gt;تدريب 2 – من الكتاب&lt;/span&gt;
+    &lt;h2&gt;🔣 صِل رمز الفرز بالوصف&lt;/h2&gt;
+    &lt;div class=&quot;say&quot;&gt;لكل وصف: اضغط الرمز المناسب.&lt;/div&gt;
+    &lt;div id=&quot;t2&quot;&gt;&lt;/div&gt;
+    &lt;div class=&quot;fb&quot; id=&quot;t2Fb&quot;&gt;&lt;/div&gt;
+  &lt;/div&gt;
+
+  &lt;div class=&quot;card&quot;&gt;
+    &lt;span class=&quot;tag&quot;&gt;تدريب 3 – من الكتاب&lt;/span&gt;
+    &lt;h2&gt;🧩 أكمل الفراغ&lt;/h2&gt;
+    &lt;div class=&quot;say&quot;&gt;اضغط كلمة من الصندوق، ثم اضغط الفراغ.&lt;/div&gt;
+    &lt;div class=&quot;bank&quot; id=&quot;bank&quot;&gt;&lt;/div&gt;
+    &lt;div id=&quot;t3&quot;&gt;&lt;/div&gt;
+    &lt;div class=&quot;fb&quot; id=&quot;t3Fb&quot;&gt;&lt;/div&gt;
+  &lt;/div&gt;
+
+  &lt;div class=&quot;card&quot;&gt;
+    &lt;span class=&quot;tag&quot;&gt;تدريب 4 – من الكتاب&lt;/span&gt;
+    &lt;h2&gt;🔍 صفِّ بيانات الطلاب&lt;/h2&gt;
+    &lt;div class=&quot;say&quot;&gt;أظهر الطلاب الذين أعمارهم 11 سنة فما فوق. استخدم السهم ▾ في عمود «العمر».&lt;/div&gt;
+    &lt;div class=&quot;xlw&quot; id=&quot;xlw2&quot; style=&quot;margin-top:8px&quot;&gt;&lt;div class=&quot;xlt&quot;&gt;📗 Student data.xlsx&lt;/div&gt;&lt;div class=&quot;xlg&quot;&gt;&lt;table class=&quot;g&quot; id=&quot;grid2&quot;&gt;&lt;/table&gt;&lt;/div&gt;&lt;div class=&quot;xls&quot; id=&quot;xls2&quot;&gt;&lt;/div&gt;&lt;div class=&quot;menu&quot; id=&quot;menu2&quot; hidden&gt;&lt;/div&gt;&lt;/div&gt;
+    &lt;div class=&quot;fb&quot; id=&quot;t4Fb&quot;&gt;&lt;/div&gt;
+  &lt;/div&gt;
+
+  &lt;div class=&quot;card&quot;&gt;
+    &lt;span class=&quot;tag&quot;&gt;تدريب 5 – من الكتاب&lt;/span&gt;
+    &lt;h2&gt;🔤 رتّب أسماء أصدقائك أبجديًا&lt;/h2&gt;
+    &lt;div class=&quot;say&quot;&gt;اضغط الأسماء بالترتيب من أ إلى ي.&lt;/div&gt;
+    &lt;div class=&quot;namecards&quot; id=&quot;names&quot;&gt;&lt;/div&gt;
+    &lt;div class=&quot;sorted&quot; id=&quot;sorted&quot;&gt;&lt;/div&gt;
+    &lt;button class=&quot;btn btn-out&quot; id=&quot;namesReset&quot;&gt;🔄 من جديد&lt;/button&gt;
+    &lt;div class=&quot;fb&quot; id=&quot;t5Fb&quot;&gt;&lt;/div&gt;
+  &lt;/div&gt;
+
+  &lt;div class=&quot;card&quot;&gt;
+    &lt;span class=&quot;tag&quot;&gt;تدريب 6 – من الكتاب&lt;/span&gt;
+    &lt;h2&gt;🔗 صِل المصطلح بتعريفه&lt;/h2&gt;
+    &lt;div id=&quot;t6&quot;&gt;&lt;/div&gt;
+    &lt;div class=&quot;fb&quot; id=&quot;t6Fb&quot;&gt;&lt;/div&gt;
+  &lt;/div&gt;
+&lt;/section&gt;
+
+
+
+
+
+&lt;/div&gt;
+
+&lt;script&gt;
+const $=id=&gt;document.getElementById(id);
+/* ===== التبويبات ===== */
+document.querySelectorAll(&#x27;nav.tabs button&#x27;).forEach(b=&gt;b.onclick=()=&gt;{
+  document.querySelectorAll(&#x27;nav.tabs button&#x27;).forEach(x=&gt;x.classList.remove(&#x27;active&#x27;));
+  document.querySelectorAll(&#x27;section.panel&#x27;).forEach(x=&gt;x.classList.remove(&#x27;active&#x27;));
+  b.classList.add(&#x27;active&#x27;);$(b.dataset.p).classList.add(&#x27;active&#x27;);stopSpeak();
+  try{frameElement.scrollIntoView({behavior:&#x27;smooth&#x27;,block:&#x27;start&#x27;})}catch(e){}
+});
+/* ===== حجم الخط ===== */
+let fs=19;try{fs=+localStorage.getItem(&#x27;g6l3fs&#x27;)||19;}catch(e){}
+function setFs(v){fs=Math.max(16,Math.min(26,v));document.documentElement.style.setProperty(&#x27;--fs&#x27;,fs+&#x27;px&#x27;);try{localStorage.setItem(&#x27;g6l3fs&#x27;,fs)}catch(e){}}
+setFs(fs);$(&#x27;fsUp&#x27;).onclick=()=&gt;setFs(fs+2);$(&#x27;fsDown&#x27;).onclick=()=&gt;setFs(fs-2);
+
+/* ===== القراءة الصوتية ===== */
+let curBtn=null,warned=false;
+function stopSpeak(){try{speechSynthesis.cancel()}catch(e){}if(curBtn){curBtn.classList.remove(&#x27;on&#x27;);curBtn.textContent=&#x27;🔊&#x27;;curBtn=null;}}
+function speak(text,btn){
+  if(!(&#x27;speechSynthesis&#x27; in window)){if(!warned){warned=true;alertBox(&#x27;القراءة الصوتية غير مدعومة في هذا المتصفح.&#x27;);}return;}
+  const same=curBtn===btn;stopSpeak();if(same)return;
+  const u=new SpeechSynthesisUtterance(text.replace(/[▾▶◀←→↕️🔊⏹️]/g,&#x27; &#x27;));u.lang=&#x27;ar-SA&#x27;;u.rate=.85;
+  const v=speechSynthesis.getVoices().find(v=&gt;/^ar/i.test(v.lang));if(v)u.voice=v;
+  if(btn){curBtn=btn;btn.classList.add(&#x27;on&#x27;);btn.textContent=&#x27;⏹&#x27;;}
+  u.onend=()=&gt;{if(curBtn===btn)stopSpeak();};speechSynthesis.speak(u);}
+function alertBox(t){const fb=document.querySelector(&#x27;section.panel.active .fb&#x27;);if(fb){fb.className=&#x27;fb&#x27;;fb.textContent=t;}}
+$(&#x27;stopAll&#x27;).onclick=stopSpeak;
+function addSpeakers(root){(root||document).querySelectorAll(&#x27;.say&#x27;).forEach(el=&gt;{if(el.querySelector(&#x27;:scope &gt; .spk&#x27;))return;
+  const b=document.createElement(&#x27;button&#x27;);b.className=&#x27;spk&#x27;;b.type=&#x27;button&#x27;;b.textContent=&#x27;🔊&#x27;;b.setAttribute(&#x27;aria-label&#x27;,&#x27;استمع&#x27;);
+  b.onclick=e=&gt;{e.stopPropagation();const c=el.cloneNode(true);c.querySelectorAll(&#x27;.spk&#x27;).forEach(x=&gt;x.remove());speak(c.textContent.trim(),b);};el.prepend(b);});}
+addSpeakers();
+
+/* ===== بيانات الكتاب ===== */
+const COLS=[{k:&#x27;n&#x27;,t:&#x27;الاسم&#x27;,type:&#x27;t&#x27;},{k:&#x27;f&#x27;,t:&#x27;اسم العائلة&#x27;,type:&#x27;t&#x27;},{k:&#x27;c&#x27;,t:&#x27;رقم الفصل&#x27;,type:&#x27;n&#x27;},{k:&#x27;a&#x27;,t:&#x27;العنوان الوطني&#x27;,type:&#x27;t&#x27;},{k:&#x27;d&#x27;,t:&#x27;تاريخ الميلاد م&#x27;,type:&#x27;d&#x27;}];
+const DATA=[[&#x27;أحمد&#x27;,&#x27;وليد&#x27;,1,&#x27;RBBD**21&#x27;,&#x27;2012-01-07&#x27;],[&#x27;خالد&#x27;,&#x27;يحيى&#x27;,2,&#x27;RBBD**32&#x27;,&#x27;2012-01-24&#x27;],[&#x27;فهد&#x27;,&#x27;سامي&#x27;,3,&#x27;RBBD**23&#x27;,&#x27;2012-06-01&#x27;],[&#x27;أحمد&#x27;,&#x27;سعود&#x27;,2,&#x27;RBBD**24&#x27;,&#x27;2012-09-08&#x27;],
+ [&#x27;نواف&#x27;,&#x27;عادل&#x27;,1,&#x27;RBBD**18&#x27;,&#x27;2012-08-02&#x27;],[&#x27;أسامة&#x27;,&#x27;يحيى&#x27;,3,&#x27;RBBD**26&#x27;,&#x27;2012-07-03&#x27;],[&#x27;أحمد&#x27;,&#x27;فهد&#x27;,1,&#x27;RBBD**52&#x27;,&#x27;2011-12-19&#x27;],[&#x27;جابر&#x27;,&#x27;حمد&#x27;,2,&#x27;RBBD**12&#x27;,&#x27;2012-01-19&#x27;],
+ [&#x27;أسامة&#x27;,&#x27;محمد&#x27;,1,&#x27;RBBD**04&#x27;,&#x27;2012-04-07&#x27;],[&#x27;خالد&#x27;,&#x27;فهد&#x27;,3,&#x27;RBBD**35&#x27;,&#x27;2012-08-31&#x27;]].map((r,i)=&gt;({id:i,n:r[0],f:r[1],c:r[2],a:r[3],d:r[4]}));
+const MONTHS=[&#x27;يناير&#x27;,&#x27;فبراير&#x27;,&#x27;مارس&#x27;,&#x27;أبريل&#x27;,&#x27;مايو&#x27;,&#x27;يونيو&#x27;,&#x27;يوليو&#x27;,&#x27;أغسطس&#x27;,&#x27;سبتمبر&#x27;,&#x27;أكتوبر&#x27;,&#x27;نوفمبر&#x27;,&#x27;ديسمبر&#x27;];
+const fmtD=s=&gt;{const [y,m,d]=s.split(&#x27;-&#x27;).map(Number);return `${d} ${MONTHS[m-1]} ${y}`;};
+const col=new Intl.Collator(&#x27;ar&#x27;);
+
+/* ===== محاكي إكسل عام ===== */
+function makeSheet(cfg){
+  const S={rows:cfg.data.slice(),sort:null,filters:{},cfg};
+  function visible(){return S.rows.filter(r=&gt;Object.entries(S.filters).every(([k,set])=&gt;set.has(String(r[k]))));}
+  function render(){const vis=visible();
+    $(cfg.grid).innerHTML=&#x27;&lt;thead&gt;&lt;tr&gt;&lt;th style=&quot;background:#eef0ef;color:#666&quot;&gt;#&lt;/th&gt;&#x27;+cfg.cols.map(c=&gt;{const f=S.filters[c.k],s=S.sort&amp;&amp;S.sort.k===c.k;
+        return `&lt;th&gt;${c.t}&lt;button class=&quot;arw ${f||s?&#x27;act&#x27;:&#x27;&#x27;}&quot; data-k=&quot;${c.k}&quot; aria-label=&quot;قائمة الفرز والتصفية لعمود ${c.t}&quot;&gt;${f?&#x27;🔽&#x27;:s?(S.sort.dir&gt;0?&#x27;↑▾&#x27;:&#x27;↓▾&#x27;):&#x27;▾&#x27;}&lt;/button&gt;&lt;/th&gt;`;}).join(&#x27;&#x27;)+&#x27;&lt;/tr&gt;&lt;/thead&gt;&lt;tbody&gt;&#x27;+
+      vis.map(r=&gt;`&lt;tr data-id=&quot;${r.id}&quot;&gt;&lt;td class=&quot;rn&quot;&gt;${S.rows.indexOf(r)+2}&lt;/td&gt;${cfg.cols.map(c=&gt;`&lt;td ${c.k===&#x27;a&#x27;?&#x27;dir=&quot;ltr&quot;&#x27;:&#x27;&#x27;}&gt;${c.type===&#x27;d&#x27;?fmtD(r[c.k]):r[c.k]}&lt;/td&gt;`).join(&#x27;&#x27;)}&lt;/tr&gt;`).join(&#x27;&#x27;)+&#x27;&lt;/tbody&gt;&#x27;;
+    $(cfg.status).textContent=`تم عرض ${vis.length} من ${S.rows.length} سجلات`+(Object.keys(S.filters).length?&#x27; (توجد تصفية 🔽)&#x27;:&#x27;&#x27;);
+    $(cfg.grid).querySelectorAll(&#x27;.arw&#x27;).forEach(b=&gt;b.onclick=e=&gt;{e.stopPropagation();openMenu(b);});}
+  function openMenu(btn){const k=btn.dataset.k,c=cfg.cols.find(x=&gt;x.k===k),m=$(cfg.menu);
+    const vals=[...new Set(S.rows.map(r=&gt;String(r[k])))].sort((a,b)=&gt;c.type===&#x27;n&#x27;?a-b:col.compare(a,b));
+    const cur=S.filters[k]||new Set(vals);
+    const L=c.type===&#x27;t&#x27;?[&#x27;الفرز من أ إلى ي&#x27;,&#x27;الفرز من ي إلى أ&#x27;]:c.type===&#x27;n&#x27;?[&#x27;الفرز من الأصغر إلى الأكبر&#x27;,&#x27;الفرز من الأكبر إلى الأصغر&#x27;]:[&#x27;الفرز من الأقدم إلى الأحدث&#x27;,&#x27;الفرز من الأحدث إلى الأقدم&#x27;];
+    m.innerHTML=`&lt;button class=&quot;mi&quot; data-s=&quot;1&quot;&gt;&lt;span class=&quot;icon-az&quot;&gt;&lt;small&gt;&lt;span style=&quot;color:#1e6fb8&quot;&gt;A&lt;/span&gt;&lt;span&gt;Z&lt;/span&gt;&lt;/small&gt;↓&lt;/span&gt; ${L[0]}&lt;/button&gt;
+      &lt;button class=&quot;mi&quot; data-s=&quot;-1&quot;&gt;&lt;span class=&quot;icon-az&quot;&gt;&lt;small&gt;&lt;span&gt;Z&lt;/span&gt;&lt;span style=&quot;color:#1e6fb8&quot;&gt;A&lt;/span&gt;&lt;/small&gt;↓&lt;/span&gt; ${L[1]}&lt;/button&gt;
+      &lt;button class=&quot;mi&quot; data-clear ${S.filters[k]?&#x27;&#x27;:&#x27;disabled&#x27;}&gt;🧹 إلغاء تطبيق عامل التصفية من «${c.t}»&lt;/button&gt;
+      &lt;div class=&quot;vals&quot;&gt;&lt;label&gt;&lt;input type=&quot;checkbox&quot; data-all ${cur.size===vals.length?&#x27;checked&#x27;:&#x27;&#x27;}&gt; (تحديد الكل)&lt;/label&gt;${vals.map(v=&gt;`&lt;label&gt;&lt;input type=&quot;checkbox&quot; data-v=&quot;${v}&quot; ${cur.has(v)?&#x27;checked&#x27;:&#x27;&#x27;}&gt; ${c.type===&#x27;d&#x27;?fmtD(v):v}&lt;/label&gt;`).join(&#x27;&#x27;)}&lt;/div&gt;
+      &lt;div class=&quot;ft&quot;&gt;&lt;button class=&quot;btn btn-green&quot; data-ok style=&quot;padding:6px 16px&quot;&gt;موافق&lt;/button&gt;&lt;button class=&quot;btn btn-out&quot; data-cancel style=&quot;padding:4px 14px&quot;&gt;إلغاء الأمر&lt;/button&gt;&lt;/div&gt;`;
+    const wr=$(cfg.wrap).getBoundingClientRect(),br=btn.getBoundingClientRect();m.hidden=false;
+    m.style.top=(br.bottom-wr.top+4)+&#x27;px&#x27;;m.style.left=Math.max(4,Math.min(wr.width-280,br.left-wr.left-200))+&#x27;px&#x27;;
+    const all=m.querySelector(&#x27;[data-all]&#x27;),boxes=[...m.querySelectorAll(&#x27;[data-v]&#x27;)];
+    all.onchange=()=&gt;boxes.forEach(b=&gt;b.checked=all.checked);boxes.forEach(b=&gt;b.onchange=()=&gt;all.checked=boxes.every(x=&gt;x.checked));
+    m.querySelectorAll(&#x27;[data-s]&#x27;).forEach(b=&gt;b.onclick=()=&gt;{const dir=+b.dataset.s;S.sort={k,dir};
+      S.rows.sort((x,y)=&gt;{const a=x[k],bb=y[k];const r=c.type===&#x27;n&#x27;?a-bb:c.type===&#x27;d&#x27;?(a&lt;bb?-1:a&gt;bb?1:0):col.compare(a,bb);return r*dir;});
+      m.hidden=true;render();flash();cfg.on&amp;&amp;cfg.on({act:&#x27;sort&#x27;,k,dir,S});});
+    m.querySelector(&#x27;[data-clear]&#x27;).onclick=()=&gt;{delete S.filters[k];m.hidden=true;render();cfg.on&amp;&amp;cfg.on({act:&#x27;clear&#x27;,k,S});};
+    m.querySelector(&#x27;[data-cancel]&#x27;).onclick=()=&gt;m.hidden=true;
+    m.querySelector(&#x27;[data-ok]&#x27;).onclick=()=&gt;{const sel=new Set(boxes.filter(b=&gt;b.checked).map(b=&gt;b.dataset.v));
+      if(!sel.size){cfg.say(&#x27;اختر قيمة واحدة على الأقل.&#x27;,&#x27;bad&#x27;);return;}
+      if(sel.size===vals.length)delete S.filters[k];else S.filters[k]=sel;m.hidden=true;render();cfg.on&amp;&amp;cfg.on({act:&#x27;filter&#x27;,k,sel,S});};
+    cfg.on&amp;&amp;cfg.on({act:&#x27;open&#x27;,k,S});}
+  function flash(){$(cfg.grid).querySelectorAll(&#x27;tbody tr&#x27;).forEach(t=&gt;{t.classList.remove(&#x27;flash&#x27;);void t.offsetWidth;t.classList.add(&#x27;flash&#x27;);});}
+  document.addEventListener(&#x27;click&#x27;,e=&gt;{if(!e.target.closest(&#x27;#&#x27;+cfg.menu)&amp;&amp;!e.target.closest(&#x27;.arw&#x27;))$(cfg.menu).hidden=true;});
+  render();return S;}
+
+/* ===== مختبر الدرس ===== */
+const TASKS=[
+ {t:&#x27;رتّب الأسماء من أ إلى ي.&#x27;,h:&#x27;1. اضغط السهم ▾ بجانب «الاسم». 2. اضغط «الفرز من أ إلى ي».&#x27;,ok:e=&gt;e.act===&#x27;sort&#x27;&amp;&amp;e.k===&#x27;n&#x27;&amp;&amp;e.dir===1,msg:&#x27;رائع! الأسماء مرتّبة من أ إلى ي.&#x27;},
+ {t:&#x27;رتّب الأسماء من ي إلى أ.&#x27;,h:&#x27;اضغط السهم ▾ بجانب «الاسم»، ثم «الفرز من ي إلى أ».&#x27;,ok:e=&gt;e.act===&#x27;sort&#x27;&amp;&amp;e.k===&#x27;n&#x27;&amp;&amp;e.dir===-1,msg:&#x27;ممتاز! هذا ترتيب تنازلي.&#x27;},
+ {t:&#x27;رتّب «رقم الفصل» من الأصغر إلى الأكبر.&#x27;,h:&#x27;اضغط السهم ▾ بجانب «رقم الفصل»، ثم «الفرز من الأصغر إلى الأكبر».&#x27;,ok:e=&gt;e.act===&#x27;sort&#x27;&amp;&amp;e.k===&#x27;c&#x27;&amp;&amp;e.dir===1,msg:&#x27;أحسنت! الأرقام مرتّبة تصاعديًا.&#x27;},
+ {t:&#x27;أظهر طلاب الفصل 1 فقط.&#x27;,h:&#x27;1. اضغط السهم ▾ بجانب «رقم الفصل». 2. اترك ✔ على 1 فقط. 3. اضغط «موافق».&#x27;,ok:e=&gt;e.act===&#x27;filter&#x27;&amp;&amp;e.k===&#x27;c&#x27;&amp;&amp;e.sel.size===1&amp;&amp;e.sel.has(&#x27;1&#x27;),msg:&#x27;رائع! ظهر طلاب الفصل 1 فقط. البقية مخفيون، لم يُحذفوا.&#x27;},
+ {t:&#x27;ألغِ التصفية لتظهر كل الصفوف.&#x27;,h:&#x27;اضغط السهم 🔽 بجانب «رقم الفصل»، ثم «إلغاء تطبيق عامل التصفية».&#x27;,ok:e=&gt;(e.act===&#x27;clear&#x27;&amp;&amp;e.k===&#x27;c&#x27;)||(e.act===&#x27;filter&#x27;&amp;&amp;e.k===&#x27;c&#x27;&amp;&amp;!e.S.filters.c),msg:&#x27;ممتاز! رجعت كل الصفوف.&#x27;},
+ {t:&#x27;رتّب «تاريخ الميلاد» من الأقدم إلى الأحدث.&#x27;,h:&#x27;اضغط السهم ▾ بجانب «تاريخ الميلاد م»، ثم «الفرز من الأقدم إلى الأحدث».&#x27;,ok:e=&gt;e.act===&#x27;sort&#x27;&amp;&amp;e.k===&#x27;d&#x27;&amp;&amp;e.dir===1,msg:&#x27;أحسنت! أكبر الطلاب سنًّا في الأعلى.&#x27;}];
+let step=0;
+function drawTasks(){$(&#x27;tasks&#x27;).innerHTML=TASKS.map((x,i)=&gt;`&lt;li class=&quot;${i&lt;step?&#x27;done&#x27;:i===step?&#x27;cur&#x27;:&#x27;&#x27;}&quot;&gt;${i&lt;step?&#x27;✅&#x27;:i===step?&#x27;👉&#x27;:&#x27;⬜&#x27;} ${x.t}&lt;/li&gt;`).join(&#x27;&#x27;);
+  const h=$(&#x27;hint&#x27;);h.innerHTML=step&lt;TASKS.length?&#x27;💡 &#x27;+TASKS[step].h:&#x27;🎉 أحسنت! أتقنت الفرز والتصفية.&#x27;;addSpeakers(h.parentElement);}
+function labSay(t,k){$(&#x27;labFb&#x27;).className=&#x27;fb &#x27;+(k||&#x27;&#x27;);$(&#x27;labFb&#x27;).textContent=t;}
+makeSheet({grid:&#x27;grid&#x27;,status:&#x27;xls&#x27;,menu:&#x27;menu&#x27;,wrap:&#x27;xlw&#x27;,cols:COLS,data:DATA,say:labSay,on:e=&gt;{
+  if(e.act===&#x27;open&#x27;)return;const T=TASKS[step];if(!T)return;
+  if(T.ok(e)){step++;drawTasks();labSay(&#x27;✔ &#x27;+T.msg,&#x27;ok&#x27;);if(step===TASKS.length)labSay(&#x27;🎉 ممتاز! أكملت كل المهام.&#x27;,&#x27;ok&#x27;);}
+  else labSay(&#x27;حاول مرة أخرى. اقرأ التلميح 💡&#x27;,&#x27;bad&#x27;);}});
+drawTasks();
+
+/* ===== لعبة: فرز أم تصفية ===== */
+const G=[[&#x27;أريد أن أرى طلاب الفصل 2 فقط.&#x27;,&#x27;f&#x27;],[&#x27;أريد ترتيب الأسماء من أ إلى ي.&#x27;,&#x27;s&#x27;],[&#x27;أريد أن أعرف من أصغر الطلاب سنًّا أولًا.&#x27;,&#x27;s&#x27;],[&#x27;أريد إخفاء كل الطلاب ما عدا اسم «أحمد».&#x27;,&#x27;f&#x27;],[&#x27;أريد ترتيب الدرجات من الأكبر إلى الأصغر.&#x27;,&#x27;s&#x27;],[&#x27;أريد أن أرى الطلاب الذين أعمارهم 11 فقط.&#x27;,&#x27;f&#x27;]];
+let gN=0,gOk=0;
+$(&#x27;game&#x27;).innerHTML=G.map(([t],i)=&gt;`&lt;div class=&quot;pair&quot;&gt;&lt;div class=&quot;say&quot;&gt;${i+1}. ${t}&lt;/div&gt;&lt;div class=&quot;opts2&quot;&gt;&lt;button data-i=&quot;${i}&quot; data-v=&quot;s&quot;&gt;↕️ فرز&lt;/button&gt;&lt;button data-i=&quot;${i}&quot; data-v=&quot;f&quot;&gt;🔍 تصفية&lt;/button&gt;&lt;/div&gt;&lt;/div&gt;`).join(&#x27;&#x27;);
+addSpeakers($(&#x27;game&#x27;));
+$(&#x27;game&#x27;).querySelectorAll(&#x27;.opts2 button&#x27;).forEach(b=&gt;b.onclick=()=&gt;{const p=b.parentElement;if(p.dataset.d)return;p.dataset.d=1;gN++;const i=+b.dataset.i,ok=b.dataset.v===G[i][1];
+  b.classList.add(ok?&#x27;r&#x27;:&#x27;w&#x27;);if(ok)gOk++;else p.querySelector(`[data-v=&quot;${G[i][1]}&quot;]`).classList.add(&#x27;r&#x27;);
+  if(gN===G.length)$(&#x27;gameScore&#x27;).textContent=`نتيجتك: ${gOk} من ${G.length} ${gOk===G.length?&#x27;🌟&#x27;:&#x27;👍&#x27;}`;});
+
+/* ===== تدريب 1 ===== */
+const T1=[[&#x27;أي العبارات عن الفرز في إكسل صحيحة؟&#x27;,[&#x27;يمكنك فقط فرز البيانات بترتيب تصاعدي.&#x27;,&#x27;يمكنك فقط فرز البيانات بترتيب تنازلي.&#x27;,&#x27;يمكنك فرز البيانات بأكثر من عمود في المرة الواحدة.&#x27;,&#x27;الفرز يحذف البيانات التي لا تناسب المعايير دائمًا.&#x27;],2],
+ [&#x27;ما فائدة الفرز في إكسل؟&#x27;,[&#x27;يحذف البيانات التي لا تناسب المعايير.&#x27;,&#x27;يفرز البيانات بترتيب أبجدي أو رقمي فقط.&#x27;,&#x27;يسهّل عليك معرفة الأنماط وتحليلها في بياناتك.&#x27;,&#x27;يقلّل حجم الجدول بإزالة القيم المكررة.&#x27;],2],
+ [&#x27;أي العبارات عن التصفية صحيحة؟&#x27;,[&#x27;التصفية تحذف البيانات دائمًا.&#x27;,&#x27;التصفية تُستخدم فقط لإظهار الصفوف أو إخفائها.&#x27;,&#x27;يمكن تطبيق تصفية واحدة فقط في ورقة العمل.&#x27;,&#x27;التصفية تعرض البيانات التي تلبي معايير محددة فقط.&#x27;],3],
+ [&#x27;أي عبارة تميّز بين الفرز والتصفية؟&#x27;,[&#x27;الفرز يرتّب البيانات، والتصفية تعرض ما يلبي معايير محددة فقط.&#x27;,&#x27;الفرز والتصفية كلمتان لهما المعنى نفسه.&#x27;,&#x27;الفرز والتصفية يحذفان البيانات نهائيًا.&#x27;,&#x27;الفرز والتصفية للأرقام فقط.&#x27;],0]];
+let t1n=0,t1c=0;
+$(&#x27;t1&#x27;).innerHTML=T1.map(([q,o],i)=&gt;`&lt;div class=&quot;q&quot; data-i=&quot;${i}&quot;&gt;&lt;div class=&quot;say&quot;&gt;&lt;b&gt;${i+1}. ${q}&lt;/b&gt;&lt;/div&gt;&lt;div class=&quot;os&quot;&gt;${o.map((x,j)=&gt;`&lt;button class=&quot;o&quot; data-j=&quot;${j}&quot;&gt;${x}&lt;/button&gt;`).join(&#x27;&#x27;)}&lt;/div&gt;&lt;/div&gt;`).join(&#x27;&#x27;);
+addSpeakers($(&#x27;t1&#x27;));
+$(&#x27;t1&#x27;).querySelectorAll(&#x27;.q&#x27;).forEach(d=&gt;{const a=T1[+d.dataset.i][2];d.querySelectorAll(&#x27;button.o&#x27;).forEach(b=&gt;b.onclick=()=&gt;{if(d.dataset.d)return;d.dataset.d=1;t1n++;
+  if(+b.dataset.j===a){b.classList.add(&#x27;r&#x27;);t1c++;}else{b.classList.add(&#x27;w&#x27;);d.querySelectorAll(&#x27;button.o&#x27;)[a].classList.add(&#x27;r&#x27;);}
+  if(t1n===T1.length)$(&#x27;t1Score&#x27;).textContent=`نتيجتك: ${t1c} من ${T1.length} ${t1c===T1.length?&#x27;🌟 ممتاز!&#x27;:&#x27;👍 راجع الشرح&#x27;}`;});});
+
+/* ===== تدريب 2 ===== */
+const AZ=&#x27;&lt;span class=&quot;icon-az&quot;&gt;&lt;small&gt;&lt;span style=&quot;color:#1e6fb8&quot;&gt;A&lt;/span&gt;&lt;span&gt;Z&lt;/span&gt;&lt;/small&gt;↓&lt;/span&gt;&#x27;,ZA=&#x27;&lt;span class=&quot;icon-az&quot;&gt;&lt;small&gt;&lt;span&gt;Z&lt;/span&gt;&lt;span style=&quot;color:#1e6fb8&quot;&gt;A&lt;/span&gt;&lt;/small&gt;↓&lt;/span&gt;&#x27;;
+const T2=[[&#x27;فرز من أ إلى ي&#x27;,&#x27;az&#x27;],[&#x27;فرز من ي إلى أ&#x27;,&#x27;za&#x27;],[&#x27;فرز من الأصغر إلى الأكبر&#x27;,&#x27;az&#x27;],[&#x27;فرز من الأكبر إلى الأصغر&#x27;,&#x27;za&#x27;]];
+let t2n=0,t2c=0;
+$(&#x27;t2&#x27;).innerHTML=T2.map(([t],i)=&gt;`&lt;div class=&quot;pair&quot;&gt;&lt;div class=&quot;say&quot;&gt;${t}&lt;/div&gt;&lt;div class=&quot;opts2&quot;&gt;&lt;button data-i=&quot;${i}&quot; data-v=&quot;az&quot; aria-label=&quot;رمز من أ إلى ي&quot;&gt;${AZ}&lt;/button&gt;&lt;button data-i=&quot;${i}&quot; data-v=&quot;za&quot; aria-label=&quot;رمز من ي إلى أ&quot;&gt;${ZA}&lt;/button&gt;&lt;/div&gt;&lt;/div&gt;`).join(&#x27;&#x27;);
+addSpeakers($(&#x27;t2&#x27;));
+$(&#x27;t2&#x27;).querySelectorAll(&#x27;.opts2 button&#x27;).forEach(b=&gt;b.onclick=()=&gt;{const p=b.parentElement;if(p.dataset.d)return;p.dataset.d=1;t2n++;const ok=b.dataset.v===T2[+b.dataset.i][1];
+  b.classList.add(ok?&#x27;r&#x27;:&#x27;w&#x27;);if(ok)t2c++;else p.querySelector(`[data-v=&quot;${T2[+b.dataset.i][1]}&quot;]`).classList.add(&#x27;r&#x27;);
+  if(t2n===T2.length){$(&#x27;t2Fb&#x27;).className=&#x27;fb &#x27;+(t2c===4?&#x27;ok&#x27;:&#x27;bad&#x27;);$(&#x27;t2Fb&#x27;).textContent=t2c===4?&#x27;🌟 ممتاز! A فوق Z = تصاعدي، و Z فوق A = تنازلي.&#x27;:`${t2c} من 4. تذكّر: A فوق = تصاعدي.`;}});
+
+/* ===== تدريب 3 ===== */
+const WORDS=[&#x27;تصفية&#x27;,&#x27;أ إلى ي&#x27;,&#x27;ي إلى أ&#x27;,&#x27;Ctrl+A&#x27;,&#x27;إلغاء تطبيق عامل التصفية من...&#x27;];
+const T3=[&#x27;لفرز البيانات: اضغط سهم رأس العمود، واختر «{أ إلى ي}» أو «{ي إلى أ}».&#x27;,&#x27;لتصفية البيانات: اضغط سهم رأس العمود، واختر. هذا يسمح لك بـ{تصفية} بياناتك.&#x27;,&#x27;لإزالة التصفية: اضغط سهم رأس العمود، واختر «{إلغاء تطبيق عامل التصفية من...}».&#x27;,&#x27;لتحديد كل البيانات: استخدم الاختصار «{Ctrl+A}».&#x27;];
+let pick=null;
+$(&#x27;bank&#x27;).innerHTML=WORDS.map(w=&gt;`&lt;button dir=&quot;${/[A-Za-z]/.test(w)&amp;&amp;!/[ء-ي]/.test(w)?&#x27;ltr&#x27;:&#x27;rtl&#x27;}&quot;&gt;${w}&lt;/button&gt;`).join(&#x27;&#x27;);
+$(&#x27;t3&#x27;).innerHTML=T3.map((s,i)=&gt;`&lt;div class=&quot;fill say&quot;&gt;${i+1}. ${s.replace(/\{([^}]+)\}/g,(m,a)=&gt;`&lt;span class=&quot;blank&quot; data-a=&quot;${a}&quot; role=&quot;button&quot; tabindex=&quot;0&quot; aria-label=&quot;فراغ&quot;&gt;؟&lt;/span&gt;`)}&lt;/div&gt;`).join(&#x27;&#x27;);
+addSpeakers($(&#x27;t3&#x27;));
+$(&#x27;bank&#x27;).querySelectorAll(&#x27;button&#x27;).forEach(b=&gt;b.onclick=()=&gt;{$(&#x27;bank&#x27;).querySelectorAll(&#x27;button&#x27;).forEach(x=&gt;x.classList.remove(&#x27;sel&#x27;));pick=b;b.classList.add(&#x27;sel&#x27;);});
+$(&#x27;t3&#x27;).querySelectorAll(&#x27;.blank&#x27;).forEach(bl=&gt;{const go=()=&gt;{if(!pick||bl.classList.contains(&#x27;r&#x27;))return;const w=pick.textContent;
+  if(w===bl.dataset.a){bl.textContent=w;bl.className=&#x27;blank r&#x27;;}else{bl.classList.add(&#x27;w&#x27;,&#x27;shake&#x27;);setTimeout(()=&gt;bl.classList.remove(&#x27;w&#x27;,&#x27;shake&#x27;),600);}
+  const left=[...$(&#x27;t3&#x27;).querySelectorAll(&#x27;.blank&#x27;)].filter(x=&gt;!x.classList.contains(&#x27;r&#x27;)).length;
+  $(&#x27;t3Fb&#x27;).className=&#x27;fb &#x27;+(left?&#x27;&#x27;:&#x27;ok&#x27;);$(&#x27;t3Fb&#x27;).textContent=left?`بقي ${left} فراغات`:&#x27;🎉 أكملت كل الفراغات!&#x27;;};
+  bl.onclick=go;bl.onkeydown=e=&gt;{if(e.key===&#x27;Enter&#x27;)go();};});
+
+/* ===== تدريب 4 ===== */
+const SD=[[&#x27;ريان&#x27;,10,&#x27;A&#x27;],[&#x27;سلطان&#x27;,11,&#x27;B&#x27;],[&#x27;عمر&#x27;,12,&#x27;A&#x27;],[&#x27;ماجد&#x27;,11,&#x27;C&#x27;],[&#x27;يزيد&#x27;,10,&#x27;B&#x27;],[&#x27;تركي&#x27;,12,&#x27;B&#x27;],[&#x27;بدر&#x27;,11,&#x27;A&#x27;],[&#x27;زياد&#x27;,12,&#x27;C&#x27;]].map((r,i)=&gt;({id:i,n:r[0],g:r[1],r:r[2]}));
+const t4say=(t,k)=&gt;{$(&#x27;t4Fb&#x27;).className=&#x27;fb &#x27;+(k||&#x27;&#x27;);$(&#x27;t4Fb&#x27;).textContent=t;};
+let t4stage=0;
+makeSheet({grid:&#x27;grid2&#x27;,status:&#x27;xls2&#x27;,menu:&#x27;menu2&#x27;,wrap:&#x27;xlw2&#x27;,cols:[{k:&#x27;n&#x27;,t:&#x27;الاسم&#x27;,type:&#x27;t&#x27;},{k:&#x27;g&#x27;,t:&#x27;العمر&#x27;,type:&#x27;n&#x27;},{k:&#x27;r&#x27;,t:&#x27;الدرجة&#x27;,type:&#x27;t&#x27;}],data:SD,say:t4say,on:e=&gt;{
+  if(e.act===&#x27;open&#x27;)return;const f=e.S.filters;
+  const ageOK=f.g&amp;&amp;[...f.g].every(v=&gt;+v&gt;=11)&amp;&amp;f.g.size===2;
+  if(t4stage===0&amp;&amp;ageOK&amp;&amp;!f.r){t4stage=1;t4say(&#x27;✔ ظهر الطلاب 11 سنة فما فوق. ماذا تلاحظ؟ اختفى طالبان. الآن: أظهر من درجتهم A أو B فقط (عمود «الدرجة»).&#x27;,&#x27;ok&#x27;);return;}
+  if(t4stage===1&amp;&amp;ageOK&amp;&amp;f.r&amp;&amp;f.r.size===2&amp;&amp;f.r.has(&#x27;A&#x27;)&amp;&amp;f.r.has(&#x27;B&#x27;)){t4stage=2;t4say(&#x27;🎉 ممتاز! طبّقت تصفيتين معًا: العمر 11 فما فوق، والدرجة A أو B.&#x27;,&#x27;ok&#x27;);return;}
+  if(t4stage&lt;2)t4say(t4stage===0?&#x27;اضغط ▾ بجانب «العمر»، واترك ✔ على 11 و 12 فقط، ثم موافق.&#x27;:&#x27;اضغط ▾ بجانب «الدرجة»، واترك ✔ على A و B فقط، ثم موافق.&#x27;,&#x27;bad&#x27;);}});
+t4say(&#x27;&#x27;);
+
+/* ===== تدريب 5 ===== */
+const FR=[&#x27;سعد&#x27;,&#x27;بندر&#x27;,&#x27;ثامر&#x27;,&#x27;عبدالله&#x27;,&#x27;خالد&#x27;,&#x27;ماجد&#x27;];
+let frIdx=0;const FRS=FR.slice().sort(col.compare);
+function drawNames(){frIdx=0;$(&#x27;sorted&#x27;).innerHTML=&#x27;&#x27;;$(&#x27;t5Fb&#x27;).textContent=&#x27;&#x27;;
+  $(&#x27;names&#x27;).innerHTML=FR.slice().sort(()=&gt;Math.random()-.5).map(n=&gt;`&lt;button&gt;${n}&lt;/button&gt;`).join(&#x27;&#x27;);
+  $(&#x27;names&#x27;).querySelectorAll(&#x27;button&#x27;).forEach(b=&gt;b.onclick=()=&gt;{if(b.classList.contains(&#x27;done&#x27;))return;
+    if(b.textContent===FRS[frIdx]){b.classList.add(&#x27;done&#x27;);const s=document.createElement(&#x27;span&#x27;);s.textContent=b.textContent;$(&#x27;sorted&#x27;).appendChild(s);frIdx++;
+      if(frIdx===FRS.length){$(&#x27;t5Fb&#x27;).className=&#x27;fb ok&#x27;;$(&#x27;t5Fb&#x27;).textContent=&#x27;🎉 رائع! رتّبت الأسماء أبجديًا من أ إلى ي.&#x27;;}}
+    else{b.classList.remove(&#x27;shake&#x27;);void b.offsetWidth;b.classList.add(&#x27;shake&#x27;);$(&#x27;t5Fb&#x27;).className=&#x27;fb bad&#x27;;$(&#x27;t5Fb&#x27;).textContent=&#x27;ليس هذا. ابحث عن الاسم الذي يبدأ بالحرف الأقرب إلى «أ».&#x27;;}});}
+drawNames();$(&#x27;namesReset&#x27;).onclick=drawNames;
+
+/* ===== تدريب 6 ===== */
+const DEFS=[[&#x27;عملية اختيار وعرض مجموعة من البيانات التي تفي بشروط محددة.&#x27;,&#x27;التصفية&#x27;],[&#x27;عملية ترتيب البيانات بترتيب محدد بناءً على معايير محددة.&#x27;,&#x27;الفرز&#x27;],[&#x27;عملية إزالة البيانات من مجموعة البيانات.&#x27;,&#x27;لا هذا ولا ذاك&#x27;]];
+let t6n=0,t6c=0;
+$(&#x27;t6&#x27;).innerHTML=DEFS.map(([d],i)=&gt;`&lt;div class=&quot;pair&quot;&gt;&lt;div class=&quot;say&quot;&gt;${d}&lt;/div&gt;&lt;div class=&quot;opts2&quot;&gt;&lt;button data-i=&quot;${i}&quot; data-v=&quot;الفرز&quot;&gt;↕️ الفرز&lt;/button&gt;&lt;button data-i=&quot;${i}&quot; data-v=&quot;التصفية&quot;&gt;🔍 التصفية&lt;/button&gt;&lt;button data-i=&quot;${i}&quot; data-v=&quot;لا هذا ولا ذاك&quot;&gt;❌ لا هذا ولا ذاك&lt;/button&gt;&lt;/div&gt;&lt;/div&gt;`).join(&#x27;&#x27;);
+addSpeakers($(&#x27;t6&#x27;));
+$(&#x27;t6&#x27;).querySelectorAll(&#x27;.opts2 button&#x27;).forEach(b=&gt;b.onclick=()=&gt;{const p=b.parentElement;if(p.dataset.d)return;p.dataset.d=1;t6n++;const a=DEFS[+b.dataset.i][1],ok=b.dataset.v===a;
+  b.classList.add(ok?&#x27;r&#x27;:&#x27;w&#x27;);if(ok)t6c++;else p.querySelector(`[data-v=&quot;${a}&quot;]`).classList.add(&#x27;r&#x27;);
+  if(t6n===DEFS.length){$(&#x27;t6Fb&#x27;).className=&#x27;fb &#x27;+(t6c===3?&#x27;ok&#x27;:&#x27;bad&#x27;);$(&#x27;t6Fb&#x27;).textContent=t6c===3?&#x27;🌟 ممتاز! الفرز يرتّب، والتصفية تُظهر جزءًا، ولا أحد منهما يحذف البيانات.&#x27;:`${t6c} من 3. تذكّر: لا الفرز ولا التصفية يحذفان البيانات.`;}});
+&lt;/script&gt;
+&lt;script&gt;(function(){function fit(){try{frameElement.style.height=(document.body.offsetHeight+8)+&#x27;px&#x27;}catch(e){}}new ResizeObserver(fit).observe(document.body);window.addEventListener(&#x27;load&#x27;,fit);document.addEventListener(&#x27;click&#x27;,function(){setTimeout(fit,30)});fit();})();&lt;/script&gt;&lt;/body&gt;
+&lt;/html&gt;
+"></iframe>
+            </div>
+            <div class="tab-panel homework" id="g6-u3-l3-hw">
+              <h5>الواجب</h5>
+              <p>شاهد الشرح، وجرّب المختبر، ثم حلّ الواجب. اكتب اسمك الثلاثي بشكل صحيح.</p>
+              <a class="book-cta-link" href="https://forms.cloud.microsoft/Pages/ResponsePage.aspx?id=bsmRCN1p8E2Ki3bGl2JAh_fr57jQ4NxNvJdBQZuwKFlUOFFPOEZES1U0ODYyNFVDN1BCMVVDOFJNOC4u" target="_blank" rel="noopener">فتح نموذج الواجب</a>
+            </div>
+            <div class="tab-panel enrich" id="g6-u3-l3-enrich">
+              <h5>الإثراءات</h5>
+              <p>مشروع الوحدة «سباق قواعد البيانات»: مجموعة تجمع معلومات عن الحيوانات، وأخرى عن الخضار والفواكه، ثم تتسابق المجموعتان في إيجاد المعلومة بالتصفية. التفاصيل داخل تبويب «إثراء» في الدرس التفاعلي.</p>
+            </div>
+          </div>
+
         </div>
       </div>
 
@@ -6613,6 +7183,11 @@ $(&#x27;tf&#x27;).querySelectorAll(&#x27;button&#x27;).forEach(b=&gt;b.onclick=(
             { q: "للانتقال إلى الخلية التالية في السجل نفسه أثناء كتابة البيانات في إكسل نضغط:", choices: ["Tab", "Delete", "Esc"], correct: 0 },
             { q: "نجد أمر «التنسيق كجدول» في علامة تبويب:", choices: ["إدراج", "الشريط الرئيسي", "بيانات"], correct: 1 },
             { q: "لتحديد سجلات غير متجاورة نضغط باستمرار على مفتاح:", choices: ["Shift", "Ctrl", "Alt"], correct: 1 }
+          ]},
+          { id: "g6-u3-l3", title: "الدرس الثالث: الفرز والتصفية", quiz: [
+            { q: "ترتيب الأسماء من أ إلى ي يسمى:", choices: ["تصفية", "فرز تصاعدي", "فرز تنازلي"], correct: 1 },
+            { q: "لإظهار طلاب الفصل 1 فقط نستخدم:", choices: ["الفرز", "التصفية", "الحذف"], correct: 1 },
+            { q: "عند تطبيق التصفية، الصفوف الأخرى:", choices: ["تُحذف نهائيًا", "تُخفى فقط", "تتغير قيمها"], correct: 1 }
           ]}
         ]}
       ]
