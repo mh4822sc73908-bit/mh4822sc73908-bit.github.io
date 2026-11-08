@@ -793,6 +793,19 @@
               </details>
             </div>
           </details>
+          <details class="unit-group">
+            <summary>الوحدة الرابعة: البرمجة والتفاعل في سكراتش</summary>
+            <div class="unit-sub">
+              <details class="lesson-group">
+                <summary>الأول: كيفية تصميم برنامج</summary>
+                <div class="lesson-sub">
+                  <a href="#g5-u4-l1-explain">شرح الدرس</a>
+                  <a href="#g5-u4-l1-hw">الواجب</a>
+                  <a href="#g5-u4-l1-enrich">الإثراءات</a>
+                </div>
+              </details>
+            </div>
+          </details>
         </div>
       </details>
 
@@ -5418,6 +5431,729 @@ Q.forEach(([q,o,a],i)=&gt;{const d=document.createElement(&#x27;div&#x27;);d.cla
         </div>
       </div>
 
+
+      <div class="unit-block" id="g5-unit4">
+        <h3>
+          <svg class="icon" viewBox="0 0 24 24" style="width:18px;height:18px"><path d="M4 4h11v16H4z"/><path d="M15 4l5 3v13l-5-3"/></svg>
+          الوحدة الرابعة: البرمجة والتفاعل في سكراتش
+        </h3>
+        <div class="unit-body">
+
+          <div class="lesson-block" id="g5-u4-l1">
+            <h4>
+              <svg class="icon" viewBox="0 0 24 24" style="width:17px;height:17px"><path d="M6 2h9l5 5v15H6z"/><path d="M15 2v5h5"/></svg>
+              الدرس الأول: كيفية تصميم برنامج
+            </h4>
+            <div class="tab-panel" id="g5-u4-l1-explain">
+              <h5>شرح الدرس</h5>
+              <p><a class="book-cta-link" href="https://www.youtube.com/watch?v=3UROk_b4YpU&amp;list=PLxUJ-_vAd_lUmXan7NRT3FnyuFlPin6pI&amp;index=11" target="_blank" rel="noopener">شرح فيديو للدرس</a></p>
+              <p style="margin:10px 0 8px;">الدرس التفاعلي بتصميم سهل القراءة: خط كبير، وجمل قصيرة، وزر 🔊 لسماع كل فقرة، وألعاب برمجة وتدريبات بالضغط دون كتابة.</p>
+              <iframe class="lesson-frame" id="frame-g5-u4-l1" title="الدرس التفاعلي" loading="lazy" style="width:100%;height:900px;border:0;display:block;border-radius:10px;" srcdoc="&lt;!DOCTYPE html&gt;
+&lt;html lang=&quot;ar&quot; dir=&quot;rtl&quot;&gt;
+&lt;head&gt;
+&lt;meta charset=&quot;UTF-8&quot;&gt;
+&lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot;&gt;
+&lt;title&gt;كيفية تصميم برنامج – الصف الخامس&lt;/title&gt;
+&lt;link href=&quot;https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@400;500;600;700&amp;display=swap&quot; rel=&quot;stylesheet&quot;&gt;
+&lt;style&gt;
+
+:root{
+  --base:#012B28; --base2:#023d39; --green:#00894A; --green-l:#e6f5ee;
+  --gold:#C68A2E; --gold-l:#fbf3e6; --crimson:#C43D6B; --crimson-l:#fbeaf0;
+  --blue:#1e6fb8; --blue-l:#e8f1fa; --purple:#6b4fbb; --purple-l:#f0ecfb; --xl:#217346;
+  --ink:#1b2b29; --muted:#5d6f6c; --line:#dfe7e5; --bg:#fbfaf4; --card:#fff;
+  --fs:19px;
+}
+*{box-sizing:border-box}
+html{font-size:var(--fs)}
+body{margin:0;font-family:&#x27;IBM Plex Sans Arabic&#x27;,Tahoma,sans-serif;background:var(--bg);color:var(--ink);line-height:2;letter-spacing:.2px;word-spacing:2px}
+.wrap{max-width:960px;margin:0 auto;padding:14px}
+header.lesson-hero{background:linear-gradient(135deg,var(--base),var(--base2));color:#fff;border-radius:20px;padding:22px}
+.lesson-hero .crumb{font-size:.8rem;opacity:.8}
+.lesson-hero h1{margin:4px 0;font-size:1.7rem}
+.zig{height:8px;margin-top:12px;background:repeating-linear-gradient(135deg,var(--gold) 0 8px,transparent 8px 16px);opacity:.8;border-radius:4px}
+.access{display:flex;gap:8px;flex-wrap:wrap;margin-top:12px}
+.access button{background:#fff;color:var(--base);border:2px solid var(--base);border-radius:12px;padding:4px 12px;font:inherit;font-size:.85rem;cursor:pointer}
+nav.tabs{display:flex;gap:8px;flex-wrap:wrap;margin:14px 0}
+nav.tabs button{flex:1;min-width:120px;border:3px solid var(--green);background:#fff;color:var(--green);font:inherit;font-weight:700;padding:10px;border-radius:16px;cursor:pointer;font-size:1rem}
+nav.tabs button.active{background:var(--green);color:#fff}
+section.panel{display:none} section.panel.active{display:block}
+.card{background:var(--card);border:2px solid var(--line);border-radius:20px;padding:18px;margin-bottom:16px}
+.card h2{margin:0 0 8px;font-size:1.3rem;color:var(--base);display:flex;align-items:center;gap:8px}
+.tag{display:inline-block;background:var(--gold-l);color:var(--gold);font-weight:700;font-size:.78rem;padding:2px 12px;border-radius:20px;margin-bottom:6px}
+.say{position:relative;padding-left:52px}
+.spk{position:absolute;left:0;top:2px;width:42px;height:42px;border-radius:50%;border:2px solid var(--blue);background:var(--blue-l);font-size:1.1rem;cursor:pointer;display:grid;place-items:center}
+.spk.on{background:var(--blue);color:#fff}
+.big{font-size:1.15rem;font-weight:600}
+.kw{background:#fff3c4;border-radius:6px;padding:0 6px;font-weight:700}
+.vs{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.box{border-radius:18px;padding:14px;text-align:center}
+.box .ic{font-size:2.6rem;line-height:1.2}
+.box b{display:block;font-size:1.2rem}
+.b-sort{background:var(--blue-l);border:3px solid var(--blue)}
+.b-filter{background:var(--purple-l);border:3px solid var(--purple)}
+.chipsrow{display:flex;gap:6px;justify-content:center;flex-wrap:wrap;margin:6px 0;direction:rtl}
+.chipsrow span{background:#fff;border:2px solid #ccd;border-radius:10px;padding:0 10px;font-weight:700}
+.chipsrow span.dim{opacity:.25}
+.benef{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+.benef div{background:var(--green-l);border-radius:16px;padding:12px;text-align:center;font-weight:600}
+.benef .ic{font-size:2rem;display:block}
+.types{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+.types div{border:2px solid var(--line);border-radius:16px;padding:10px;text-align:center}
+.types .ic{font-size:2rem;display:block}
+.types .ex{direction:ltr;font-weight:700;color:var(--blue)}
+.updown{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:10px}
+.updown div{border-radius:16px;padding:12px;font-weight:600}
+.stepsx{display:grid;gap:10px;margin:8px 0}
+.stp{display:grid;grid-template-columns:54px 1fr;gap:10px;align-items:center;border:2px solid var(--line);border-radius:16px;padding:8px 10px}
+.stp .n{width:46px;height:46px;border-radius:50%;background:var(--gold);color:#fff;font-weight:700;font-size:1.3rem;display:grid;place-items:center}
+.note{background:var(--crimson-l);border-right:6px solid var(--crimson);padding:10px 14px;border-radius:14px;margin:10px 0}
+.tip{background:var(--green-l);border-right:6px solid var(--green);padding:10px 14px;border-radius:14px;margin:10px 0}
+.video{position:relative;padding-top:56.25%;border-radius:16px;overflow:hidden;background:#000}
+.video iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
+.btn{display:inline-block;border:0;font:inherit;font-weight:700;padding:10px 18px;border-radius:14px;cursor:pointer;text-decoration:none}
+.btn-green{background:var(--green);color:#fff}
+.btn-out{background:#fff;color:var(--base);border:2px solid var(--base)}
+.fb{margin-top:10px;font-weight:700;min-height:1.8em;font-size:1.05rem}
+.ok{color:var(--green)} .bad{color:var(--crimson)}
+svg{max-width:100%;height:auto}
+.icon-az{display:inline-flex;align-items:center;gap:2px;direction:ltr;font-weight:700;font-family:Arial;border:2px solid #9ab;border-radius:8px;padding:0 6px;background:#fff;line-height:1.1}
+.icon-az small{display:flex;flex-direction:column;font-size:.7rem;line-height:1}
+
+/* Excel lab */
+.tasks{list-style:none;padding:0;margin:8px 0;display:grid;gap:6px}
+.tasks li{border:2px solid var(--line);border-radius:14px;padding:6px 12px;font-size:.95rem}
+.tasks li.cur{border-color:var(--gold);background:var(--gold-l);font-weight:700}
+.tasks li.done{border-color:var(--green);background:var(--green-l)}
+.hint{background:var(--blue-l);border-radius:14px;padding:10px 14px;margin:8px 0;font-size:1rem}
+.xlw{position:relative;border:2px solid #b8c4c1;border-radius:14px;overflow:visible;background:#fff}
+.xlt{background:var(--xl);color:#fff;padding:4px 12px;font-size:.8rem;border-radius:12px 12px 0 0}
+.xlg{overflow-x:auto}
+table.g{border-collapse:collapse;width:100%;min-width:640px;font-size:.92rem}
+table.g th{background:#5d9e72;color:#fff;padding:6px 6px;border:1px solid #cfe0d6;white-space:nowrap;position:relative}
+table.g th .arw{margin-right:6px;border:2px solid #fff;background:#fff;color:#2c5f3c;border-radius:6px;width:30px;height:28px;cursor:pointer;font-size:.8rem;vertical-align:middle}
+table.g th .arw.act{background:#ffd166;border-color:#ffd166}
+table.g td{border:1px solid #dde7e2;padding:5px 8px;text-align:center}
+table.g td.rn{background:#eef0ef;color:#666;width:34px}
+table.g tr:nth-child(even) td:not(.rn){background:#f1f8f3}
+table.g tr.flash td{animation:fl .8s}
+@keyframes fl{from{background:#fff3c4}}
+.menu{position:absolute;z-index:10;background:#fff;border:2px solid #9ab;border-radius:14px;box-shadow:0 10px 24px rgba(0,0,0,.2);width:270px;padding:8px;font-size:.95rem}
+.menu button.mi{display:flex;gap:8px;align-items:center;width:100%;text-align:right;border:0;background:none;font:inherit;padding:8px 10px;border-radius:10px;cursor:pointer}
+.menu button.mi:hover{background:var(--blue-l)}
+.menu button.mi:disabled{opacity:.4;cursor:not-allowed}
+.menu .vals{border:1px solid #ccd;border-radius:10px;max-height:170px;overflow:auto;padding:4px 8px;margin:6px 0}
+.menu .vals label{display:flex;gap:8px;align-items:center;cursor:pointer;padding:2px 0}
+.menu .vals input{width:20px;height:20px}
+.menu .ft{display:flex;gap:6px}
+.xls{font-size:.8rem;color:var(--muted);padding:4px 12px;border-top:1px solid #e3e3e3}
+
+/* exercises */
+.q{border:2px solid var(--line);border-radius:16px;padding:12px;margin-bottom:12px}
+.q .os{display:grid;gap:8px;margin-top:8px}
+.q button.o{font:inherit;text-align:right;padding:10px 14px;border-radius:14px;border:3px solid var(--line);background:#fff;cursor:pointer;font-size:1rem}
+.q button.o.r{border-color:var(--green);background:var(--green-l)} .q button.o.w{border-color:var(--crimson);background:var(--crimson-l)}
+.pair{display:grid;grid-template-columns:1fr auto;gap:10px;align-items:center;border:2px solid var(--line);border-radius:16px;padding:8px 12px;margin-bottom:8px}
+.pair .opts2{display:flex;gap:8px}
+.pair button{font:inherit;border:3px solid var(--line);background:#fff;border-radius:14px;padding:4px 12px;cursor:pointer;font-weight:700}
+.pair button.r{border-color:var(--green);background:var(--green-l)} .pair button.w{border-color:var(--crimson);background:var(--crimson-l)}
+.bank{display:flex;flex-wrap:wrap;gap:8px;margin:8px 0;direction:rtl}
+.bank button{font:inherit;font-weight:700;border:3px solid var(--blue);background:var(--blue-l);border-radius:14px;padding:6px 14px;cursor:pointer}
+.bank button.sel{background:var(--blue);color:#fff}
+.bank button.used{opacity:.35}
+.blank{display:inline-block;min-width:110px;border-bottom:3px dashed var(--gold);text-align:center;cursor:pointer;padding:0 6px;font-weight:700;color:var(--blue)}
+.blank.r{border-color:var(--green);color:var(--green)} .blank.w{border-color:var(--crimson);color:var(--crimson)}
+.fill{border:2px solid var(--line);border-radius:16px;padding:10px 12px;margin-bottom:8px;line-height:2.4}
+.namecards{display:flex;flex-wrap:wrap;gap:8px;direction:rtl}
+.namecards button{font:inherit;font-size:1.15rem;font-weight:700;border:3px solid var(--gold);background:var(--gold-l);border-radius:16px;padding:8px 16px;cursor:pointer}
+.namecards button.done{background:var(--green);border-color:var(--green);color:#fff}
+.sorted{display:flex;flex-wrap:wrap;gap:8px;min-height:56px;border:3px dashed var(--green);border-radius:16px;padding:8px;margin:8px 0;direction:rtl}
+.sorted span{background:var(--green);color:#fff;border-radius:12px;padding:4px 14px;font-weight:700;font-size:1.1rem}
+.score{font-size:1.15rem;font-weight:700;color:var(--base)}
+.shake{animation:shake .35s}
+@keyframes shake{25%{transform:translateX(-6px)}75%{transform:translateX(6px)}}
+@media (max-width:640px){.vs,.benef,.types,.updown{grid-template-columns:1fr}.lesson-hero h1{font-size:1.35rem}.pair{grid-template-columns:1fr}}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+
+.access button{background:#fff;color:var(--base);border:2px solid var(--base)}
+.rules{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:10px}
+.rules div{border-radius:16px;padding:10px 12px;background:var(--green-l);font-weight:600}
+.rules .ic{font-size:1.8rem;display:block}
+.flow3{display:grid;grid-template-columns:1fr auto 1fr auto 1fr;gap:6px;align-items:center;text-align:center}
+.flow3 .bx{border-radius:18px;padding:10px;font-weight:700;background:var(--gold-l);border:3px solid var(--gold)}
+.flow3 .bx .ic{font-size:2.2rem;display:block}
+.flow3 .ar{font-size:1.8rem;color:var(--gold)}
+.shapes{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:10px}
+.shapes div{border:2px solid var(--line);border-radius:16px;padding:10px;text-align:center;font-weight:600}
+.shapes svg{width:110px;height:56px;display:block;margin:0 auto 4px}
+.st4{display:grid;grid-template-columns:repeat(4,1fr);gap:10px}
+.st4 div{border-radius:18px;padding:12px 8px;text-align:center;font-weight:700;color:#fff}
+.st4 .n{display:inline-grid;place-items:center;width:34px;height:34px;border-radius:50%;background:#fff;color:var(--base);font-weight:700}
+.st4 .ic{font-size:2rem;display:block}
+/* scratch blocks */
+.sb{direction:rtl;display:inline-flex;flex-direction:column;align-items:flex-start;gap:3px;font-size:.88rem}
+.blk{display:inline-block;color:#fff;font-weight:700;border-radius:8px;padding:4px 12px;border:2px solid rgba(0,0,0,.15);transition:transform .15s}
+.blk i{font-style:normal;background:#fff;color:#333;border-radius:12px;padding:0 8px;margin:0 3px}
+.blk.ev{background:#FFBF00;color:#3d2d00;border-radius:16px 16px 8px 8px}
+.blk.looks{background:#9966FF}.blk.mo{background:#4C97FF}.blk.snd{background:#CF63CF}.blk.ctl{background:#FFAB19}.blk.pen{background:#0FBD8C}
+.blk .inner{display:flex;flex-direction:column;align-items:flex-start;gap:3px;margin:4px 16px 2px 0;padding:4px 0}
+.blk.run{outline:4px solid #ff4d6d;transform:scale(1.04)}
+.sw{display:inline-block;width:22px;height:16px;border-radius:8px;background:#f5f0c8;vertical-align:middle;margin-right:4px}
+/* stage */
+.stagebox{display:grid;grid-template-columns:minmax(0,1.2fr) minmax(0,1fr);gap:14px;align-items:start}
+.stage{position:relative;direction:ltr;border:3px solid #9ab;border-radius:14px;overflow:hidden;background:#000;aspect-ratio:4/3}
+.stage canvas{width:100%;height:100%;display:block}
+.sprite{position:absolute;transform:translate(-50%,-50%);font-size:2.2rem;line-height:1;pointer-events:none;transition:none}
+.bubble{position:absolute;transform:translate(-30%,-140%);background:#fff;color:#222;border:2px solid #888;border-radius:14px;padding:2px 10px;font-weight:700;font-size:.85rem;white-space:nowrap;direction:rtl}
+.bubble:empty{display:none}
+/* grid game */
+.gg{display:grid;grid-template-columns:repeat(5,58px);grid-template-rows:repeat(4,58px);gap:4px;direction:ltr;justify-content:center;margin:8px auto}
+.gg div{background:#e9f0ef;border-radius:10px;display:grid;place-items:center;font-size:2rem}
+.gg div.trail{background:#fff3c4}
+.pad{display:grid;grid-template-columns:repeat(3,auto);gap:6px;justify-content:center;direction:ltr}
+.pad button{font:inherit;font-weight:700;border:3px solid var(--blue);background:var(--blue-l);border-radius:14px;padding:6px 10px;cursor:pointer;min-width:92px}
+.prog{display:flex;flex-wrap:wrap;gap:6px;min-height:52px;border:3px dashed var(--blue);border-radius:16px;padding:6px;margin:8px 0;direction:rtl;align-items:center}
+.prog span{background:var(--blue);color:#fff;border-radius:10px;padding:2px 10px;font-weight:700}
+.prog span.now{background:var(--gold)}
+.prog:empty::before{content:&#x27;برنامجي فارغ… اضغط الأسهم&#x27;;color:var(--muted)}
+.row{display:flex;gap:8px;flex-wrap:wrap;justify-content:center;margin:6px 0}
+/* order game */
+.ord .slots{display:grid;gap:6px;margin:8px 0}
+.ord .slot{border:3px dashed var(--line);border-radius:14px;padding:6px 12px;min-height:46px;display:flex;gap:8px;align-items:center}
+.ord .slot b{width:32px;height:32px;border-radius:50%;background:var(--gold);color:#fff;display:grid;place-items:center;flex:none}
+.ord .slot.done{border-style:solid;border-color:var(--green);background:var(--green-l);font-weight:700}
+.ord .pool{display:grid;gap:6px}
+.ord .pool button{font:inherit;text-align:right;border:3px solid var(--blue);background:var(--blue-l);border-radius:14px;padding:8px 12px;cursor:pointer;font-weight:600}
+.ord .pool button.gone{display:none}
+/* shape picker */
+.shp{display:grid;grid-template-columns:repeat(4,1fr);gap:8px}
+.shp button{font:inherit;border:3px solid var(--line);background:#fff;border-radius:14px;padding:6px;cursor:pointer;font-size:.85rem;font-weight:700}
+.shp button svg{width:84px;height:42px;display:block;margin:0 auto}
+.shp button.r{border-color:var(--green);background:var(--green-l)} .shp button.w{border-color:var(--crimson);background:var(--crimson-l)}
+.fc{display:flex;flex-direction:column;align-items:center;gap:0;margin:10px 0}
+.fc svg{width:280px;max-width:100%;height:auto}
+.fc .arw{font-size:1.4rem;color:#555;line-height:1}
+.cur{background:var(--gold-l);border:3px solid var(--gold);border-radius:16px;padding:8px 14px;font-weight:700;text-align:center;margin:6px 0}
+.q .os.sh{grid-template-columns:repeat(4,1fr)}
+.q .os.sh button.o{text-align:center}
+.q .os.sh svg{width:80px;height:40px}
+.tick{display:flex;flex-wrap:wrap;gap:10px}
+.tick button{font:inherit;font-weight:700;border:3px solid var(--line);border-radius:16px;background:#fff;padding:10px 16px;cursor:pointer;font-size:1.05rem}
+.tick button[aria-pressed=&quot;true&quot;]{border-color:var(--blue);background:var(--blue-l)}
+.tick button.r{border-color:var(--green);background:var(--green-l)} .tick button.w{border-color:var(--crimson);background:var(--crimson-l)} .tick button.miss{border-style:dashed;border-color:var(--green)}
+.cats{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:8px}
+.cats div{border-radius:14px;padding:8px 10px;color:#fff;font-weight:700;text-align:center}
+@media (max-width:640px){.stagebox,.st4{grid-template-columns:1fr 1fr}.stagebox{grid-template-columns:1fr}.flow3{grid-template-columns:1fr}.flow3 .ar{transform:rotate(-90deg)}.shp,.q .os.sh{grid-template-columns:1fr 1fr}.gg{grid-template-columns:repeat(5,50px);grid-template-rows:repeat(4,50px)}}
+body{background:transparent}.wrap{padding:4px 0}&lt;/style&gt;
+&lt;/head&gt;
+&lt;body&gt;
+&lt;div class=&quot;wrap&quot;&gt;
+
+
+&lt;div class=&quot;access&quot; style=&quot;margin:10px 0 0&quot;&gt;
+  &lt;button id=&quot;fsUp&quot; aria-label=&quot;تكبير الخط&quot;&gt;🔠 تكبير الخط&lt;/button&gt;
+  &lt;button id=&quot;fsDown&quot; aria-label=&quot;تصغير الخط&quot;&gt;🔡 تصغير الخط&lt;/button&gt;
+  &lt;button id=&quot;stopAll&quot; aria-label=&quot;إيقاف القراءة&quot;&gt;⏹️ إيقاف الصوت&lt;/button&gt;
+&lt;/div&gt;
+
+&lt;nav class=&quot;tabs&quot;&gt;
+  &lt;button class=&quot;active&quot; data-p=&quot;p-explain&quot;&gt;📘 الشرح&lt;/button&gt;
+  &lt;button data-p=&quot;p-lab&quot;&gt;🐱 جرّب بنفسك&lt;/button&gt;
+  &lt;button data-p=&quot;p-practice&quot;&gt;🎯 التدريبات&lt;/button&gt;
+&lt;/nav&gt;
+
+&lt;!-- ================= الشرح ================= --&gt;
+&lt;section class=&quot;panel active&quot; id=&quot;p-explain&quot;&gt;
+  &lt;div class=&quot;card&quot;&gt;&lt;div class=&quot;say big&quot;&gt;🔊 اضغط زر السماعة بجانب أي فقرة لتسمعها.&lt;/div&gt;&lt;/div&gt;
+
+  &lt;div class=&quot;card&quot;&gt;
+    &lt;h2&gt;🎬 فيديو الشرح&lt;/h2&gt;
+    &lt;div class=&quot;video&quot;&gt;&lt;iframe src=&quot;https://www.youtube.com/embed/3UROk_b4YpU?list=PLxUJ-_vAd_lUmXan7NRT3FnyuFlPin6pI&amp;index=11&quot; title=&quot;شرح درس كيفية تصميم برنامج&quot; allow=&quot;accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture&quot; allowfullscreen&gt;&lt;/iframe&gt;&lt;/div&gt;
+    &lt;p style=&quot;margin:8px 0 0&quot;&gt;&lt;a class=&quot;btn btn-out&quot; href=&quot;https://www.youtube.com/watch?v=3UROk_b4YpU&amp;list=PLxUJ-_vAd_lUmXan7NRT3FnyuFlPin6pI&amp;index=11&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;فتح الفيديو في يوتيوب ↗&lt;/a&gt;&lt;/p&gt;
+  &lt;/div&gt;
+
+  &lt;div class=&quot;card&quot;&gt;
+    &lt;h2&gt;🖼️ شرح الدرس في صورة&lt;/h2&gt;
+    &lt;svg viewBox=&quot;0 0 900 860&quot; xmlns=&quot;http://www.w3.org/2000/svg&quot; font-family=&quot;IBM Plex Sans Arabic, Tahoma&quot; role=&quot;img&quot; aria-label=&quot;ملخص مصور: البرنامج تعليمات ينفذها الحاسب، وخطوات إنشاء برنامج الأربع، وأشكال المخطط الانسيابي&quot;&gt;
+      &lt;rect width=&quot;900&quot; height=&quot;860&quot; rx=&quot;24&quot; fill=&quot;#012B28&quot;/&gt;
+      &lt;text x=&quot;450&quot; y=&quot;52&quot; text-anchor=&quot;middle&quot; fill=&quot;#fff&quot; font-size=&quot;32&quot; font-weight=&quot;700&quot;&gt;كيفية تصميم برنامج&lt;/text&gt;
+      &lt;rect x=&quot;360&quot; y=&quot;66&quot; width=&quot;180&quot; height=&quot;5&quot; rx=&quot;2&quot; fill=&quot;#C68A2E&quot;/&gt;
+      &lt;!-- what is a program --&gt;
+      &lt;g transform=&quot;translate(30,92)&quot;&gt;
+        &lt;rect width=&quot;840&quot; height=&quot;200&quot; rx=&quot;22&quot; fill=&quot;#fbf3e6&quot; stroke=&quot;#C68A2E&quot; stroke-width=&quot;4&quot;/&gt;
+        &lt;text x=&quot;420&quot; y=&quot;42&quot; text-anchor=&quot;middle&quot; font-size=&quot;24&quot; font-weight=&quot;700&quot; fill=&quot;#012B28&quot;&gt;💡 البرنامج = تعليمات ينفّذها الحاسب لتحقيق هدف&lt;/text&gt;
+        &lt;g text-anchor=&quot;middle&quot; font-weight=&quot;700&quot; fill=&quot;#012B28&quot;&gt;
+          &lt;rect x=&quot;590&quot; y=&quot;66&quot; width=&quot;220&quot; height=&quot;110&quot; rx=&quot;18&quot; fill=&quot;#fff&quot; stroke=&quot;#C68A2E&quot; stroke-width=&quot;2&quot;/&gt;
+          &lt;text x=&quot;700&quot; y=&quot;110&quot; font-size=&quot;34&quot;&gt;👩‍💻📜&lt;/text&gt;&lt;text x=&quot;700&quot; y=&quot;150&quot; font-size=&quot;18&quot;&gt;المبرمج يكتب التعليمات&lt;/text&gt;
+          &lt;text x=&quot;545&quot; y=&quot;132&quot; font-size=&quot;40&quot; fill=&quot;#C68A2E&quot;&gt;⬅&lt;/text&gt;
+          &lt;rect x=&quot;310&quot; y=&quot;66&quot; width=&quot;220&quot; height=&quot;110&quot; rx=&quot;18&quot; fill=&quot;#fff&quot; stroke=&quot;#C68A2E&quot; stroke-width=&quot;2&quot;/&gt;
+          &lt;text x=&quot;420&quot; y=&quot;110&quot; font-size=&quot;34&quot;&gt;💻&lt;/text&gt;&lt;text x=&quot;420&quot; y=&quot;150&quot; font-size=&quot;18&quot;&gt;الحاسب يقرأ وينفّذ&lt;/text&gt;
+          &lt;text x=&quot;265&quot; y=&quot;132&quot; font-size=&quot;40&quot; fill=&quot;#C68A2E&quot;&gt;⬅&lt;/text&gt;
+          &lt;rect x=&quot;30&quot; y=&quot;66&quot; width=&quot;220&quot; height=&quot;110&quot; rx=&quot;18&quot; fill=&quot;#fff&quot; stroke=&quot;#C68A2E&quot; stroke-width=&quot;2&quot;/&gt;
+          &lt;text x=&quot;140&quot; y=&quot;110&quot; font-size=&quot;34&quot;&gt;🐱🌙&lt;/text&gt;&lt;text x=&quot;140&quot; y=&quot;150&quot; font-size=&quot;18&quot;&gt;النتيجة&lt;/text&gt;
+        &lt;/g&gt;
+      &lt;/g&gt;
+      &lt;!-- 4 steps --&gt;
+      &lt;g transform=&quot;translate(30,312)&quot;&gt;
+        &lt;rect width=&quot;840&quot; height=&quot;236&quot; rx=&quot;22&quot; fill=&quot;#e6f5ee&quot; stroke=&quot;#00894A&quot; stroke-width=&quot;4&quot;/&gt;
+        &lt;text x=&quot;420&quot; y=&quot;42&quot; text-anchor=&quot;middle&quot; font-size=&quot;24&quot; font-weight=&quot;700&quot; fill=&quot;#00894A&quot;&gt;🪜 خطوات إنشاء برنامج&lt;/text&gt;
+        &lt;g text-anchor=&quot;middle&quot; font-weight=&quot;700&quot;&gt;
+          &lt;rect x=&quot;630&quot; y=&quot;64&quot; width=&quot;190&quot; height=&quot;150&quot; rx=&quot;18&quot; fill=&quot;#00894A&quot;/&gt;
+          &lt;circle cx=&quot;725&quot; cy=&quot;92&quot; r=&quot;20&quot; fill=&quot;#fff&quot;/&gt;&lt;text x=&quot;725&quot; y=&quot;100&quot; font-size=&quot;22&quot; fill=&quot;#00894A&quot;&gt;1&lt;/text&gt;
+          &lt;text x=&quot;725&quot; y=&quot;152&quot; font-size=&quot;34&quot;&gt;🧠&lt;/text&gt;&lt;text x=&quot;725&quot; y=&quot;196&quot; font-size=&quot;19&quot; fill=&quot;#fff&quot;&gt;تحليل المشكلة&lt;/text&gt;
+          &lt;rect x=&quot;425&quot; y=&quot;64&quot; width=&quot;190&quot; height=&quot;150&quot; rx=&quot;18&quot; fill=&quot;#6b4fbb&quot;/&gt;
+          &lt;circle cx=&quot;520&quot; cy=&quot;92&quot; r=&quot;20&quot; fill=&quot;#fff&quot;/&gt;&lt;text x=&quot;520&quot; y=&quot;100&quot; font-size=&quot;22&quot; fill=&quot;#6b4fbb&quot;&gt;2&lt;/text&gt;
+          &lt;text x=&quot;520&quot; y=&quot;152&quot; font-size=&quot;34&quot;&gt;✏️&lt;/text&gt;&lt;text x=&quot;520&quot; y=&quot;196&quot; font-size=&quot;19&quot; fill=&quot;#fff&quot;&gt;إنشاء الخوارزمية&lt;/text&gt;
+          &lt;rect x=&quot;220&quot; y=&quot;64&quot; width=&quot;190&quot; height=&quot;150&quot; rx=&quot;18&quot; fill=&quot;#1e6fb8&quot;/&gt;
+          &lt;circle cx=&quot;315&quot; cy=&quot;92&quot; r=&quot;20&quot; fill=&quot;#fff&quot;/&gt;&lt;text x=&quot;315&quot; y=&quot;100&quot; font-size=&quot;22&quot; fill=&quot;#1e6fb8&quot;&gt;3&lt;/text&gt;
+          &lt;text x=&quot;315&quot; y=&quot;152&quot; font-size=&quot;34&quot;&gt;🔷&lt;/text&gt;&lt;text x=&quot;315&quot; y=&quot;196&quot; font-size=&quot;19&quot; fill=&quot;#fff&quot;&gt;رسم المخطط الانسيابي&lt;/text&gt;
+          &lt;rect x=&quot;15&quot; y=&quot;64&quot; width=&quot;190&quot; height=&quot;150&quot; rx=&quot;18&quot; fill=&quot;#C68A2E&quot;/&gt;
+          &lt;circle cx=&quot;110&quot; cy=&quot;92&quot; r=&quot;20&quot; fill=&quot;#fff&quot;/&gt;&lt;text x=&quot;110&quot; y=&quot;100&quot; font-size=&quot;22&quot; fill=&quot;#C68A2E&quot;&gt;4&lt;/text&gt;
+          &lt;text x=&quot;110&quot; y=&quot;152&quot; font-size=&quot;34&quot;&gt;🧩&lt;/text&gt;&lt;text x=&quot;110&quot; y=&quot;196&quot; font-size=&quot;19&quot; fill=&quot;#fff&quot;&gt;كتابة المقطع البرمجي&lt;/text&gt;
+        &lt;/g&gt;
+      &lt;/g&gt;
+      &lt;!-- shapes --&gt;
+      &lt;g transform=&quot;translate(30,568)&quot;&gt;
+        &lt;rect width=&quot;840&quot; height=&quot;200&quot; rx=&quot;22&quot; fill=&quot;#e8f1fa&quot; stroke=&quot;#1e6fb8&quot; stroke-width=&quot;4&quot;/&gt;
+        &lt;text x=&quot;420&quot; y=&quot;40&quot; text-anchor=&quot;middle&quot; font-size=&quot;24&quot; font-weight=&quot;700&quot; fill=&quot;#1e6fb8&quot;&gt;🔷 أشكال المخطط الانسيابي&lt;/text&gt;
+        &lt;g fill=&quot;#FBB040&quot; stroke=&quot;#C68A2E&quot; stroke-width=&quot;3&quot;&gt;
+          &lt;rect x=&quot;690&quot; y=&quot;70&quot; width=&quot;120&quot; height=&quot;54&quot; rx=&quot;27&quot;/&gt;
+          &lt;polygon points=&quot;505,70 615,70 595,124 485,124&quot;/&gt;
+          &lt;rect x=&quot;290&quot; y=&quot;70&quot; width=&quot;120&quot; height=&quot;54&quot;/&gt;
+          &lt;polygon points=&quot;140,64 200,97 140,130 80,97&quot;/&gt;
+        &lt;/g&gt;
+        &lt;g text-anchor=&quot;middle&quot; font-size=&quot;17&quot; font-weight=&quot;700&quot; fill=&quot;#012B28&quot;&gt;
+          &lt;text x=&quot;750&quot; y=&quot;160&quot;&gt;بداية / نهاية&lt;/text&gt;
+          &lt;text x=&quot;550&quot; y=&quot;160&quot;&gt;إدخال / إخراج&lt;/text&gt;
+          &lt;text x=&quot;350&quot; y=&quot;160&quot;&gt;عملية / أمر&lt;/text&gt;
+          &lt;text x=&quot;140&quot; y=&quot;160&quot;&gt;قرار (نعم / لا)&lt;/text&gt;
+        &lt;/g&gt;
+        &lt;text x=&quot;420&quot; y=&quot;188&quot; text-anchor=&quot;middle&quot; font-size=&quot;15&quot; fill=&quot;#5d6f6c&quot;&gt;⬇ والأسهم تربط الأشكال وتوضح اتجاه الخطوات&lt;/text&gt;
+      &lt;/g&gt;
+      &lt;g transform=&quot;translate(30,788)&quot;&gt;
+        &lt;rect width=&quot;840&quot; height=&quot;52&quot; rx=&quot;18&quot; fill=&quot;#C68A2E&quot;/&gt;
+        &lt;text x=&quot;420&quot; y=&quot;34&quot; text-anchor=&quot;middle&quot; font-size=&quot;19&quot; font-weight=&quot;700&quot; fill=&quot;#fff&quot;&gt;✔ التعليمات واضحة ومحددة • 🐱 سكراتش لغة برمجة سهلة للمبتدئين&lt;/text&gt;
+      &lt;/g&gt;
+    &lt;/svg&gt;
+  &lt;/div&gt;
+
+  &lt;div class=&quot;card&quot;&gt;
+    &lt;h2&gt;💻 ما البرنامج؟&lt;/h2&gt;
+    &lt;div class=&quot;say&quot;&gt;البرامج هي التي تتحكم في عمل الأجهزة الإلكترونية.&lt;/div&gt;
+    &lt;div class=&quot;tip say&quot;&gt;📜 &lt;span class=&quot;kw&quot;&gt;برنامج الحاسب&lt;/span&gt;: مجموعة من التعليمات، مكتوبة بلغة برمجة، ينفّذها الحاسب لتحقيق هدف معيّن.&lt;/div&gt;
+    &lt;div class=&quot;say&quot;&gt;👩‍💻 الشخص الذي ينشئ البرنامج اسمه: &lt;span class=&quot;kw&quot;&gt;مبرمج&lt;/span&gt;.&lt;/div&gt;
+    &lt;div class=&quot;say&quot;&gt;🎮 أي شخص يستطيع أن ينشئ برنامجًا: رسومات، أو لعبة.&lt;/div&gt;
+    &lt;div class=&quot;note say&quot;&gt;ℹ️ مطوّر البرمجيات = المبرمج = مهندس البرمجيات. أسماء مختلفة لنفس الوظيفة.&lt;/div&gt;
+  &lt;/div&gt;
+
+  &lt;div class=&quot;card&quot;&gt;
+    &lt;h2&gt;🗣️ لغة البرمجة&lt;/h2&gt;
+    &lt;div class=&quot;say&quot;&gt;لغة البرمجة مثل أي لغة، لكن لها كلمات قليلة وقواعد دقيقة.&lt;/div&gt;
+    &lt;div class=&quot;say&quot;&gt;🐱 &lt;span class=&quot;kw&quot;&gt;سكراتش&lt;/span&gt; لغة برمجة سهلة للمبتدئين.&lt;/div&gt;
+    &lt;div class=&quot;rules&quot;&gt;
+      &lt;div class=&quot;say&quot;&gt;&lt;span class=&quot;ic&quot;&gt;🎮&lt;/span&gt;نصنع بها لعبة.&lt;/div&gt;
+      &lt;div class=&quot;say&quot;&gt;&lt;span class=&quot;ic&quot;&gt;🎬&lt;/span&gt;نصنع أفلام كرتون (أنيميشن).&lt;/div&gt;
+      &lt;div class=&quot;say&quot;&gt;&lt;span class=&quot;ic&quot;&gt;📖&lt;/span&gt;نصنع قصصًا تفاعلية.&lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+
+  &lt;div class=&quot;card&quot;&gt;
+    &lt;h2&gt;👣 اتباع التعليمات&lt;/h2&gt;
+    &lt;div class=&quot;say&quot;&gt;عند تشغيل البرنامج: الحاسب يقرأ قائمة الأوامر، ثم ينفّذها بالترتيب.&lt;/div&gt;
+    &lt;div class=&quot;flow3&quot; style=&quot;margin:10px 0&quot;&gt;
+      &lt;div class=&quot;bx&quot;&gt;&lt;span class=&quot;ic&quot;&gt;🧩&lt;/span&gt;الأوامر&lt;/div&gt;&lt;div class=&quot;ar&quot;&gt;⬅&lt;/div&gt;
+      &lt;div class=&quot;bx&quot;&gt;&lt;span class=&quot;ic&quot;&gt;💻&lt;/span&gt;الحاسب يقرأ&lt;/div&gt;&lt;div class=&quot;ar&quot;&gt;⬅&lt;/div&gt;
+      &lt;div class=&quot;bx&quot;&gt;&lt;span class=&quot;ic&quot;&gt;🐱&lt;/span&gt;القطة تتحرك&lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div class=&quot;tip say&quot;&gt;✔ يجب أن تكون التعليمات &lt;span class=&quot;kw&quot;&gt;واضحة&lt;/span&gt; و&lt;span class=&quot;kw&quot;&gt;محددة&lt;/span&gt;.&lt;/div&gt;
+  &lt;/div&gt;
+
+  &lt;div class=&quot;card&quot;&gt;
+    &lt;h2&gt;🔷 المخطط الانسيابي (Flowchart)&lt;/h2&gt;
+    &lt;div class=&quot;say&quot;&gt;رسم يوضّح خطوات الحل بالترتيب الصحيح، خطوة بخطوة.&lt;/div&gt;
+    &lt;div class=&quot;say&quot;&gt;نرسمه لننظّم أفكارنا قبل كتابة البرنامج.&lt;/div&gt;
+    &lt;div class=&quot;shapes&quot; id=&quot;shapesInfo&quot;&gt;&lt;/div&gt;
+    &lt;div class=&quot;tip say&quot;&gt;➡️ كل خطوة في شكل منفصل، والأسهم توضح الاتجاه.&lt;/div&gt;
+    &lt;div class=&quot;note say&quot;&gt;ليس ضروريًا أن نستخدم كل الأشكال. نستخدم ما نحتاجه فقط.&lt;/div&gt;
+  &lt;/div&gt;
+
+  &lt;div class=&quot;card&quot;&gt;
+    &lt;h2&gt;🪜 خطوات إنشاء برنامج&lt;/h2&gt;
+    &lt;div class=&quot;st4&quot;&gt;
+      &lt;div style=&quot;background:var(--green)&quot;&gt;&lt;span class=&quot;n&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;ic&quot;&gt;🧠&lt;/span&gt;تحليل المشكلة&lt;/div&gt;
+      &lt;div style=&quot;background:var(--purple)&quot;&gt;&lt;span class=&quot;n&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;ic&quot;&gt;✏️&lt;/span&gt;إنشاء الخوارزمية&lt;/div&gt;
+      &lt;div style=&quot;background:var(--blue)&quot;&gt;&lt;span class=&quot;n&quot;&gt;3&lt;/span&gt;&lt;span class=&quot;ic&quot;&gt;🔷&lt;/span&gt;رسم المخطط الانسيابي&lt;/div&gt;
+      &lt;div style=&quot;background:var(--gold)&quot;&gt;&lt;span class=&quot;n&quot;&gt;4&lt;/span&gt;&lt;span class=&quot;ic&quot;&gt;🧩&lt;/span&gt;كتابة المقطع البرمجي&lt;/div&gt;
+    &lt;/div&gt;
+    &lt;h2 style=&quot;margin-top:14px&quot;&gt;🌙 مثال: القطة ترسم قمرًا في سماء المدينة&lt;/h2&gt;
+    &lt;div class=&quot;stepsx&quot;&gt;
+      &lt;div class=&quot;stp&quot;&gt;&lt;span class=&quot;n&quot;&gt;1&lt;/span&gt;&lt;div class=&quot;say&quot;&gt;&lt;b&gt;تحليل المشكلة:&lt;/b&gt; أفهم المطلوب. القطة تقول شيئًا، ثم تذهب إلى مكان القمر، ثم ترسمه.&lt;/div&gt;&lt;/div&gt;
+      &lt;div class=&quot;stp&quot;&gt;&lt;span class=&quot;n&quot;&gt;2&lt;/span&gt;&lt;div class=&quot;say&quot;&gt;&lt;b&gt;الخوارزمية:&lt;/b&gt; أكتب الخطوات بكلمات بسيطة:&lt;br&gt;① اجعل القطة تقول شيئًا. ② حرّك القطة إلى نقطة البداية. ③ حدّد لبنات القلم. ④ ارسم القمر.&lt;/div&gt;&lt;/div&gt;
+      &lt;div class=&quot;stp&quot;&gt;&lt;span class=&quot;n&quot;&gt;3&lt;/span&gt;&lt;div class=&quot;say&quot;&gt;&lt;b&gt;المخطط الانسيابي:&lt;/b&gt; أرسم الخطوات بالأشكال. ستبنيه بنفسك في «جرّب بنفسك».&lt;/div&gt;&lt;/div&gt;
+      &lt;div class=&quot;stp&quot;&gt;&lt;span class=&quot;n&quot;&gt;4&lt;/span&gt;&lt;div class=&quot;say&quot;&gt;&lt;b&gt;المقطع البرمجي:&lt;/b&gt; أحوّل الخطوات إلى لبنات سكراتش. فيصبح عندي برنامجي الأول!&lt;/div&gt;&lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+
+  &lt;div class=&quot;card&quot;&gt;
+    &lt;h2&gt;📜 لمحة تاريخية&lt;/h2&gt;
+    &lt;div class=&quot;say&quot;&gt;👩 &lt;b&gt;آدا لوفلايس&lt;/b&gt; هي أول مبرمجة في التاريخ.&lt;/div&gt;
+    &lt;div class=&quot;say&quot;&gt;كتبت برامج سنة 1843، ونُشر عملها سنة 1953.&lt;/div&gt;
+  &lt;/div&gt;
+&lt;/section&gt;
+
+&lt;!-- ================= جرّب بنفسك ================= --&gt;
+&lt;section class=&quot;panel&quot; id=&quot;p-lab&quot;&gt;
+  &lt;div class=&quot;card&quot;&gt;
+    &lt;span class=&quot;tag&quot;&gt;لعبة 1&lt;/span&gt;
+    &lt;h2&gt;🐱 أوصل القطة إلى القمر&lt;/h2&gt;
+    &lt;div class=&quot;say&quot;&gt;اضغط الأسهم لتكتب برنامجًا للقطة، ثم اضغط «شغّل». الحاسب ينفّذ تعليماتك بالضبط!&lt;/div&gt;
+    &lt;div class=&quot;cur&quot; id=&quot;ggLv&quot;&gt;&lt;/div&gt;
+    &lt;div class=&quot;gg&quot; id=&quot;gg&quot;&gt;&lt;/div&gt;
+    &lt;div class=&quot;pad&quot;&gt;
+      &lt;span&gt;&lt;/span&gt;&lt;button data-m=&quot;U&quot;&gt;⬆️ أعلى&lt;/button&gt;&lt;span&gt;&lt;/span&gt;
+      &lt;button data-m=&quot;L&quot;&gt;⬅️ يسار&lt;/button&gt;&lt;button data-m=&quot;D&quot;&gt;⬇️ أسفل&lt;/button&gt;&lt;button data-m=&quot;R&quot;&gt;➡️ يمين&lt;/button&gt;
+    &lt;/div&gt;
+    &lt;div class=&quot;prog&quot; id=&quot;prog&quot;&gt;&lt;/div&gt;
+    &lt;div class=&quot;row&quot;&gt;
+      &lt;button class=&quot;btn btn-green&quot; id=&quot;ggRun&quot;&gt;▶ شغّل&lt;/button&gt;
+      &lt;button class=&quot;btn btn-out&quot; id=&quot;ggUndo&quot;&gt;↩️ تراجع&lt;/button&gt;
+      &lt;button class=&quot;btn btn-out&quot; id=&quot;ggClr&quot;&gt;🗑️ امسح&lt;/button&gt;
+      &lt;button class=&quot;btn btn-out&quot; id=&quot;ggNext&quot; style=&quot;display:none&quot;&gt;⏭️ المرحلة التالية&lt;/button&gt;
+    &lt;/div&gt;
+    &lt;div class=&quot;fb&quot; id=&quot;ggFb&quot;&gt;&lt;/div&gt;
+  &lt;/div&gt;
+
+  &lt;div class=&quot;card&quot;&gt;
+    &lt;span class=&quot;tag&quot;&gt;لعبة 2&lt;/span&gt;
+    &lt;h2&gt;🔷 ابنِ المخطط الانسيابي للقمر&lt;/h2&gt;
+    &lt;div class=&quot;say&quot;&gt;انظر إلى الخطوة، ثم اختر الشكل المناسب لها.&lt;/div&gt;
+    &lt;div class=&quot;cur&quot; id=&quot;fcCur&quot;&gt;&lt;/div&gt;
+    &lt;div class=&quot;shp&quot; id=&quot;fcPick&quot;&gt;&lt;/div&gt;
+    &lt;div class=&quot;fb&quot; id=&quot;fcFb&quot;&gt;&lt;/div&gt;
+    &lt;div class=&quot;fc&quot; id=&quot;fcOut&quot;&gt;&lt;/div&gt;
+  &lt;/div&gt;
+
+  &lt;div class=&quot;card&quot;&gt;
+    &lt;span class=&quot;tag&quot;&gt;لعبة 3&lt;/span&gt;
+    &lt;h2&gt;🌙 رتّب الخوارزمية، ثم شغّل البرنامج&lt;/h2&gt;
+    &lt;div class=&quot;say&quot;&gt;اضغط الخطوات بالترتيب الصحيح، من الأولى إلى الأخيرة.&lt;/div&gt;
+    &lt;div class=&quot;ord&quot; id=&quot;moonOrd&quot;&gt;&lt;/div&gt;
+    &lt;div class=&quot;fb&quot; id=&quot;moonOrdFb&quot;&gt;&lt;/div&gt;
+    &lt;div id=&quot;moonRunBox&quot; style=&quot;display:none&quot;&gt;
+      &lt;div class=&quot;say&quot;&gt;هذا المقطع البرمجي في سكراتش. اضغط «🏁 شغّل» وشاهد القطة ترسم القمر.&lt;/div&gt;
+      &lt;div class=&quot;stagebox&quot;&gt;
+        &lt;div class=&quot;stage&quot;&gt;&lt;canvas id=&quot;cvMoon&quot; width=&quot;480&quot; height=&quot;360&quot;&gt;&lt;/canvas&gt;&lt;span class=&quot;sprite&quot; id=&quot;spMoon&quot;&gt;🐱&lt;/span&gt;&lt;span class=&quot;bubble&quot; id=&quot;bbMoon&quot;&gt;&lt;/span&gt;&lt;/div&gt;
+        &lt;div&gt;
+          &lt;div class=&quot;sb&quot; id=&quot;sbMoon&quot;&gt;
+            &lt;div class=&quot;blk ev&quot; data-b=&quot;0&quot;&gt;عند نقر 🏁&lt;/div&gt;
+            &lt;div class=&quot;blk pen&quot; data-b=&quot;1&quot;&gt;✏️ امسح الكل&lt;/div&gt;
+            &lt;div class=&quot;blk looks&quot; data-b=&quot;2&quot;&gt;قل &lt;i&gt;لنرسم قمرًا في السماء&lt;/i&gt; لمدة &lt;i&gt;3&lt;/i&gt; ثانية&lt;/div&gt;
+            &lt;div class=&quot;blk mo&quot; data-b=&quot;3&quot;&gt;تحرّك &lt;i&gt;100&lt;/i&gt; خطوة&lt;/div&gt;
+            &lt;div class=&quot;blk mo&quot; data-b=&quot;4&quot;&gt;استدر ↺ &lt;i&gt;90&lt;/i&gt; درجة&lt;/div&gt;
+            &lt;div class=&quot;blk mo&quot; data-b=&quot;5&quot;&gt;تحرّك &lt;i&gt;130&lt;/i&gt; خطوة&lt;/div&gt;
+            &lt;div class=&quot;blk pen&quot; data-b=&quot;6&quot;&gt;✏️ اجعل لون القلم مساويًا &lt;span class=&quot;sw&quot;&gt;&lt;/span&gt;&lt;/div&gt;
+            &lt;div class=&quot;blk pen&quot; data-b=&quot;7&quot;&gt;✏️ أنزل القلم&lt;/div&gt;
+            &lt;div class=&quot;blk pen&quot; data-b=&quot;8&quot;&gt;✏️ اجعل حجم القلم مساويًا &lt;i&gt;40&lt;/i&gt;&lt;/div&gt;
+            &lt;div class=&quot;blk ctl&quot; data-b=&quot;9&quot;&gt;كرّر &lt;i&gt;45&lt;/i&gt; مرة
+              &lt;div class=&quot;inner&quot;&gt;&lt;div class=&quot;blk mo&quot; data-b=&quot;10&quot;&gt;تحرّك &lt;i&gt;3&lt;/i&gt; خطوة&lt;/div&gt;&lt;div class=&quot;blk mo&quot; data-b=&quot;11&quot;&gt;استدر ↻ &lt;i&gt;10&lt;/i&gt; درجة&lt;/div&gt;&lt;/div&gt;
+            &lt;/div&gt;
+          &lt;/div&gt;
+          &lt;p&gt;&lt;button class=&quot;btn btn-green&quot; id=&quot;moonGo&quot;&gt;🏁 شغّل&lt;/button&gt;&lt;/p&gt;
+        &lt;/div&gt;
+      &lt;/div&gt;
+      &lt;div class=&quot;fb&quot; id=&quot;moonFb&quot;&gt;&lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/section&gt;
+
+&lt;!-- ================= التدريبات ================= --&gt;
+&lt;section class=&quot;panel&quot; id=&quot;p-practice&quot;&gt;
+  &lt;div class=&quot;card&quot;&gt;
+    &lt;span class=&quot;tag&quot;&gt;تدريب 1 – من الكتاب&lt;/span&gt;
+    &lt;h2&gt;✔ صواب أو خطأ&lt;/h2&gt;
+    &lt;div class=&quot;say&quot;&gt;اختر ✔ إذا كانت الجملة صحيحة، و✖ إذا كانت خطأ.&lt;/div&gt;
+    &lt;div id=&quot;t1&quot;&gt;&lt;/div&gt;
+    &lt;div class=&quot;score&quot; id=&quot;t1Score&quot;&gt;&lt;/div&gt;
+  &lt;/div&gt;
+
+  &lt;div class=&quot;card&quot;&gt;
+    &lt;span class=&quot;tag&quot;&gt;تدريب 2 – من الكتاب&lt;/span&gt;
+    &lt;h2&gt;🪜 خطوات إنشاء مقطع برمجي&lt;/h2&gt;
+    &lt;div class=&quot;say&quot;&gt;اختر ما يناسب كل جملة.&lt;/div&gt;
+    &lt;div id=&quot;t2&quot;&gt;&lt;/div&gt;
+    &lt;div class=&quot;score&quot; id=&quot;t2Score&quot;&gt;&lt;/div&gt;
+  &lt;/div&gt;
+
+  &lt;div class=&quot;card&quot;&gt;
+    &lt;span class=&quot;tag&quot;&gt;تدريب 3 – من الكتاب&lt;/span&gt;
+    &lt;h2&gt;🖥️ أنشئ خوارزمية: عرض تقديمي في صفك&lt;/h2&gt;
+    &lt;div class=&quot;say&quot;&gt;أ) ما الأمور المهمة عند إعداد عرض تقديمي؟ اضغط عليها، ثم «تحقق».&lt;/div&gt;
+    &lt;div class=&quot;tick&quot; id=&quot;t3a&quot;&gt;&lt;/div&gt;
+    &lt;p&gt;&lt;button class=&quot;btn btn-green&quot; id=&quot;t3aChk&quot;&gt;تحقق&lt;/button&gt;&lt;/p&gt;
+    &lt;div class=&quot;fb&quot; id=&quot;t3aFb&quot;&gt;&lt;/div&gt;
+    &lt;div class=&quot;say&quot;&gt;ب) رتّب خطوات الخوارزمية لإعداد العرض.&lt;/div&gt;
+    &lt;div class=&quot;ord&quot; id=&quot;t3b&quot;&gt;&lt;/div&gt;
+    &lt;div class=&quot;fb&quot; id=&quot;t3bFb&quot;&gt;&lt;/div&gt;
+  &lt;/div&gt;
+
+  &lt;div class=&quot;card&quot;&gt;
+    &lt;span class=&quot;tag&quot;&gt;تدريب 4 – من الكتاب&lt;/span&gt;
+    &lt;h2&gt;🔷 أشكال المخطط الانسيابي&lt;/h2&gt;
+    &lt;div class=&quot;say&quot;&gt;اختر الشكل المناسب لكل وصف.&lt;/div&gt;
+    &lt;div id=&quot;t4&quot;&gt;&lt;/div&gt;
+    &lt;div class=&quot;score&quot; id=&quot;t4Score&quot;&gt;&lt;/div&gt;
+  &lt;/div&gt;
+
+  &lt;div class=&quot;card&quot;&gt;
+    &lt;span class=&quot;tag&quot;&gt;تدريب 5 – من الكتاب&lt;/span&gt;
+    &lt;h2&gt;🔺 القطة ترسم مثلثًا أحمر كبيرًا&lt;/h2&gt;
+    &lt;div class=&quot;say&quot;&gt;المشكلة: القطة ترسم مثلثًا أحمر كبيرًا، ثم تقف في وسطه، وتُصدر صوتًا.&lt;/div&gt;
+    &lt;div class=&quot;say&quot;&gt;① رتّب خطوات الخوارزمية.&lt;/div&gt;
+    &lt;div class=&quot;ord&quot; id=&quot;t5&quot;&gt;&lt;/div&gt;
+    &lt;div class=&quot;fb&quot; id=&quot;t5Fb&quot;&gt;&lt;/div&gt;
+    &lt;div id=&quot;t5Run&quot; style=&quot;display:none&quot;&gt;
+      &lt;div class=&quot;say&quot;&gt;② المخطط الانسيابي، و③ المقطع البرمجي. اضغط «🏁 شغّل».&lt;/div&gt;
+      &lt;div class=&quot;stagebox&quot;&gt;
+        &lt;div&gt;
+          &lt;div class=&quot;stage&quot; style=&quot;background:#fff&quot;&gt;&lt;canvas id=&quot;cvTri&quot; width=&quot;480&quot; height=&quot;360&quot;&gt;&lt;/canvas&gt;&lt;span class=&quot;sprite&quot; id=&quot;spTri&quot;&gt;🐱&lt;/span&gt;&lt;span class=&quot;bubble&quot; id=&quot;bbTri&quot;&gt;&lt;/span&gt;&lt;/div&gt;
+          &lt;div class=&quot;fc&quot; id=&quot;t5Fc&quot;&gt;&lt;/div&gt;
+        &lt;/div&gt;
+        &lt;div&gt;
+          &lt;div class=&quot;sb&quot; id=&quot;sbTri&quot;&gt;
+            &lt;div class=&quot;blk ev&quot; data-b=&quot;0&quot;&gt;عند نقر 🏁&lt;/div&gt;
+            &lt;div class=&quot;blk pen&quot; data-b=&quot;1&quot;&gt;✏️ امسح الكل&lt;/div&gt;
+            &lt;div class=&quot;blk pen&quot; data-b=&quot;2&quot;&gt;✏️ اجعل لون القلم مساويًا &lt;span class=&quot;sw&quot; style=&quot;background:#e02424&quot;&gt;&lt;/span&gt;&lt;/div&gt;
+            &lt;div class=&quot;blk pen&quot; data-b=&quot;3&quot;&gt;✏️ اجعل حجم القلم مساويًا &lt;i&gt;8&lt;/i&gt;&lt;/div&gt;
+            &lt;div class=&quot;blk mo&quot; data-b=&quot;4&quot;&gt;اذهب إلى الموضع س: &lt;i&gt;-100&lt;/i&gt; ص: &lt;i&gt;-80&lt;/i&gt;&lt;/div&gt;
+            &lt;div class=&quot;blk mo&quot; data-b=&quot;5&quot;&gt;أشر في اتجاه &lt;i&gt;90&lt;/i&gt;&lt;/div&gt;
+            &lt;div class=&quot;blk pen&quot; data-b=&quot;6&quot;&gt;✏️ أنزل القلم&lt;/div&gt;
+            &lt;div class=&quot;blk ctl&quot; data-b=&quot;7&quot;&gt;كرّر &lt;i&gt;3&lt;/i&gt; مرة
+              &lt;div class=&quot;inner&quot;&gt;&lt;div class=&quot;blk mo&quot; data-b=&quot;8&quot;&gt;تحرّك &lt;i&gt;200&lt;/i&gt; خطوة&lt;/div&gt;&lt;div class=&quot;blk mo&quot; data-b=&quot;9&quot;&gt;استدر ↺ &lt;i&gt;120&lt;/i&gt; درجة&lt;/div&gt;&lt;/div&gt;
+            &lt;/div&gt;
+            &lt;div class=&quot;blk pen&quot; data-b=&quot;10&quot;&gt;✏️ ارفع القلم&lt;/div&gt;
+            &lt;div class=&quot;blk mo&quot; data-b=&quot;11&quot;&gt;اذهب إلى الموضع س: &lt;i&gt;0&lt;/i&gt; ص: &lt;i&gt;-20&lt;/i&gt;&lt;/div&gt;
+            &lt;div class=&quot;blk snd&quot; data-b=&quot;12&quot;&gt;🔊 شغّل الصوت &lt;i&gt;مياو&lt;/i&gt; حتى انتهائه&lt;/div&gt;
+          &lt;/div&gt;
+          &lt;p&gt;&lt;button class=&quot;btn btn-green&quot; id=&quot;triGo&quot;&gt;🏁 شغّل&lt;/button&gt;&lt;/p&gt;
+        &lt;/div&gt;
+      &lt;/div&gt;
+      &lt;div class=&quot;fb&quot; id=&quot;triFb&quot;&gt;&lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/section&gt;
+
+
+
+
+
+&lt;/div&gt;
+
+&lt;script&gt;
+
+const $=id=&gt;document.getElementById(id);
+/* ===== التبويبات ===== */
+document.querySelectorAll(&#x27;nav.tabs button&#x27;).forEach(b=&gt;b.onclick=()=&gt;{
+  document.querySelectorAll(&#x27;nav.tabs button&#x27;).forEach(x=&gt;x.classList.remove(&#x27;active&#x27;));
+  document.querySelectorAll(&#x27;section.panel&#x27;).forEach(x=&gt;x.classList.remove(&#x27;active&#x27;));
+  b.classList.add(&#x27;active&#x27;);$(b.dataset.p).classList.add(&#x27;active&#x27;);stopSpeak();
+  try{frameElement.scrollIntoView({behavior:&#x27;smooth&#x27;,block:&#x27;start&#x27;})}catch(e){}
+});
+/* ===== حجم الخط ===== */
+let fs=19;try{fs=+localStorage.getItem(&#x27;g5fs&#x27;)||19;}catch(e){}
+function setFs(v){fs=Math.max(16,Math.min(26,v));document.documentElement.style.setProperty(&#x27;--fs&#x27;,fs+&#x27;px&#x27;);try{localStorage.setItem(&#x27;g5fs&#x27;,fs)}catch(e){}}
+setFs(fs);$(&#x27;fsUp&#x27;).onclick=()=&gt;setFs(fs+2);$(&#x27;fsDown&#x27;).onclick=()=&gt;setFs(fs-2);
+
+/* ===== القراءة الصوتية ===== */
+let curBtn=null,warned=false;
+function stopSpeak(){try{speechSynthesis.cancel()}catch(e){}if(curBtn){curBtn.classList.remove(&#x27;on&#x27;);curBtn.textContent=&#x27;🔊&#x27;;curBtn=null;}}
+function speak(text,btn){
+  if(!(&#x27;speechSynthesis&#x27; in window)){if(!warned){warned=true;alertBox(&#x27;القراءة الصوتية غير مدعومة في هذا المتصفح.&#x27;);}return;}
+  const same=curBtn===btn;stopSpeak();if(same)return;
+  const u=new SpeechSynthesisUtterance(text.replace(/[▾▶◀←→↕️🔊⏹️]/g,&#x27; &#x27;));u.lang=&#x27;ar-SA&#x27;;u.rate=.85;
+  const v=speechSynthesis.getVoices().find(v=&gt;/^ar/i.test(v.lang));if(v)u.voice=v;
+  if(btn){curBtn=btn;btn.classList.add(&#x27;on&#x27;);btn.textContent=&#x27;⏹&#x27;;}
+  u.onend=()=&gt;{if(curBtn===btn)stopSpeak();};speechSynthesis.speak(u);}
+function alertBox(t){const fb=document.querySelector(&#x27;section.panel.active .fb&#x27;);if(fb){fb.className=&#x27;fb&#x27;;fb.textContent=t;}}
+$(&#x27;stopAll&#x27;).onclick=stopSpeak;
+function addSpeakers(root){(root||document).querySelectorAll(&#x27;.say&#x27;).forEach(el=&gt;{if(el.querySelector(&#x27;:scope &gt; .spk&#x27;))return;
+  const b=document.createElement(&#x27;button&#x27;);b.className=&#x27;spk&#x27;;b.type=&#x27;button&#x27;;b.textContent=&#x27;🔊&#x27;;b.setAttribute(&#x27;aria-label&#x27;,&#x27;استمع&#x27;);
+  b.onclick=e=&gt;{e.stopPropagation();const c=el.cloneNode(true);c.querySelectorAll(&#x27;.spk&#x27;).forEach(x=&gt;x.remove());speak(c.textContent.trim(),b);};el.prepend(b);});}
+addSpeakers();
+
+
+const sleep=ms=&gt;new Promise(r=&gt;setTimeout(r,ms));
+/* ===== الأشكال ===== */
+const SHP={
+ term:(t,w,h)=&gt;`&lt;rect x=&quot;4&quot; y=&quot;4&quot; width=&quot;${w-8}&quot; height=&quot;${h-8}&quot; rx=&quot;${(h-8)/2}&quot; fill=&quot;#FBB040&quot; stroke=&quot;#C68A2E&quot; stroke-width=&quot;3&quot;/&gt;`,
+ io:(t,w,h)=&gt;`&lt;polygon points=&quot;${w*.18},4 ${w-4},4 ${w*.82},${h-4} 4,${h-4}&quot; fill=&quot;#FBB040&quot; stroke=&quot;#C68A2E&quot; stroke-width=&quot;3&quot;/&gt;`,
+ proc:(t,w,h)=&gt;`&lt;rect x=&quot;4&quot; y=&quot;4&quot; width=&quot;${w-8}&quot; height=&quot;${h-8}&quot; fill=&quot;#FBB040&quot; stroke=&quot;#C68A2E&quot; stroke-width=&quot;3&quot;/&gt;`,
+ dec:(t,w,h)=&gt;`&lt;polygon points=&quot;${w/2},2 ${w-2},${h/2} ${w/2},${h-2} 2,${h/2}&quot; fill=&quot;#FBB040&quot; stroke=&quot;#C68A2E&quot; stroke-width=&quot;3&quot;/&gt;`};
+const SHN={term:&#x27;بداية / نهاية&#x27;,io:&#x27;إدخال / إخراج&#x27;,proc:&#x27;عملية / أمر&#x27;,dec:&#x27;قرار (نعم / لا)&#x27;};
+const SHD={term:&#x27;بداية البرنامج ونهايته.&#x27;,io:&#x27;إدخال البيانات وعرضها (المدخلات والمخرجات).&#x27;,proc:&#x27;عملية حسابية، أو إعطاء أمر.&#x27;,dec:&#x27;اتخاذ قرار: نعم أو لا.&#x27;};
+const shapeSvg=k=&gt;`&lt;svg viewBox=&quot;0 0 120 60&quot; aria-hidden=&quot;true&quot;&gt;${SHP[k](&#x27;&#x27;,120,60)}&lt;/svg&gt;`;
+const nodeSvg=(k,t)=&gt;`&lt;svg viewBox=&quot;0 0 300 64&quot; role=&quot;img&quot; aria-label=&quot;${t}&quot;&gt;${SHP[k](&#x27;&#x27;,300,64)}&lt;text x=&quot;150&quot; y=&quot;40&quot; text-anchor=&quot;middle&quot; font-size=&quot;19&quot; font-weight=&quot;700&quot; fill=&quot;#012B28&quot; font-family=&quot;IBM Plex Sans Arabic, Tahoma&quot;&gt;${t}&lt;/text&gt;&lt;/svg&gt;`;
+function drawFc(el,nodes){el.innerHTML=nodes.map(([k,t],i)=&gt;(i?&#x27;&lt;div class=&quot;arw&quot;&gt;⬇&lt;/div&gt;&#x27;:&#x27;&#x27;)+nodeSvg(k,t)).join(&#x27;&#x27;);}
+$(&#x27;shapesInfo&#x27;).innerHTML=[&#x27;term&#x27;,&#x27;io&#x27;,&#x27;proc&#x27;,&#x27;dec&#x27;].map(k=&gt;`&lt;div class=&quot;say&quot;&gt;${shapeSvg(k)}&lt;b&gt;${SHN[k]}&lt;/b&gt;&lt;br&gt;${SHD[k]}&lt;/div&gt;`).join(&#x27;&#x27;);
+
+/* ===== لعبة ترتيب ===== */
+function orderGame(id,fbId,steps,onDone){const el=$(id);const idx=steps.map((_,i)=&gt;i);
+  do{idx.sort(()=&gt;Math.random()-.5);}while(idx.every((v,i)=&gt;v===i));
+  let n=0;
+  el.innerHTML=`&lt;div class=&quot;slots&quot;&gt;${steps.map((_,i)=&gt;`&lt;div class=&quot;slot&quot;&gt;&lt;b&gt;${i+1}&lt;/b&gt;&lt;span&gt;&lt;/span&gt;&lt;/div&gt;`).join(&#x27;&#x27;)}&lt;/div&gt;&lt;div class=&quot;pool&quot;&gt;${idx.map(i=&gt;`&lt;button data-i=&quot;${i}&quot;&gt;${steps[i]}&lt;/button&gt;`).join(&#x27;&#x27;)}&lt;/div&gt;`;
+  el.querySelectorAll(&#x27;.pool button&#x27;).forEach(b=&gt;b.onclick=()=&gt;{speak(b.textContent);const i=+b.dataset.i;
+    if(i===n){const s=el.querySelectorAll(&#x27;.slot&#x27;)[n];s.querySelector(&#x27;span&#x27;).textContent=steps[i];s.classList.add(&#x27;done&#x27;);b.classList.add(&#x27;gone&#x27;);n++;
+      $(fbId).className=&#x27;fb ok&#x27;;$(fbId).textContent=n===steps.length?&#x27;🎉 رتّبت الخطوات كلها!&#x27;:&#x27;✔ صحيح، تابع.&#x27;;if(n===steps.length&amp;&amp;onDone)onDone();}
+    else{b.classList.add(&#x27;shake&#x27;);setTimeout(()=&gt;b.classList.remove(&#x27;shake&#x27;),400);$(fbId).className=&#x27;fb bad&#x27;;$(fbId).textContent=&#x27;💡 ليست هذه الخطوة رقم &#x27;+(n+1)+&#x27;. فكّر: ماذا نفعل أولًا؟&#x27;;}});}
+
+/* ===== المسرح (سكراتش مبسّط) ===== */
+function Stage(cv,sp,bb,bg){const c=$(cv).getContext(&#x27;2d&#x27;);const S={x:0,y:0,dir:90,pen:false,color:&#x27;#000&#x27;,size:1,busy:false};
+  const place=()=&gt;{$(sp).style.left=(S.x+240)/4.8+&#x27;%&#x27;;$(sp).style.top=(180-S.y)/3.6+&#x27;%&#x27;;$(bb).style.left=(S.x+240)/4.8+&#x27;%&#x27;;$(bb).style.top=(180-S.y)/3.6+&#x27;%&#x27;;};
+  S.line=(x1,y1,x2,y2)=&gt;{c.strokeStyle=S.color;c.lineWidth=S.size;c.lineCap=&#x27;round&#x27;;c.beginPath();c.moveTo(x1+240,180-y1);c.lineTo(x2+240,180-y2);c.stroke();};
+  S.reset=(x,y,d)=&gt;{S.x=x;S.y=y;S.dir=d;S.pen=false;S.color=&#x27;#000&#x27;;S.size=1;bg(c);place();$(bb).textContent=&#x27;&#x27;;};
+  S.clear=()=&gt;bg(c);
+  S.move=async(n,steps)=&gt;{steps=steps||Math.max(1,Math.round(n/8));const r=S.dir*Math.PI/180,dx=Math.sin(r)*n/steps,dy=Math.cos(r)*n/steps;
+    for(let i=0;i&lt;steps;i++){const nx=S.x+dx,ny=S.y+dy;if(S.pen)S.line(S.x,S.y,nx,ny);S.x=nx;S.y=ny;place();await sleep(16);}};
+  S.turn=d=&gt;{S.dir+=d;};
+  S.goto=(x,y)=&gt;{if(S.pen)S.line(S.x,S.y,x,y);S.x=x;S.y=y;place();};
+  S.say=async(t,s)=&gt;{$(bb).textContent=t;if(s){await sleep(s*1000);$(bb).textContent=&#x27;&#x27;;}};
+  return S;}
+function hl(sb,i){$(sb).querySelectorAll(&#x27;.blk&#x27;).forEach(b=&gt;b.classList.toggle(&#x27;run&#x27;,+b.dataset.b===i));}
+function meow(){try{const a=new (window.AudioContext||window.webkitAudioContext)();const o=a.createOscillator(),g=a.createGain();o.type=&#x27;triangle&#x27;;
+  o.frequency.setValueAtTime(820,a.currentTime);o.frequency.exponentialRampToValueAtTime(380,a.currentTime+.5);g.gain.setValueAtTime(.25,a.currentTime);g.gain.exponentialRampToValueAtTime(.001,a.currentTime+.55);
+  o.connect(g);g.connect(a.destination);o.start();o.stop(a.currentTime+.6);}catch(e){}}
+function cityBg(c){c.fillStyle=&#x27;#0b1d3a&#x27;;c.fillRect(0,0,480,360);
+  const B=[[0,170,60],[64,130,50],[118,190,70],[192,150,46],[242,110,64],[310,175,52],[366,140,60],[430,185,50]];
+  B.forEach(([x,h,w],k)=&gt;{c.fillStyle=k%2?&#x27;#22314f&#x27;:&#x27;#1a2742&#x27;;c.fillRect(x,300-h,w,h);c.fillStyle=&#x27;#ffd166&#x27;;
+    for(let yy=300-h+10;yy&lt;290;yy+=18)for(let xx=x+6;xx&lt;x+w-8;xx+=14)if((xx*7+yy*3+k)%5&lt;3)c.fillRect(xx,yy,7,9);});
+  c.fillStyle=&#x27;#3a3f45&#x27;;c.fillRect(0,300,480,60);c.fillStyle=&#x27;#ffd166&#x27;;for(let xx=10;xx&lt;480;xx+=50)c.fillRect(xx,328,26,4);}
+function gridBg(c){c.fillStyle=&#x27;#fff&#x27;;c.fillRect(0,0,480,360);c.strokeStyle=&#x27;#eef1f3&#x27;;c.lineWidth=1;
+  for(let x=0;x&lt;=480;x+=40){c.beginPath();c.moveTo(x,0);c.lineTo(x,360);c.stroke();}for(let y=0;y&lt;=360;y+=40){c.beginPath();c.moveTo(0,y);c.lineTo(480,y);c.stroke();}}
+
+/* ===== لعبة 1: الشبكة ===== */
+const LV=[{cat:[4,3],moon:[1,3],walls:[],t:&#x27;المرحلة 1 من 3: القمر في نفس الصف.&#x27;},
+ {cat:[4,3],moon:[1,1],walls:[[3,3],[3,2]],t:&#x27;المرحلة 2 من 3: احذر المباني 🏢&#x27;},
+ {cat:[0,3],moon:[4,0],walls:[[1,2],[2,2],[3,1],[0,1]],t:&#x27;المرحلة 3 من 3: طريق أطول!&#x27;}];
+const MV={U:[0,-1,&#x27;⬆️&#x27;],D:[0,1,&#x27;⬇️&#x27;],L:[-1,0,&#x27;⬅️&#x27;],R:[1,0,&#x27;➡️&#x27;]};
+let lv=0,prog=[],pos,running=false;
+function ggDraw(trail){const L=LV[lv];let h=&#x27;&#x27;;for(let y=0;y&lt;4;y++)for(let x=0;x&lt;5;x++){const w=L.walls.some(([a,b])=&gt;a===x&amp;&amp;b===y);
+  const isCat=pos[0]===x&amp;&amp;pos[1]===y,isMoon=L.moon[0]===x&amp;&amp;L.moon[1]===y,tr=trail&amp;&amp;trail.some(([a,b])=&gt;a===x&amp;&amp;b===y);
+  h+=`&lt;div class=&quot;${tr?&#x27;trail&#x27;:&#x27;&#x27;}&quot;&gt;${isCat?&#x27;🐱&#x27;:isMoon?&#x27;🌙&#x27;:w?&#x27;🏢&#x27;:&#x27;&#x27;}&lt;/div&gt;`;}$(&#x27;gg&#x27;).innerHTML=h;}
+function progDraw(now){$(&#x27;prog&#x27;).innerHTML=prog.map((m,i)=&gt;`&lt;span class=&quot;${i===now?&#x27;now&#x27;:&#x27;&#x27;}&quot;&gt;${MV[m][2]}&lt;/span&gt;`).join(&#x27;&#x27;);}
+function ggLoad(){pos=[...LV[lv].cat];prog=[];$(&#x27;ggLv&#x27;).textContent=LV[lv].t;$(&#x27;ggNext&#x27;).style.display=&#x27;none&#x27;;$(&#x27;ggFb&#x27;).textContent=&#x27;&#x27;;ggDraw();progDraw();}
+document.querySelectorAll(&#x27;.pad button&#x27;).forEach(b=&gt;b.onclick=()=&gt;{if(running||prog.length&gt;=14)return;prog.push(b.dataset.m);progDraw();});
+$(&#x27;ggUndo&#x27;).onclick=()=&gt;{if(running)return;prog.pop();progDraw();};
+$(&#x27;ggClr&#x27;).onclick=()=&gt;{if(running)return;prog=[];pos=[...LV[lv].cat];ggDraw();progDraw();$(&#x27;ggFb&#x27;).textContent=&#x27;&#x27;;};
+$(&#x27;ggNext&#x27;).onclick=()=&gt;{lv=(lv+1)%LV.length;ggLoad();};
+$(&#x27;ggRun&#x27;).onclick=async()=&gt;{if(running)return;if(!prog.length){$(&#x27;ggFb&#x27;).className=&#x27;fb bad&#x27;;$(&#x27;ggFb&#x27;).textContent=&#x27;اكتب برنامجًا أولًا: اضغط الأسهم.&#x27;;return;}
+  running=true;const L=LV[lv];pos=[...L.cat];const trail=[[...pos]];ggDraw(trail);
+  for(let i=0;i&lt;prog.length;i++){progDraw(i);await sleep(380);const [dx,dy]=MV[prog[i]];const nx=pos[0]+dx,ny=pos[1]+dy;
+    if(nx&lt;0||nx&gt;4||ny&lt;0||ny&gt;3||L.walls.some(([a,b])=&gt;a===nx&amp;&amp;b===ny)){$(&#x27;ggFb&#x27;).className=&#x27;fb bad&#x27;;$(&#x27;ggFb&#x27;).textContent=`💥 الأمر رقم ${i+1} أوقف القطة! الحاسب ينفّذ تعليماتك بالضبط. صحّح البرنامج.`;running=false;return;}
+    pos=[nx,ny];trail.push([nx,ny]);ggDraw(trail);}
+  progDraw();running=false;
+  if(pos[0]===L.moon[0]&amp;&amp;pos[1]===L.moon[1]){$(&#x27;ggFb&#x27;).className=&#x27;fb ok&#x27;;$(&#x27;ggFb&#x27;).textContent=`🌟 وصلت القطة إلى القمر! برنامجك فيه ${prog.length} أوامر.`;$(&#x27;ggNext&#x27;).style.display=&#x27;&#x27;;$(&#x27;ggNext&#x27;).textContent=lv===LV.length-1?&#x27;🔄 العب من البداية&#x27;:&#x27;⏭️ المرحلة التالية&#x27;;}
+  else{$(&#x27;ggFb&#x27;).className=&#x27;fb bad&#x27;;$(&#x27;ggFb&#x27;).textContent=&#x27;🤔 انتهت الأوامر ولم تصل القطة. التعليمات يجب أن تكون كاملة ومحددة.&#x27;;}};
+ggLoad();
+
+/* ===== لعبة 2: المخطط الانسيابي ===== */
+const FC=[[&#x27;term&#x27;,&#x27;البداية&#x27;],[&#x27;io&#x27;,&#x27;قل شيئًا&#x27;],[&#x27;proc&#x27;,&#x27;حرّك القطة إلى نقطة البداية&#x27;],[&#x27;proc&#x27;,&#x27;حدّد لبنات القلم&#x27;],[&#x27;proc&#x27;,&#x27;ارسم القمر&#x27;],[&#x27;term&#x27;,&#x27;النهاية&#x27;]];
+let fci=0;
+$(&#x27;fcPick&#x27;).innerHTML=[&#x27;term&#x27;,&#x27;io&#x27;,&#x27;proc&#x27;,&#x27;dec&#x27;].map(k=&gt;`&lt;button data-k=&quot;${k}&quot;&gt;${shapeSvg(k)}${SHN[k]}&lt;/button&gt;`).join(&#x27;&#x27;);
+function fcStep(){drawFc($(&#x27;fcOut&#x27;),FC.slice(0,fci));if(fci&lt;FC.length){$(&#x27;fcCur&#x27;).textContent=&#x27;الخطوة: «&#x27;+FC[fci][1]+&#x27;» — ما شكلها؟&#x27;;}
+  else{$(&#x27;fcCur&#x27;).textContent=&#x27;🎉 أكملت المخطط الانسيابي لرسم القمر!&#x27;;$(&#x27;fcPick&#x27;).style.display=&#x27;none&#x27;;}}
+$(&#x27;fcPick&#x27;).querySelectorAll(&#x27;button&#x27;).forEach(b=&gt;b.onclick=()=&gt;{if(fci&gt;=FC.length)return;const ok=b.dataset.k===FC[fci][0];
+  b.classList.add(ok?&#x27;r&#x27;:&#x27;w&#x27;);setTimeout(()=&gt;b.classList.remove(&#x27;r&#x27;,&#x27;w&#x27;),500);
+  $(&#x27;fcFb&#x27;).className=&#x27;fb &#x27;+(ok?&#x27;ok&#x27;:&#x27;bad&#x27;);$(&#x27;fcFb&#x27;).textContent=ok?&#x27;✔ صحيح: &#x27;+SHN[b.dataset.k]:&#x27;💡 فكّر: هل هي بداية؟ أم كلام يظهر؟ أم أمر؟&#x27;;if(ok){fci++;fcStep();}});
+fcStep();
+
+/* ===== لعبة 3: القمر ===== */
+const MOON=[&#x27;💬 اجعل القطة تقول شيئًا.&#x27;,&#x27;🚶 حرّك القطة إلى النقطة التي ستبدأ منها رسم القمر.&#x27;,&#x27;✏️ حدّد لبنات القلم.&#x27;,&#x27;🌙 ارسم القمر.&#x27;];
+const SM=Stage(&#x27;cvMoon&#x27;,&#x27;spMoon&#x27;,&#x27;bbMoon&#x27;,cityBg);SM.reset(-60,-100,90);
+orderGame(&#x27;moonOrd&#x27;,&#x27;moonOrdFb&#x27;,MOON,()=&gt;{$(&#x27;moonRunBox&#x27;).style.display=&#x27;&#x27;;});
+$(&#x27;moonGo&#x27;).onclick=async()=&gt;{if(SM.busy)return;SM.busy=true;$(&#x27;moonFb&#x27;).textContent=&#x27;&#x27;;
+  hl(&#x27;sbMoon&#x27;,0);SM.reset(-60,-100,90);await sleep(300);
+  hl(&#x27;sbMoon&#x27;,1);SM.clear();await sleep(300);
+  hl(&#x27;sbMoon&#x27;,2);await SM.say(&#x27;لنرسم قمرًا في السماء&#x27;,3);
+  hl(&#x27;sbMoon&#x27;,3);await SM.move(100);
+  hl(&#x27;sbMoon&#x27;,4);SM.turn(-90);await sleep(300);
+  hl(&#x27;sbMoon&#x27;,5);await SM.move(130);
+  hl(&#x27;sbMoon&#x27;,6);SM.color=&#x27;#f5f0c8&#x27;;await sleep(250);
+  hl(&#x27;sbMoon&#x27;,7);SM.pen=true;await sleep(250);
+  hl(&#x27;sbMoon&#x27;,8);SM.size=40;await sleep(250);
+  for(let k=0;k&lt;45;k++){hl(&#x27;sbMoon&#x27;,10);await SM.move(3,1);hl(&#x27;sbMoon&#x27;,11);SM.turn(10);await sleep(12);}
+  hl(&#x27;sbMoon&#x27;,-1);SM.busy=false;$(&#x27;moonFb&#x27;).className=&#x27;fb ok&#x27;;$(&#x27;moonFb&#x27;).textContent=&#x27;🌙 رسمت القطة القمر! هذا برنامجك الأول.&#x27;;};
+
+/* ===== تدريب 1 ===== */
+const T1=[[&#x27;تُستخدم الخوارزميات فقط لوصفات الطعام.&#x27;,0],[&#x27;تستطيع أجهزة الحاسب أن تقرر ماذا تفعل من تلقاء نفسها.&#x27;,0],[&#x27;البرنامج هو مجموعة من التعليمات.&#x27;,1],[&#x27;يسمى منشئ البرنامج مبرمجًا.&#x27;,1]];
+let t1n=0,t1c=0;
+$(&#x27;t1&#x27;).innerHTML=T1.map(([t],i)=&gt;`&lt;div class=&quot;pair&quot;&gt;&lt;div class=&quot;say&quot;&gt;${i+1}. ${t}&lt;/div&gt;&lt;div class=&quot;opts2&quot;&gt;&lt;button data-i=&quot;${i}&quot; data-v=&quot;1&quot;&gt;✔&lt;/button&gt;&lt;button data-i=&quot;${i}&quot; data-v=&quot;0&quot;&gt;✖&lt;/button&gt;&lt;/div&gt;&lt;/div&gt;`).join(&#x27;&#x27;);
+addSpeakers($(&#x27;t1&#x27;));
+$(&#x27;t1&#x27;).querySelectorAll(&#x27;.opts2 button&#x27;).forEach(b=&gt;b.onclick=()=&gt;{const p=b.parentElement;if(p.dataset.d)return;p.dataset.d=1;t1n++;const a=T1[+b.dataset.i][1],ok=+b.dataset.v===a;
+  b.classList.add(ok?&#x27;r&#x27;:&#x27;w&#x27;);if(ok)t1c++;else p.querySelector(`[data-v=&quot;${a}&quot;]`).classList.add(&#x27;r&#x27;);
+  if(t1n===T1.length)$(&#x27;t1Score&#x27;).textContent=`نتيجتك: ${t1c} من ${T1.length} ${t1c===T1.length?&#x27;🌟&#x27;:&#x27;👍&#x27;}`;});
+
+/* ===== اختيار من متعدد ===== */
+function mcq(id,scoreId,items,cls){let n=0,c=0;
+  $(id).innerHTML=items.map(([q,o],i)=&gt;`&lt;div class=&quot;q&quot; data-i=&quot;${i}&quot;&gt;&lt;div class=&quot;say&quot;&gt;&lt;b&gt;${i+1}. ${q}&lt;/b&gt;&lt;/div&gt;&lt;div class=&quot;os ${cls||&#x27;&#x27;}&quot;&gt;${o.map((x,j)=&gt;`&lt;button class=&quot;o&quot; data-j=&quot;${j}&quot;&gt;${x}&lt;/button&gt;`).join(&#x27;&#x27;)}&lt;/div&gt;&lt;/div&gt;`).join(&#x27;&#x27;);addSpeakers($(id));
+  $(id).querySelectorAll(&#x27;.q&#x27;).forEach(d=&gt;{const a=items[+d.dataset.i][2];d.querySelectorAll(&#x27;button.o&#x27;).forEach(b=&gt;b.onclick=()=&gt;{if(d.dataset.d)return;d.dataset.d=1;n++;
+    if(+b.dataset.j===a){b.classList.add(&#x27;r&#x27;);c++;}else{b.classList.add(&#x27;w&#x27;);d.querySelectorAll(&#x27;button.o&#x27;)[a].classList.add(&#x27;r&#x27;);}
+    if(n===items.length)$(scoreId).textContent=`نتيجتك: ${c} من ${items.length} ${c===items.length?&#x27;🌟&#x27;:&#x27;👍&#x27;}`;});});}
+/* تدريب 2 */
+const O2=[&#x27;🧠 تفهم المشكلة التي تعالجها، لكي تكون قادرًا على حلها.&#x27;,&#x27;✏️ إيجاد الخطوات اللازمة لحل المشكلة، لإنشاء الخوارزمية.&#x27;,&#x27;🧩 تحويل الخطوات إلى تعليمات برمجية باستخدام المقاطع البرمجية.&#x27;];
+mcq(&#x27;t2&#x27;,&#x27;t2Score&#x27;,[[&#x27;أولًا: قبل أن تبدأ بتصميم المقطع البرمجي يجب عليك أن …&#x27;,O2,0],[&#x27;ثانيًا: يجب عليك …&#x27;,O2,1],[&#x27;أخيرًا: عليك القيام بـ …&#x27;,O2,2]]);
+/* تدريب 3 */
+const W3=[[&#x27;🎯 موضوع العرض&#x27;,1],[&#x27;⏱️ الوقت المحدد&#x27;,1],[&#x27;👥 زملائي الذين سيشاهدون&#x27;,1],[&#x27;👟 لون حذائي&#x27;,0],[&#x27;🖼️ صور مناسبة وواضحة&#x27;,1],[&#x27;🎮 عدد الألعاب في جوالي&#x27;,0]];
+$(&#x27;t3a&#x27;).innerHTML=W3.map(([w,ok])=&gt;`&lt;button aria-pressed=&quot;false&quot; data-ok=&quot;${ok}&quot;&gt;${w}&lt;/button&gt;`).join(&#x27;&#x27;);
+$(&#x27;t3a&#x27;).querySelectorAll(&#x27;button&#x27;).forEach(b=&gt;b.onclick=()=&gt;{if($(&#x27;t3a&#x27;).dataset.d)return;b.setAttribute(&#x27;aria-pressed&#x27;,b.getAttribute(&#x27;aria-pressed&#x27;)===&#x27;true&#x27;?&#x27;false&#x27;:&#x27;true&#x27;);speak(b.textContent);});
+$(&#x27;t3aChk&#x27;).onclick=()=&gt;{$(&#x27;t3a&#x27;).dataset.d=1;let c=0,w=0;$(&#x27;t3a&#x27;).querySelectorAll(&#x27;button&#x27;).forEach(b=&gt;{const p=b.getAttribute(&#x27;aria-pressed&#x27;)===&#x27;true&#x27;,g=b.dataset.ok===&#x27;1&#x27;;
+  if(p&amp;&amp;g){b.classList.add(&#x27;r&#x27;);c++;}else if(p&amp;&amp;!g){b.classList.add(&#x27;w&#x27;);w++;}else if(!p&amp;&amp;g)b.classList.add(&#x27;miss&#x27;);});
+  $(&#x27;t3aFb&#x27;).className=&#x27;fb &#x27;+(c===4&amp;&amp;!w?&#x27;ok&#x27;:&#x27;bad&#x27;);$(&#x27;t3aFb&#x27;).textContent=c===4&amp;&amp;!w?&#x27;🌟 ممتاز! هذه أمور مهمة للعرض.&#x27;:`أصبت ${c} من 4. الأمور ذات الإطار المنقّط فاتتك.`;};
+orderGame(&#x27;t3b&#x27;,&#x27;t3bFb&#x27;,[&#x27;🎯 أحدّد موضوع العرض.&#x27;,&#x27;🔎 أبحث عن المعلومات والصور في مصادر موثوقة.&#x27;,&#x27;🖥️ أصمّم الشرائح، وأكتب النقاط المهمة.&#x27;,&#x27;🗣️ أتدرّب على الإلقاء.&#x27;,&#x27;👩‍🏫 أقدّم العرض أمام صفي.&#x27;]);
+/* تدريب 4 */
+const SO=[&#x27;term&#x27;,&#x27;io&#x27;,&#x27;proc&#x27;,&#x27;dec&#x27;],SOH=SO.map(k=&gt;shapeSvg(k));
+mcq(&#x27;t4&#x27;,&#x27;t4Score&#x27;,[[&#x27;تمييز نهاية العمليات&#x27;,SOH,0],[&#x27;اتخاذ قرار&#x27;,SOH,3],[&#x27;إدخال بيانات&#x27;,SOH,1],[&#x27;تنفيذ الحسابات&#x27;,SOH,2]],&#x27;sh&#x27;);
+
+/* ===== تدريب 5: المثلث ===== */
+const TRI=[&#x27;🔴 اجعل لون القلم أحمر، وحجمه كبيرًا.&#x27;,&#x27;✏️ أنزل القلم.&#x27;,&#x27;🔺 ارسم المثلث: كرّر 3 مرات (تحرّك، ثم استدر).&#x27;,&#x27;⬆️ ارفع القلم، واذهب إلى وسط المثلث.&#x27;,&#x27;🔊 أصدر صوتًا.&#x27;];
+const ST=Stage(&#x27;cvTri&#x27;,&#x27;spTri&#x27;,&#x27;bbTri&#x27;,gridBg);ST.reset(0,-20,90);
+orderGame(&#x27;t5&#x27;,&#x27;t5Fb&#x27;,TRI,()=&gt;{$(&#x27;t5Run&#x27;).style.display=&#x27;&#x27;;drawFc($(&#x27;t5Fc&#x27;),[[&#x27;term&#x27;,&#x27;البداية&#x27;],[&#x27;proc&#x27;,&#x27;اجعل القلم أحمر وكبيرًا&#x27;],[&#x27;proc&#x27;,&#x27;أنزل القلم&#x27;],[&#x27;proc&#x27;,&#x27;ارسم المثلث&#x27;],[&#x27;proc&#x27;,&#x27;ارفع القلم واذهب إلى الوسط&#x27;],[&#x27;io&#x27;,&#x27;أصدر صوتًا: مياو&#x27;],[&#x27;term&#x27;,&#x27;النهاية&#x27;]]);});
+$(&#x27;triGo&#x27;).onclick=async()=&gt;{if(ST.busy)return;ST.busy=true;$(&#x27;triFb&#x27;).textContent=&#x27;&#x27;;
+  hl(&#x27;sbTri&#x27;,0);ST.reset(0,-20,90);await sleep(300);
+  hl(&#x27;sbTri&#x27;,1);ST.clear();await sleep(250);
+  hl(&#x27;sbTri&#x27;,2);ST.color=&#x27;#e02424&#x27;;await sleep(250);
+  hl(&#x27;sbTri&#x27;,3);ST.size=8;await sleep(250);
+  hl(&#x27;sbTri&#x27;,4);ST.goto(-100,-80);await sleep(300);
+  hl(&#x27;sbTri&#x27;,5);ST.dir=90;await sleep(250);
+  hl(&#x27;sbTri&#x27;,6);ST.pen=true;await sleep(250);
+  for(let k=0;k&lt;3;k++){hl(&#x27;sbTri&#x27;,8);await ST.move(200,25);hl(&#x27;sbTri&#x27;,9);ST.turn(-120);await sleep(300);}
+  hl(&#x27;sbTri&#x27;,10);ST.pen=false;await sleep(250);
+  hl(&#x27;sbTri&#x27;,11);ST.goto(0,-20);await sleep(300);
+  hl(&#x27;sbTri&#x27;,12);meow();await ST.say(&#x27;مياو! 🎵&#x27;,1.2);
+  hl(&#x27;sbTri&#x27;,-1);ST.busy=false;$(&#x27;triFb&#x27;).className=&#x27;fb ok&#x27;;$(&#x27;triFb&#x27;).textContent=&#x27;🔺 رسمت القطة المثلث، ووقفت في وسطه، وأصدرت صوتًا!&#x27;;};
+
+/* ===== إثراء: ألوان اللبنات ===== */
+const CL=[[&#x27;#FFBF00&#x27;,&#x27;الأحداث 🏁&#x27;],[&#x27;#9966FF&#x27;,&#x27;الهيئة 💬&#x27;],[&#x27;#4C97FF&#x27;,&#x27;الحركة 🏃&#x27;],[&#x27;#0FBD8C&#x27;,&#x27;القلم ✏️&#x27;]];
+const dot=c=&gt;`&lt;span style=&quot;display:inline-block;width:46px;height:26px;border-radius:8px;background:${c};vertical-align:middle&quot;&gt;&lt;/span&gt;`;
+if($(&#x27;en1&#x27;))mcq(&#x27;en1&#x27;,&#x27;en1Score&#x27;,[[&#x27;لبنة «تحرّك 10 خطوة» لونها:&#x27;,CL.map(x=&gt;dot(x[0])),2],[&#x27;لبنة «عند نقر 🏁» لونها:&#x27;,CL.map(x=&gt;dot(x[0])),0],[&#x27;لبنة «أنزل القلم» لونها:&#x27;,CL.map(x=&gt;dot(x[0])),3],[&#x27;لبنة «قل السلام عليكم» لونها:&#x27;,CL.map(x=&gt;dot(x[0])),1]],&#x27;sh&#x27;);
+addSpeakers();
+&lt;/script&gt;
+&lt;script&gt;(function(){function fit(){try{frameElement.style.height=(document.body.offsetHeight+8)+&#x27;px&#x27;}catch(e){}}new ResizeObserver(fit).observe(document.body);window.addEventListener(&#x27;load&#x27;,fit);document.addEventListener(&#x27;click&#x27;,function(){setTimeout(fit,30)});fit();})();&lt;/script&gt;&lt;/body&gt;
+&lt;/html&gt;
+"></iframe>
+            </div>
+            <div class="tab-panel homework" id="g5-u4-l1-hw">
+              <h5>الواجب</h5>
+              <p>شاهد الشرح، وجرّب الألعاب، ثم حلّ الواجب. اكتب اسمك الثلاثي بشكل صحيح.</p>
+              <a class="book-cta-link" href="https://forms.cloud.microsoft/Pages/ResponsePage.aspx?id=bsmRCN1p8E2Ki3bGl2JAh_fr57jQ4NxNvJdBQZuwKFlUMkM4UjBYT0pPT09CVTFIVlYzQ0FUSjlZUS4u" target="_blank" rel="noopener">فتح نموذج الواجب</a>
+            </div>
+            <div class="tab-panel enrich" id="g5-u4-l1-enrich">
+              <h5>الإثراءات</h5>
+              <p>افتح منصة سكراتش مع أسرتك (scratch.mit.edu)، واختر خلفية مدينة في الليل، ثم انسخ المقطع البرمجي لرسم القمر، واضغط العلم الأخضر لتشاهد القطة ترسمه.</p>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
       <div class="sub-info" id="g5-path">
         <h3>المسار التدريبي</h3>
         <div class="info-box" style="margin-bottom:18px;">
@@ -8149,6 +8885,13 @@ $(&#x27;t6&#x27;).querySelectorAll(&#x27;.opts2 button&#x27;).forEach(b=&gt;b.on
             { q: "رخصة تمنح الإذن العام لاستخدام الأعمال الإبداعية:", choices: ["المشاع الإبداعي (CC)", "الرخصة التجارية", "لا توجد رخصة"], correct: 0 },
             { q: "المكان الذي نضع فيه الصور بالترتيب في محرر الفيديو يسمى:", choices: ["مكتبة المشروع", "لوحة العمل (Storyboard)", "شريط العنوان"], correct: 1 },
             { q: "لإضافة ملف صوتي من الحاسب إلى الفيديو نختار:", choices: ["حركة", "صوت مخصص", "المدة"], correct: 1 }
+          ]}
+        ]},
+        { id: "u4", label: "الوحدة الرابعة: البرمجة والتفاعل في سكراتش", lessons: [
+          { id: "g5-u4-l1", title: "الدرس الأول: كيفية تصميم برنامج", quiz: [
+            { q: "برنامج الحاسب هو:", choices: ["مجموعة من التعليمات ينفذها الحاسب لتحقيق هدف", "قطعة من مكونات الحاسب المادية", "صورة على سطح المكتب"], correct: 0 },
+            { q: "الشكل الذي يُستخدم في المخطط الانسيابي لاتخاذ قرار (نعم أو لا):", choices: ["المستطيل", "المعيّن", "متوازي الأضلاع"], correct: 1 },
+            { q: "الخطوة الأولى في إنشاء برنامج هي:", choices: ["كتابة المقطع البرمجي", "تحليل المشكلة", "رسم المخطط الانسيابي"], correct: 1 }
           ]}
         ]}
       ]
