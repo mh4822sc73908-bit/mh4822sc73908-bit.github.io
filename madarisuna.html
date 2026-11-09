@@ -1,0 +1,494 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>مدارسنا في بيانات</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@400;500;600;700&family=Reem+Kufi:wght@500;700&display=swap">
+<style>
+/* Layout: one working column; a horizontal step rail on top, the active step as a sheet below, like a field logbook. */
+:root{
+  --bg:#EEF2F1; --sheet:#FFFFFF; --ink:#16313A; --muted:#5B7078; --line:#D5DEDD;
+  --data:#1E6B8C; --sand:#C9832A; --sand-soft:#F6E9D6; --data-soft:#E1EEF3;
+  --ok:#2E7D4F; --ok-soft:#E3F2E8; --bad:#B4432F; --bad-soft:#F8E4DF;
+  --display:"Reem Kufi","IBM Plex Sans Arabic",Tahoma,sans-serif;
+  --body:"IBM Plex Sans Arabic",Tahoma,"Segoe UI",sans-serif;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --bg:#0F1B1F; --sheet:#16262B; --ink:#E4EEEF; --muted:#94AAB0; --line:#2A3E44;
+  --data:#5FB3D6; --sand:#E2A453; --sand-soft:#3A2E1D; --data-soft:#1B3540;
+  --ok:#6CC892; --ok-soft:#1C3527; --bad:#EE8A75; --bad-soft:#3D2420; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#0F1B1F; --sheet:#16262B; --ink:#E4EEEF; --muted:#94AAB0; --line:#2A3E44;
+  --data:#5FB3D6; --sand:#E2A453; --sand-soft:#3A2E1D; --data-soft:#1B3540;
+  --ok:#6CC892; --ok-soft:#1C3527; --bad:#EE8A75; --bad-soft:#3D2420; color-scheme:dark}
+html{direction:rtl}
+*{box-sizing:border-box}
+body{background:var(--bg);color:var(--ink);font-family:var(--body);font-size:16px;line-height:1.75;margin:0}
+.wrap{max-width:860px;margin:0 auto;padding-block:20px 48px;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+header.top{display:flex;flex-wrap:wrap;align-items:flex-end;justify-content:space-between;gap:8px 16px;margin-bottom:16px}
+h1{font-family:var(--display);font-weight:700;font-size:clamp(1.7rem,4.5vw,2.4rem);margin:0;line-height:1.3;text-wrap:balance}
+h1 small{display:block;font-family:var(--body);font-size:.85rem;font-weight:500;color:var(--muted);letter-spacing:.01em}
+.who{font-size:.85rem;color:var(--muted)}
+.who b{color:var(--ink)}
+/* step rail */
+.rail{display:flex;gap:4px;overflow-x:auto;padding-bottom:6px;margin-bottom:14px;scrollbar-width:thin}
+.rail button{flex:0 0 auto;display:flex;align-items:center;gap:6px;border:1px solid var(--line);background:var(--sheet);color:var(--muted);font:inherit;font-size:.8rem;padding:4px 10px 4px 12px;border-radius:999px;cursor:pointer}
+.rail button .n{display:inline-grid;place-items:center;width:20px;height:20px;border-radius:50%;background:var(--line);color:var(--ink);font-size:.72rem;font-variant-numeric:tabular-nums}
+.rail button.done .n{background:var(--ok);color:var(--sheet)}
+.rail button.cur{border-color:var(--data);color:var(--ink);font-weight:600}
+.rail button.cur .n{background:var(--data);color:var(--sheet)}
+.rail button:disabled{opacity:.45;cursor:not-allowed}
+.bar{height:6px;background:var(--line);border-radius:3px;overflow:hidden;margin-bottom:18px}
+.bar i{display:block;height:100%;background:linear-gradient(90deg,var(--data),var(--sand));transition:width .4s}
+/* sheet */
+.sheet{background:var(--sheet);border:1px solid var(--line);border-radius:14px;padding:22px clamp(16px,4vw,32px) 26px}
+.eyebrow{font-size:.78rem;letter-spacing:.04em;color:var(--sand);font-weight:600}
+h2{font-family:var(--display);font-weight:700;font-size:1.55rem;margin:2px 0 6px;text-wrap:balance}
+h3{font-size:1.05rem;margin:22px 0 8px}
+p{margin:6px 0;max-width:68ch}
+.lead{color:var(--muted)}
+.task{background:var(--sand-soft);border-radius:10px;padding:10px 14px;margin:14px 0;font-size:.95rem}
+.task b{color:var(--ink)}
+label{font-weight:600;font-size:.92rem}
+input[type=text],input[type=number],select,textarea{font:inherit;color:var(--ink);background:var(--bg);border:1px solid var(--line);border-radius:8px;padding:7px 10px;width:100%}
+textarea{min-height:76px;resize:vertical}
+input:focus-visible,select:focus-visible,textarea:focus-visible,button:focus-visible{outline:2px solid var(--data);outline-offset:2px}
+.field{display:grid;gap:4px;margin:10px 0}
+.grid2{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:10px 16px}
+.btn{font:inherit;font-weight:600;border:0;border-radius:9px;padding:9px 18px;cursor:pointer;background:var(--data);color:var(--sheet)}
+.btn.ghost{background:transparent;color:var(--data);border:1px solid var(--data)}
+.btn.small{padding:5px 12px;font-size:.85rem}
+.btn:disabled{opacity:.45;cursor:not-allowed}
+.nav{display:flex;flex-wrap:wrap;gap:10px;justify-content:space-between;align-items:center;margin-top:24px;padding-top:16px;border-top:1px dashed var(--line)}
+.gate{font-size:.85rem;color:var(--muted)}
+.gate.ok{color:var(--ok);font-weight:600}
+ul.goals{margin:8px 0;padding-inline-start:20px}
+ul.goals li{margin:3px 0}
+/* quiz */
+.q{border:1px solid var(--line);border-radius:10px;padding:12px 14px;margin:10px 0}
+.q .qt{font-weight:600;margin-bottom:6px}
+.q .qn{color:var(--sand);font-variant-numeric:tabular-nums;margin-inline-end:6px}
+.opts{display:grid;gap:6px}
+.opt{display:flex;gap:8px;align-items:center;border:1px solid var(--line);border-radius:8px;padding:6px 10px;cursor:pointer;font-weight:400}
+.opt input{accent-color:var(--data)}
+.opt.sel{border-color:var(--data);background:var(--data-soft)}
+.opt.right{border-color:var(--ok);background:var(--ok-soft)}
+.opt.wrong{border-color:var(--bad);background:var(--bad-soft)}
+.ltr{direction:ltr;unicode-bidi:isolate;font-family:ui-monospace,Consolas,monospace;font-size:.92em}
+/* tables */
+.tbl-wrap{overflow-x:auto;margin:8px 0}
+table{border-collapse:collapse;width:100%;min-width:420px;font-size:.92rem}
+th,td{border-bottom:1px solid var(--line);padding:6px 8px;text-align:start;vertical-align:middle}
+th{font-size:.8rem;color:var(--muted);font-weight:600;letter-spacing:.02em}
+td.num,th.num{font-variant-numeric:tabular-nums}
+td .x{background:none;border:0;color:var(--bad);cursor:pointer;font:inherit;font-size:1.1rem}
+.colA{background:var(--data-soft)}
+/* checks */
+.check{display:grid;grid-template-columns:1fr 140px auto;gap:8px;align-items:center;padding:8px 0;border-bottom:1px solid var(--line)}
+@media (max-width:520px){.check{grid-template-columns:1fr 1fr}.check .st{grid-column:1/-1}}
+.st{font-size:.85rem}
+.st.ok{color:var(--ok)}.st.bad{color:var(--bad)}
+.hint{font-size:.82rem;color:var(--muted)}
+.fb{border-radius:8px;padding:8px 12px;margin-top:10px;font-size:.92rem}
+.fb.ok{background:var(--ok-soft);color:var(--ok)}
+.fb.bad{background:var(--bad-soft);color:var(--bad)}
+/* concept cards */
+.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px;margin:12px 0}
+.ccard{border-top:3px solid var(--data);background:var(--bg);border-radius:8px;padding:12px 14px}
+.ccard h4{margin:0 0 4px;font-size:1rem}
+.ccard p{font-size:.9rem;margin:0}
+/* charts */
+.charts{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:16px;margin-top:12px}
+.chart{border:1px solid var(--line);border-radius:10px;padding:10px 12px;min-width:0}
+.chart h4{margin:0 0 6px;font-size:.92rem}
+.chart svg{width:100%;height:auto;display:block}
+.legend{display:flex;flex-wrap:wrap;gap:4px 12px;font-size:.8rem;margin-top:4px}
+.legend span{display:inline-flex;align-items:center;gap:5px}
+.legend i{width:10px;height:10px;border-radius:2px;display:inline-block}
+/* school card */
+.scard{border:2px solid var(--ink);border-radius:14px;padding:18px;margin-top:14px;background:var(--sheet)}
+.scard .t{font-family:var(--display);font-size:1.3rem;margin:0}
+.scard .s{color:var(--muted);font-size:.85rem}
+.nums{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin:12px 0}
+.nums div{border-inline-start:3px solid var(--sand);padding-inline-start:8px}
+.nums b{display:block;font-family:var(--display);font-size:1.6rem;font-variant-numeric:tabular-nums;line-height:1.2}
+.nums span{font-size:.8rem;color:var(--muted)}
+@media (max-width:420px){.nums{grid-template-columns:1fr}}
+.score{display:flex;gap:18px;flex-wrap:wrap;margin:12px 0}
+.score div{background:var(--bg);border-radius:10px;padding:10px 16px}
+.score b{font-family:var(--display);font-size:1.8rem;font-variant-numeric:tabular-nums}
+.score span{display:block;font-size:.8rem;color:var(--muted)}
+.note{font-size:.8rem;color:var(--muted);margin-top:4px}
+.confirm{display:inline-flex;gap:8px;align-items:center;flex-wrap:wrap}
+footer{margin-top:20px;font-size:.8rem;color:var(--muted);text-align:center}
+@media (prefers-reduced-motion:reduce){.bar i{transition:none}}
+</style>
+</head>
+<body>
+
+<div class="wrap" dir="rtl" lang="ar">
+  <header class="top">
+    <h1><small>المهارات الرقمية · الصف السادس · المدرسة المركزية بحائل</small>مدارسنا في بيانات</h1>
+    <div class="who" id="who"></div>
+  </header>
+  <nav class="rail" id="rail" aria-label="خطوات الدرس"></nav>
+  <div class="bar" aria-hidden="true"><i id="prog"></i></div>
+  <main class="sheet" id="sheet" aria-live="polite"></main>
+  <footer>
+    <p class="note" id="syncSt"></p>
+    <span id="resetBox"><button class="btn ghost small" id="resetBtn" type="button">البدء من جديد</button></span>
+  </footer>
+</div>
+
+<script>
+(function(){
+/* ===== الإعداد: الصق هنا رابط تطبيق الويب من Google Apps Script (ينتهي بـ /exec) ===== */
+const SHEET_URL='https://script.google.com/macros/s/AKfycbzqrMBgkYqlip6711bD3dBwBWe7D_ugBBuYsar580h--gNMUEHg19XssI4AmixT-CCo/exec';
+/* ================================================================================== */
+const KEY='madarisuna-v1';
+const MODES=['مشيًا','سيارة الأسرة','الحافلة المدرسية','دراجة'];
+const WEATHER=['مشمس','غائم جزئيًا','غائم','ممطر','مغبر'];
+const DAYS=['الأحد','الاثنين','الثلاثاء','الأربعاء','الخميس'];
+const COLORS=['var(--data)','var(--sand)','var(--ok)','var(--bad)'];
+
+const QUIZ=[
+ {q:'أيّ مما يلي بيانات عددية؟',o:['وسيلة الوصول','زمن الوصول بالدقائق','اسم المدرسة'],a:1},
+ {q:'في جدول البيانات، يمثّل كل صف:',o:['نوع المعلومة','سجلًا واحدًا (طالبًا واحدًا مثلًا)','رسمًا بيانيًا'],a:1},
+ {q:'الأزمنة: 10 و20 و30 دقيقة. ما متوسطها؟',o:['20','60','30'],a:0},
+ {q:'ما الدالة التي تعطي أكبر قيمة في عمود؟',o:['<span class="ltr">SUM</span>','<span class="ltr">MAX</span>','<span class="ltr">AVERAGE</span>'],a:1},
+ {q:'لعرض نسبة الطلاب حسب وسيلة الوصول، أيّ رسم أنسب؟',o:['رسم دائري','رسم خطي','جدول دون رسم'],a:0},
+ {q:'ما الصيغة التي تحسب متوسط القيم من الخلية B2 إلى B5؟',o:['<span class="ltr">=SUM(B2:B5)</span>','<span class="ltr">=AVERAGE(B2:B5)</span>','<span class="ltr">=MAX(B2:B5)</span>'],a:1},
+ {q:'متوسط زمن الوصول: مدرسة (أ) 12 دقيقة، (ب) 25 دقيقة، (ج) 18 دقيقة. أيّ المدارس طلابها أبعد؟',o:['المدرسة (أ)','المدرسة (ب)','المدرسة (ج)'],a:1},
+ {q:'ما فائدة مقارنة بيانات مدرستك ببيانات مدارس أخرى؟',o:['فهم واقع مدرستنا مقارنة بغيرها واتخاذ قرارات أفضل','زيادة عدد الطلاب في المدرسة','لا فائدة منها'],a:0}
+];
+const CONCEPT_Q=[
+ {q:'عمود «درجة الحرارة» يحتوي بيانات:',o:['عددية','نصية'],a:0,why:'لأن قيمه أرقام يمكن جمعها وحساب متوسطها.'},
+ {q:'عمود «حالة الطقس» يحتوي بيانات:',o:['عددية','نصية'],a:1,why:'لأن قيمه كلمات مثل «مشمس» و«غائم»، فنعدّها ولا نحسب متوسطها.'},
+ {q:'إذا كان زمن وصول ثلاثة طلاب 5 و10 و15 دقيقة، فالمتوسط:',o:['10 دقائق','30 دقيقة','15 دقيقة'],a:0,why:'المجموع 30 مقسومًا على عدد الطلاب 3 يساوي 10.'}
+];
+
+function blank(){return{id:'g'+Date.now().toString(36)+Math.random().toString(36).slice(2,7),step:0,done:[],school:'',group:'',members:'',pre:{},post:{},
+  trip:[{m:'',t:''},{m:'',t:''},{m:'',t:''},{m:'',t:''}],temp:DAYS.map(()=>({c:'',w:''})),
+  concept:{},conceptChecked:false,calc:{},chart1:'',chart2:'',why:'',sentence:'',
+  others:[{n:'',v:''},{n:'',v:''}],pattern1:'',pattern2:'',question:''};}
+let S=blank();
+try{const raw=localStorage.getItem(KEY);if(raw)S=Object.assign(blank(),JSON.parse(raw));}catch(e){}
+if(!S.id)S.id='g'+Date.now().toString(36)+Math.random().toString(36).slice(2,7);
+function save(){try{localStorage.setItem(KEY,JSON.stringify(S));}catch(e){}}
+const $=s=>document.querySelector(s);
+const esc=s=>String(s??'').replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+const fmt=n=>(Math.round(n*10)/10).toLocaleString('ar-SA',{maximumFractionDigits:1});
+
+/* ---------- derived data ---------- */
+function tripRows(){return S.trip.filter(r=>r.m&&r.t!==''&&+r.t>0);}
+function tempRows(){return S.temp.filter(r=>r.c!==''&&r.w);}
+function stats(){
+  const tr=tripRows(),times=tr.map(r=>+r.t),temps=S.temp.map(r=>+r.c).filter((v,i)=>S.temp[i].c!=='');
+  const counts=MODES.map(m=>tr.filter(r=>r.m===m).length);
+  const maxC=Math.max(...counts);
+  return{n:tr.length,avg:times.reduce((a,b)=>a+b,0)/(times.length||1),max:Math.max(...times),min:Math.min(...times),
+    counts,top:MODES.filter((m,i)=>counts[i]===maxC&&maxC>0),tavg:temps.reduce((a,b)=>a+b,0)/(temps.length||1),temps};
+}
+
+/* ---------- steps ---------- */
+const STEPS=[
+ {t:'البداية',render:rStart,ok:()=>S.school.trim().length>1&&S.group.trim().length>0,need:'اكتب اسم المدرسة واسم المجموعة'},
+ {t:'الاختبار القبلي',render:()=>rQuiz('pre'),ok:()=>Object.keys(S.pre).length===QUIZ.length,need:'أجب عن الأسئلة الثمانية كلها'},
+ {t:'جمع البيانات',render:rCollect,ok:()=>tripRows().length>=4&&tempRows().length===5,need:'أدخل بيانات 4 طلاب على الأقل، والحرارة والطقس للأيام الخمسة'},
+ {t:'المفاهيم',render:rConcept,ok:()=>CONCEPT_Q.every((q,i)=>S.concept[i]===q.a),need:'أجب إجابة صحيحة عن أسئلة التحقق الثلاثة'},
+ {t:'نحسب',render:rCalc,ok:()=>calcChecks().every(c=>c.pass),need:'احسب القيم الخمس حسابًا صحيحًا'},
+ {t:'نمثّل بيانيًا',render:rChart,ok:()=>['دائري','أعمدة'].includes(S.chart1)&&['خطي','أعمدة'].includes(S.chart2)&&S.why.trim().length>=15,need:'اختر الرسمين المناسبين واكتب سبب اختيارك'},
+ {t:'بطاقة مدرستنا',render:rCard,ok:()=>S.sentence.trim().length>=20,need:'اكتب جملة تعريفية بمدرستك (20 حرفًا على الأقل)'},
+ {t:'نقارن',render:rCompare,ok:()=>S.others.filter(o=>o.n.trim()&&+o.v>0).length>=2&&S.pattern1.trim().length>=10&&S.pattern2.trim().length>=10&&S.question.trim().length>=8,need:'أدخل مدرستين أخريين على الأقل، واكتب نمطين وسؤالًا'},
+ {t:'الاختبار البعدي',render:()=>rQuiz('post'),ok:()=>Object.keys(S.post).length===QUIZ.length,need:'أجب عن الأسئلة الثمانية كلها'},
+ {t:'الإنجاز',render:rFinish,ok:()=>true,need:''}
+];
+function unlocked(i){for(let k=0;k<i;k++)if(!STEPS[k].ok())return false;return true;}
+
+function render(){
+  const i=S.step;
+  $('#rail').innerHTML=STEPS.map((s,k)=>`<button type="button" data-go="${k}" class="${k===i?'cur':''} ${k!==i&&STEPS[k].ok()&&unlocked(k)&&k<STEPS.length-1?'done':''}" ${unlocked(k)?'':'disabled'} aria-current="${k===i?'step':'false'}"><span class="n">${k+1}</span>${s.t}</button>`).join('');
+  const doneN=STEPS.slice(0,-1).filter((s,k)=>unlocked(k)&&s.ok()).length;
+  $('#prog').style.width=(doneN/(STEPS.length-1)*100)+'%';
+  $('#who').innerHTML=S.school?`<b>${esc(S.school)}</b> · ${esc(S.group)}`:'';
+  $('#sheet').innerHTML=`<div class="eyebrow">الخطوة ${i+1} من ${STEPS.length}</div>`+STEPS[i].render()+navHtml();
+  const cur=$('#rail .cur');if(cur)cur.scrollIntoView({block:'nearest',inline:'nearest'});
+  afterRender();
+}
+function navHtml(){
+  const i=S.step,ok=STEPS[i].ok(),last=i===STEPS.length-1;
+  return `<div class="nav">${i>0?'<button type="button" class="btn ghost" data-go="'+(i-1)+'">الخطوة السابقة</button>':'<span></span>'}
+  ${last?'':`<span class="gate ${ok?'ok':''}" id="gate">${ok?'اكتملت الخطوة ✓':'المطلوب: '+STEPS[i].need}</span>
+  <button type="button" class="btn" id="next" ${ok?'':'disabled'}>الخطوة التالية</button>`}</div>`;
+}
+function refreshGate(){
+  const g=$('#gate'),n=$('#next');if(!g)return;const ok=STEPS[S.step].ok();
+  g.className='gate'+(ok?' ok':'');g.textContent=ok?'اكتملت الخطوة ✓':'المطلوب: '+STEPS[S.step].need;n.disabled=!ok;
+  document.querySelectorAll('#rail button').forEach((b,k)=>{b.disabled=!unlocked(k);});
+}
+
+/* ---------- step renderers ---------- */
+function rStart(){return `<h2>أهلًا بكم في رحلة البيانات</h2>
+<p class="lead">ستجمعون بيانات حقيقية من مدرستكم، وتحللونها، وتصممون بطاقة تعرّف بمدرستكم بالأرقام، ثم تقارنونها بالمدارس الأخرى المشاركة معكم عن بُعد.</p>
+<h3>في نهاية الدرس ستكونون قادرين على:</h3>
+<ul class="goals"><li>جمع بيانات من بيئتكم وتنظيمها في جدول.</li><li>التمييز بين البيانات العددية والنصية.</li><li>استخدام دوال المجموع والمتوسط والقيمة العظمى والصغرى.</li><li>اختيار الرسم البياني المناسب وتبرير اختياره.</li><li>المقارنة بين مدرستكم والمدارس الأخرى واستنتاج الأنماط.</li></ul>
+<div class="task"><b>المطلوب في هذه الخطوة:</b> اكتبوا اسم مدرستكم واسم مجموعتكم. لا تكتبوا أسماء الطلاب في أي مكان من الدرس.</div>
+<div class="grid2"><div class="field"><label for="school">اسم المدرسة</label><input type="text" id="school" data-k="school" value="${esc(S.school)}" placeholder="مثال: ابتدائية …"></div>
+<div class="field"><label for="group">اسم المجموعة</label><input type="text" id="group" data-k="group" value="${esc(S.group)}" placeholder="مثال: مجموعة الصقور"></div>
+<div class="field"><label for="members">عدد أفراد المجموعة (اختياري)</label><input type="number" id="members" min="1" max="30" data-k="members" value="${esc(S.members)}"></div></div>`;}
+
+function rQuiz(kind){
+  const ans=S[kind],pre=kind==='pre',total=Object.keys(ans).length;
+  let h=`<h2>${pre?'الاختبار القبلي':'الاختبار البعدي'}</h2>
+<p class="lead">${pre?'ثمانية أسئلة قصيرة لنعرف ما تعرفونه قبل الدرس. لا بأس بالخطأ، فالهدف قياس ما سنتعلمه.':'الأسئلة نفسها التي أجبتم عنها في البداية. لنرَ ماذا تعلّمتم.'}</p>
+<div class="task"><b>المطلوب:</b> أجيبوا عن الأسئلة الثمانية. أجبتم عن <b id="qcount">${total}</b> من ${QUIZ.length}.</div>`;
+  QUIZ.forEach((q,i)=>{h+=`<fieldset class="q"><legend class="qt"><span class="qn">${i+1}.</span>${q.q}</legend><div class="opts">`+
+    q.o.map((o,j)=>`<label class="opt ${ans[i]===j?'sel':''}"><input type="radio" name="${kind}${i}" id="${kind}${i}_${j}" data-quiz="${kind}" data-i="${i}" value="${j}" ${ans[i]===j?'checked':''}> <span>${o}</span></label>`).join('')+`</div></fieldset>`;});
+  if(!pre&&total===QUIZ.length)h+=scoreBox();
+  return h;
+}
+function score(a){return QUIZ.reduce((s,q,i)=>s+(a[i]===q.a?1:0),0);}
+function scoreBox(){const p=score(S.pre),q=score(S.post);return `<div class="score"><div><span>القبلي</span><b>${p}/8</b></div><div><span>البعدي</span><b>${q}/8</b></div><div><span>التحسن</span><b>${q-p>=0?'+':''}${q-p}</b></div></div>`;}
+
+function rCollect(){
+  let h=`<h2>جمع البيانات</h2><p class="lead">اجمعوا البيانات خلال الأسبوع على الورقة المطبوعة، ثم أدخلوها هنا. كل صف يمثّل طالبًا واحدًا، ونكتب رقمه لا اسمه.</p>
+<div class="task"><b>المطلوب:</b> بيانات 4 طلاب على الأقل في الجدول الأول، والحرارة والطقس للأيام الخمسة في الجدول الثاني.</div>
+<h3>الجدول 1: رحلتي إلى المدرسة</h3><div class="tbl-wrap"><table><thead><tr><th class="num">رقم الطالب</th><th>وسيلة الوصول <span class="hint">(نصية)</span></th><th class="num">الزمن بالدقائق <span class="hint">(عددية)</span></th><th></th></tr></thead><tbody>`;
+  S.trip.forEach((r,i)=>{h+=`<tr><td class="num">${i+1}</td><td><select id="tm${i}" data-trip="${i}" data-f="m" aria-label="وسيلة وصول الطالب ${i+1}"><option value="">اختر…</option>${MODES.map(m=>`<option ${r.m===m?'selected':''}>${m}</option>`).join('')}</select></td>
+  <td><input type="number" id="tt${i}" min="1" max="180" data-trip="${i}" data-f="t" value="${esc(r.t)}" aria-label="زمن وصول الطالب ${i+1}"></td>
+  <td>${S.trip.length>1?`<button type="button" class="x" data-del="${i}" aria-label="حذف الصف ${i+1}">×</button>`:''}</td></tr>`;});
+  h+=`</tbody></table></div><button type="button" class="btn ghost small" id="addRow">إضافة طالب</button>
+<h3>الجدول 2: الطقس صباحًا</h3><div class="tbl-wrap"><table><thead><tr><th>اليوم</th><th class="num">درجة الحرارة (°م)</th><th>حالة الطقس</th></tr></thead><tbody>`;
+  S.temp.forEach((r,i)=>{h+=`<tr><td>${DAYS[i]}</td><td><input type="number" id="tc${i}" min="-10" max="55" data-temp="${i}" data-f="c" value="${esc(r.c)}" aria-label="حرارة ${DAYS[i]}"></td>
+  <td><select id="tw${i}" data-temp="${i}" data-f="w" aria-label="طقس ${DAYS[i]}"><option value="">اختر…</option>${WEATHER.map(w=>`<option ${r.w===w?'selected':''}>${w}</option>`).join('')}</select></td></tr>`;});
+  h+=`</tbody></table></div><p class="note">للمعلم عند التجربة فقط: <button type="button" class="btn ghost small" id="sample">تعبئة بيانات مثال</button></p>`;
+  return h;
+}
+
+function rConcept(){
+  let h=`<h2>مفاهيم نحتاجها</h2><p class="lead">قبل أن نحسب، نتعرف على ثلاثة مفاهيم ظهرت في جدولَيكم.</p>
+<div class="cards"><div class="ccard"><h4>البيانات العددية والنصية</h4><p>الزمن والحرارة أرقام نحسب منها. وسيلة الوصول والطقس كلمات نعدّها ولا نحسب متوسطها.</p></div>
+<div class="ccard"><h4>الصف والعمود</h4><p>كل صف سجل واحد (طالب أو يوم). كل عمود نوع واحد من المعلومات.</p></div>
+<div class="ccard"><h4>المتوسط</h4><p>رقم واحد يلخص أرقامًا كثيرة: نجمع القيم ونقسم المجموع على عددها. في Excel: <span class="ltr">=AVERAGE( )</span></p></div></div>
+<div class="task"><b>المطلوب:</b> أجيبوا عن أسئلة التحقق الثلاثة إجابة صحيحة، ويمكنكم المحاولة مرة أخرى.</div>`;
+  CONCEPT_Q.forEach((q,i)=>{const a=S.concept[i];h+=`<fieldset class="q"><legend class="qt"><span class="qn">${i+1}.</span>${q.q}</legend><div class="opts">`+
+    q.o.map((o,j)=>`<label class="opt ${a===j?(j===q.a?'right':'wrong'):''}"><input type="radio" name="c${i}" id="c${i}_${j}" data-concept="${i}" value="${j}" ${a===j?'checked':''}> <span>${o}</span></label>`).join('')+`</div>`+
+    (a!==undefined?`<div class="fb ${a===q.a?'ok':'bad'}">${a===q.a?'إجابة صحيحة. '+q.why:'حاولوا مرة أخرى.'}</div>`:'')+`</fieldset>`;});
+  return h;
+}
+
+function calcChecks(){
+  const st=stats(),c=S.calc;
+  const num=v=>v!==undefined&&v!==''&&!isNaN(+v);
+  return [
+    {k:'avg',label:'متوسط زمن الوصول (بالدقائق)',hint:'<span class="ltr">=AVERAGE( )</span> على عمود الزمن',pass:num(c.avg)&&Math.abs(+c.avg-st.avg)<=0.5,type:'number'},
+    {k:'max',label:'أطول زمن وصول',hint:'<span class="ltr">=MAX( )</span>',pass:num(c.max)&&+c.max===st.max,type:'number'},
+    {k:'min',label:'أقصر زمن وصول',hint:'<span class="ltr">=MIN( )</span>',pass:num(c.min)&&+c.min===st.min,type:'number'},
+    {k:'top',label:'وسيلة الوصول الأكثر استخدامًا',hint:'عدّوا الطلاب لكل وسيلة',pass:!!c.top&&st.top.includes(c.top),type:'select'},
+    {k:'tavg',label:'متوسط درجة الحرارة في الأسبوع',hint:'<span class="ltr">=AVERAGE( )</span> على عمود الحرارة',pass:num(c.tavg)&&Math.abs(+c.tavg-st.tavg)<=0.5,type:'number'}
+  ];
+}
+function rCalc(){
+  const tr=tripRows();
+  let h=`<h2>نحسب من بياناتنا</h2><p class="lead">هذه بياناتكم. افتحوا ورقة مدرستكم في Excel، واستخدموا الدوال لحساب القيم الخمس، ثم اكتبوا الناتج هنا.</p>
+<div class="task"><b>المطلوب:</b> خمس قيم صحيحة. نقبل المتوسط إذا كان قريبًا من الصحيح بنصف دقيقة أو أقل.</div>
+<div class="charts"><div class="tbl-wrap" style="margin:0"><table style="min-width:0"><thead><tr><th class="num">الطالب</th><th>الوسيلة</th><th class="num colA">الزمن</th></tr></thead><tbody>${tr.map((r,i)=>`<tr><td class="num">${i+1}</td><td>${esc(r.m)}</td><td class="num colA">${esc(r.t)}</td></tr>`).join('')}</tbody></table></div>
+<div class="tbl-wrap" style="margin:0"><table style="min-width:0"><thead><tr><th>اليوم</th><th class="num colA">الحرارة</th><th>الطقس</th></tr></thead><tbody>${S.temp.map((r,i)=>`<tr><td>${DAYS[i]}</td><td class="num colA">${esc(r.c)}</td><td>${esc(r.w)}</td></tr>`).join('')}</tbody></table></div></div>
+<h3>النتائج</h3>`;
+  calcChecks().forEach(c=>{const v=S.calc[c.k]??'',tried=v!=='';
+    const input=c.type==='select'?`<select id="calc_${c.k}" data-calc="${c.k}" aria-label="${c.label}"><option value="">اختر…</option>${MODES.map(m=>`<option ${v===m?'selected':''}>${m}</option>`).join('')}</select>`
+      :`<input type="number" step="0.1" id="calc_${c.k}" data-calc="${c.k}" value="${esc(v)}" aria-label="${c.label}">`;
+    h+=`<div class="check"><div><label for="calc_${c.k}">${c.label}</label><div class="hint">${c.hint}</div></div>${input}<span class="st ${tried?(c.pass?'ok':'bad'):''}" id="st_${c.k}">${tried?(c.pass?'صحيح ✓':'راجعوا الحساب'):''}</span></div>`;});
+  return h;
+}
+
+function rChart(){
+  const opt=(k,v,label)=>`<label class="opt ${S[k]===v?'sel':''}"><input type="radio" name="${k}" id="${k}_${v}" data-pick="${k}" value="${v}" ${S[k]===v?'checked':''}> <span>${label}</span></label>`;
+  const fb=(k,good,msgOk,msgBad)=>S[k]?`<div class="fb ${good.includes(S[k])?'ok':'bad'}">${good.includes(S[k])?msgOk:msgBad}</div>`:'';
+  return `<h2>نمثّل بياناتنا بيانيًا</h2><p class="lead">الرسم البياني يجعل الأرقام تتكلم. لكن لكل نوع من البيانات رسم يناسبه.</p>
+<div class="task"><b>المطلوب:</b> اختاروا الرسم المناسب لكل جدول، واكتبوا لماذا اخترتموه. ستظهر رسوم مدرستكم بعد الاختيار الصحيح.</div>
+<fieldset class="q"><legend class="qt"><span class="qn">1.</span>لعرض عدد الطلاب حسب وسيلة الوصول:</legend><div class="opts">${opt('chart1','دائري','رسم دائري')}${opt('chart1','أعمدة','رسم أعمدة')}${opt('chart1','خطي','رسم خطي')}</div>
+${fb('chart1',['دائري','أعمدة'],'اختيار مناسب: نقارن أجزاء من مجموع الطلاب.','الرسم الخطي يناسب التغير عبر الزمن، ووسائل الوصول ليست تسلسلًا زمنيًا.')}</fieldset>
+<fieldset class="q"><legend class="qt"><span class="qn">2.</span>لعرض درجة الحرارة خلال أيام الأسبوع:</legend><div class="opts">${opt('chart2','خطي','رسم خطي')}${opt('chart2','أعمدة','رسم أعمدة')}${opt('chart2','دائري','رسم دائري')}</div>
+${fb('chart2',['خطي','أعمدة'],'اختيار مناسب: نتابع تغير الحرارة من يوم إلى يوم.','الرسم الدائري يعرض أجزاء من كل، ودرجات الحرارة ليست أجزاء من مجموع.')}</fieldset>
+<div class="field"><label for="why">لماذا اخترتم هذين الرسمين؟</label><textarea id="why" data-k="why" placeholder="اخترنا الرسم … لأن …">${esc(S.why)}</textarea></div>
+<div id="chartsOut"></div>`;
+}
+function drawCharts(){
+  const out=$('#chartsOut');if(!out)return;
+  const ok1=['دائري','أعمدة'].includes(S.chart1),ok2=['خطي','أعمدة'].includes(S.chart2);
+  if(!ok1&&!ok2){out.innerHTML='';return;}
+  const st=stats();let h='<div class="charts">';
+  if(ok1)h+=`<div class="chart"><h4>وسائل الوصول (${st.n} طلاب)</h4>${S.chart1==='دائري'?pie(st.counts):bars(MODES,st.counts,'طالب')}</div>`;
+  if(ok2)h+=`<div class="chart"><h4>الحرارة صباحًا (°م)</h4>${S.chart2==='خطي'?line(DAYS,S.temp.map(r=>+r.c)):bars(DAYS,S.temp.map(r=>+r.c),'°م')}</div>`;
+  out.innerHTML=h+'</div>';
+}
+function pie(counts){
+  const tot=counts.reduce((a,b)=>a+b,0)||1;let a0=-Math.PI/2,paths='';
+  counts.forEach((c,i)=>{if(!c)return;const a1=a0+c/tot*Math.PI*2;
+    if(c===tot){paths+=`<circle cx="80" cy="80" r="70" fill="${COLORS[i]}"/>`;}
+    else{const l=a1-a0>Math.PI?1:0;paths+=`<path d="M80 80 L${80+70*Math.cos(a0)} ${80+70*Math.sin(a0)} A70 70 0 ${l} 1 ${80+70*Math.cos(a1)} ${80+70*Math.sin(a1)}Z" fill="${COLORS[i]}" stroke="var(--sheet)" stroke-width="2"/>`;}
+    a0=a1;});
+  return `<svg viewBox="0 0 160 160" role="img" aria-label="رسم دائري لوسائل الوصول" style="max-width:200px;margin:auto">${paths}</svg>
+  <div class="legend">${MODES.map((m,i)=>counts[i]?`<span><i style="background:${COLORS[i]}"></i>${m}: ${counts[i]} (${Math.round(counts[i]/tot*100)}%)</span>`:'').join('')}</div>`;
+}
+function bars(labels,vals,unit,hi){
+  const W=300,rowH=30,H=labels.length*rowH+10,max=Math.max(...vals,1),lw=110;
+  let g='';labels.forEach((l,i)=>{const y=i*rowH+5,w=(W-lw-40)*(vals[i]/max);
+    g+=`<text x="${W}" y="${y+18}" text-anchor="end" font-size="12" fill="var(--ink)">${esc(l)}</text>
+    <rect x="${W-lw-w}" y="${y+5}" width="${Math.max(w,1)}" height="18" rx="3" fill="${hi===i?'var(--sand)':'var(--data)'}"/>
+    <text x="${W-lw-w-5}" y="${y+18}" text-anchor="end" font-size="11" fill="var(--muted)" style="font-variant-numeric:tabular-nums">${fmt(vals[i])}</text>`;});
+  return `<svg viewBox="0 0 ${W} ${H}" role="img" aria-label="رسم أعمدة">${g}</svg>`;
+}
+function line(labels,vals){
+  const W=300,H=170,pl=14,pr=30,pt=18,pb=30,min=Math.min(...vals)-2,max=Math.max(...vals)+2,rng=(max-min)||1;
+  const X=i=>W-pr-(i*(W-pl-pr)/(labels.length-1)),Y=v=>pt+(H-pt-pb)*(1-(v-min)/rng);
+  let grid='';[min,(min+max)/2,max].forEach(v=>{grid+=`<line x1="${pl}" x2="${W-pr}" y1="${Y(v)}" y2="${Y(v)}" stroke="var(--line)"/><text x="${W-pr+4}" y="${Y(v)+4}" font-size="10" fill="var(--muted)">${fmt(v)}</text>`;});
+  const pts=vals.map((v,i)=>`${X(i)},${Y(v)}`).join(' ');
+  return `<svg viewBox="0 0 ${W} ${H}" role="img" aria-label="رسم خطي للحرارة">${grid}<polyline points="${pts}" fill="none" stroke="var(--sand)" stroke-width="2.5"/>
+  ${vals.map((v,i)=>`<circle cx="${X(i)}" cy="${Y(v)}" r="4" fill="var(--sand)"/><text x="${X(i)}" y="${Y(v)-8}" text-anchor="middle" font-size="10" fill="var(--ink)">${fmt(v)}</text><text x="${X(i)}" y="${H-8}" text-anchor="middle" font-size="10" fill="var(--muted)">${labels[i]}</text>`).join('')}</svg>`;
+}
+
+function cardHtml(){
+  const st=stats();
+  return `<div class="scard"><p class="t">${esc(S.school)} بالأرقام</p><div class="s">${esc(S.group)} · الصف السادس</div>
+  <div class="nums"><div><b>${fmt(st.avg)}</b><span>دقيقة متوسط وصولنا إلى المدرسة</span></div><div><b>${esc(st.top.join(' و'))}</b><span>وسيلة الوصول الأكثر بيننا</span></div><div><b>${fmt(st.tavg)}°</b><span>متوسط حرارة صباحنا هذا الأسبوع</span></div></div>
+  <div class="chart" style="border:0;padding:0">${S.chart1==='أعمدة'?bars(MODES,st.counts):pie(st.counts)}</div>
+  <p style="margin-top:10px">${esc(S.sentence)||'<span class="hint">ستظهر جملتكم التعريفية هنا.</span>'}</p></div>`;
+}
+function rCard(){return `<h2>بطاقة «${esc(S.school)} بالأرقام»</h2><p class="lead">هذه بطاقتكم التي ستعرضونها على المدارس الأخرى في الحصة المباشرة. الأرقام من حساباتكم، والجملة منكم.</p>
+<div class="task"><b>المطلوب:</b> اكتبوا جملة تعرّف المدارس الأخرى بمدرستكم وبيئتها، 20 حرفًا على الأقل.</div>
+<div class="field"><label for="sentence">جملتنا التعريفية</label><textarea id="sentence" data-k="sentence" placeholder="مدرستنا تقع بين … ونرى في طريقنا كل صباح …">${esc(S.sentence)}</textarea></div>
+<div id="cardOut">${cardHtml()}</div>`;}
+
+function rCompare(){
+  let h=`<h2>نقارن بين مدارسنا</h2><p class="lead">في الحصة المباشرة، ستعلن كل مدرسة متوسط زمن وصول طلابها. أدخلوا ما تسمعونه هنا، وستظهر المقارنة في الرسم.</p>
+<div class="task"><b>المطلوب:</b> بيانات مدرستين أخريين على الأقل، ثم نمطان لاحظتموهما، وسؤال توجهونه لمدرسة أخرى.</div>
+<div class="tbl-wrap"><table><thead><tr><th>المدرسة</th><th class="num">متوسط زمن الوصول (دقيقة)</th><th></th></tr></thead><tbody>
+<tr><td><b>${esc(S.school)}</b> (مدرستنا)</td><td class="num">${fmt(stats().avg)}</td><td></td></tr>`;
+  S.others.forEach((o,i)=>{h+=`<tr><td><input type="text" id="on${i}" data-other="${i}" data-f="n" value="${esc(o.n)}" aria-label="اسم المدرسة ${i+1}" placeholder="اسم المدرسة"></td><td><input type="number" step="0.1" id="ov${i}" data-other="${i}" data-f="v" value="${esc(o.v)}" aria-label="متوسط زمن مدرسة ${i+1}"></td><td>${S.others.length>2?`<button type="button" class="x" data-odel="${i}" aria-label="حذف">×</button>`:''}</td></tr>`;});
+  h+=`</tbody></table></div><div class="confirm">${SHEET_URL?'<button type="button" class="btn small" id="pull">جلب متوسطات المدارس الأخرى</button>':''}<button type="button" class="btn ghost small" id="addOther">إضافة مدرسة</button><span class="hint" id="pullSt"></span></div>
+<div class="chart" style="margin-top:14px"><h4>متوسط زمن الوصول بالدقائق</h4><div id="cmpOut"></div></div>
+<div class="grid2" style="margin-top:8px"><div class="field"><label for="pattern1">النمط الأول الذي لاحظناه</label><textarea id="pattern1" data-k="pattern1" placeholder="لاحظنا أن …">${esc(S.pattern1)}</textarea></div>
+<div class="field"><label for="pattern2">النمط الثاني</label><textarea id="pattern2" data-k="pattern2" placeholder="ولاحظنا أيضًا أن …">${esc(S.pattern2)}</textarea></div></div>
+<div class="field"><label for="question">سؤالنا لمدرسة أخرى</label><input type="text" id="question" data-k="question" value="${esc(S.question)}" placeholder="نسأل مدرسة … : لماذا …؟"></div>
+<p class="hint">سؤال للتفكير في النقاش: ما الذي لا تستطيع الأرقام أن تخبرنا به عن مدرستكم؟</p>`;
+  return h;
+}
+function drawCompare(){
+  const out=$('#cmpOut');if(!out)return;
+  const rows=[{n:S.school+' (نحن)',v:stats().avg}].concat(S.others.filter(o=>o.n.trim()&&+o.v>0).map(o=>({n:o.n,v:+o.v})));
+  out.innerHTML=rows.length>1?bars(rows.map(r=>r.n),rows.map(r=>r.v),'',0):'<p class="hint">سيظهر الرسم بعد إدخال مدرسة أخرى واحدة على الأقل.</p>';
+}
+
+function rFinish(){
+  const p=score(S.pre),q=score(S.post);
+  return `<h2>أحسنتم يا ${esc(S.group)}</h2><p class="lead">أنهيتم رحلة البيانات كاملة: جمعتم، وحسبتم، ومثّلتم، وقارنتم.</p>
+${scoreBox()}
+<p>${q>p?'ارتفعت نتيجتكم بعد الدرس، وهذا أثر تعلّمكم.':q===p?'حافظتم على نتيجتكم. راجعوا الأسئلة التي أخطأتم فيها مع المعلم.':'راجعوا الأسئلة التي أخطأتم فيها مع المعلم.'}</p>
+${cardHtml()}
+<h3>ملخص للمعلم</h3><p class="hint">انسخوا الملخص وأرسلوه للمعلم في منصة مدرستي.</p>
+<textarea id="summary" readonly style="min-height:150px">${esc(summaryText())}</textarea>
+<div style="margin-top:8px" class="confirm"><button type="button" class="btn" id="copy">نسخ الملخص</button><span class="st" id="copySt"></span></div>`;
+}
+function summaryText(){
+  const st=stats();
+  return `مدارسنا في بيانات – ${S.school} – ${S.group}${S.members?' ('+S.members+' طلاب)':''}
+الاختبار القبلي: ${score(S.pre)}/8 · البعدي: ${score(S.post)}/8
+عدد السجلات: ${st.n} · متوسط زمن الوصول: ${fmt(st.avg)} دقيقة · الأطول: ${st.max} · الأقصر: ${st.min}
+الوسيلة الأكثر: ${st.top.join(' و')} · متوسط الحرارة: ${fmt(st.tavg)}°م
+النمط 1: ${S.pattern1}
+النمط 2: ${S.pattern2}
+سؤالنا: ${S.question}`;
+}
+
+/* ---------- sending to the teacher's sheet ---------- */
+function send(stage){
+  if(!SHEET_URL)return;
+  const st=stats(),has=S.trip.some(r=>r.m&&r.t);
+  const preDone=Object.keys(S.pre).length===QUIZ.length,postDone=Object.keys(S.post).length===QUIZ.length;
+  const p={id:S.id,school:S.school,group:S.group,members:S.members,stage,
+    pre:preDone?score(S.pre):'',post:postDone?score(S.post):'',
+    n:has?st.n:'',avg:has?Math.round(st.avg*10)/10:'',max:has?st.max:'',min:has?st.min:'',top:has?st.top.join(' و'):'',
+    tavg:tempRows().length?Math.round(st.tavg*10)/10:'',chart1:S.chart1,chart2:S.chart2,why:S.why,sentence:S.sentence,
+    pattern1:S.pattern1,pattern2:S.pattern2,question:S.question,raw:{trip:S.trip,temp:S.temp,others:S.others}};
+  try{
+    fetch(SHEET_URL,{method:'POST',mode:'no-cors',headers:{'Content-Type':'text/plain;charset=utf-8'},body:JSON.stringify(p)})
+      .then(()=>{S.lastSent=stage;save();const el=$('#syncSt');if(el)el.textContent='آخر إرسال للمعلم: '+stage;})
+      .catch(()=>{const el=$('#syncSt');if(el)el.textContent='تعذّر الإرسال، تأكدوا من الاتصال وسيُعاد الإرسال في الخطوة التالية';});
+  }catch(e){}
+}
+async function pullSchools(){
+  const st=$('#pullSt');if(st)st.textContent='جارٍ الجلب…';
+  try{
+    const r=await fetch(SHEET_URL);const j=await r.json();
+    const mine=S.school.trim();
+    const list=(j.schools||[]).filter(s=>s.school.trim()!==mine);
+    if(!list.length){if(st)st.textContent='لم ترسل مدارس أخرى بياناتها بعد. أدخلوها يدويًا من الحصة المباشرة.';return;}
+    S.others=list.map(s=>({n:s.school,v:String(s.avg)}));
+    while(S.others.length<2)S.others.push({n:'',v:''});
+    save();render();
+  }catch(e){if(st)st.textContent='تعذّر الجلب. أدخلوا البيانات يدويًا.';}
+}
+
+/* ---------- events ---------- */
+function afterRender(){drawCharts();drawCompare();}
+function softUpdate(){
+  refreshGate();
+  if(S.step===4){calcChecks().forEach(c=>{const el=$('#st_'+c.k),v=S.calc[c.k]??'';if(el){el.className='st '+(v!==''?(c.pass?'ok':'bad'):'');el.textContent=v!==''?(c.pass?'صحيح ✓':'راجعوا الحساب'):'';}});}
+  if(S.step===6){const o=$('#cardOut');if(o)o.innerHTML=cardHtml();}
+  if(S.step===7)drawCompare();
+  $('#who').innerHTML=S.school?`<b>${esc(S.school)}</b> · ${esc(S.group)}`:'';
+}
+document.addEventListener('input',e=>{
+  const t=e.target,d=t.dataset;
+  if(d.k){S[d.k]=t.value;}
+  else if(d.trip!==undefined){S.trip[+d.trip][d.f]=t.value;}
+  else if(d.temp!==undefined){S.temp[+d.temp][d.f]=t.value;}
+  else if(d.calc){S.calc[d.calc]=t.value;}
+  else if(d.other!==undefined){S.others[+d.other][d.f]=t.value;}
+  else return;
+  save();softUpdate();
+});
+document.addEventListener('change',e=>{
+  const t=e.target,d=t.dataset;
+  if(d.quiz){S[d.quiz][+d.i]=+t.value;save();
+    t.closest('.opts').querySelectorAll('.opt').forEach(l=>l.classList.toggle('sel',l.contains(t)));
+    const c=$('#qcount');if(c)c.textContent=Object.keys(S[d.quiz]).length;
+    if(d.quiz==='post'&&Object.keys(S.post).length===QUIZ.length){render();return;}
+    softUpdate();}
+  else if(d.concept!==undefined){S.concept[+d.concept]=+t.value;save();render();}
+  else if(d.pick){S[d.pick]=t.value;save();render();}
+});
+document.addEventListener('click',e=>{
+  const b=e.target.closest('button');if(!b)return;
+  if(b.dataset.go!==undefined){const k=+b.dataset.go;if(unlocked(k)){S.step=k;save();render();window.scrollTo({top:0});}return;}
+  if(b.id==='next'){if(STEPS[S.step].ok()){const done=STEPS[S.step].t;S.step++;save();render();window.scrollTo({top:0});if(S.step>1)send(done);}return;}
+  if(b.id==='pull'){pullSchools();return;}
+  if(b.id==='addRow'){S.trip.push({m:'',t:''});save();render();return;}
+  if(b.dataset.del!==undefined){S.trip.splice(+b.dataset.del,1);save();render();return;}
+  if(b.id==='addOther'){S.others.push({n:'',v:''});save();render();return;}
+  if(b.dataset.odel!==undefined){S.others.splice(+b.dataset.odel,1);save();render();return;}
+  if(b.id==='sample'){
+    S.trip=[{m:'سيارة الأسرة',t:'15'},{m:'الحافلة المدرسية',t:'35'},{m:'مشيًا',t:'8'},{m:'سيارة الأسرة',t:'20'},{m:'الحافلة المدرسية',t:'40'},{m:'سيارة الأسرة',t:'12'}];
+    S.temp=[{c:'14',w:'مشمس'},{c:'12',w:'غائم جزئيًا'},{c:'11',w:'غائم'},{c:'13',w:'مشمس'},{c:'15',w:'مشمس'}];save();render();return;}
+  if(b.id==='copy'){const ta=$('#summary'),st=$('#copySt');
+    const done=()=>{st.className='st ok';st.textContent='تم النسخ';};
+    try{navigator.clipboard.writeText(ta.value).then(done,()=>{ta.select();st.className='st';st.textContent='النص محدد، انسخوه يدويًا';});}catch(err){ta.select();}
+    return;}
+  if(b.id==='resetBtn'){$('#resetBox').innerHTML='<span class="confirm">سيُحذف كل ما أدخلتموه. <button type="button" class="btn small" id="resetYes">نعم، ابدأ من جديد</button><button type="button" class="btn ghost small" id="resetNo">إلغاء</button></span>';return;}
+  if(b.id==='resetNo'){$('#resetBox').innerHTML='<button class="btn ghost small" id="resetBtn" type="button">البدء من جديد</button>';return;}
+  if(b.id==='resetYes'){S=blank();save();$('#resetBox').innerHTML='<button class="btn ghost small" id="resetBtn" type="button">البدء من جديد</button>';render();window.scrollTo({top:0});return;}
+});
+if(!unlocked(S.step))S.step=0;
+$('#syncSt').textContent=SHEET_URL?(S.lastSent?'آخر إرسال للمعلم: '+S.lastSent:'يصل عملكم إلى المعلم تلقائيًا عند إكمال كل خطوة.'):'';
+render();
+})();
+</script>
+
+</body>
+</html>
