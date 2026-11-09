@@ -124,6 +124,13 @@ td .x{background:none;border:0;color:var(--bad);cursor:pointer;font:inherit;font
 .score span{display:block;font-size:.8rem;color:var(--muted)}
 .note{font-size:.8rem;color:var(--muted);margin-top:4px}
 .confirm{display:inline-flex;gap:8px;align-items:center;flex-wrap:wrap}
+.teams{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:10px;margin-top:8px}
+.team{display:grid;gap:2px;text-align:start;font:inherit;color:var(--ink);background:var(--bg);border:1.5px solid var(--line);border-radius:12px;padding:12px 14px;cursor:pointer}
+.team:hover{border-color:var(--data)}
+.team.on{border-color:var(--data);background:var(--data-soft);box-shadow:inset 0 0 0 1px var(--data)}
+.team .tn{font-family:var(--display);font-size:1.15rem}
+.team .ts{font-size:.85rem;color:var(--muted)}
+.team .tp{font-size:.78rem;color:var(--sand);font-weight:600}
 footer{margin-top:20px;font-size:.8rem;color:var(--muted);text-align:center}
 @media (prefers-reduced-motion:reduce){.bar i{transition:none}}
 </style>
@@ -153,6 +160,12 @@ const KEY='madarisuna-v1';
 const MODES=['مشيًا','سيارة الأسرة','الحافلة المدرسية','دراجة'];
 const WEATHER=['مشمس','غائم جزئيًا','غائم','ممطر','مغبر'];
 const DAYS=['الأحد','الاثنين','الثلاثاء','الأربعاء','الخميس'];
+const TEAMS=[
+ {id:'jabla-a',school:'جبلة',group:'فريق جبلة (أ)',n:2},
+ {id:'jabla-b',school:'جبلة',group:'فريق جبلة (ب)',n:2},
+ {id:'hadaq',school:'الحدق',group:'فريق الحدق',n:2,partner:'شريككم: فريق الجبيلي'},
+ {id:'jubaili',school:'الجبيلي',group:'فريق الجبيلي',n:1,partner:'شريككم: فريق الحدق'}
+];
 const COLORS=['var(--data)','var(--sand)','var(--ok)','var(--bad)'];
 
 const QUIZ=[
@@ -174,7 +187,7 @@ const CONCEPT_Q=[
 function blank(){return{id:'g'+Date.now().toString(36)+Math.random().toString(36).slice(2,7),step:0,done:[],school:'',group:'',members:'',pre:{},post:{},
   trip:[{m:'',t:''},{m:'',t:''},{m:'',t:''},{m:'',t:''}],temp:DAYS.map(()=>({c:'',w:''})),
   concept:{},conceptChecked:false,calc:{},chart1:'',chart2:'',why:'',sentence:'',
-  others:[{n:'',v:''},{n:'',v:''}],pattern1:'',pattern2:'',question:''};}
+  others:[],pattern1:'',pattern2:'',question:''};}
 let S=blank();
 try{const raw=localStorage.getItem(KEY);if(raw)S=Object.assign(blank(),JSON.parse(raw));}catch(e){}
 if(!S.id)S.id='g'+Date.now().toString(36)+Math.random().toString(36).slice(2,7);
@@ -196,7 +209,7 @@ function stats(){
 
 /* ---------- steps ---------- */
 const STEPS=[
- {t:'البداية',render:rStart,ok:()=>S.school.trim().length>1&&S.group.trim().length>0,need:'اكتب اسم المدرسة واسم المجموعة'},
+ {t:'البداية',render:rStart,ok:()=>S.school.trim().length>1&&S.group.trim().length>0,need:'اختاروا فريقكم'},
  {t:'الاختبار القبلي',render:()=>rQuiz('pre'),ok:()=>Object.keys(S.pre).length===QUIZ.length,need:'أجب عن الأسئلة الثمانية كلها'},
  {t:'جمع البيانات',render:rCollect,ok:()=>tripRows().length>=4&&tempRows().length===5,need:'أدخل بيانات 4 طلاب على الأقل، والحرارة والطقس للأيام الخمسة'},
  {t:'المفاهيم',render:rConcept,ok:()=>CONCEPT_Q.every((q,i)=>S.concept[i]===q.a),need:'أجب إجابة صحيحة عن أسئلة التحقق الثلاثة'},
@@ -232,14 +245,16 @@ function refreshGate(){
 }
 
 /* ---------- step renderers ---------- */
-function rStart(){return `<h2>أهلًا بكم في رحلة البيانات</h2>
+function rStart(){
+  const cur=TEAMS.find(t=>t.school===S.school&&t.group===S.group);
+  return `<h2>أهلًا بكم في رحلة البيانات</h2>
 <p class="lead">ستجمعون بيانات حقيقية من مدرستكم، وتحللونها، وتصممون بطاقة تعرّف بمدرستكم بالأرقام، ثم تقارنونها بالمدارس الأخرى المشاركة معكم عن بُعد.</p>
 <h3>في نهاية الدرس ستكونون قادرين على:</h3>
 <ul class="goals"><li>جمع بيانات من بيئتكم وتنظيمها في جدول.</li><li>التمييز بين البيانات العددية والنصية.</li><li>استخدام دوال المجموع والمتوسط والقيمة العظمى والصغرى.</li><li>اختيار الرسم البياني المناسب وتبرير اختياره.</li><li>المقارنة بين مدرستكم والمدارس الأخرى واستنتاج الأنماط.</li></ul>
-<div class="task"><b>المطلوب في هذه الخطوة:</b> اكتبوا اسم مدرستكم واسم مجموعتكم. لا تكتبوا أسماء الطلاب في أي مكان من الدرس.</div>
-<div class="grid2"><div class="field"><label for="school">اسم المدرسة</label><input type="text" id="school" data-k="school" value="${esc(S.school)}" placeholder="مثال: ابتدائية …"></div>
-<div class="field"><label for="group">اسم المجموعة</label><input type="text" id="group" data-k="group" value="${esc(S.group)}" placeholder="مثال: مجموعة الصقور"></div>
-<div class="field"><label for="members">عدد أفراد المجموعة (اختياري)</label><input type="number" id="members" min="1" max="30" data-k="members" value="${esc(S.members)}"></div></div>`;}
+<div class="task"><b>المطلوب في هذه الخطوة:</b> اختاروا فريقكم كما حدده لكم المعلم.</div>
+<div class="teams" role="radiogroup" aria-label="الفرق">${TEAMS.map(t=>`<button type="button" role="radio" aria-checked="${cur&&cur.id===t.id}" class="team ${cur&&cur.id===t.id?'on':''}" data-team="${t.id}">
+<span class="tn">${t.group}</span><span class="ts">مدرسة ${t.school} · ${t.n===1?'طالب واحد':t.n===2?'طالبان':t.n+' طلاب'}</span>${t.partner?`<span class="tp">${t.partner}</span>`:''}</button>`).join('')}</div>
+${cur&&cur.partner?`<p class="hint" style="margin-top:10px">أنتم و${cur.partner.replace('شريككم: ','')} «شركاء بيانات»: تتبادلون سؤالًا في كل حصة، وتراجعون رسوم بعضكم قبل العرض.</p>`:''}`;}
 
 function rQuiz(kind){
   const ans=S[kind],pre=kind==='pre',total=Object.keys(ans).length;
@@ -366,6 +381,7 @@ function rCard(){return `<h2>بطاقة «${esc(S.school)} بالأرقام»</h
 <div id="cardOut">${cardHtml()}</div>`;}
 
 function rCompare(){
+  if(!S.others.length){S.others=[...new Set(TEAMS.map(t=>t.school))].filter(x=>x!==S.school).map(n=>({n,v:''}));save();}
   let h=`<h2>نقارن بين مدارسنا</h2><p class="lead">في الحصة المباشرة، ستعلن كل مدرسة متوسط زمن وصول طلابها. أدخلوا ما تسمعونه هنا، وستظهر المقارنة في الرسم.</p>
 <div class="task"><b>المطلوب:</b> بيانات مدرستين أخريين على الأقل، ثم نمطان لاحظتموهما، وسؤال توجهونه لمدرسة أخرى.</div>
 <div class="tbl-wrap"><table><thead><tr><th>المدرسة</th><th class="num">متوسط زمن الوصول (دقيقة)</th><th></th></tr></thead><tbody>
@@ -469,6 +485,7 @@ document.addEventListener('click',e=>{
   if(b.dataset.go!==undefined){const k=+b.dataset.go;if(unlocked(k)){S.step=k;save();render();window.scrollTo({top:0});}return;}
   if(b.id==='next'){if(STEPS[S.step].ok()){const done=STEPS[S.step].t;S.step++;save();render();window.scrollTo({top:0});if(S.step>1)send(done);}return;}
   if(b.id==='pull'){pullSchools();return;}
+  if(b.dataset.team){const t=TEAMS.find(x=>x.id===b.dataset.team);S.school=t.school;S.group=t.group;S.members=String(t.n);save();render();return;}
   if(b.id==='addRow'){S.trip.push({m:'',t:''});save();render();return;}
   if(b.dataset.del!==undefined){S.trip.splice(+b.dataset.del,1);save();render();return;}
   if(b.id==='addOther'){S.others.push({n:'',v:''});save();render();return;}
