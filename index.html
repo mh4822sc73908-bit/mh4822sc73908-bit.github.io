@@ -690,6 +690,19 @@
               </details>
             </div>
           </details>
+          <details class="unit-group">
+            <summary>الوحدة الرابعة: العمل مع البرمجة باستخدام سكراتش</summary>
+            <div class="unit-sub">
+              <details class="lesson-group">
+                <summary>الأول: أساسيات سكراتش</summary>
+                <div class="lesson-sub">
+                  <a href="#g4-u4-l1-explain">شرح الدرس</a>
+                  <a href="#g4-u4-l1-hw">الواجب</a>
+                  <a href="#g4-u4-l1-enrich">الإثراءات</a>
+                </div>
+              </details>
+            </div>
+          </details>
         </div>
       </details>
 
@@ -3494,6 +3507,680 @@ addSpeakers();
             <div class="tab-panel enrich" id="g4-u3-l4-enrich">
               <h5>الإثراءات</h5>
               <p>مشروع الوحدة «معالمي المفضلة»: ابحث في بينج عن معالمك المفضلة، وتأكد أن المصدر موثوق، وانسخ المعلومات إلى مستند نصي، ثم احفظه واعرضه على معلمك.</p>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+
+      <div class="unit-block" id="g4-unit4">
+        <h3>
+          <svg class="icon" viewBox="0 0 24 24" style="width:18px;height:18px"><path d="M4 4h11v16H4z"/><path d="M15 4l5 3v13l-5-3"/></svg>
+          الوحدة الرابعة: العمل مع البرمجة باستخدام سكراتش
+        </h3>
+        <div class="unit-body">
+
+          <div class="lesson-block" id="g4-u4-l1">
+            <h4>
+              <svg class="icon" viewBox="0 0 24 24" style="width:17px;height:17px"><path d="M6 2h9l5 5v15H6z"/><path d="M15 2v5h5"/></svg>
+              الدرس الأول: أساسيات سكراتش
+            </h4>
+            <div class="tab-panel" id="g4-u4-l1-explain">
+              <h5>شرح الدرس</h5>
+              <p><a class="book-cta-link" href="https://www.youtube.com/watch?v=v-CI-G3Fz0g&amp;list=PLxUJ-_vAd_lVU9-GFMH56m8sUswiB9a2w&amp;index=14" target="_blank" rel="noopener">شرح فيديو للدرس</a></p>
+              <p style="margin:10px 0 8px;">الدرس التفاعلي بتصميم سهل القراءة: خط كبير، وجمل قصيرة، وزر 🔊 لسماع كل فقرة، ومحاكي سكراتش وتدريبات بالضغط دون كتابة.</p>
+              <iframe class="lesson-frame" id="frame-g4-u4-l1" title="الدرس التفاعلي" loading="lazy" style="width:100%;height:900px;border:0;display:block;border-radius:10px;" srcdoc="&lt;!DOCTYPE html&gt;
+&lt;html lang=&quot;ar&quot; dir=&quot;rtl&quot;&gt;
+&lt;head&gt;
+&lt;meta charset=&quot;UTF-8&quot;&gt;
+&lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot;&gt;
+&lt;title&gt;أساسيات سكراتش – الصف الرابع&lt;/title&gt;
+&lt;link href=&quot;https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@400;500;600;700&amp;display=swap&quot; rel=&quot;stylesheet&quot;&gt;
+&lt;style&gt;
+
+:root{
+  --base:#012B28; --base2:#023d39; --green:#00894A; --green-l:#e6f5ee;
+  --gold:#C68A2E; --gold-l:#fbf3e6; --crimson:#C43D6B; --crimson-l:#fbeaf0;
+  --blue:#1e6fb8; --blue-l:#e8f1fa; --purple:#6b4fbb; --purple-l:#f0ecfb; --xl:#217346;
+  --ink:#1b2b29; --muted:#5d6f6c; --line:#dfe7e5; --bg:#fbfaf4; --card:#fff;
+  --fs:19px;
+}
+*{box-sizing:border-box}
+html{font-size:var(--fs)}
+body{margin:0;font-family:&#x27;IBM Plex Sans Arabic&#x27;,Tahoma,sans-serif;background:var(--bg);color:var(--ink);line-height:2;letter-spacing:.2px;word-spacing:2px}
+.wrap{max-width:960px;margin:0 auto;padding:14px}
+header.lesson-hero{background:linear-gradient(135deg,var(--base),var(--base2));color:#fff;border-radius:20px;padding:22px}
+.lesson-hero .crumb{font-size:.8rem;opacity:.8}
+.lesson-hero h1{margin:4px 0;font-size:1.7rem}
+.zig{height:8px;margin-top:12px;background:repeating-linear-gradient(135deg,var(--gold) 0 8px,transparent 8px 16px);opacity:.8;border-radius:4px}
+.access{display:flex;gap:8px;flex-wrap:wrap;margin-top:12px}
+.access button{background:#fff;color:var(--base);border:2px solid var(--base);border-radius:12px;padding:4px 12px;font:inherit;font-size:.85rem;cursor:pointer}
+nav.tabs{display:flex;gap:8px;flex-wrap:wrap;margin:14px 0}
+nav.tabs button{flex:1;min-width:120px;border:3px solid var(--green);background:#fff;color:var(--green);font:inherit;font-weight:700;padding:10px;border-radius:16px;cursor:pointer;font-size:1rem}
+nav.tabs button.active{background:var(--green);color:#fff}
+section.panel{display:none} section.panel.active{display:block}
+.card{background:var(--card);border:2px solid var(--line);border-radius:20px;padding:18px;margin-bottom:16px}
+.card h2{margin:0 0 8px;font-size:1.3rem;color:var(--base);display:flex;align-items:center;gap:8px}
+.tag{display:inline-block;background:var(--gold-l);color:var(--gold);font-weight:700;font-size:.78rem;padding:2px 12px;border-radius:20px;margin-bottom:6px}
+.say{position:relative;padding-left:52px}
+.spk{position:absolute;left:0;top:2px;width:42px;height:42px;border-radius:50%;border:2px solid var(--blue);background:var(--blue-l);font-size:1.1rem;cursor:pointer;display:grid;place-items:center}
+.spk.on{background:var(--blue);color:#fff}
+.big{font-size:1.15rem;font-weight:600}
+.kw{background:#fff3c4;border-radius:6px;padding:0 6px;font-weight:700}
+.vs{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.box{border-radius:18px;padding:14px;text-align:center}
+.box .ic{font-size:2.6rem;line-height:1.2}
+.box b{display:block;font-size:1.2rem}
+.b-sort{background:var(--blue-l);border:3px solid var(--blue)}
+.b-filter{background:var(--purple-l);border:3px solid var(--purple)}
+.chipsrow{display:flex;gap:6px;justify-content:center;flex-wrap:wrap;margin:6px 0;direction:rtl}
+.chipsrow span{background:#fff;border:2px solid #ccd;border-radius:10px;padding:0 10px;font-weight:700}
+.chipsrow span.dim{opacity:.25}
+.benef{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+.benef div{background:var(--green-l);border-radius:16px;padding:12px;text-align:center;font-weight:600}
+.benef .ic{font-size:2rem;display:block}
+.types{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+.types div{border:2px solid var(--line);border-radius:16px;padding:10px;text-align:center}
+.types .ic{font-size:2rem;display:block}
+.types .ex{direction:ltr;font-weight:700;color:var(--blue)}
+.updown{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:10px}
+.updown div{border-radius:16px;padding:12px;font-weight:600}
+.stepsx{display:grid;gap:10px;margin:8px 0}
+.stp{display:grid;grid-template-columns:54px 1fr;gap:10px;align-items:center;border:2px solid var(--line);border-radius:16px;padding:8px 10px}
+.stp .n{width:46px;height:46px;border-radius:50%;background:var(--gold);color:#fff;font-weight:700;font-size:1.3rem;display:grid;place-items:center}
+.note{background:var(--crimson-l);border-right:6px solid var(--crimson);padding:10px 14px;border-radius:14px;margin:10px 0}
+.tip{background:var(--green-l);border-right:6px solid var(--green);padding:10px 14px;border-radius:14px;margin:10px 0}
+.video{position:relative;padding-top:56.25%;border-radius:16px;overflow:hidden;background:#000}
+.video iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
+.btn{display:inline-block;border:0;font:inherit;font-weight:700;padding:10px 18px;border-radius:14px;cursor:pointer;text-decoration:none}
+.btn-green{background:var(--green);color:#fff}
+.btn-out{background:#fff;color:var(--base);border:2px solid var(--base)}
+.fb{margin-top:10px;font-weight:700;min-height:1.8em;font-size:1.05rem}
+.ok{color:var(--green)} .bad{color:var(--crimson)}
+svg{max-width:100%;height:auto}
+.icon-az{display:inline-flex;align-items:center;gap:2px;direction:ltr;font-weight:700;font-family:Arial;border:2px solid #9ab;border-radius:8px;padding:0 6px;background:#fff;line-height:1.1}
+.icon-az small{display:flex;flex-direction:column;font-size:.7rem;line-height:1}
+
+/* Excel lab */
+.tasks{list-style:none;padding:0;margin:8px 0;display:grid;gap:6px}
+.tasks li{border:2px solid var(--line);border-radius:14px;padding:6px 12px;font-size:.95rem}
+.tasks li.cur{border-color:var(--gold);background:var(--gold-l);font-weight:700}
+.tasks li.done{border-color:var(--green);background:var(--green-l)}
+.hint{background:var(--blue-l);border-radius:14px;padding:10px 14px;margin:8px 0;font-size:1rem}
+.xlw{position:relative;border:2px solid #b8c4c1;border-radius:14px;overflow:visible;background:#fff}
+.xlt{background:var(--xl);color:#fff;padding:4px 12px;font-size:.8rem;border-radius:12px 12px 0 0}
+.xlg{overflow-x:auto}
+table.g{border-collapse:collapse;width:100%;min-width:640px;font-size:.92rem}
+table.g th{background:#5d9e72;color:#fff;padding:6px 6px;border:1px solid #cfe0d6;white-space:nowrap;position:relative}
+table.g th .arw{margin-right:6px;border:2px solid #fff;background:#fff;color:#2c5f3c;border-radius:6px;width:30px;height:28px;cursor:pointer;font-size:.8rem;vertical-align:middle}
+table.g th .arw.act{background:#ffd166;border-color:#ffd166}
+table.g td{border:1px solid #dde7e2;padding:5px 8px;text-align:center}
+table.g td.rn{background:#eef0ef;color:#666;width:34px}
+table.g tr:nth-child(even) td:not(.rn){background:#f1f8f3}
+table.g tr.flash td{animation:fl .8s}
+@keyframes fl{from{background:#fff3c4}}
+.menu{position:absolute;z-index:10;background:#fff;border:2px solid #9ab;border-radius:14px;box-shadow:0 10px 24px rgba(0,0,0,.2);width:270px;padding:8px;font-size:.95rem}
+.menu button.mi{display:flex;gap:8px;align-items:center;width:100%;text-align:right;border:0;background:none;font:inherit;padding:8px 10px;border-radius:10px;cursor:pointer}
+.menu button.mi:hover{background:var(--blue-l)}
+.menu button.mi:disabled{opacity:.4;cursor:not-allowed}
+.menu .vals{border:1px solid #ccd;border-radius:10px;max-height:170px;overflow:auto;padding:4px 8px;margin:6px 0}
+.menu .vals label{display:flex;gap:8px;align-items:center;cursor:pointer;padding:2px 0}
+.menu .vals input{width:20px;height:20px}
+.menu .ft{display:flex;gap:6px}
+.xls{font-size:.8rem;color:var(--muted);padding:4px 12px;border-top:1px solid #e3e3e3}
+
+/* exercises */
+.q{border:2px solid var(--line);border-radius:16px;padding:12px;margin-bottom:12px}
+.q .os{display:grid;gap:8px;margin-top:8px}
+.q button.o{font:inherit;text-align:right;padding:10px 14px;border-radius:14px;border:3px solid var(--line);background:#fff;cursor:pointer;font-size:1rem}
+.q button.o.r{border-color:var(--green);background:var(--green-l)} .q button.o.w{border-color:var(--crimson);background:var(--crimson-l)}
+.pair{display:grid;grid-template-columns:1fr auto;gap:10px;align-items:center;border:2px solid var(--line);border-radius:16px;padding:8px 12px;margin-bottom:8px}
+.pair .opts2{display:flex;gap:8px}
+.pair button{font:inherit;border:3px solid var(--line);background:#fff;border-radius:14px;padding:4px 12px;cursor:pointer;font-weight:700}
+.pair button.r{border-color:var(--green);background:var(--green-l)} .pair button.w{border-color:var(--crimson);background:var(--crimson-l)}
+.bank{display:flex;flex-wrap:wrap;gap:8px;margin:8px 0;direction:rtl}
+.bank button{font:inherit;font-weight:700;border:3px solid var(--blue);background:var(--blue-l);border-radius:14px;padding:6px 14px;cursor:pointer}
+.bank button.sel{background:var(--blue);color:#fff}
+.bank button.used{opacity:.35}
+.blank{display:inline-block;min-width:110px;border-bottom:3px dashed var(--gold);text-align:center;cursor:pointer;padding:0 6px;font-weight:700;color:var(--blue)}
+.blank.r{border-color:var(--green);color:var(--green)} .blank.w{border-color:var(--crimson);color:var(--crimson)}
+.fill{border:2px solid var(--line);border-radius:16px;padding:10px 12px;margin-bottom:8px;line-height:2.4}
+.namecards{display:flex;flex-wrap:wrap;gap:8px;direction:rtl}
+.namecards button{font:inherit;font-size:1.15rem;font-weight:700;border:3px solid var(--gold);background:var(--gold-l);border-radius:16px;padding:8px 16px;cursor:pointer}
+.namecards button.done{background:var(--green);border-color:var(--green);color:#fff}
+.sorted{display:flex;flex-wrap:wrap;gap:8px;min-height:56px;border:3px dashed var(--green);border-radius:16px;padding:8px;margin:8px 0;direction:rtl}
+.sorted span{background:var(--green);color:#fff;border-radius:12px;padding:4px 14px;font-weight:700;font-size:1.1rem}
+.score{font-size:1.15rem;font-weight:700;color:var(--base)}
+.shake{animation:shake .35s}
+@keyframes shake{25%{transform:translateX(-6px)}75%{transform:translateX(6px)}}
+@media (max-width:640px){.vs,.benef,.types,.updown{grid-template-columns:1fr}.lesson-hero h1{font-size:1.35rem}.pair{grid-template-columns:1fr}}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+
+.access button{background:#fff;color:var(--base);border:2px solid var(--base)}
+.rules{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:10px}
+.rules div{border-radius:16px;padding:10px 12px;background:var(--green-l);font-weight:600}
+.rules .ic{font-size:1.8rem;display:block}
+.sb{direction:rtl;display:inline-flex;flex-direction:column;align-items:flex-start;gap:3px;font-size:.85rem}
+.blk{display:inline-block;color:#fff;font-weight:700;border-radius:8px;padding:4px 12px;border:2px solid rgba(0,0,0,.15)}
+.blk i{font-style:normal;background:#fff;color:#333;border-radius:12px;padding:0 8px;margin:0 3px}
+.blk.ev{background:#FFBF00;color:#3d2d00;border-radius:16px 16px 8px 8px}
+.blk.looks{background:#9966FF}
+.blk.run{outline:4px solid #ff4d6d}
+/* ===== mock scratch ===== */
+.sw{border:3px solid #9ab;border-radius:14px;overflow:hidden;background:#e9f1fc;font-size:.8rem;user-select:none}
+.sw .top{background:#4C97FF;color:#fff;display:flex;align-items:center;gap:6px;padding:5px 8px;flex-wrap:wrap}
+.sw .logo{background:#FFAB19;color:#fff;font-weight:700;border-radius:8px;padding:0 8px;direction:ltr;font-family:Arial}
+.sw .tb{background:rgba(255,255,255,.18);border:0;color:#fff;font:inherit;font-weight:700;border-radius:8px;padding:2px 10px;cursor:pointer}
+.sw .nm{background:#fff;color:#333;border-radius:8px;padding:2px 10px;min-width:110px;cursor:pointer;font-weight:700;border:2px solid transparent}
+.sw .share{background:#FF8C1A}
+.sw .body{display:grid;grid-template-columns:minmax(0,.9fr) minmax(0,1fr) minmax(0,1.35fr);gap:6px;padding:6px}
+.sw .pal{background:#fff;border-radius:10px;padding:6px;display:grid;grid-template-columns:34px 1fr;gap:6px}
+.sw .cats{display:flex;flex-direction:column;gap:6px;align-items:center}
+.sw .cats span{width:20px;height:20px;border-radius:50%;display:block}
+.sw .pblk{display:flex;flex-direction:column;gap:5px;align-items:flex-start}
+.sw .pblk span{background:#4C97FF;color:#fff;border-radius:6px;padding:1px 8px;font-weight:700;font-size:.72rem}
+.sw .code{background:#f9f9f9 radial-gradient(#d9dde3 1px,transparent 1px) 0 0/14px 14px;border-radius:10px;position:relative;min-height:220px;padding:10px}
+.sw .zoom{position:absolute;left:8px;bottom:8px;display:flex;flex-direction:column;gap:4px}
+.sw .zoom span{width:26px;height:26px;border-radius:50%;border:2px solid #9ab;background:#fff;display:grid;place-items:center;color:#557;font-weight:700}
+.sw .stcol{display:flex;flex-direction:column;gap:6px}
+.sw .stbar{display:flex;justify-content:space-between;align-items:center;direction:ltr}
+.sw .stbar .gf{display:flex;gap:6px}
+.sw .ibtn{border:2px solid #c9d6ea;background:#fff;border-radius:8px;width:34px;height:30px;cursor:pointer;font-size:1rem;display:grid;place-items:center;padding:0}
+.sw .stage{position:relative;direction:ltr;aspect-ratio:4/3;background:#fff;border:2px solid #c9d6ea;border-radius:10px;overflow:hidden;touch-action:none;cursor:pointer}
+.sw .stage svg.bg{position:absolute;inset:0;width:100%;height:100%}
+.sw .cat{position:absolute;transform:translate(-50%,-55%);font-size:2.6rem;line-height:1;pointer-events:none}
+.sw .bub{position:absolute;transform:translate(-20%,-170%);background:#fff;border:2px solid #999;border-radius:12px;padding:1px 8px;font-weight:700;white-space:nowrap;direction:rtl;font-size:.8rem}
+.sw .bub:empty{display:none}
+.sw .low{display:grid;grid-template-columns:1fr 64px;gap:6px}
+.sw .spr{background:#fff;border-radius:10px;padding:6px;min-height:80px}
+.sw .spr .info{display:flex;gap:6px;flex-wrap:wrap;font-weight:700;color:#557;direction:rtl}
+.sw .spr .info b{background:#eef3fb;border-radius:8px;padding:0 6px;direction:ltr;display:inline-block;min-width:40px;text-align:center}
+.sw .spr .th{display:inline-grid;place-items:center;width:52px;height:52px;border:3px solid #4C97FF;border-radius:10px;font-size:1.8rem;margin-top:4px}
+.sw .bdc{background:#fff;border-radius:10px;display:flex;flex-direction:column;align-items:center;justify-content:space-between;padding:4px}
+.sw .bdbtn{width:46px;height:46px;border-radius:50%;background:#4C97FF;color:#fff;border:0;font-size:1.3rem;cursor:pointer}
+.sw .bdthumb{width:52px;height:39px;border-radius:6px;overflow:hidden;border:2px solid #c9d6ea}
+.sw .bdthumb svg{width:100%;height:100%;display:block}
+.sw.full .body{grid-template-columns:1fr}.sw.full .pal,.sw.full .code{display:none}
+.menu2{position:absolute;z-index:20;background:#fff;color:#222;border:2px solid #4C97FF;border-radius:12px;box-shadow:0 8px 20px rgba(0,0,0,.25);padding:6px;min-width:200px}
+.menu2 button{display:block;width:100%;text-align:right;border:0;background:none;font:inherit;font-weight:700;padding:6px 10px;border-radius:8px;cursor:pointer}
+.menu2 button:hover{background:#e8f1fa}
+.lib{display:grid;grid-template-columns:repeat(auto-fit,minmax(120px,1fr));gap:8px;margin:8px 0}
+.lib button{font:inherit;font-weight:700;border:3px solid var(--line);border-radius:14px;background:#fff;padding:4px;cursor:pointer}
+.lib button svg{width:100%;height:auto;display:block;border-radius:8px}
+.lib button.on{border-color:var(--blue);background:var(--blue-l)}
+.names{display:flex;flex-wrap:wrap;gap:8px;margin:8px 0}
+.names button{font:inherit;font-weight:700;border:3px solid var(--gold);background:var(--gold-l);border-radius:14px;padding:6px 14px;cursor:pointer}
+.msn{display:flex;gap:8px;flex-wrap:wrap;margin:8px 0}
+.msn button{font:inherit;font-weight:700;border:3px solid var(--green);background:#fff;color:var(--green);border-radius:14px;padding:6px 14px;cursor:pointer}
+.msn button.on{background:var(--green);color:#fff}
+.msn button.done::after{content:&#x27; ✔&#x27;}
+.chk{list-style:none;padding:0;margin:8px 0;display:grid;gap:6px}
+.chk li{border:2px solid var(--line);border-radius:14px;padding:6px 12px;font-weight:600}
+.chk li::before{content:&#x27;⬜ &#x27;}
+.chk li.ok::before{content:&#x27;✅ &#x27;}
+.chk li.ok{border-color:var(--green);background:var(--green-l)}
+.msnbox{display:grid;grid-template-columns:1fr 200px;gap:12px;align-items:start}
+.msnbox .pic{border-radius:12px;overflow:hidden;border:3px solid var(--gold);position:relative}
+.msnbox .pic svg{width:100%;display:block}
+.msnbox .pic span{position:absolute;font-size:2rem;transform:translate(-50%,-55%)}
+.hunt [data-part]{transition:box-shadow .2s}
+.hunt .hit{box-shadow:0 0 0 4px #00894A inset,0 0 0 4px #00894A;border-radius:10px}
+.hunt .miss{box-shadow:0 0 0 4px #C43D6B inset,0 0 0 4px #C43D6B;border-radius:10px}
+.prompt{background:var(--gold-l);border:3px solid var(--gold);border-radius:16px;padding:8px 14px;font-weight:700;text-align:center;font-size:1.15rem;margin:6px 0}
+/* order game */
+.ord .slots{display:grid;gap:6px;margin:8px 0}
+.ord .slot{border:3px dashed var(--line);border-radius:14px;padding:6px 12px;min-height:46px;display:flex;gap:8px;align-items:center}
+.ord .slot b{width:32px;height:32px;border-radius:50%;background:var(--gold);color:#fff;display:grid;place-items:center;flex:none}
+.ord .slot.done{border-style:solid;border-color:var(--green);background:var(--green-l);font-weight:700}
+.ord .pool{display:grid;gap:6px}
+.ord .pool button{font:inherit;text-align:right;border:3px solid var(--blue);background:var(--blue-l);border-radius:14px;padding:8px 12px;cursor:pointer;font-weight:600}
+.ord .pool button.gone{display:none}
+.ex3{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+.ex3 div{border:3px solid var(--green);border-radius:16px;padding:10px;text-align:center;font-weight:600;background:#fff}
+.ex3 .ic{font-size:2.4rem;display:block}
+@media (max-width:760px){.sw .body{grid-template-columns:1fr}.sw .code{min-height:120px}.msnbox{grid-template-columns:1fr}.ex3{grid-template-columns:1fr}}
+body{background:transparent}.wrap{padding:4px 0}&lt;/style&gt;
+&lt;/head&gt;
+&lt;body&gt;
+&lt;div class=&quot;wrap&quot;&gt;
+
+
+&lt;div class=&quot;access&quot; style=&quot;margin:10px 0 0&quot;&gt;
+  &lt;button id=&quot;fsUp&quot; aria-label=&quot;تكبير الخط&quot;&gt;🔠 تكبير الخط&lt;/button&gt;
+  &lt;button id=&quot;fsDown&quot; aria-label=&quot;تصغير الخط&quot;&gt;🔡 تصغير الخط&lt;/button&gt;
+  &lt;button id=&quot;stopAll&quot; aria-label=&quot;إيقاف القراءة&quot;&gt;⏹️ إيقاف الصوت&lt;/button&gt;
+&lt;/div&gt;
+
+&lt;nav class=&quot;tabs&quot;&gt;
+  &lt;button class=&quot;active&quot; data-p=&quot;p-explain&quot;&gt;📘 الشرح&lt;/button&gt;
+  &lt;button data-p=&quot;p-lab&quot;&gt;🐱 جرّب بنفسك&lt;/button&gt;
+  &lt;button data-p=&quot;p-practice&quot;&gt;🎯 التدريبات&lt;/button&gt;
+&lt;/nav&gt;
+
+&lt;!-- ================= الشرح ================= --&gt;
+&lt;section class=&quot;panel active&quot; id=&quot;p-explain&quot;&gt;
+  &lt;div class=&quot;card&quot;&gt;&lt;div class=&quot;say big&quot;&gt;🔊 اضغط زر السماعة بجانب أي فقرة لتسمعها.&lt;/div&gt;&lt;/div&gt;
+
+  &lt;div class=&quot;card&quot;&gt;
+    &lt;h2&gt;🎬 فيديو الشرح&lt;/h2&gt;
+    &lt;div class=&quot;video&quot;&gt;&lt;iframe src=&quot;https://www.youtube.com/embed/v-CI-G3Fz0g?list=PLxUJ-_vAd_lVU9-GFMH56m8sUswiB9a2w&amp;index=14&quot; title=&quot;شرح درس أساسيات سكراتش&quot; allow=&quot;accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture&quot; allowfullscreen&gt;&lt;/iframe&gt;&lt;/div&gt;
+    &lt;p style=&quot;margin:8px 0 0&quot;&gt;&lt;a class=&quot;btn btn-out&quot; href=&quot;https://www.youtube.com/watch?v=v-CI-G3Fz0g&amp;list=PLxUJ-_vAd_lVU9-GFMH56m8sUswiB9a2w&amp;index=14&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;فتح الفيديو في يوتيوب ↗&lt;/a&gt;&lt;/p&gt;
+  &lt;/div&gt;
+
+  &lt;div class=&quot;card&quot;&gt;
+    &lt;h2&gt;🖼️ شرح الدرس في صورة&lt;/h2&gt;
+    &lt;svg viewBox=&quot;0 0 900 900&quot; xmlns=&quot;http://www.w3.org/2000/svg&quot; font-family=&quot;IBM Plex Sans Arabic, Tahoma&quot; role=&quot;img&quot; aria-label=&quot;ملخص مصور: الخوارزمية وأمثلتها، وأجزاء واجهة سكراتش، وأزرار المنصة، والخلفية، وحفظ المشروع&quot;&gt;
+      &lt;rect width=&quot;900&quot; height=&quot;900&quot; rx=&quot;24&quot; fill=&quot;#012B28&quot;/&gt;
+      &lt;text x=&quot;450&quot; y=&quot;52&quot; text-anchor=&quot;middle&quot; fill=&quot;#fff&quot; font-size=&quot;32&quot; font-weight=&quot;700&quot;&gt;أساسيات سكراتش&lt;/text&gt;
+      &lt;rect x=&quot;360&quot; y=&quot;66&quot; width=&quot;180&quot; height=&quot;5&quot; rx=&quot;2&quot; fill=&quot;#C68A2E&quot;/&gt;
+      &lt;!-- algorithm --&gt;
+      &lt;g transform=&quot;translate(30,90)&quot;&gt;
+        &lt;rect width=&quot;840&quot; height=&quot;210&quot; rx=&quot;22&quot; fill=&quot;#e6f5ee&quot; stroke=&quot;#00894A&quot; stroke-width=&quot;4&quot;/&gt;
+        &lt;text x=&quot;420&quot; y=&quot;40&quot; text-anchor=&quot;middle&quot; font-size=&quot;23&quot; font-weight=&quot;700&quot; fill=&quot;#00894A&quot;&gt;🪜 الخوارزمية = خطوات مرتّبة لحل مشكلة&lt;/text&gt;
+        &lt;g text-anchor=&quot;middle&quot; font-weight=&quot;700&quot; fill=&quot;#012B28&quot;&gt;
+          &lt;rect x=&quot;580&quot; y=&quot;58&quot; width=&quot;230&quot; height=&quot;100&quot; rx=&quot;16&quot; fill=&quot;#fff&quot;/&gt;&lt;text x=&quot;695&quot; y=&quot;104&quot; font-size=&quot;36&quot;&gt;🗺️&lt;/text&gt;&lt;text x=&quot;695&quot; y=&quot;142&quot; font-size=&quot;17&quot;&gt;الطريق إلى الحديقة&lt;/text&gt;
+          &lt;rect x=&quot;305&quot; y=&quot;58&quot; width=&quot;230&quot; height=&quot;100&quot; rx=&quot;16&quot; fill=&quot;#fff&quot;/&gt;&lt;text x=&quot;420&quot; y=&quot;104&quot; font-size=&quot;36&quot;&gt;🧸&lt;/text&gt;&lt;text x=&quot;420&quot; y=&quot;142&quot; font-size=&quot;17&quot;&gt;تركيب لعبة&lt;/text&gt;
+          &lt;rect x=&quot;30&quot; y=&quot;58&quot; width=&quot;230&quot; height=&quot;100&quot; rx=&quot;16&quot; fill=&quot;#fff&quot;/&gt;&lt;text x=&quot;145&quot; y=&quot;104&quot; font-size=&quot;36&quot;&gt;🎂&lt;/text&gt;&lt;text x=&quot;145&quot; y=&quot;142&quot; font-size=&quot;17&quot;&gt;وصفة كعكة&lt;/text&gt;
+        &lt;/g&gt;
+        &lt;text x=&quot;420&quot; y=&quot;190&quot; text-anchor=&quot;middle&quot; font-size=&quot;17&quot; font-weight=&quot;700&quot; fill=&quot;#012B28&quot;&gt;💻 البرمجة = كتابة أوامر للحاسب بلغة يفهمها&lt;/text&gt;
+      &lt;/g&gt;
+      &lt;!-- interface --&gt;
+      &lt;g transform=&quot;translate(30,320)&quot;&gt;
+        &lt;rect width=&quot;840&quot; height=&quot;330&quot; rx=&quot;22&quot; fill=&quot;#e8f1fa&quot; stroke=&quot;#1e6fb8&quot; stroke-width=&quot;4&quot;/&gt;
+        &lt;text x=&quot;420&quot; y=&quot;40&quot; text-anchor=&quot;middle&quot; font-size=&quot;23&quot; font-weight=&quot;700&quot; fill=&quot;#1e6fb8&quot;&gt;🐱 واجهة سكراتش&lt;/text&gt;
+        &lt;rect x=&quot;40&quot; y=&quot;58&quot; width=&quot;760&quot; height=&quot;40&quot; rx=&quot;10&quot; fill=&quot;#4C97FF&quot;/&gt;
+        &lt;text x=&quot;420&quot; y=&quot;85&quot; text-anchor=&quot;middle&quot; font-size=&quot;17&quot; font-weight=&quot;700&quot; fill=&quot;#fff&quot;&gt;القائمة: ملف • تحرير • اسم المشروع • مشاركة&lt;/text&gt;
+        &lt;rect x=&quot;600&quot; y=&quot;108&quot; width=&quot;200&quot; height=&quot;200&quot; rx=&quot;12&quot; fill=&quot;#fff&quot; stroke=&quot;#4C97FF&quot; stroke-width=&quot;3&quot;/&gt;
+        &lt;g fill=&quot;#4C97FF&quot;&gt;&lt;rect x=&quot;640&quot; y=&quot;160&quot; width=&quot;120&quot; height=&quot;20&quot; rx=&quot;6&quot;/&gt;&lt;rect x=&quot;640&quot; y=&quot;190&quot; width=&quot;100&quot; height=&quot;20&quot; rx=&quot;6&quot;/&gt;&lt;rect x=&quot;640&quot; y=&quot;220&quot; width=&quot;130&quot; height=&quot;20&quot; rx=&quot;6&quot;/&gt;&lt;/g&gt;
+        &lt;text x=&quot;700&quot; y=&quot;140&quot; text-anchor=&quot;middle&quot; font-size=&quot;17&quot; font-weight=&quot;700&quot; fill=&quot;#012B28&quot;&gt;لوحة اللبنات&lt;/text&gt;
+        &lt;text x=&quot;700&quot; y=&quot;276&quot; text-anchor=&quot;middle&quot; font-size=&quot;15&quot; fill=&quot;#5d6f6c&quot;&gt;الأوامر الملوّنة&lt;/text&gt;
+        &lt;rect x=&quot;380&quot; y=&quot;108&quot; width=&quot;205&quot; height=&quot;200&quot; rx=&quot;12&quot; fill=&quot;#f9f9f9&quot; stroke=&quot;#9966FF&quot; stroke-width=&quot;3&quot;/&gt;
+        &lt;text x=&quot;482&quot; y=&quot;140&quot; text-anchor=&quot;middle&quot; font-size=&quot;17&quot; font-weight=&quot;700&quot; fill=&quot;#012B28&quot;&gt;منطقة البرمجة&lt;/text&gt;
+        &lt;rect x=&quot;415&quot; y=&quot;165&quot; width=&quot;120&quot; height=&quot;28&quot; rx=&quot;12&quot; fill=&quot;#FFBF00&quot;/&gt;&lt;text x=&quot;475&quot; y=&quot;185&quot; text-anchor=&quot;middle&quot; font-size=&quot;14&quot; font-weight=&quot;700&quot; fill=&quot;#3d2d00&quot;&gt;عند نقر 🏁&lt;/text&gt;
+        &lt;rect x=&quot;415&quot; y=&quot;195&quot; width=&quot;150&quot; height=&quot;28&quot; rx=&quot;6&quot; fill=&quot;#9966FF&quot;/&gt;&lt;text x=&quot;490&quot; y=&quot;215&quot; text-anchor=&quot;middle&quot; font-size=&quot;14&quot; font-weight=&quot;700&quot; fill=&quot;#fff&quot;&gt;قل مرحبًا!&lt;/text&gt;
+        &lt;text x=&quot;482&quot; y=&quot;276&quot; text-anchor=&quot;middle&quot; font-size=&quot;15&quot; fill=&quot;#5d6f6c&quot;&gt;هنا أركّب اللبنات&lt;/text&gt;
+        &lt;rect x=&quot;40&quot; y=&quot;108&quot; width=&quot;325&quot; height=&quot;140&quot; rx=&quot;12&quot; fill=&quot;#fff&quot; stroke=&quot;#00894A&quot; stroke-width=&quot;3&quot;/&gt;
+        &lt;text x=&quot;202&quot; y=&quot;140&quot; text-anchor=&quot;middle&quot; font-size=&quot;17&quot; font-weight=&quot;700&quot; fill=&quot;#012B28&quot;&gt;المنصة = المسرح 🎭&lt;/text&gt;
+        &lt;text x=&quot;202&quot; y=&quot;200&quot; text-anchor=&quot;middle&quot; font-size=&quot;40&quot;&gt;🐈&lt;/text&gt;
+        &lt;text x=&quot;202&quot; y=&quot;236&quot; text-anchor=&quot;middle&quot; font-size=&quot;14&quot; fill=&quot;#5d6f6c&quot;&gt;الكائن = الممثل&lt;/text&gt;
+        &lt;rect x=&quot;40&quot; y=&quot;256&quot; width=&quot;325&quot; height=&quot;52&quot; rx=&quot;12&quot; fill=&quot;#fff&quot; stroke=&quot;#C68A2E&quot; stroke-width=&quot;3&quot;/&gt;
+        &lt;text x=&quot;202&quot; y=&quot;289&quot; text-anchor=&quot;middle&quot; font-size=&quot;16&quot; font-weight=&quot;700&quot; fill=&quot;#012B28&quot;&gt;لوحة الكائنات • 🖼️ اختيار خلفية&lt;/text&gt;
+      &lt;/g&gt;
+      &lt;!-- stage buttons + save --&gt;
+      &lt;g transform=&quot;translate(30,670)&quot;&gt;
+        &lt;rect width=&quot;410&quot; height=&quot;210&quot; rx=&quot;22&quot; fill=&quot;#fbf3e6&quot; stroke=&quot;#C68A2E&quot; stroke-width=&quot;4&quot;/&gt;
+        &lt;text x=&quot;205&quot; y=&quot;40&quot; text-anchor=&quot;middle&quot; font-size=&quot;22&quot; font-weight=&quot;700&quot; fill=&quot;#C68A2E&quot;&gt;🎬 أزرار المنصة&lt;/text&gt;
+        &lt;g font-size=&quot;18&quot; font-weight=&quot;700&quot; fill=&quot;#012B28&quot;&gt;
+          &lt;text x=&quot;380&quot; y=&quot;88&quot; text-anchor=&quot;start&quot;&gt;🏁 العلم الأخضر: يبدأ البرنامج&lt;/text&gt;
+          &lt;text x=&quot;380&quot; y=&quot;132&quot; text-anchor=&quot;start&quot;&gt;🔴 الإيقاف: يوقف البرنامج&lt;/text&gt;
+          &lt;text x=&quot;380&quot; y=&quot;176&quot; text-anchor=&quot;start&quot;&gt;⛶ تكبير المنصة لكامل الشاشة&lt;/text&gt;
+        &lt;/g&gt;
+      &lt;/g&gt;
+      &lt;g transform=&quot;translate(460,670)&quot;&gt;
+        &lt;rect width=&quot;410&quot; height=&quot;210&quot; rx=&quot;22&quot; fill=&quot;#fbeaf0&quot; stroke=&quot;#C43D6B&quot; stroke-width=&quot;4&quot;/&gt;
+        &lt;text x=&quot;205&quot; y=&quot;40&quot; text-anchor=&quot;middle&quot; font-size=&quot;22&quot; font-weight=&quot;700&quot; fill=&quot;#C43D6B&quot;&gt;🖼️ الخلفية و💾 الحفظ&lt;/text&gt;
+        &lt;g font-size=&quot;18&quot; font-weight=&quot;700&quot; fill=&quot;#012B28&quot;&gt;
+          &lt;text x=&quot;380&quot; y=&quot;88&quot; text-anchor=&quot;start&quot;&gt;🖼️ الخلفية = مظهر المنصة&lt;/text&gt;
+          &lt;text x=&quot;380&quot; y=&quot;132&quot; text-anchor=&quot;start&quot;&gt;✋ أسحب الكائن لأغيّر مكانه&lt;/text&gt;
+          &lt;text x=&quot;380&quot; y=&quot;176&quot; text-anchor=&quot;start&quot;&gt;💾 ملف ← الحفظ إلى حاسوبك&lt;/text&gt;
+        &lt;/g&gt;
+      &lt;/g&gt;
+    &lt;/svg&gt;
+  &lt;/div&gt;
+
+  &lt;div class=&quot;card&quot;&gt;
+    &lt;h2&gt;🪜 الخوارزمية&lt;/h2&gt;
+    &lt;div class=&quot;tip say&quot;&gt;📜 &lt;span class=&quot;kw&quot;&gt;الخوارزمية&lt;/span&gt;: خطوات متسلسلة، خطوة بخطوة، لحل مشكلة أو لإكمال مهمة.&lt;/div&gt;
+    &lt;div class=&quot;say&quot;&gt;⚠️ ترتيب الخطوات مهم جدًا، لنصل إلى النتيجة الصحيحة.&lt;/div&gt;
+    &lt;div class=&quot;ex3&quot;&gt;
+      &lt;div class=&quot;say&quot;&gt;&lt;span class=&quot;ic&quot;&gt;🗺️&lt;/span&gt;الوصول إلى الحديقة: اتجاهات الطريق.&lt;/div&gt;
+      &lt;div class=&quot;say&quot;&gt;&lt;span class=&quot;ic&quot;&gt;🧸&lt;/span&gt;تركيب لعبة: ورقة الإرشادات.&lt;/div&gt;
+      &lt;div class=&quot;say&quot;&gt;&lt;span class=&quot;ic&quot;&gt;🎂&lt;/span&gt;صناعة كعكة: وصفة الكعكة.&lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div class=&quot;tip say&quot;&gt;💻 &lt;span class=&quot;kw&quot;&gt;البرمجة&lt;/span&gt;: كتابة أوامر وتعليمات للحاسب، بلغة برمجة يفهمها.&lt;/div&gt;
+    &lt;div class=&quot;note say&quot;&gt;ℹ️ البرمجة تعلّمني: حل المشكلات، والتفكير الحاسوبي، والتفكير الإبداعي.&lt;/div&gt;
+  &lt;/div&gt;
+
+  &lt;div class=&quot;card&quot;&gt;
+    &lt;h2&gt;🥪 مثال: شطيرة خبز بالجبن&lt;/h2&gt;
+    &lt;div class=&quot;say&quot;&gt;أقسّم المهمة الكبيرة إلى خطوات صغيرة سهلة.&lt;/div&gt;
+    &lt;div class=&quot;stepsx&quot;&gt;
+      &lt;div class=&quot;stp&quot;&gt;&lt;span class=&quot;n&quot;&gt;1&lt;/span&gt;&lt;div class=&quot;say&quot;&gt;🍞 خذ شريحة من الخبز.&lt;/div&gt;&lt;/div&gt;
+      &lt;div class=&quot;stp&quot;&gt;&lt;span class=&quot;n&quot;&gt;2&lt;/span&gt;&lt;div class=&quot;say&quot;&gt;🧀 ضع شريحة من الجبن عليها.&lt;/div&gt;&lt;/div&gt;
+      &lt;div class=&quot;stp&quot;&gt;&lt;span class=&quot;n&quot;&gt;3&lt;/span&gt;&lt;div class=&quot;say&quot;&gt;🍞 ضع شريحة ثانية من الخبز عليها.&lt;/div&gt;&lt;/div&gt;
+      &lt;div class=&quot;stp&quot;&gt;&lt;span class=&quot;n&quot;&gt;4&lt;/span&gt;&lt;div class=&quot;say&quot;&gt;🔌 ضع الشطيرة في محمصة الخبز.&lt;/div&gt;&lt;/div&gt;
+      &lt;div class=&quot;stp&quot;&gt;&lt;span class=&quot;n&quot;&gt;5&lt;/span&gt;&lt;div class=&quot;say&quot;&gt;⏳ انتظر 3 دقائق.&lt;/div&gt;&lt;/div&gt;
+      &lt;div class=&quot;stp&quot;&gt;&lt;span class=&quot;n&quot;&gt;6&lt;/span&gt;&lt;div class=&quot;say&quot;&gt;😋 الشطيرة جاهزة!&lt;/div&gt;&lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+
+  &lt;div class=&quot;card&quot;&gt;
+    &lt;h2&gt;🐱 سكراتش&lt;/h2&gt;
+    &lt;div class=&quot;say&quot;&gt;&lt;span class=&quot;kw&quot;&gt;سكراتش&lt;/span&gt; لغة برمجة سهلة وممتعة للمبتدئين.&lt;/div&gt;
+    &lt;div class=&quot;say&quot;&gt;🧩 الأوامر في سكراتش اسمها &lt;span class=&quot;kw&quot;&gt;لبنات برمجية&lt;/span&gt;. تتصل ببعضها مثل قطع الأحجية.&lt;/div&gt;
+    &lt;div class=&quot;say&quot;&gt;✋ أسحب اللبنات إلى منطقة البرمجة، وأربطها ببعض.&lt;/div&gt;
+    &lt;div class=&quot;say&quot;&gt;🌐 سكراتش يعمل عبر الإنترنت من الموقع: &lt;b dir=&quot;ltr&quot;&gt;scratch.mit.edu&lt;/b&gt;&lt;/div&gt;
+    &lt;div class=&quot;rules&quot;&gt;
+      &lt;div class=&quot;say&quot;&gt;&lt;span class=&quot;ic&quot;&gt;📋&lt;/span&gt;&lt;b&gt;القائمة:&lt;/b&gt; ملف، وتحرير.&lt;/div&gt;
+      &lt;div class=&quot;say&quot;&gt;&lt;span class=&quot;ic&quot;&gt;🧩&lt;/span&gt;&lt;b&gt;لوحة اللبنات:&lt;/b&gt; فيها الأوامر.&lt;/div&gt;
+      &lt;div class=&quot;say&quot;&gt;&lt;span class=&quot;ic&quot;&gt;🛠️&lt;/span&gt;&lt;b&gt;منطقة البرمجة:&lt;/b&gt; أركّب فيها اللبنات.&lt;/div&gt;
+      &lt;div class=&quot;say&quot;&gt;&lt;span class=&quot;ic&quot;&gt;🎭&lt;/span&gt;&lt;b&gt;المنصة:&lt;/b&gt; أرى فيها النتيجة.&lt;/div&gt;
+      &lt;div class=&quot;say&quot;&gt;&lt;span class=&quot;ic&quot;&gt;🐈&lt;/span&gt;&lt;b&gt;الكائن:&lt;/b&gt; الشخصية التي تنفّذ الأوامر.&lt;/div&gt;
+      &lt;div class=&quot;say&quot;&gt;&lt;span class=&quot;ic&quot;&gt;🗂️&lt;/span&gt;&lt;b&gt;لوحة الكائنات:&lt;/b&gt; كل الكائنات في المشروع.&lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div class=&quot;tip say&quot;&gt;🔍 جرّب واجهة سكراتش في «جرّب بنفسك».&lt;/div&gt;
+  &lt;/div&gt;
+
+  &lt;div class=&quot;card&quot;&gt;
+    &lt;h2&gt;🎭 المنصة والكائن&lt;/h2&gt;
+    &lt;div class=&quot;say&quot;&gt;🐈 &lt;span class=&quot;kw&quot;&gt;الكائن&lt;/span&gt; مثل الممثل. والقطة هي الكائن الأول في سكراتش.&lt;/div&gt;
+    &lt;div class=&quot;say&quot;&gt;🎭 &lt;span class=&quot;kw&quot;&gt;المنصة&lt;/span&gt; مثل المسرح. عليها يعمل البرنامج.&lt;/div&gt;
+    &lt;div class=&quot;say&quot;&gt;🏁 العلم الأخضر: يبدأ البرنامج. 🔴 إشارة الإيقاف: توقف البرنامج.&lt;/div&gt;
+    &lt;div class=&quot;say&quot;&gt;✋ لتغيير مكان الكائن: اضغط عليه، واسحبه، ثم أفلته.&lt;/div&gt;
+  &lt;/div&gt;
+
+  &lt;div class=&quot;card&quot;&gt;
+    &lt;h2&gt;🖼️ الخلفية&lt;/h2&gt;
+    &lt;div class=&quot;say&quot;&gt;الخلفية هي «المظهر» الخاص بالمنصة.&lt;/div&gt;
+    &lt;div class=&quot;stepsx&quot;&gt;
+      &lt;div class=&quot;stp&quot;&gt;&lt;span class=&quot;n&quot;&gt;1&lt;/span&gt;&lt;div class=&quot;say&quot;&gt;اضغط زر &lt;b&gt;اختيار خلفية&lt;/b&gt; 🖼️.&lt;/div&gt;&lt;/div&gt;
+      &lt;div class=&quot;stp&quot;&gt;&lt;span class=&quot;n&quot;&gt;2&lt;/span&gt;&lt;div class=&quot;say&quot;&gt;تظهر مكتبة صور الخلفيات.&lt;/div&gt;&lt;/div&gt;
+      &lt;div class=&quot;stp&quot;&gt;&lt;span class=&quot;n&quot;&gt;3&lt;/span&gt;&lt;div class=&quot;say&quot;&gt;اضغط على الخلفية التي تريدها.&lt;/div&gt;&lt;/div&gt;
+      &lt;div class=&quot;stp&quot;&gt;&lt;span class=&quot;n&quot;&gt;4&lt;/span&gt;&lt;div class=&quot;say&quot;&gt;تظهر الخلفية الجديدة على المنصة.&lt;/div&gt;&lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div class=&quot;note say&quot;&gt;لا بد أن يكون للمنصة خلفية واحدة على الأقل.&lt;/div&gt;
+  &lt;/div&gt;
+
+  &lt;div class=&quot;card&quot;&gt;
+    &lt;h2&gt;💾 حفظ عملك&lt;/h2&gt;
+    &lt;div class=&quot;say&quot;&gt;في سكراتش عبر الإنترنت يُحفظ العمل تلقائيًا (مع الحساب).&lt;/div&gt;
+    &lt;div class=&quot;say&quot;&gt;من قائمة &lt;b&gt;ملف&lt;/b&gt;:&lt;/div&gt;
+    &lt;div class=&quot;rules&quot;&gt;
+      &lt;div class=&quot;say&quot;&gt;&lt;span class=&quot;ic&quot;&gt;🆕&lt;/span&gt;&lt;b&gt;جديد:&lt;/b&gt; مشروع جديد.&lt;/div&gt;
+      &lt;div class=&quot;say&quot;&gt;&lt;span class=&quot;ic&quot;&gt;💾&lt;/span&gt;&lt;b&gt;الحفظ الآن:&lt;/b&gt; حفظ مشروعك.&lt;/div&gt;
+      &lt;div class=&quot;say&quot;&gt;&lt;span class=&quot;ic&quot;&gt;📄&lt;/span&gt;&lt;b&gt;حفظ نسخة:&lt;/b&gt; نسخة من مشروعك.&lt;/div&gt;
+      &lt;div class=&quot;say&quot;&gt;&lt;span class=&quot;ic&quot;&gt;📂&lt;/span&gt;&lt;b&gt;التحميل من حاسوبك:&lt;/b&gt; فتح مشروع من الحاسب.&lt;/div&gt;
+      &lt;div class=&quot;say&quot;&gt;&lt;span class=&quot;ic&quot;&gt;💻&lt;/span&gt;&lt;b&gt;الحفظ إلى حاسوبك:&lt;/b&gt; حفظ المشروع في الحاسب.&lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/section&gt;
+
+&lt;!-- ================= جرّب بنفسك ================= --&gt;
+&lt;section class=&quot;panel&quot; id=&quot;p-lab&quot;&gt;
+  &lt;div class=&quot;card&quot;&gt;
+    &lt;span class=&quot;tag&quot;&gt;لعبة 1&lt;/span&gt;
+    &lt;h2&gt;🥪 رتّب خوارزمية الشطيرة&lt;/h2&gt;
+    &lt;div class=&quot;say&quot;&gt;اضغط الخطوات بالترتيب الصحيح.&lt;/div&gt;
+    &lt;div class=&quot;ord&quot; id=&quot;sand&quot;&gt;&lt;/div&gt;
+    &lt;div class=&quot;fb&quot; id=&quot;sandFb&quot;&gt;&lt;/div&gt;
+    &lt;div id=&quot;sandQ&quot; style=&quot;display:none&quot;&gt;
+      &lt;div class=&quot;say&quot;&gt;&lt;b&gt;🤔 تريد أن تصنع 4 شطائر لعائلتك. كم مرة تكرّر الخطوات؟&lt;/b&gt;&lt;/div&gt;
+      &lt;div class=&quot;row-q&quot; id=&quot;sandOps&quot; style=&quot;display:flex;gap:10px;flex-wrap:wrap&quot;&gt;&lt;/div&gt;
+      &lt;div class=&quot;fb&quot; id=&quot;sandQFb&quot;&gt;&lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+
+  &lt;div class=&quot;card&quot;&gt;
+    &lt;span class=&quot;tag&quot;&gt;لعبة 2&lt;/span&gt;
+    &lt;h2&gt;🔍 ابحث في واجهة سكراتش&lt;/h2&gt;
+    &lt;div class=&quot;say&quot;&gt;اقرأ الطلب (أو اسمعه)، ثم اضغط على الجزء الصحيح في الواجهة.&lt;/div&gt;
+    &lt;div class=&quot;prompt say&quot; id=&quot;huntQ&quot;&gt;&lt;/div&gt;
+    &lt;div class=&quot;sw hunt&quot; id=&quot;hunt&quot;&gt;
+      &lt;div class=&quot;top&quot; data-part=&quot;menu&quot;&gt;
+        &lt;span class=&quot;logo&quot;&gt;Scratch&lt;/span&gt;&lt;span class=&quot;tb&quot;&gt;🌐&lt;/span&gt;&lt;span class=&quot;tb&quot;&gt;ملف&lt;/span&gt;&lt;span class=&quot;tb&quot;&gt;تحرير&lt;/span&gt;&lt;span class=&quot;nm&quot;&gt;السلام عليكم&lt;/span&gt;&lt;span class=&quot;tb share&quot;&gt;مشاركة&lt;/span&gt;
+        &lt;span style=&quot;flex:1&quot;&gt;&lt;/span&gt;&lt;span class=&quot;tb&quot; data-part=&quot;login&quot;&gt;تسجيل الدخول&lt;/span&gt;
+      &lt;/div&gt;
+      &lt;div class=&quot;body&quot;&gt;
+        &lt;div class=&quot;pal&quot; data-part=&quot;palette&quot;&gt;
+          &lt;div class=&quot;cats&quot;&gt;&lt;span style=&quot;background:#4C97FF&quot;&gt;&lt;/span&gt;&lt;span style=&quot;background:#9966FF&quot;&gt;&lt;/span&gt;&lt;span style=&quot;background:#CF63CF&quot;&gt;&lt;/span&gt;&lt;span style=&quot;background:#FFBF00&quot;&gt;&lt;/span&gt;&lt;span style=&quot;background:#FFAB19&quot;&gt;&lt;/span&gt;&lt;span style=&quot;background:#5CB1D6&quot;&gt;&lt;/span&gt;&lt;/div&gt;
+          &lt;div class=&quot;pblk&quot;&gt;&lt;span&gt;تحرّك 10 خطوة&lt;/span&gt;&lt;span&gt;استدر ↻ 15 درجة&lt;/span&gt;&lt;span&gt;استدر ↺ 15 درجة&lt;/span&gt;&lt;span&gt;اذهب إلى موضع عشوائي&lt;/span&gt;&lt;span&gt;انزلق خلال 1 ثانية&lt;/span&gt;&lt;/div&gt;
+        &lt;/div&gt;
+        &lt;div class=&quot;code&quot; data-part=&quot;code&quot;&gt;
+          &lt;div class=&quot;sb&quot;&gt;&lt;div class=&quot;blk ev&quot;&gt;عند نقر 🏁&lt;/div&gt;&lt;div class=&quot;blk looks&quot;&gt;قل &lt;i&gt;مرحبًا بكم في سكراتش!&lt;/i&gt; لمدة &lt;i&gt;2&lt;/i&gt; ثانية&lt;/div&gt;&lt;/div&gt;
+          &lt;div class=&quot;zoom&quot; data-part=&quot;zoom&quot;&gt;&lt;span&gt;+&lt;/span&gt;&lt;span&gt;−&lt;/span&gt;&lt;span&gt;=&lt;/span&gt;&lt;/div&gt;
+        &lt;/div&gt;
+        &lt;div class=&quot;stcol&quot;&gt;
+          &lt;div class=&quot;stbar&quot;&gt;&lt;div class=&quot;gf&quot;&gt;&lt;span class=&quot;ibtn&quot; data-part=&quot;flag&quot;&gt;🏁&lt;/span&gt;&lt;span class=&quot;ibtn&quot; data-part=&quot;stop&quot;&gt;🔴&lt;/span&gt;&lt;/div&gt;&lt;span class=&quot;ibtn&quot; data-part=&quot;full&quot;&gt;⛶&lt;/span&gt;&lt;/div&gt;
+          &lt;div class=&quot;stage&quot; data-part=&quot;stage&quot; style=&quot;cursor:default&quot;&gt;&lt;span class=&quot;cat&quot; data-part=&quot;sprite&quot; style=&quot;left:50%;top:55%;pointer-events:auto&quot;&gt;🐈&lt;/span&gt;&lt;/div&gt;
+          &lt;div class=&quot;low&quot;&gt;
+            &lt;div class=&quot;spr&quot; data-part=&quot;sprites&quot;&gt;&lt;div class=&quot;info&quot;&gt;الكائن: &lt;b&gt;قط&lt;/b&gt; س: &lt;b&gt;0&lt;/b&gt; ص: &lt;b&gt;0&lt;/b&gt;&lt;/div&gt;&lt;span class=&quot;th&quot;&gt;🐈&lt;/span&gt;&lt;/div&gt;
+            &lt;div class=&quot;bdc&quot;&gt;&lt;span style=&quot;font-size:.7rem;font-weight:700&quot;&gt;المنصة&lt;/span&gt;&lt;button class=&quot;bdbtn&quot; data-part=&quot;backdrop&quot; type=&quot;button&quot;&gt;🖼️&lt;/button&gt;&lt;/div&gt;
+          &lt;/div&gt;
+        &lt;/div&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div class=&quot;fb&quot; id=&quot;huntFb&quot;&gt;&lt;/div&gt;
+    &lt;div class=&quot;score&quot; id=&quot;huntScore&quot;&gt;&lt;/div&gt;
+  &lt;/div&gt;
+&lt;/section&gt;
+
+&lt;!-- ================= التدريبات ================= --&gt;
+&lt;section class=&quot;panel&quot; id=&quot;p-practice&quot;&gt;
+  &lt;div class=&quot;card&quot;&gt;
+    &lt;span class=&quot;tag&quot;&gt;تدريب 1 و2 و4 – من الكتاب&lt;/span&gt;
+    &lt;h2&gt;🐱 أنشئ مشروعًا في سكراتش&lt;/h2&gt;
+    &lt;div class=&quot;say&quot;&gt;اختر المهمة، ثم نفّذها في نافذة سكراتش. اضغط على المنصة لتنقل القطة.&lt;/div&gt;
+    &lt;div class=&quot;msn&quot; id=&quot;msnTabs&quot;&gt;&lt;/div&gt;
+    &lt;div class=&quot;msnbox&quot;&gt;
+      &lt;div&gt;&lt;div class=&quot;say&quot; id=&quot;msnText&quot;&gt;&lt;/div&gt;&lt;ul class=&quot;chk&quot; id=&quot;msnChk&quot;&gt;&lt;/ul&gt;&lt;/div&gt;
+      &lt;div class=&quot;pic&quot; id=&quot;msnPic&quot;&gt;&lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div class=&quot;sw&quot; id=&quot;sim&quot; style=&quot;position:relative&quot;&gt;
+      &lt;div class=&quot;top&quot;&gt;
+        &lt;span class=&quot;logo&quot;&gt;Scratch&lt;/span&gt;&lt;span class=&quot;tb&quot;&gt;🌐&lt;/span&gt;
+        &lt;button class=&quot;tb&quot; id=&quot;fileBtn&quot; type=&quot;button&quot;&gt;ملف ▾&lt;/button&gt;&lt;span class=&quot;tb&quot;&gt;تحرير&lt;/span&gt;
+        &lt;span class=&quot;nm&quot; id=&quot;pname&quot; role=&quot;button&quot; tabindex=&quot;0&quot; title=&quot;اسم المشروع&quot;&gt;مشروع سكراتش&lt;/span&gt;&lt;span class=&quot;tb share&quot;&gt;مشاركة&lt;/span&gt;
+      &lt;/div&gt;
+      &lt;div class=&quot;menu2&quot; id=&quot;fileMenu&quot; style=&quot;display:none&quot;&gt;
+        &lt;button data-f=&quot;new&quot;&gt;🆕 جديد&lt;/button&gt;
+        &lt;button data-f=&quot;savenow&quot;&gt;💾 الحفظ الآن&lt;/button&gt;
+        &lt;button data-f=&quot;copy&quot;&gt;📄 حفظ نسخة&lt;/button&gt;
+        &lt;button data-f=&quot;load&quot;&gt;📂 التحميل من حاسوبك&lt;/button&gt;
+        &lt;button data-f=&quot;savepc&quot;&gt;💻 الحفظ إلى حاسوبك&lt;/button&gt;
+      &lt;/div&gt;
+      &lt;div class=&quot;names&quot; id=&quot;nameBox&quot; style=&quot;display:none;padding:0 8px&quot;&gt;&lt;/div&gt;
+      &lt;div class=&quot;body&quot;&gt;
+        &lt;div class=&quot;code&quot; style=&quot;min-height:150px&quot;&gt;
+          &lt;div class=&quot;sb&quot; id=&quot;simCode&quot;&gt;&lt;div class=&quot;blk ev&quot;&gt;عند نقر 🏁&lt;/div&gt;&lt;div class=&quot;blk looks&quot;&gt;قل &lt;i&gt;مرحبًا بكم في سكراتش!&lt;/i&gt; لمدة &lt;i&gt;2&lt;/i&gt; ثانية&lt;/div&gt;&lt;/div&gt;
+        &lt;/div&gt;
+        &lt;div class=&quot;stcol&quot; style=&quot;grid-column:span 2&quot;&gt;
+          &lt;div class=&quot;stbar&quot;&gt;&lt;div class=&quot;gf&quot;&gt;&lt;button class=&quot;ibtn&quot; id=&quot;flag&quot; type=&quot;button&quot; aria-label=&quot;العلم الأخضر&quot;&gt;🏁&lt;/button&gt;&lt;button class=&quot;ibtn&quot; id=&quot;stop&quot; type=&quot;button&quot; aria-label=&quot;إيقاف&quot;&gt;🔴&lt;/button&gt;&lt;/div&gt;&lt;button class=&quot;ibtn&quot; id=&quot;fullBtn&quot; type=&quot;button&quot; aria-label=&quot;ملء الشاشة&quot;&gt;⛶&lt;/button&gt;&lt;/div&gt;
+          &lt;div class=&quot;stage&quot; id=&quot;stage&quot;&gt;&lt;span class=&quot;cat&quot; id=&quot;cat&quot;&gt;🐈&lt;/span&gt;&lt;span class=&quot;bub&quot; id=&quot;bub&quot;&gt;&lt;/span&gt;&lt;/div&gt;
+          &lt;div class=&quot;low&quot;&gt;
+            &lt;div class=&quot;spr&quot;&gt;&lt;div class=&quot;info&quot;&gt;الكائن: &lt;b&gt;قط&lt;/b&gt; س: &lt;b id=&quot;cx&quot;&gt;0&lt;/b&gt; ص: &lt;b id=&quot;cy&quot;&gt;0&lt;/b&gt;&lt;/div&gt;&lt;span class=&quot;th&quot;&gt;🐈&lt;/span&gt;&lt;/div&gt;
+            &lt;div class=&quot;bdc&quot;&gt;&lt;span style=&quot;font-size:.7rem;font-weight:700&quot;&gt;المنصة&lt;/span&gt;&lt;div class=&quot;bdthumb&quot; id=&quot;bdThumb&quot;&gt;&lt;/div&gt;&lt;button class=&quot;bdbtn&quot; id=&quot;bdBtn&quot; type=&quot;button&quot; aria-label=&quot;اختيار خلفية&quot;&gt;🖼️&lt;/button&gt;&lt;/div&gt;
+          &lt;/div&gt;
+        &lt;/div&gt;
+      &lt;/div&gt;
+      &lt;div id=&quot;libBox&quot; style=&quot;display:none;padding:8px;background:#fff&quot;&gt;
+        &lt;div style=&quot;font-weight:700;text-align:center&quot;&gt;📚 مكتبة الخلفيات – اختر خلفية&lt;/div&gt;
+        &lt;div class=&quot;lib&quot; id=&quot;lib&quot;&gt;&lt;/div&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div class=&quot;fb&quot; id=&quot;simFb&quot;&gt;&lt;/div&gt;
+  &lt;/div&gt;
+
+  &lt;div class=&quot;card&quot;&gt;
+    &lt;span class=&quot;tag&quot;&gt;تدريب 3 – من الكتاب&lt;/span&gt;
+    &lt;h2&gt;🪥 الخوارزمية الأولى: تنظيف أسناني&lt;/h2&gt;
+    &lt;div class=&quot;say&quot;&gt;رتّب الخطوات.&lt;/div&gt;
+    &lt;div class=&quot;ord&quot; id=&quot;teeth&quot;&gt;&lt;/div&gt;
+    &lt;div class=&quot;fb&quot; id=&quot;teethFb&quot;&gt;&lt;/div&gt;
+    &lt;h2 style=&quot;margin-top:12px&quot;&gt;🎒 الخوارزمية الثانية: من حياتي اليومية – تجهيز حقيبة المدرسة&lt;/h2&gt;
+    &lt;div class=&quot;say&quot;&gt;رتّب الخطوات.&lt;/div&gt;
+    &lt;div class=&quot;ord&quot; id=&quot;bag&quot;&gt;&lt;/div&gt;
+    &lt;div class=&quot;fb&quot; id=&quot;bagFb&quot;&gt;&lt;/div&gt;
+  &lt;/div&gt;
+
+  &lt;div class=&quot;card&quot;&gt;
+    &lt;span class=&quot;tag&quot;&gt;تدريب 5 – مراجعة&lt;/span&gt;
+    &lt;h2&gt;✅ اختر الإجابة الصحيحة&lt;/h2&gt;
+    &lt;div id=&quot;t5&quot;&gt;&lt;/div&gt;
+    &lt;div class=&quot;score&quot; id=&quot;t5Score&quot;&gt;&lt;/div&gt;
+  &lt;/div&gt;
+&lt;/section&gt;
+
+
+
+
+
+&lt;/div&gt;
+
+&lt;script&gt;
+
+const $=id=&gt;document.getElementById(id);
+/* ===== التبويبات ===== */
+document.querySelectorAll(&#x27;nav.tabs button&#x27;).forEach(b=&gt;b.onclick=()=&gt;{
+  document.querySelectorAll(&#x27;nav.tabs button&#x27;).forEach(x=&gt;x.classList.remove(&#x27;active&#x27;));
+  document.querySelectorAll(&#x27;section.panel&#x27;).forEach(x=&gt;x.classList.remove(&#x27;active&#x27;));
+  b.classList.add(&#x27;active&#x27;);$(b.dataset.p).classList.add(&#x27;active&#x27;);stopSpeak();
+  try{frameElement.scrollIntoView({behavior:&#x27;smooth&#x27;,block:&#x27;start&#x27;})}catch(e){}
+});
+/* ===== حجم الخط ===== */
+let fs=19;try{fs=+localStorage.getItem(&#x27;g4fs&#x27;)||19;}catch(e){}
+function setFs(v){fs=Math.max(16,Math.min(26,v));document.documentElement.style.setProperty(&#x27;--fs&#x27;,fs+&#x27;px&#x27;);try{localStorage.setItem(&#x27;g4fs&#x27;,fs)}catch(e){}}
+setFs(fs);$(&#x27;fsUp&#x27;).onclick=()=&gt;setFs(fs+2);$(&#x27;fsDown&#x27;).onclick=()=&gt;setFs(fs-2);
+
+/* ===== القراءة الصوتية ===== */
+let curBtn=null,warned=false;
+function stopSpeak(){try{speechSynthesis.cancel()}catch(e){}if(curBtn){curBtn.classList.remove(&#x27;on&#x27;);curBtn.textContent=&#x27;🔊&#x27;;curBtn=null;}}
+function speak(text,btn){
+  if(!(&#x27;speechSynthesis&#x27; in window)){if(!warned){warned=true;alertBox(&#x27;القراءة الصوتية غير مدعومة في هذا المتصفح.&#x27;);}return;}
+  const same=curBtn===btn;stopSpeak();if(same)return;
+  const u=new SpeechSynthesisUtterance(text.replace(/[▾▶◀←→↕️🔊⏹️]/g,&#x27; &#x27;));u.lang=&#x27;ar-SA&#x27;;u.rate=.85;
+  const v=speechSynthesis.getVoices().find(v=&gt;/^ar/i.test(v.lang));if(v)u.voice=v;
+  if(btn){curBtn=btn;btn.classList.add(&#x27;on&#x27;);btn.textContent=&#x27;⏹&#x27;;}
+  u.onend=()=&gt;{if(curBtn===btn)stopSpeak();};speechSynthesis.speak(u);}
+function alertBox(t){const fb=document.querySelector(&#x27;section.panel.active .fb&#x27;);if(fb){fb.className=&#x27;fb&#x27;;fb.textContent=t;}}
+$(&#x27;stopAll&#x27;).onclick=stopSpeak;
+function addSpeakers(root){(root||document).querySelectorAll(&#x27;.say&#x27;).forEach(el=&gt;{if(el.querySelector(&#x27;:scope &gt; .spk&#x27;))return;
+  const b=document.createElement(&#x27;button&#x27;);b.className=&#x27;spk&#x27;;b.type=&#x27;button&#x27;;b.textContent=&#x27;🔊&#x27;;b.setAttribute(&#x27;aria-label&#x27;,&#x27;استمع&#x27;);
+  b.onclick=e=&gt;{e.stopPropagation();const c=el.cloneNode(true);c.querySelectorAll(&#x27;.spk&#x27;).forEach(x=&gt;x.remove());speak(c.textContent.trim(),b);};el.prepend(b);});}
+addSpeakers();
+
+
+const sleep=ms=&gt;new Promise(r=&gt;setTimeout(r,ms));
+/* ===== أدوات مشتركة ===== */
+function orderGame(id,fbId,steps,onDone){const el=$(id);const idx=steps.map((_,i)=&gt;i);
+  do{idx.sort(()=&gt;Math.random()-.5);}while(idx.every((v,i)=&gt;v===i));
+  let n=0;
+  el.innerHTML=`&lt;div class=&quot;slots&quot;&gt;${steps.map((_,i)=&gt;`&lt;div class=&quot;slot&quot;&gt;&lt;b&gt;${i+1}&lt;/b&gt;&lt;span&gt;&lt;/span&gt;&lt;/div&gt;`).join(&#x27;&#x27;)}&lt;/div&gt;&lt;div class=&quot;pool&quot;&gt;${idx.map(i=&gt;`&lt;button data-i=&quot;${i}&quot;&gt;${steps[i]}&lt;/button&gt;`).join(&#x27;&#x27;)}&lt;/div&gt;`;
+  el.querySelectorAll(&#x27;.pool button&#x27;).forEach(b=&gt;b.onclick=()=&gt;{speak(b.textContent);const i=+b.dataset.i;
+    if(i===n){const s=el.querySelectorAll(&#x27;.slot&#x27;)[n];s.querySelector(&#x27;span&#x27;).textContent=steps[i];s.classList.add(&#x27;done&#x27;);b.classList.add(&#x27;gone&#x27;);n++;
+      $(fbId).className=&#x27;fb ok&#x27;;$(fbId).textContent=n===steps.length?&#x27;🎉 رتّبت الخطوات كلها!&#x27;:&#x27;✔ صحيح، تابع.&#x27;;if(n===steps.length&amp;&amp;onDone)onDone();}
+    else{b.classList.add(&#x27;shake&#x27;);setTimeout(()=&gt;b.classList.remove(&#x27;shake&#x27;),400);$(fbId).className=&#x27;fb bad&#x27;;$(fbId).textContent=&#x27;💡 ليست هذه الخطوة رقم &#x27;+(n+1)+&#x27;. فكّر: ماذا نفعل أولًا؟&#x27;;}});}
+function mcq(id,scoreId,items){let n=0,c=0;
+  $(id).innerHTML=items.map(([q,o],i)=&gt;`&lt;div class=&quot;q&quot; data-i=&quot;${i}&quot;&gt;&lt;div class=&quot;say&quot;&gt;&lt;b&gt;${i+1}. ${q}&lt;/b&gt;&lt;/div&gt;&lt;div class=&quot;os&quot;&gt;${o.map((x,j)=&gt;`&lt;button class=&quot;o&quot; data-j=&quot;${j}&quot;&gt;${x}&lt;/button&gt;`).join(&#x27;&#x27;)}&lt;/div&gt;&lt;/div&gt;`).join(&#x27;&#x27;);addSpeakers($(id));
+  $(id).querySelectorAll(&#x27;.q&#x27;).forEach(d=&gt;{const a=items[+d.dataset.i][2];d.querySelectorAll(&#x27;button.o&#x27;).forEach(b=&gt;b.onclick=()=&gt;{if(d.dataset.d)return;d.dataset.d=1;n++;
+    if(+b.dataset.j===a){b.classList.add(&#x27;r&#x27;);c++;}else{b.classList.add(&#x27;w&#x27;);d.querySelectorAll(&#x27;button.o&#x27;)[a].classList.add(&#x27;r&#x27;);}
+    if(n===items.length)$(scoreId).textContent=`نتيجتك: ${c} من ${items.length} ${c===items.length?&#x27;🌟&#x27;:&#x27;👍&#x27;}`;});});}
+
+/* ===== الخلفيات ===== */
+const BG={
+ white:{n:&#x27;بيضاء&#x27;,s:&#x27;&lt;rect width=&quot;480&quot; height=&quot;360&quot; fill=&quot;#fff&quot;/&gt;&#x27;},
+ space:{n:&#x27;الفضاء&#x27;,s:&#x27;&lt;defs&gt;&lt;linearGradient id=&quot;gsp&quot; x1=&quot;0&quot; y1=&quot;0&quot; x2=&quot;0&quot; y2=&quot;1&quot;&gt;&lt;stop offset=&quot;0&quot; stop-color=&quot;#2b1b5a&quot;/&gt;&lt;stop offset=&quot;1&quot; stop-color=&quot;#3e6fb0&quot;/&gt;&lt;/linearGradient&gt;&lt;/defs&gt;&lt;rect width=&quot;480&quot; height=&quot;360&quot; fill=&quot;url(#gsp)&quot;/&gt;&lt;g fill=&quot;#ffe66d&quot;&gt;&lt;path d=&quot;M80 50l6 18 18 6-18 6-6 18-6-18-18-6 18-6z&quot;/&gt;&lt;path d=&quot;M400 90l5 14 14 5-14 5-5 14-5-14-14-5 14-5z&quot;/&gt;&lt;path d=&quot;M250 30l4 10 10 4-10 4-4 10-4-10-10-4 10-4z&quot;/&gt;&lt;/g&gt;&lt;g fill=&quot;#fff&quot; opacity=&quot;.8&quot;&gt;&lt;circle cx=&quot;160&quot; cy=&quot;80&quot; r=&quot;2&quot;/&gt;&lt;circle cx=&quot;330&quot; cy=&quot;40&quot; r=&quot;2&quot;/&gt;&lt;circle cx=&quot;440&quot; cy=&quot;160&quot; r=&quot;2&quot;/&gt;&lt;circle cx=&quot;40&quot; cy=&quot;170&quot; r=&quot;2&quot;/&gt;&lt;/g&gt;&lt;circle cx=&quot;350&quot; cy=&quot;130&quot; r=&quot;30&quot; fill=&quot;#9b7fe0&quot;/&gt;&lt;ellipse cx=&quot;350&quot; cy=&quot;130&quot; rx=&quot;52&quot; ry=&quot;10&quot; fill=&quot;none&quot; stroke=&quot;#e2d6ff&quot; stroke-width=&quot;4&quot;/&gt;&lt;path d=&quot;M0 250 Q120 200 240 240 T480 230 V360 H0z&quot; fill=&quot;#1d8f8a&quot;/&gt;&lt;ellipse cx=&quot;240&quot; cy=&quot;320&quot; rx=&quot;300&quot; ry=&quot;80&quot; fill=&quot;#4fd1c5&quot;/&gt;&lt;g fill=&quot;#7fe3d8&quot;&gt;&lt;circle cx=&quot;150&quot; cy=&quot;300&quot; r=&quot;10&quot;/&gt;&lt;circle cx=&quot;330&quot; cy=&quot;320&quot; r=&quot;14&quot;/&gt;&lt;circle cx=&quot;260&quot; cy=&quot;290&quot; r=&quot;7&quot;/&gt;&lt;/g&gt;&#x27;},
+ soccer:{n:&#x27;ملعب كرة القدم&#x27;,s:&#x27;&lt;rect width=&quot;480&quot; height=&quot;150&quot; fill=&quot;#2c6e6a&quot;/&gt;&lt;g fill=&quot;#5fa8a0&quot;&gt;&lt;rect x=&quot;0&quot; y=&quot;20&quot; width=&quot;60&quot; height=&quot;40&quot;/&gt;&lt;rect x=&quot;90&quot; y=&quot;10&quot; width=&quot;70&quot; height=&quot;50&quot;/&gt;&lt;rect x=&quot;200&quot; y=&quot;25&quot; width=&quot;60&quot; height=&quot;35&quot;/&gt;&lt;rect x=&quot;300&quot; y=&quot;5&quot; width=&quot;80&quot; height=&quot;55&quot;/&gt;&lt;rect x=&quot;410&quot; y=&quot;20&quot; width=&quot;70&quot; height=&quot;40&quot;/&gt;&lt;/g&gt;&lt;rect y=&quot;60&quot; width=&quot;480&quot; height=&quot;90&quot; fill=&quot;#1f4d4a&quot;/&gt;&lt;rect y=&quot;150&quot; width=&quot;480&quot; height=&quot;210&quot; fill=&quot;#8fb339&quot;/&gt;&lt;g fill=&quot;#9cc13f&quot;&gt;&lt;rect y=&quot;190&quot; width=&quot;480&quot; height=&quot;40&quot;/&gt;&lt;rect y=&quot;270&quot; width=&quot;480&quot; height=&quot;40&quot;/&gt;&lt;/g&gt;&lt;g fill=&quot;none&quot; stroke=&quot;#fff&quot; stroke-width=&quot;5&quot;&gt;&lt;rect x=&quot;110&quot; y=&quot;200&quot; width=&quot;260&quot; height=&quot;110&quot;/&gt;&lt;rect x=&quot;180&quot; y=&quot;200&quot; width=&quot;120&quot; height=&quot;50&quot;/&gt;&lt;path d=&quot;M190 360 Q240 310 290 360&quot;/&gt;&lt;/g&gt;&lt;rect x=&quot;150&quot; y=&quot;80&quot; width=&quot;180&quot; height=&quot;120&quot; fill=&quot;none&quot; stroke=&quot;#fff&quot; stroke-width=&quot;8&quot;/&gt;&lt;g stroke=&quot;#cfd8dc&quot; stroke-width=&quot;1.5&quot;&gt;&lt;path d=&quot;M170 84V196M190 84V196M210 84V196M230 84V196M250 84V196M270 84V196M290 84V196M310 84V196M154 100H326M154 120H326M154 140H326M154 160H326M154 180H326&quot;/&gt;&lt;/g&gt;&#x27;},
+ forest:{n:&#x27;الغابة&#x27;,s:&#x27;&lt;rect width=&quot;480&quot; height=&quot;360&quot; fill=&quot;#bfe8c9&quot;/&gt;&lt;g fill=&quot;#5aa469&quot;&gt;&lt;circle cx=&quot;60&quot; cy=&quot;150&quot; r=&quot;70&quot;/&gt;&lt;circle cx=&quot;420&quot; cy=&quot;140&quot; r=&quot;80&quot;/&gt;&lt;circle cx=&quot;240&quot; cy=&quot;120&quot; r=&quot;50&quot;/&gt;&lt;/g&gt;&lt;g fill=&quot;#6b4f2a&quot;&gt;&lt;rect x=&quot;50&quot; y=&quot;190&quot; width=&quot;18&quot; height=&quot;90&quot;/&gt;&lt;rect x=&quot;410&quot; y=&quot;190&quot; width=&quot;20&quot; height=&quot;90&quot;/&gt;&lt;rect x=&quot;232&quot; y=&quot;150&quot; width=&quot;14&quot; height=&quot;110&quot;/&gt;&lt;/g&gt;&lt;g fill=&quot;#3e8e55&quot;&gt;&lt;circle cx=&quot;120&quot; cy=&quot;250&quot; r=&quot;45&quot;/&gt;&lt;circle cx=&quot;360&quot; cy=&quot;260&quot; r=&quot;55&quot;/&gt;&lt;/g&gt;&lt;rect y=&quot;270&quot; width=&quot;480&quot; height=&quot;90&quot; fill=&quot;#58c26a&quot;/&gt;&lt;g fill=&quot;#2f9e4f&quot;&gt;&lt;path d=&quot;M20 300l8-20 8 20zM90 330l8-22 8 22zM300 320l8-20 8 20zM440 310l8-24 8 24z&quot;/&gt;&lt;/g&gt;&#x27;},
+ farm:{n:&#x27;المزرعة&#x27;,s:&#x27;&lt;rect width=&quot;480&quot; height=&quot;360&quot; fill=&quot;#f6e3a1&quot;/&gt;&lt;circle cx=&quot;160&quot; cy=&quot;45&quot; r=&quot;22&quot; fill=&quot;#ffd23f&quot;/&gt;&lt;path d=&quot;M0 120 Q120 70 240 110 T480 100 V360 H0z&quot; fill=&quot;#c9a24c&quot;/&gt;&lt;g fill=&quot;#2f6b3c&quot;&gt;&lt;path d=&quot;M70 120l14-40 14 40z&quot;/&gt;&lt;path d=&quot;M100 125l12-34 12 34z&quot;/&gt;&lt;path d=&quot;M420 115l14-40 14 40z&quot;/&gt;&lt;/g&gt;&lt;path d=&quot;M0 170 Q160 130 300 170 T480 160 V360 H0z&quot; fill=&quot;#e2b33c&quot;/&gt;&lt;path d=&quot;M0 240 Q200 200 480 250 V360 H0z&quot; fill=&quot;#f0c24b&quot;/&gt;&lt;g fill=&quot;#b23a2c&quot;&gt;&lt;rect x=&quot;300&quot; y=&quot;120&quot; width=&quot;90&quot; height=&quot;60&quot;/&gt;&lt;path d=&quot;M290 122l55-35 55 35z&quot;/&gt;&lt;rect x=&quot;400&quot; y=&quot;95&quot; width=&quot;26&quot; height=&quot;85&quot;/&gt;&lt;path d=&quot;M398 97l15-14 15 14z&quot;/&gt;&lt;/g&gt;&lt;rect x=&quot;330&quot; y=&quot;145&quot; width=&quot;30&quot; height=&quot;35&quot; fill=&quot;#fff&quot;/&gt;&lt;path d=&quot;M330 145l30 35M360 145l-30 35&quot; stroke=&quot;#b23a2c&quot; stroke-width=&quot;3&quot;/&gt;&lt;g fill=&quot;#8a3a1c&quot;&gt;&lt;path d=&quot;M0 200h140v100H0z&quot;/&gt;&lt;path d=&quot;M-10 205l85-50 85 50z&quot; fill=&quot;#a8432a&quot;/&gt;&lt;/g&gt;&lt;path d=&quot;M30 300v-60a40 40 0 0 1 80 0v60z&quot; fill=&quot;#222&quot;/&gt;&lt;path d=&quot;M370 200h110&quot; stroke=&quot;#c7a67a&quot; stroke-width=&quot;5&quot;/&gt;&lt;path d=&quot;M380 190v20M410 190v20M440 190v20M470 190v20&quot; stroke=&quot;#c7a67a&quot; stroke-width=&quot;4&quot;/&gt;&#x27;},
+ desert:{n:&#x27;الصحراء&#x27;,s:&#x27;&lt;rect width=&quot;480&quot; height=&quot;360&quot; fill=&quot;#ffd8a8&quot;/&gt;&lt;circle cx=&quot;380&quot; cy=&quot;70&quot; r=&quot;30&quot; fill=&quot;#ffb347&quot;/&gt;&lt;path d=&quot;M0 200 Q140 150 260 200 T480 190 V360 H0z&quot; fill=&quot;#e8a65d&quot;/&gt;&lt;path d=&quot;M0 260 Q200 220 480 270 V360 H0z&quot; fill=&quot;#f2c27c&quot;/&gt;&lt;g fill=&quot;#3d8b4a&quot;&gt;&lt;rect x=&quot;90&quot; y=&quot;170&quot; width=&quot;18&quot; height=&quot;90&quot; rx=&quot;9&quot;/&gt;&lt;rect x=&quot;70&quot; y=&quot;190&quot; width=&quot;12&quot; height=&quot;40&quot; rx=&quot;6&quot;/&gt;&lt;rect x=&quot;70&quot; y=&quot;222&quot; width=&quot;30&quot; height=&quot;10&quot; rx=&quot;5&quot;/&gt;&lt;rect x=&quot;114&quot; y=&quot;180&quot; width=&quot;12&quot; height=&quot;40&quot; rx=&quot;6&quot;/&gt;&lt;rect x=&quot;100&quot; y=&quot;210&quot; width=&quot;26&quot; height=&quot;10&quot; rx=&quot;5&quot;/&gt;&lt;/g&gt;&#x27;}};
+const bgSvg=(k,cls)=&gt;`&lt;svg class=&quot;${cls||&#x27;&#x27;}&quot; viewBox=&quot;0 0 480 360&quot; preserveAspectRatio=&quot;xMidYMid slice&quot; aria-hidden=&quot;true&quot;&gt;${BG[k].s.replace(/id=&quot;gsp&quot;/g,&#x27;id=&quot;gsp&#x27;+(++bgSvg.c)+&#x27;&quot;&#x27;).replace(/url\(#gsp\)/g,&#x27;url(#gsp&#x27;+bgSvg.c+&#x27;)&#x27;)}&lt;/svg&gt;`;bgSvg.c=0;
+
+/* ===== لعبة 1: الشطيرة ===== */
+orderGame(&#x27;sand&#x27;,&#x27;sandFb&#x27;,[&#x27;🍞 خذ شريحة من الخبز.&#x27;,&#x27;🧀 ضع شريحة من الجبن عليها.&#x27;,&#x27;🍞 ضع شريحة ثانية من الخبز عليها.&#x27;,&#x27;🔌 ضع الشطيرة في محمصة الخبز.&#x27;,&#x27;⏳ انتظر 3 دقائق.&#x27;,&#x27;😋 الشطيرة جاهزة للتقديم!&#x27;],()=&gt;{$(&#x27;sandQ&#x27;).style.display=&#x27;&#x27;;});
+$(&#x27;sandOps&#x27;).innerHTML=[&#x27;مرة واحدة&#x27;,&#x27;4 مرات&#x27;,&#x27;6 مرات&#x27;].map((t,i)=&gt;`&lt;button class=&quot;btn btn-out&quot; data-i=&quot;${i}&quot;&gt;${t}&lt;/button&gt;`).join(&#x27;&#x27;);
+$(&#x27;sandOps&#x27;).querySelectorAll(&#x27;button&#x27;).forEach(b=&gt;b.onclick=()=&gt;{const ok=b.dataset.i===&#x27;1&#x27;;$(&#x27;sandQFb&#x27;).className=&#x27;fb &#x27;+(ok?&#x27;ok&#x27;:&#x27;bad&#x27;);
+  $(&#x27;sandQFb&#x27;).textContent=ok?&#x27;🌟 صحيح! 4 شطائر = أكرّر الخطوات 4 مرات. (التكرار مهم في البرمجة!)&#x27;:&#x27;💡 فكّر: كل شطيرة تحتاج كل الخطوات مرة واحدة.&#x27;;});
+
+/* ===== لعبة 2: البحث في الواجهة ===== */
+const PARTS={menu:[&#x27;القائمة&#x27;,&#x27;فيها: ملف، وتحرير، واسم المشروع.&#x27;],login:[&#x27;زر تسجيل الدخول&#x27;,&#x27;للدخول إلى حسابك.&#x27;],palette:[&#x27;لوحة اللبنات البرمجية&#x27;,&#x27;فيها الأوامر الملوّنة.&#x27;],code:[&#x27;منطقة البرمجة&#x27;,&#x27;نركّب فيها اللبنات.&#x27;],zoom:[&#x27;تكبير / تصغير اللبنات&#x27;,&#x27;يكبّر اللبنات أو يصغّرها.&#x27;],flag:[&#x27;العلم الأخضر&#x27;,&#x27;يبدأ عمل البرنامج.&#x27;],stop:[&#x27;إشارة الإيقاف&#x27;,&#x27;توقف البرنامج.&#x27;],full:[&#x27;زر ملء الشاشة&#x27;,&#x27;يعرض المنصة بكامل الشاشة.&#x27;],stage:[&#x27;المنصة&#x27;,&#x27;مثل المسرح، نرى عليها النتيجة.&#x27;],sprite:[&#x27;الكائن&#x27;,&#x27;مثل الممثل، ينفّذ الأوامر.&#x27;],sprites:[&#x27;لوحة الكائنات&#x27;,&#x27;فيها كل الكائنات.&#x27;],backdrop:[&#x27;زر اختيار خلفية&#x27;,&#x27;لتغيير خلفية المنصة.&#x27;]};
+const HUNT=[&#x27;stage&#x27;,&#x27;palette&#x27;,&#x27;code&#x27;,&#x27;sprite&#x27;,&#x27;flag&#x27;,&#x27;stop&#x27;,&#x27;menu&#x27;,&#x27;sprites&#x27;,&#x27;backdrop&#x27;,&#x27;zoom&#x27;,&#x27;full&#x27;,&#x27;login&#x27;];
+let hi=0,hok=0,htry=false;
+function huntAsk(){if(hi&gt;=HUNT.length){$(&#x27;huntQ&#x27;).innerHTML=&#x27;🎉 أحسنت! وجدت كل أجزاء الواجهة.&#x27;;addSpeakers($(&#x27;huntQ&#x27;).parentElement);$(&#x27;huntScore&#x27;).textContent=`أصبت من أول مرة: ${hok} من ${HUNT.length} ${hok===HUNT.length?&#x27;🌟&#x27;:&#x27;👍&#x27;}`;return;}
+  $(&#x27;huntQ&#x27;).querySelectorAll(&#x27;.spk&#x27;).forEach(x=&gt;x.remove());$(&#x27;huntQ&#x27;).textContent=`(${hi+1} من ${HUNT.length}) اضغط على: ${PARTS[HUNT[hi]][0]}`;addSpeakers($(&#x27;huntQ&#x27;).parentElement);htry=false;}
+$(&#x27;hunt&#x27;).addEventListener(&#x27;click&#x27;,e=&gt;{const el=e.target.closest(&#x27;[data-part]&#x27;);if(!el||hi&gt;=HUNT.length)return;const p=el.dataset.part;
+  $(&#x27;hunt&#x27;).querySelectorAll(&#x27;.hit,.miss&#x27;).forEach(x=&gt;x.classList.remove(&#x27;hit&#x27;,&#x27;miss&#x27;));
+  if(p===HUNT[hi]){el.classList.add(&#x27;hit&#x27;);if(!htry)hok++;$(&#x27;huntFb&#x27;).className=&#x27;fb ok&#x27;;$(&#x27;huntFb&#x27;).textContent=`✔ هذا ${PARTS[p][0]}: ${PARTS[p][1]}`;speak(PARTS[p][0]);hi++;setTimeout(huntAsk,900);}
+  else{el.classList.add(&#x27;miss&#x27;);htry=true;$(&#x27;huntFb&#x27;).className=&#x27;fb bad&#x27;;$(&#x27;huntFb&#x27;).textContent=`✖ هذا ${PARTS[p][0]}. حاول مرة أخرى.`;}
+  setTimeout(()=&gt;el.classList.remove(&#x27;hit&#x27;,&#x27;miss&#x27;),900);});
+huntAsk();
+
+/* ===== المحاكي ===== */
+const SIM={bg:&#x27;white&#x27;,x:0,y:0,name:&#x27;مشروع سكراتش&#x27;,saved:false};
+const MS=[{t:&#x27;تدريب 1: مشروع الفضاء 🚀&#x27;,d:&#x27;اجعل المشروع مثل الصورة. ضع القطة في منتصف المنصة. سمِّ المشروع «الفضاء»، واحفظه.&#x27;,bg:&#x27;space&#x27;,pos:[0,-10],name:&#x27;الفضاء&#x27;,where:&#x27;center&#x27;},
+ {t:&#x27;تدريب 2: مشروع كرة القدم ⚽&#x27;,d:&#x27;اجعل المشروع مثل الصورة. ضع القطة في الجانب الأيسر من الملعب. سمِّ المشروع «كرة القدم»، واحفظه.&#x27;,bg:&#x27;soccer&#x27;,pos:[-170,-120],name:&#x27;كرة القدم&#x27;,where:&#x27;left&#x27;},
+ {t:&#x27;تدريب 4: ما اسم الخلفية؟ 🌾&#x27;,d:&#x27;انظر إلى الصورة. ابحث عن نفس الخلفية في المكتبة واخترها. ثم سمِّ المشروع «مزرعتي»، واحفظه.&#x27;,bg:&#x27;farm&#x27;,pos:[-80,-120],name:&#x27;مزرعتي&#x27;,where:&#x27;any&#x27;}];
+let mi=0;const mdone=[0,0,0];
+$(&#x27;msnTabs&#x27;).innerHTML=MS.map((m,i)=&gt;`&lt;button data-i=&quot;${i}&quot;&gt;${m.t}&lt;/button&gt;`).join(&#x27;&#x27;);
+$(&#x27;msnTabs&#x27;).querySelectorAll(&#x27;button&#x27;).forEach(b=&gt;b.onclick=()=&gt;{mi=+b.dataset.i;newProject();drawMission();});
+function placeCat(){$(&#x27;cat&#x27;).style.left=(SIM.x+240)/4.8+&#x27;%&#x27;;$(&#x27;cat&#x27;).style.top=(180-SIM.y)/3.6+&#x27;%&#x27;;$(&#x27;bub&#x27;).style.left=$(&#x27;cat&#x27;).style.left;$(&#x27;bub&#x27;).style.top=$(&#x27;cat&#x27;).style.top;$(&#x27;cx&#x27;).textContent=Math.round(SIM.x);$(&#x27;cy&#x27;).textContent=Math.round(SIM.y);}
+function drawBg(){$(&#x27;stage&#x27;).querySelectorAll(&#x27;svg.bg&#x27;).forEach(s=&gt;s.remove());$(&#x27;stage&#x27;).insertAdjacentHTML(&#x27;afterbegin&#x27;,bgSvg(SIM.bg,&#x27;bg&#x27;));$(&#x27;bdThumb&#x27;).innerHTML=bgSvg(SIM.bg);}
+function newProject(){Object.assign(SIM,{bg:&#x27;white&#x27;,x:0,y:0,name:&#x27;مشروع سكراتش&#x27;,saved:false});$(&#x27;pname&#x27;).textContent=SIM.name;$(&#x27;bub&#x27;).textContent=&#x27;&#x27;;drawBg();placeCat();check();}
+function drawMission(){const m=MS[mi];$(&#x27;msnTabs&#x27;).querySelectorAll(&#x27;button&#x27;).forEach((b,i)=&gt;{b.classList.toggle(&#x27;on&#x27;,i===mi);b.classList.toggle(&#x27;done&#x27;,!!mdone[i]);});
+  $(&#x27;msnText&#x27;).innerHTML=`&lt;b&gt;${m.t}&lt;/b&gt;&lt;br&gt;${m.d}`;$(&#x27;msnPic&#x27;).innerHTML=bgSvg(m.bg)+`&lt;span style=&quot;left:${(m.pos[0]+240)/4.8}%;top:${(180-m.pos[1])/3.6}%&quot;&gt;🐈&lt;/span&gt;`;addSpeakers($(&#x27;msnText&#x27;).parentElement);check();}
+function check(){const m=MS[mi];const okBg=SIM.bg===m.bg,okPos=m.where===&#x27;center&#x27;?(Math.abs(SIM.x)&lt;=70&amp;&amp;Math.abs(SIM.y)&lt;=70):m.where===&#x27;left&#x27;?SIM.x&lt;=-80:true,okName=SIM.name===m.name;
+  const items=[[okBg,m.where===&#x27;any&#x27;?&#x27;اختر الخلفية التي في الصورة 🖼️&#x27;:&#x27;اختر خلفية «&#x27;+BG[m.bg].n+&#x27;» 🖼️&#x27;]];
+  if(m.where!==&#x27;any&#x27;)items.push([okPos,m.where===&#x27;center&#x27;?&#x27;ضع القطة في منتصف المنصة 🐈&#x27;:&#x27;ضع القطة في الجانب الأيسر ⬅️🐈&#x27;]);
+  items.push([okName,&#x27;سمِّ المشروع «&#x27;+m.name+&#x27;» ✏️&#x27;],[SIM.saved&amp;&amp;okBg&amp;&amp;okPos&amp;&amp;okName,&#x27;احفظ: ملف ← الحفظ إلى حاسوبك 💾&#x27;]);
+  $(&#x27;msnChk&#x27;).innerHTML=items.map(([o,t])=&gt;`&lt;li class=&quot;${o?&#x27;ok&#x27;:&#x27;&#x27;}&quot;&gt;${t}&lt;/li&gt;`).join(&#x27;&#x27;);
+  if(items.every(x=&gt;x[0])){mdone[mi]=1;$(&#x27;msnTabs&#x27;).querySelectorAll(&#x27;button&#x27;)[mi].classList.add(&#x27;done&#x27;);$(&#x27;simFb&#x27;).className=&#x27;fb ok&#x27;;$(&#x27;simFb&#x27;).textContent=&#x27;🌟 ممتاز! أنجزت المهمة. &#x27;+(mdone.every(Boolean)?&#x27;أنجزت كل المهام! 🏆&#x27;:&#x27;انتقل إلى مهمة أخرى.&#x27;);}}
+function changed(){SIM.saved=false;check();}
+// stage: tap / drag
+let drag=false;const st=$(&#x27;stage&#x27;);
+function moveTo(e){const r=st.getBoundingClientRect();SIM.x=Math.max(-230,Math.min(230,((e.clientX-r.left)/r.width)*480-240));SIM.y=Math.max(-170,Math.min(170,180-((e.clientY-r.top)/r.height)*360));placeCat();}
+st.addEventListener(&#x27;pointerdown&#x27;,e=&gt;{drag=true;try{st.setPointerCapture(e.pointerId)}catch(_){ }moveTo(e);});
+st.addEventListener(&#x27;pointermove&#x27;,e=&gt;{if(drag)moveTo(e);});
+st.addEventListener(&#x27;pointerup&#x27;,()=&gt;{if(drag){drag=false;changed();}});
+st.addEventListener(&#x27;pointercancel&#x27;,()=&gt;{drag=false;});
+// backdrops
+$(&#x27;lib&#x27;).innerHTML=[&#x27;space&#x27;,&#x27;soccer&#x27;,&#x27;forest&#x27;,&#x27;farm&#x27;,&#x27;desert&#x27;].map(k=&gt;`&lt;button data-k=&quot;${k}&quot;&gt;${bgSvg(k)}${BG[k].n}&lt;/button&gt;`).join(&#x27;&#x27;);
+$(&#x27;bdBtn&#x27;).onclick=()=&gt;{$(&#x27;libBox&#x27;).style.display=$(&#x27;libBox&#x27;).style.display===&#x27;none&#x27;?&#x27;&#x27;:&#x27;none&#x27;;$(&#x27;fileMenu&#x27;).style.display=&#x27;none&#x27;;};
+$(&#x27;lib&#x27;).querySelectorAll(&#x27;button&#x27;).forEach(b=&gt;b.onclick=()=&gt;{SIM.bg=b.dataset.k;drawBg();$(&#x27;libBox&#x27;).style.display=&#x27;none&#x27;;speak(BG[SIM.bg].n);$(&#x27;simFb&#x27;).className=&#x27;fb&#x27;;$(&#x27;simFb&#x27;).textContent=&#x27;🖼️ أُضيفت خلفية «&#x27;+BG[SIM.bg].n+&#x27;» إلى المنصة.&#x27;;changed();});
+// name
+const NAMES=[&#x27;الفضاء&#x27;,&#x27;كرة القدم&#x27;,&#x27;مزرعتي&#x27;,&#x27;الغابة&#x27;,&#x27;مشروعي&#x27;];
+$(&#x27;nameBox&#x27;).innerHTML=&#x27;&lt;span style=&quot;font-weight:700&quot;&gt;اختر اسم المشروع:&lt;/span&gt;&#x27;+NAMES.map(n=&gt;`&lt;button&gt;${n}&lt;/button&gt;`).join(&#x27;&#x27;);
+$(&#x27;pname&#x27;).onclick=()=&gt;{$(&#x27;nameBox&#x27;).style.display=$(&#x27;nameBox&#x27;).style.display===&#x27;none&#x27;?&#x27;flex&#x27;:&#x27;none&#x27;;};
+$(&#x27;pname&#x27;).onkeydown=e=&gt;{if(e.key===&#x27;Enter&#x27;)$(&#x27;pname&#x27;).onclick();};
+$(&#x27;nameBox&#x27;).querySelectorAll(&#x27;button&#x27;).forEach(b=&gt;b.onclick=()=&gt;{SIM.name=b.textContent;$(&#x27;pname&#x27;).textContent=SIM.name;$(&#x27;nameBox&#x27;).style.display=&#x27;none&#x27;;speak(SIM.name);changed();});
+// file menu
+$(&#x27;fileBtn&#x27;).onclick=e=&gt;{const m=$(&#x27;fileMenu&#x27;);m.style.display=m.style.display===&#x27;none&#x27;?&#x27;&#x27;:&#x27;none&#x27;;m.style.top=&#x27;38px&#x27;;m.style.right=&#x27;90px&#x27;;$(&#x27;libBox&#x27;).style.display=&#x27;none&#x27;;};
+$(&#x27;fileMenu&#x27;).querySelectorAll(&#x27;button&#x27;).forEach(b=&gt;b.onclick=()=&gt;{$(&#x27;fileMenu&#x27;).style.display=&#x27;none&#x27;;const f=b.dataset.f;$(&#x27;simFb&#x27;).className=&#x27;fb&#x27;;
+  if(f===&#x27;new&#x27;){newProject();$(&#x27;simFb&#x27;).textContent=&#x27;🆕 مشروع جديد.&#x27;;}
+  else if(f===&#x27;savepc&#x27;||f===&#x27;savenow&#x27;){SIM.saved=true;$(&#x27;simFb&#x27;).className=&#x27;fb ok&#x27;;$(&#x27;simFb&#x27;).textContent=`💾 تم حفظ «${SIM.name}».`;check();}
+  else if(f===&#x27;copy&#x27;){$(&#x27;simFb&#x27;).textContent=&#x27;📄 تم حفظ نسخة من المشروع.&#x27;;}
+  else{$(&#x27;simFb&#x27;).textContent=&#x27;📂 هنا تفتح مشروعًا محفوظًا في حاسوبك.&#x27;;}});
+// flag / stop / full
+let sayT=null;
+$(&#x27;flag&#x27;).onclick=()=&gt;{clearTimeout(sayT);$(&#x27;simCode&#x27;).querySelectorAll(&#x27;.blk&#x27;).forEach(b=&gt;b.classList.add(&#x27;run&#x27;));$(&#x27;bub&#x27;).textContent=&#x27;مرحبًا بكم في سكراتش!&#x27;;sayT=setTimeout(()=&gt;{$(&#x27;bub&#x27;).textContent=&#x27;&#x27;;$(&#x27;simCode&#x27;).querySelectorAll(&#x27;.blk&#x27;).forEach(b=&gt;b.classList.remove(&#x27;run&#x27;));},2000);};
+$(&#x27;stop&#x27;).onclick=()=&gt;{clearTimeout(sayT);$(&#x27;bub&#x27;).textContent=&#x27;&#x27;;$(&#x27;simCode&#x27;).querySelectorAll(&#x27;.blk&#x27;).forEach(b=&gt;b.classList.remove(&#x27;run&#x27;));};
+$(&#x27;fullBtn&#x27;).onclick=()=&gt;{$(&#x27;sim&#x27;).classList.toggle(&#x27;full&#x27;);};
+newProject();drawMission();
+
+/* ===== تدريب 3 ===== */
+orderGame(&#x27;teeth&#x27;,&#x27;teethFb&#x27;,[&#x27;🪥 أضع قليلًا من المعجون على الفرشاة.&#x27;,&#x27;😁 أنظّف أسناني من الأعلى ومن الأسفل.&#x27;,&#x27;👅 أنظّف لساني بلطف.&#x27;,&#x27;💧 أمضمض فمي بالماء.&#x27;,&#x27;🧼 أغسل الفرشاة، وأعيدها إلى مكانها.&#x27;]);
+orderGame(&#x27;bag&#x27;,&#x27;bagFb&#x27;,[&#x27;📅 أنظر إلى جدول الحصص.&#x27;,&#x27;📚 أضع كتب اليوم في الحقيبة.&#x27;,&#x27;✏️ أضع الأقلام والدفاتر.&#x27;,&#x27;🎒 أغلق الحقيبة.&#x27;,&#x27;🚪 أضع الحقيبة بجانب الباب.&#x27;]);
+/* ===== تدريب 5 ===== */
+mcq(&#x27;t5&#x27;,&#x27;t5Score&#x27;,[[&#x27;الخوارزمية هي:&#x27;,[&#x27;خطوات مرتّبة لحل مشكلة&#x27;,&#x27;لعبة إلكترونية&#x27;,&#x27;صورة على المنصة&#x27;],0],
+ [&#x27;الأوامر في سكراتش اسمها:&#x27;,[&#x27;ملفات&#x27;,&#x27;لبنات برمجية&#x27;,&#x27;خلفيات&#x27;],1],
+ [&#x27;لبدء عمل البرنامج أضغط:&#x27;,[&#x27;🔴 إشارة الإيقاف&#x27;,&#x27;🏁 العلم الأخضر&#x27;,&#x27;🖼️ اختيار خلفية&#x27;],1],
+ [&#x27;الشخصية التي تنفّذ الأوامر (مثل الممثل) اسمها:&#x27;,[&#x27;المنصة&#x27;,&#x27;الكائن&#x27;,&#x27;القائمة&#x27;],1],
+ [&#x27;لحفظ المشروع في الحاسب أختار من قائمة ملف:&#x27;,[&#x27;جديد&#x27;,&#x27;الحفظ إلى حاسوبك&#x27;,&#x27;التحميل من حاسوبك&#x27;],1]]);
+/* ===== إثراء ===== */
+if($(&#x27;en1&#x27;))mcq(&#x27;en1&#x27;,&#x27;en1Score&#x27;,[[&#x27;🆕 «جديد» في قائمة ملف:&#x27;,[&#x27;ينشئ مشروعًا جديدًا&#x27;,&#x27;يحذف الحاسب&#x27;,&#x27;يغيّر اللغة&#x27;],0],[&#x27;📂 «التحميل من حاسوبك»:&#x27;,[&#x27;يحفظ المشروع&#x27;,&#x27;يفتح مشروعًا من حاسوبك&#x27;,&#x27;يغلق سكراتش&#x27;],1],[&#x27;📄 «حفظ نسخة»:&#x27;,[&#x27;ينشئ نسخة من مشروعك&#x27;,&#x27;يرسم خلفية&#x27;,&#x27;يوقف البرنامج&#x27;],0]]);
+addSpeakers();
+&lt;/script&gt;
+&lt;script&gt;(function(){function fit(){try{frameElement.style.height=(document.body.offsetHeight+8)+&#x27;px&#x27;}catch(e){}}new ResizeObserver(fit).observe(document.body);window.addEventListener(&#x27;load&#x27;,fit);document.addEventListener(&#x27;click&#x27;,function(){setTimeout(fit,30)});fit();})();&lt;/script&gt;&lt;/body&gt;
+&lt;/html&gt;
+"></iframe>
+            </div>
+            <div class="tab-panel homework" id="g4-u4-l1-hw">
+              <h5>الواجب</h5>
+              <p>شاهد الشرح، وجرّب الألعاب، ثم حلّ الواجب. اكتب اسمك الثلاثي بشكل صحيح.</p>
+              <a class="book-cta-link" href="https://forms.cloud.microsoft/Pages/ResponsePage.aspx?id=bsmRCN1p8E2Ki3bGl2JAh_fr57jQ4NxNvJdBQZuwKFlUOERUT1FUTk5VN0MxQVROMk9PTUtOQklORi4u" target="_blank" rel="noopener">فتح نموذج الواجب</a>
+            </div>
+            <div class="tab-panel enrich" id="g4-u4-l1-enrich">
+              <h5>الإثراءات</h5>
+              <p>افتح منصة سكراتش مع أسرتك (scratch.mit.edu)، وأنشئ مشروعًا جديدًا، واختر خلفية تحبها، وحرّك القطة إلى مكان مناسب، ثم سمِّ المشروع واحفظه على حاسوبك.</p>
             </div>
           </div>
 
@@ -8829,6 +9516,13 @@ $(&#x27;t6&#x27;).querySelectorAll(&#x27;.opts2 button&#x27;).forEach(b=&gt;b.on
             { q: "سألك شخص لا تعرفه عن عمرك وعنوانك، ماذا تفعل؟", choices: ["أعطيه المعلومات", "لا أعطيه وأخبر شخصًا كبيرًا", "أسأله عن عنوانه"], correct: 1 },
             { q: "برنامج مكافحة الفيروسات هو برنامج:", choices: ["ينشئ الفيروسات", "يمنع الفيروسات", "يضاعف الفيروسات"], correct: 1 },
             { q: "عند استخدام غرف المحادثة:", choices: ["أحترم ثقافة الآخرين", "أرسل وأنا غاضب", "أتحدث مع الغرباء"], correct: 0 }
+          ]}
+        ]},
+        { id: "u4", label: "الوحدة الرابعة: العمل مع البرمجة باستخدام سكراتش", lessons: [
+          { id: "g4-u4-l1", title: "الدرس الأول: أساسيات سكراتش", quiz: [
+            { q: "الخوارزمية هي:", choices: ["خطوات مرتبة لحل مشكلة", "لعبة إلكترونية", "صورة على المنصة"], correct: 0 },
+            { q: "لبدء عمل البرنامج في سكراتش نضغط:", choices: ["إشارة الإيقاف", "العلم الأخضر", "اختيار خلفية"], correct: 1 },
+            { q: "الخلفية في سكراتش هي مظهر:", choices: ["الكائن", "المنصة", "منطقة البرمجة"], correct: 1 }
           ]}
         ]}
       ]
