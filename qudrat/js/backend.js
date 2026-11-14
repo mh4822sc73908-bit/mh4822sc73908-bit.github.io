@@ -22,7 +22,7 @@ export async function rpc(action, args = {}) {
   const data = await res.json().catch(() => ({}));
   if (!res.ok) {
     const code = Number(data.hint) || res.status;
-    throw Object.assign(new Error(data.hint && /^\d+$/.test(data.hint) ? data.message : (data.message ? 'حدث خطأ في الخادم.' : 'حدث خطأ.')), { status: code, detail: data.message });
+    throw Object.assign(new Error(data.hint && /^\d+$/.test(data.hint) ? data.message : `حدث خطأ في الخادم.${data.message ? ` (التفاصيل: ${data.message})` : ''}`), { status: code, detail: data.message });
   }
   if (data && data.__error) throw Object.assign(new Error(data.__error.message), { status: Number(data.__error.code) });
   return data;
