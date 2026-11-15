@@ -1,0 +1,368 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>جاهزية المدارس الملحقة</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Readex+Pro:wght@500;700&family=IBM+Plex+Sans+Arabic:wght@400;500;600&display=swap">
+<style>
+/* Layout: official cover band → takeaway → KPI strip → readiness matrix (centerpiece) → grades + subjects → equipment → actions. Prints on one A4 page. */
+:root{
+  --bg:#eef3f1; --surface:#ffffff; --ink:#13302a; --muted:#5a6e67;
+  --brand:#0f5a48; --brand-soft:#e1efe9; --gold:#a9822f; --gold-soft:#f6eedb;
+  --line:#d6e2dd; --ok:#1d7a4f; --warn:#a46d0b; --bad:#b03a2e;
+  --s1:#0f5a48; --s2:#c08a2c; --s3:#4f7fa6;
+  --display:"Readex Pro","IBM Plex Sans Arabic",Tahoma,sans-serif;
+  --body:"IBM Plex Sans Arabic",Tahoma,"Segoe UI",sans-serif;
+  color-scheme:light;
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+  --bg:#0c1613; --surface:#13221e; --ink:#e4eee9; --muted:#9db0a9;
+  --brand:#46b08f; --brand-soft:#173a30; --gold:#d6b25e; --gold-soft:#2e2715;
+  --line:#25392f; --ok:#4fc58a; --warn:#e0b04f; --bad:#ec7b6d;
+  --s1:#46b08f; --s2:#d6b25e; --s3:#7fb0d8; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#0c1613; --surface:#13221e; --ink:#e4eee9; --muted:#9db0a9;
+  --brand:#46b08f; --brand-soft:#173a30; --gold:#d6b25e; --gold-soft:#2e2715;
+  --line:#25392f; --ok:#4fc58a; --warn:#e0b04f; --bad:#ec7b6d;
+  --s1:#46b08f; --s2:#d6b25e; --s3:#7fb0d8; color-scheme:dark}
+
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--body);font-size:15px;line-height:1.65}
+.wrap{max-width:1040px;margin:0 auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+
+.cover{background:var(--brand);color:var(--surface);border-bottom:4px solid var(--gold);padding-block:22px 24px}
+.cover .row{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:flex-end;gap:12px}
+.org{font-size:13px;opacity:.9;line-height:1.6}
+h1{font-family:var(--display);font-weight:700;font-size:clamp(24px,4.4vw,32px);margin:8px 0 2px;line-height:1.3}
+.cover p{margin:0;opacity:.92;font-size:14px}
+.stamp{border:1px solid currentColor;border-radius:999px;padding:3px 14px;font-size:13px;white-space:nowrap;opacity:.95}
+
+main{display:flex;flex-direction:column;gap:22px;padding-block:22px 36px}
+.lead{margin:0;font-size:18px;line-height:1.75;max-width:70ch;text-wrap:pretty}
+.lead b{font-family:var(--display);font-weight:700;color:var(--brand)}
+
+.kpis{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:10px}
+@media (max-width:760px){.kpis{grid-template-columns:repeat(2,minmax(0,1fr))}.kpis .k:last-child{grid-column:1/-1}}
+.k{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:12px 14px;display:flex;flex-direction:column;gap:1px;min-width:0}
+.k .l{font-size:12.5px;color:var(--muted);font-weight:600}
+.k .n{font-family:var(--display);font-weight:700;font-size:30px;line-height:1.2;font-variant-numeric:tabular-nums}
+.k .h{font-size:12px;color:var(--muted)}
+.k.warn .n{color:var(--warn)} .k.bad .n{color:var(--bad)}
+
+h2{font-family:var(--display);font-weight:700;font-size:18px;margin:0;text-wrap:balance}
+.sec{display:flex;flex-direction:column;gap:8px;min-width:0}
+.note{margin:0;color:var(--muted);font-size:13px;max-width:78ch}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:6px 14px;min-width:0}
+.scroll{overflow-x:auto}
+table{width:100%;border-collapse:collapse;min-width:560px}
+th,td{text-align:start;padding:8px 8px;border-bottom:1px solid var(--line);vertical-align:top;font-size:14px}
+thead th{font-size:12.5px;color:var(--muted);font-weight:600}
+thead th.s{display:table-cell}
+thead th i{display:inline-block;width:9px;height:9px;border-radius:2px;margin-inline-end:6px;vertical-align:middle}
+tbody th{font-weight:600;white-space:nowrap}
+tbody tr:last-child th,tbody tr:last-child td{border-bottom:0}
+tfoot th,tfoot td{border-top:2px solid var(--line);border-bottom:0;font-weight:600;padding-top:10px}
+td small{display:block;color:var(--muted);font-size:12px;line-height:1.4;margin-top:3px}
+.chip{display:inline-flex;align-items:center;gap:6px;border-radius:999px;padding:1px 10px 1px 9px;font-size:12.5px;font-weight:600;white-space:nowrap}
+.chip::before{content:"";width:7px;height:7px;border-radius:50%;background:currentColor}
+.chip.ok{color:var(--ok);background:color-mix(in srgb,var(--ok) 13%,transparent)}
+.chip.warn{color:var(--warn);background:color-mix(in srgb,var(--warn) 15%,transparent)}
+.chip.bad{color:var(--bad);background:color-mix(in srgb,var(--bad) 13%,transparent)}
+.score{display:flex;align-items:center;gap:8px;font-variant-numeric:tabular-nums}
+.score b{font-family:var(--display);font-size:18px}
+.score .bar{flex:1;max-width:110px;min-width:40px;height:6px;border-radius:3px;background:var(--line);overflow:hidden}
+.score .bar i{display:block;height:100%;background:var(--ok)}
+
+.two{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:16px}
+@media (max-width:760px){.two{grid-template-columns:1fr}}
+.two .card{padding:14px}
+.legend{display:flex;flex-wrap:wrap;gap:14px;font-size:12.5px;color:var(--muted)}
+.legend span{display:inline-flex;align-items:center;gap:6px}
+.legend i{width:10px;height:10px;border-radius:2px}
+.chart{position:relative}
+.chart svg{display:block;width:100%;height:auto;direction:ltr}
+.chart text{font-family:var(--body);font-size:12px;fill:var(--muted)}
+.chart .tot{fill:var(--ink);font-weight:600}
+.tip{position:absolute;pointer-events:none;background:var(--surface);border:1px solid var(--line);box-shadow:0 4px 14px rgba(0,0,0,.12);border-radius:8px;padding:4px 10px;font-size:12.5px;white-space:nowrap}
+.subj{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:10px}
+.subj li{display:grid;grid-template-columns:minmax(118px,10em) 1fr auto;gap:10px;align-items:center;font-size:14px}
+.subj .t{display:grid;grid-template-columns:repeat(3,1fr);gap:3px}
+.subj .t i{height:13px;border-radius:2px;background:var(--line)}
+.subj .v{font-size:12.5px;color:var(--muted);font-variant-numeric:tabular-nums;white-space:nowrap}
+
+.acts{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px}
+@media (max-width:900px){.acts{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-width:520px){.acts{grid-template-columns:1fr}}
+.act{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:12px 14px;min-width:0}
+.act.c{background:var(--gold-soft);border-color:var(--gold)}
+.act h3{margin:0 0 6px;font-size:14.5px;font-family:var(--display);font-weight:500}
+.act ul{margin:0;padding-inline-start:1.1em;display:flex;flex-direction:column;gap:5px;font-size:13.5px;line-height:1.5}
+
+.tools{display:flex;flex-wrap:wrap;gap:10px;align-items:center}
+button{font:inherit;font-weight:600;font-size:14px;border-radius:10px;padding:8px 16px;cursor:pointer;border:1px solid var(--brand);background:var(--brand);color:var(--surface)}
+button:focus-visible{outline:3px solid var(--gold);outline-offset:2px}
+.foot{color:var(--muted);font-size:12.5px;border-top:1px solid var(--line);padding-top:10px;display:flex;flex-wrap:wrap;justify-content:space-between;gap:8px}
+.foot a{color:var(--brand)}
+
+@media print{
+  @page{size:A4;margin:9mm}
+  :root{--bg:#fff;--surface:#fff;--ink:#111;--muted:#555;--line:#cfd8d4;--brand:#0f5a48;--brand-soft:#e1efe9;--gold:#a9822f;--gold-soft:#f6eedb;--ok:#1d7a4f;--warn:#a46d0b;--bad:#b03a2e;--s1:#0f5a48;--s2:#c08a2c;--s3:#4f7fa6;color-scheme:light}
+  html{-webkit-print-color-adjust:exact;print-color-adjust:exact}
+  body{font-size:10.5px;line-height:1.45}
+  .wrap{max-width:none;padding:0}
+  .cover{padding:10px 14px 12px;border-radius:6px}
+  h1{font-size:20px;margin:4px 0 0}
+  .cover p,.org,.stamp{font-size:10px}
+  main{gap:8px;padding:8px 0 0}
+  .lead{font-size:12px;line-height:1.5;max-width:none}
+  .k{padding:6px 10px;border-radius:8px}.k .n{font-size:20px}.k .l,.k .h{font-size:9.5px}
+  h2{font-size:12.5px}.note{font-size:9.5px}
+  .sec{gap:4px}
+  th,td{padding:3px 6px;font-size:10px}
+  td small{font-size:9px;margin-top:1px}
+  .chip{font-size:9.5px;padding:0 7px}
+  table{min-width:0}
+  .two{grid-template-columns:1fr 1fr;gap:10px}.two .card{padding:8px 10px}
+  .subj{gap:5px}.subj li{font-size:10px;grid-template-columns:9em 1fr auto}.subj .t i{height:9px}
+  .acts{grid-template-columns:repeat(4,1fr);gap:8px}.act{padding:7px 9px}.act h3{font-size:11px}.act ul{font-size:9.5px;gap:2px}
+  .tools,.tip{display:none!important}
+  .card,.act,.k,table,tr{break-inside:avoid}
+  .foot{font-size:9px;padding-top:4px}
+  body{zoom:.71}
+}
+@media (prefers-reduced-motion:reduce){*{transition:none!important}}
+</style>
+</head>
+<body>
+
+<header class="cover">
+  <div class="wrap row">
+    <div>
+      <div class="org">وزارة التعليم · الإدارة العامة للتعليم بمنطقة حائل · المدرسة المركزية للبنين بحائل</div>
+      <h1>جاهزية المدارس الملحقة</h1>
+      <p>ملخص ما أرسلته المدارس إلى جدول المدرسة المركزية · الأسبوع الأول من تطبيق الخطة التشغيلية</p>
+    </div>
+    <span class="stamp">البيانات حتى 9 نوفمبر 2026</span>
+  </div>
+</header>
+
+<main class="wrap">
+  <p class="lead" id="lead"></p>
+
+  <div class="kpis" id="kpis"></div>
+
+  <section class="sec">
+    <h2>اكتمال البنود في كل مدرسة</h2>
+    <p class="note">ثمانية بنود تطلبها نماذج المرفقات. «مكتمل» يعني أن البند عُبّئ ببيانات فعلية، و«جزئي» أنه بدأ ولم يكتمل.</p>
+    <div class="card scroll"><table id="ready"></table></div>
+  </section>
+
+  <div class="two">
+    <section class="sec">
+      <h2>توزيع الطلاب على الصفوف</h2>
+      <div class="card">
+        <div class="legend" id="legend"></div>
+        <div class="chart" id="grades"></div>
+      </div>
+      <p class="note">أعداد جبلة مكتوبة في بطاقة البيانات، وأعداد الجبيلي من كشف نور قبل تأكيده.</p>
+    </section>
+    <section class="sec">
+      <h2>المواد المطلوبة عن بُعد</h2>
+      <div class="card"><ul class="subj" id="subjects"></ul></div>
+      <p class="note">كل خانة ملونة مدرسة طلبت المادة. الاعتماد النهائي حسب ما يرد من وزارة التعليم وإدارة التعليم.</p>
+    </section>
+  </div>
+
+  <section class="sec">
+    <h2>حالة التجهيزات التقنية</h2>
+    <p class="note">البنود الثمانية الواردة في الدليل التشغيلي (ص9). الإنترنت سُجّل في بطاقات المدارس الثلاث «متوسطًا وينقطع أحيانًا».</p>
+    <div class="card scroll"><table id="equip"></table></div>
+  </section>
+
+  <section class="sec">
+    <h2>المطلوب لاستكمال الأسبوع الأول</h2>
+    <div class="acts" id="acts"></div>
+  </section>
+
+  <div class="tools" id="tools"><button type="button" id="printBtn">طباعة أو حفظ PDF</button></div>
+
+  <div class="foot">
+    <span>المصدر: جدول «نماذج المدارس الملحقة». الصفحة تعرض الأعداد فقط دون أسماء الطلاب.</span>
+    <span><a href="markazia-principals-review.html">وثيقة تنظيم العمل</a> · <a href="markazia-attachments.html">نماذج المرفقات</a></span>
+  </div>
+</main>
+
+<script>
+/* ===== البيانات: لقطة من جدول «نماذج المدارس الملحقة» — تُحدَّث هنا عند إعادة الإرسال ===== */
+const SCHOOLS = ["جبلة","الجبيلي","الحدق"];
+const DATA = {
+  schools: {
+    "جبلة":    {principal:"عبدالعزيز محمد الغالب", students:22, confirmed:0, teachers:0, gaps:0},
+    "الجبيلي": {principal:"سعد سالم",               students:10, confirmed:0, teachers:3, gaps:5},
+    "الحدق":   {principal:"ذعذاع شخير الفديد",       students:3,  confirmed:3, teachers:3, gaps:2}
+  },
+  readiness: [
+    ["بطاقة البيانات",       [["مكتمل","٦ فصول، الأعداد مكتوبة يدويًا"],["جزئي","أعداد الصفوف فارغة"],["مكتمل","فصل واحد متعدد الصفوف"]]],
+    ["كشف طلاب نور",         [["ناقص","لم يُحمَّل الكشف"],["جزئي","١٠ محمّلون، ٠ مؤكد"],["مكتمل","٣ من ٣ مؤكدون"]]],
+    ["المعلمون",             [["ناقص","لم يُسجَّل معلمون"],["مكتمل","٣ معلمين ميسّرين"],["مكتمل","٣ معلمين ميسّرين"]]],
+    ["التجهيزات",            [["مكتمل","الثمانية متوفرة دون أعداد"],["مكتمل","٥ نواقص مسجلة"],["مكتمل","نقصان مسجلان"]]],
+    ["حسابات مدرستي",        [["ناقص","لم يُدخل عدد الحسابات"],["مكتمل","١٠ حسابات مفعّلة"],["مكتمل","٣ حسابات مفعّلة"]]],
+    ["المسؤوليات بالأسماء",  [["ناقص","٠ من ٦ مهام"],["ناقص","كُتب «منفذ» بدل الأسماء"],["مكتمل","٦ من ٦ مع البدلاء"]]],
+    ["معلم إدارة الصف",      [["ناقص","لم يُسمَّ"],["ناقص","لم يُسمَّ"],["مكتمل","أحمد فايز الشمري"]]],
+    ["رفع الاحتياجات",       [["مكتمل","لا نواقص مسجلة"],["ناقص","٥ نواقص لم تُرفع"],["ناقص","نقصان لم يُرفعا"]]]
+  ],
+  grades: [ // الأول..السادس لكل مدرسة
+    ["الأول",[3,2,0]],["الثاني",[3,0,0]],["الثالث",[2,3,0]],["الرابع",[5,3,0]],["الخامس",[5,1,1]],["السادس",[4,1,2]]
+  ],
+  subjects: [
+    ["التربية الإسلامية",[1,1,1]],["الدراسات الاجتماعية",[1,1,1]],["المهارات الرقمية",[1,1,1]],
+    ["الرياضيات",[0,1,1]],["لغتي",[1,0,0]],["العلوم",[0,0,1]]
+  ],
+  equipment: [
+    ["جهاز العرض",["متوفر","متوفر","متوفر"]],
+    ["الإنترنت",["متوفر","متوفر جزئيًا","متوفر"]],
+    ["حاسوب لكل طالب",["متوفر","متوفر","متوفر"]],
+    ["سماعة بلاقط لكل طالب",["متوفر","غير متوفر","متوفر"]],
+    ["صندوق حفظ الأجهزة وشحنها",["متوفر","غير متوفر","غير متوفر"]],
+    ["الطابعة",["متوفر","يحتاج صيانة","متوفر"]],
+    ["الماسح الضوئي",["متوفر","يحتاج صيانة","غير متوفر"]],
+    ["السبورة البيضاء",["متوفر","متوفر","متوفر"]]
+  ],
+  actions: {
+    "مدرسة جبلة":["تحميل كشف نور وتأكيد الطلاب ونقل الأعداد إلى البطاقة","تسجيل المعلمين وتحديد ميسّري الحصص عن بُعد","تسمية المنفذين في المصفوفة، وأولهم معلم إدارة الصف","إدخال عدد حسابات مدرستي المفعّلة"],
+    "مدرسة الجبيلي":["تأكيد الطلاب العشرة ونقل الأعداد إلى البطاقة","كتابة أسماء المعلمين بدل «منفذ» في المصفوفة","رفع النواقص الخمسة: شريحة STC، السماعات، صندوق الشحن، صيانة الطابعة والماسح"],
+    "مدرسة الحدق":["رفع نقصَي صندوق الشحن والماسح الضوئي في الاحتياجات"],
+    "المدرسة المركزية":["تسمية منسق اتصال وبديل لكل مدرسة","معالجة ضعف الإنترنت المشترك في المدارس الثلاث","استكمال خطة المتابعة بالمسؤول والحالة قبل مراجعة ١٨ نوفمبر"]
+  }
+};
+
+/* ===== العرض ===== */
+const $ = (id) => document.getElementById(id);
+const AR = (n) => String(n).replace(/\d/g, (d) => "٠١٢٣٤٥٦٧٨٩"[d]);
+const el = (tag, cls, text) => { const e = document.createElement(tag); if (cls) e.className = cls; if (text != null) e.textContent = text; return e; };
+const CLS = {"مكتمل":"ok","جزئي":"warn","ناقص":"bad","متوفر":"ok","متوفر جزئيًا":"warn","يحتاج صيانة":"warn","غير متوفر":"bad"};
+const COLORS = ["var(--s1)","var(--s2)","var(--s3)"];
+const chip = (s) => el("span", "chip " + (CLS[s] || "warn"), s);
+
+const S = DATA.schools, vals = SCHOOLS.map((s) => S[s]);
+const sum = (f) => vals.reduce((a, v) => a + f(v), 0);
+const totals = {students: sum((v) => v.students), confirmed: sum((v) => v.confirmed), teachers: sum((v) => v.teachers), gaps: sum((v) => v.gaps)};
+const score = SCHOOLS.map((s, i) => ({s, n: DATA.readiness.filter((r) => r[1][i][0] === "مكتمل").length})).sort((a, b) => b.n - a.n);
+
+// takeaway
+(() => {
+  const p = $("lead"), b = (t) => el("b", null, t);
+  p.append("أرسلت ", b(AR(SCHOOLS.length)), " مدارس ملحقة بياناتها، ويبلغ مجموع طلابها ", b(AR(totals.students)),
+    " طالبًا. أكثرها اكتمالًا مدرسة ", b(score[0].s), " بـ", b(AR(score[0].n)), " من ", AR(DATA.readiness.length),
+    " بنود، ولم تُرفع أي احتياجات حتى الآن رغم ", b(AR(totals.gaps)), " نواقص في التجهيزات.");
+})();
+
+// KPIs
+[
+  ["المدارس المرسلة", AR(SCHOOLS.length), "من ٣ مدارس", ""],
+  ["الطلاب المسجلون", AR(totals.students), "في الصفوف ١–٦", ""],
+  ["المؤكدون من كشف نور", AR(totals.confirmed), "التأكيد مطلوب لكل طالب", "warn"],
+  ["المعلمون المسجلون", AR(totals.teachers), "كلهم ميسّرو حصص عن بُعد", ""],
+  ["نواقص التجهيزات", AR(totals.gaps), "غير متوفر أو جزئي أو صيانة", "bad"]
+].forEach(([l, n, h, c]) => { const k = el("div", "k " + c); k.append(el("span", "l", l), el("span", "n", n), el("span", "h", h)); $("kpis").appendChild(k); });
+
+// school header row with swatches
+const headRow = (first) => {
+  const tr = el("tr"); tr.appendChild(el("th", null, first));
+  SCHOOLS.forEach((s, i) => { const th = el("th"); const sw = el("i"); sw.style.background = COLORS[i]; th.append(sw, s); tr.appendChild(th); });
+  const th = el("thead"); th.appendChild(tr); return th;
+};
+
+// readiness
+(() => {
+  const t = $("ready"); t.appendChild(headRow("البند"));
+  const tb = el("tbody");
+  DATA.readiness.forEach(([item, cells]) => {
+    const tr = el("tr"); tr.appendChild(el("th", null, item));
+    cells.forEach(([st, note]) => { const td = el("td"); td.append(chip(st), el("small", null, note)); tr.appendChild(td); });
+    tb.appendChild(tr);
+  });
+  t.appendChild(tb);
+  const tf = el("tfoot"), tr = el("tr"); tr.appendChild(el("th", null, "البنود المكتملة"));
+  SCHOOLS.forEach((s) => {
+    const n = score.find((x) => x.s === s).n, td = el("td"), d = el("div", "score"), bar = el("span", "bar"), f = el("i");
+    f.style.width = (n / DATA.readiness.length * 100) + "%"; bar.appendChild(f);
+    d.append(el("b", null, AR(n)), " من " + AR(DATA.readiness.length), bar); td.appendChild(d); tr.appendChild(td);
+  });
+  tf.appendChild(tr); t.appendChild(tf);
+})();
+
+// legend
+SCHOOLS.forEach((s, i) => { const sp = el("span"), sw = el("i"); sw.style.background = COLORS[i]; sp.append(sw, s); $("legend").appendChild(sp); });
+
+// grades chart (SVG, right-to-left bars)
+function drawGrades() {
+  const box = $("grades"); box.replaceChildren();
+  const W = Math.max(box.clientWidth || 340, 260), rowH = 30, top = 10, bottom = 24, labelW = 58, totW = 26;
+  const H = top + DATA.grades.length * rowH + bottom;
+  const max = Math.max(...DATA.grades.map(([, v]) => v.reduce((a, b) => a + b, 0)));
+  const nice = Math.ceil(max / 2) * 2, span = W - labelW - totW - 6;
+  const X = (v) => W - labelW - (v / nice) * span;
+  const NS = "http://www.w3.org/2000/svg", mk = (t, a) => { const n = document.createElementNS(NS, t); for (const k in a) n.setAttribute(k, a[k]); return n; };
+  const svg = mk("svg", {viewBox: `0 0 ${W} ${H}`, role: "img", "aria-label": "عدد الطلاب في كل صف موزعًا على المدارس الثلاث"});
+  for (let t = 0; t <= nice; t += 2) {
+    svg.appendChild(mk("line", {x1: X(t), x2: X(t), y1: top - 4, y2: H - bottom, stroke: "var(--line)"}));
+    const tx = mk("text", {x: X(t), y: H - 6, "text-anchor": "middle"}); tx.textContent = AR(t); svg.appendChild(tx);
+  }
+  const tip = el("div", "tip"); tip.hidden = true;
+  DATA.grades.forEach(([g, v], i) => {
+    const y = top + i * rowH + 5, h = rowH - 10;
+    const lb = mk("text", {x: W - 2, y: y + h / 2 + 4, "text-anchor": "end"}); lb.textContent = g; svg.appendChild(lb);
+    let acc = 0;
+    v.forEach((n, k) => {
+      if (n > 0) {
+        const r = mk("rect", {x: X(acc + n), y, width: Math.max(0, X(acc) - X(acc + n) - 1.5), height: h, rx: 2});
+        r.style.fill = COLORS[k];
+        const show = (ev) => { const b = box.getBoundingClientRect(); tip.hidden = false; tip.textContent = `${SCHOOLS[k]} · الصف ${g}: ${AR(n)}`;
+          tip.style.left = Math.min(Math.max(ev.clientX - b.left - 70, 0), b.width - 150) + "px"; tip.style.top = (ev.clientY - b.top - 36) + "px"; };
+        r.addEventListener("pointerenter", show); r.addEventListener("pointermove", show); r.addEventListener("pointerleave", () => tip.hidden = true);
+        svg.appendChild(r);
+      }
+      acc += n;
+    });
+    const tt = mk("text", {x: X(acc) - 6, y: y + h / 2 + 4, "text-anchor": "end", class: "tot"}); tt.textContent = AR(acc); svg.appendChild(tt);
+  });
+  box.append(svg, tip);
+}
+drawGrades();
+let rz; addEventListener("resize", () => { clearTimeout(rz); rz = setTimeout(drawGrades, 120); });
+
+// subjects
+DATA.subjects.forEach(([name, flags]) => {
+  const li = el("li"), t = el("span", "t");
+  flags.forEach((f, k) => { const i = el("i"); if (f) i.style.background = COLORS[k]; i.title = SCHOOLS[k]; t.appendChild(i); });
+  const n = flags.reduce((a, b) => a + b, 0);
+  li.append(el("span", null, name), t, el("span", "v", `${AR(n)} من ٣ مدارس`));
+  $("subjects").appendChild(li);
+});
+
+// equipment
+(() => {
+  const t = $("equip"); t.appendChild(headRow("التجهيز"));
+  const tb = el("tbody");
+  DATA.equipment.forEach(([item, st]) => { const tr = el("tr"); tr.appendChild(el("th", null, item)); st.forEach((s) => { const td = el("td"); td.appendChild(chip(s)); tr.appendChild(td); }); tb.appendChild(tr); });
+  t.appendChild(tb);
+})();
+
+// actions
+Object.entries(DATA.actions).forEach(([who, list]) => {
+  const c = el("div", "act" + (who === "المدرسة المركزية" ? " c" : "")), ul = el("ul");
+  list.forEach((a) => ul.appendChild(el("li", null, a)));
+  c.append(el("h3", null, who), ul); $("acts").appendChild(c);
+});
+
+// print
+const framed = (() => { try { return window.self !== window.top; } catch (e) { return true; } })();
+if (framed) $("tools").hidden = true;
+$("printBtn").addEventListener("click", () => window.print());
+</script>
+</body>
+</html>
