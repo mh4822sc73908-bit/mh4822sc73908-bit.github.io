@@ -1,0 +1,446 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>تطبيقات الذكاء الاصطناعي في التعليم</title>
+<meta name="description" content="ملف الترشّح لجائزة بصمة 2026 — محمد هليل الشمري، المدرسة المركزية للبنين بحائل، مسار «إبداع»، فئة الأفراد.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Arabic:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+/* VOICE: معرض تحريري هادئ لمشاركة تعليمية؛ الدليل بجانب كل ادعاء.
+   IDEA: ملف أعمال مطبوع لمعلّم: صفحات عاجية، لقطات مثبتة كالصور في ملف، حواشٍ تشير إلى المصدر.
+   PICTURE: لقطتا «مسارات» وموقع المهارات الرقمية متراكبتان في الافتتاحية.
+   COLOUR/TYPE: عاجي، أخضر داكن، ذهب محدود. Noto Sans Arabic بأوزان 400–800.
+   LAYOUT: افتتاحية واسعة، رحلة بأربع محطات، معرض بطاقات، نتائج بمصادرها، شواهد، ملف الترشح. */
+:root{color-scheme:light dark;
+ --bg:light-dark(#FAF6EC,#0F1613);--paper:light-dark(#FFFDF7,#16201B);--ink:light-dark(#1C2320,#E9E6DC);
+ --muted:light-dark(#5B6560,#A7B0A9);--line:light-dark(#E6DFCD,#2A3630);--green:light-dark(#0B4D3B,#8FD3B5);
+ --deep:light-dark(#0A3B2E,#0B2A21);--gold:light-dark(#A87A22,#D9AE55);--goldbg:light-dark(#F4EAD3,#2B2614);
+ --chip:light-dark(#EEF3EE,#1C2A24);--shadow:0 1px 2px #0000000d,0 12px 32px -14px #0b2a2140;
+ --r:14px}
+:root[data-theme=light]{color-scheme:light}:root[data-theme=dark]{color-scheme:dark}
+*{box-sizing:border-box;min-width:0}
+html{scroll-behavior:smooth;scroll-padding-top:72px}
+body{margin:0;background:var(--bg);color:var(--ink);font:16.5px/1.75 "Noto Sans Arabic",system-ui,sans-serif;overflow-x:clip}
+img{max-width:100%;display:block}
+a{color:var(--green)}
+h1,h2,h3{color:var(--green);line-height:1.25;text-wrap:balance;margin:0}
+h2{font-size:clamp(26px,3.4vw,38px);font-weight:800}
+h3{font-size:20px;font-weight:700}
+p{margin:0}
+.wrap{max-width:1240px;margin-inline:auto;padding-inline:max(4vw,16px)}
+.band{padding-block:clamp(48px,7vw,96px)}
+.lede{color:var(--muted);max-width:62ch;margin-top:10px}
+.kicker{display:inline-flex;gap:8px;align-items:center;font-size:14px;font-weight:600;color:var(--gold)}
+.kicker::before{content:"";width:22px;height:2px;background:var(--gold)}
+:focus-visible{outline:3px solid var(--gold);outline-offset:3px;border-radius:6px}
+.btn{display:inline-flex;align-items:center;gap:8px;min-height:46px;padding:10px 22px;border-radius:999px;font:600 16px/1 inherit;text-decoration:none;border:1.5px solid var(--green);cursor:pointer;transition:background .2s,color .2s}
+.btn.pri{background:var(--green);color:var(--bg)}
+.btn.pri:hover{background:var(--deep);border-color:var(--deep);color:#fff}
+.btn.sec{background:transparent;color:var(--green)}
+.btn.sec:hover{background:var(--chip)}
+.btn.sm{min-height:40px;padding:8px 16px;font-size:15px}
+
+/* header */
+.top{position:sticky;top:0;z-index:20;background:color-mix(in srgb,var(--bg) 92%,transparent);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+.top .wrap{display:flex;align-items:center;gap:18px;min-height:60px}
+.brand{font-weight:700;font-size:15px;color:var(--green);text-decoration:none;white-space:nowrap}
+.brand small{color:var(--muted);font-weight:500;margin-inline-start:6px}
+.nav{display:flex;gap:4px;overflow-x:auto;margin-inline-start:auto;scrollbar-width:none}
+.nav a{flex:none;padding:8px 12px;border-radius:999px;color:var(--ink);text-decoration:none;font-size:15px}
+.nav a:hover,.nav a.on{background:var(--chip);color:var(--green)}
+
+/* hero */
+.hero{padding-block:clamp(36px,6vw,80px) clamp(40px,6vw,88px)}
+.hero .wrap{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.15fr);gap:clamp(28px,5vw,64px);align-items:center}
+.hero h1{font-size:clamp(36px,5.4vw,62px);font-weight:800;line-height:1.12;margin-top:14px}
+.hero .sub{font-size:clamp(18px,2vw,22px);font-weight:600;color:var(--ink);margin-top:12px}
+.hero .intro{color:var(--muted);margin-top:18px;max-width:54ch}
+.hero .cta{display:flex;flex-wrap:wrap;gap:12px;margin-top:28px}
+.meta{display:flex;flex-wrap:wrap;gap:8px;margin-top:26px;padding:0;list-style:none}
+.meta li{font-size:14px;background:var(--chip);border-radius:999px;padding:5px 12px;color:var(--muted)}
+.meta b{color:var(--ink);font-weight:600}
+.stage{position:relative;aspect-ratio:16/12.4}
+.frame{position:absolute;background:var(--paper);border:1px solid var(--line);border-radius:12px;overflow:hidden;box-shadow:var(--shadow)}
+.frame .bar{height:26px;display:flex;align-items:center;gap:6px;padding-inline:10px;background:var(--chip);border-bottom:1px solid var(--line);font-size:12px;color:var(--muted)}
+.frame .bar i{width:8px;height:8px;border-radius:50%;background:var(--line)}
+.frame .bar span{margin-inline-start:auto}
+.frame img{width:100%;aspect-ratio:16/10;object-fit:cover;object-position:top}
+.f-main{inset-inline-start:0;top:0;width:86%}
+.f-side{inset-inline-end:0;bottom:0;width:56%}
+.tag{position:absolute;font-size:13px;font-weight:600;background:var(--goldbg);color:var(--gold);padding:4px 10px;border-radius:999px}
+.t1{top:-12px;inset-inline-end:14%}.t2{bottom:-12px;inset-inline-start:8%}
+.cap{font-size:13px;color:var(--muted);margin-top:22px}
+
+/* story */
+.story{background:var(--paper);border-block:1px solid var(--line)}
+.arc{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:2px;margin-top:30px;counter-reset:a}
+.arc div{padding:18px 20px;background:var(--bg);position:relative}
+.arc div:first-child{border-start-start-radius:var(--r);border-end-start-radius:var(--r)}
+.arc div:last-child{border-start-end-radius:var(--r);border-end-end-radius:var(--r)}
+.arc b{display:block;color:var(--green);font-size:17px}
+.arc p{color:var(--muted);font-size:15px;margin-top:4px}
+.tabs{display:flex;gap:8px;margin-top:40px;overflow-x:auto;padding-bottom:4px}
+.tabs button{flex:1 0 auto;display:flex;align-items:center;gap:10px;min-height:56px;padding:10px 18px;border:1.5px solid var(--line);border-radius:12px;background:var(--bg);color:var(--ink);font:600 16px/1.3 inherit;cursor:pointer;text-align:start}
+.tabs button .n{display:grid;place-items:center;width:30px;height:30px;border-radius:50%;background:var(--chip);color:var(--green);font-size:15px;flex:none}
+.tabs button[aria-selected=true]{border-color:var(--green);background:var(--green);color:var(--bg)}
+.tabs button[aria-selected=true] .n{background:var(--bg);color:var(--green)}
+.tabs .arr{color:var(--gold);align-self:center;flex:none}
+.panel{display:grid;grid-template-columns:minmax(0,1.45fr) minmax(0,1fr);gap:clamp(20px,3.5vw,44px);margin-top:22px;align-items:start}
+.shot{border:1px solid var(--line);border-radius:12px;overflow:hidden;background:var(--paper);box-shadow:var(--shadow);cursor:zoom-in;padding:0;width:100%}
+.shot img{width:100%;aspect-ratio:16/10;object-fit:cover;object-position:top;transition:opacity .35s}
+.thumbs{display:flex;gap:10px;margin-top:12px}
+.thumbs button{width:110px;border:2px solid transparent;border-radius:8px;padding:0;overflow:hidden;cursor:pointer;background:none;opacity:.7}
+.thumbs button[aria-pressed=true]{border-color:var(--gold);opacity:1}
+.thumbs img{aspect-ratio:16/10;object-fit:cover;object-position:top}
+.ptext h3{font-size:24px}
+.ptext .lead{margin-top:10px}
+.who{margin-top:20px;display:grid;gap:12px}
+.who div{border-inline-start:3px solid var(--gold);padding:4px 14px}
+.who b{display:block;font-size:14px;color:var(--gold)}
+.who div:last-child{border-color:var(--green)}.who div:last-child b{color:var(--green)}
+.note{font-size:13.5px;color:var(--muted);margin-top:22px;max-width:90ch}
+.fade{animation:fade .4s ease}
+@keyframes fade{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
+
+/* ai */
+.aicase{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:12px;margin-top:24px}
+.aicase div{background:var(--paper);border:1px solid var(--line);border-radius:12px;padding:14px}
+.aicase b{display:block;font-size:13px;color:var(--gold)}
+
+/* projects */
+.feat{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:24px;margin-top:34px}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:20px;margin-top:24px}
+.card{display:flex;flex-direction:column;background:var(--paper);border:1px solid var(--line);border-radius:var(--r);overflow:hidden;text-align:start;padding:0;color:inherit;font:inherit;cursor:pointer;transition:transform .25s,box-shadow .25s}
+.card:hover{transform:translateY(-3px);box-shadow:var(--shadow)}
+.card .im{aspect-ratio:16/9;overflow:hidden;background:var(--chip);border-bottom:1px solid var(--line)}
+.card .im img{width:100%;height:100%;object-fit:cover;object-position:top}
+.card .im.blank{display:grid;place-items:center;color:var(--green);font-weight:700;font-size:15px;background:repeating-linear-gradient(135deg,var(--chip) 0 12px,var(--bg) 12px 24px)}
+.card .bd{padding:18px 20px 20px;display:flex;flex-direction:column;gap:6px;flex:1}
+.card .k{font-size:13px;color:var(--gold);font-weight:600}
+.card p{color:var(--muted);font-size:15px}
+.card .more{margin-top:auto;padding-top:10px;font-weight:600;color:var(--green);font-size:15px}
+.feat .card h3{font-size:24px}
+.feat .card .im{aspect-ratio:16/10}
+
+/* results */
+.res{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:18px;margin-top:32px}
+.rc{background:var(--paper);border:1px solid var(--line);border-radius:var(--r);padding:22px;display:flex;flex-direction:column;gap:6px}
+.rc .v{font-size:clamp(30px,3.6vw,42px);font-weight:800;color:var(--green);line-height:1.1}
+.rc .l{font-weight:700}
+.rc .t{align-self:flex-start;font-size:12.5px;font-weight:600;background:var(--goldbg);color:var(--gold);padding:2px 10px;border-radius:999px}
+.rc p{color:var(--muted);font-size:14.5px}
+.rc .src{margin-top:auto;padding-top:10px;border-top:1px dashed var(--line);font-size:14px}
+.rc .src button,.rc .src a{background:none;border:0;padding:0;color:var(--green);font:600 14px/1.6 inherit;cursor:pointer;text-decoration:underline;text-underline-offset:3px}
+
+/* gallery */
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:26px}
+.chips button{min-height:40px;padding:6px 16px;border-radius:999px;border:1.5px solid var(--line);background:var(--paper);color:var(--ink);font:500 15px/1 inherit;cursor:pointer}
+.chips button[aria-pressed=true]{background:var(--green);color:var(--bg);border-color:var(--green)}
+.gal{columns:3 260px;column-gap:18px;margin-top:22px}
+.gi{break-inside:avoid;margin:0 0 18px;background:var(--paper);border:1px solid var(--line);border-radius:12px;overflow:hidden}
+.gi button{display:block;width:100%;padding:0;border:0;background:none;cursor:zoom-in}
+.gi figcaption{padding:12px 14px;font-size:14px;color:var(--muted)}
+.gi figcaption b{display:block;color:var(--ink);font-size:15px}
+
+/* nomination */
+.nom{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.3fr);gap:32px;margin-top:30px;align-items:start}
+.dl{display:grid;grid-template-columns:auto 1fr;gap:10px 18px;margin:0;background:var(--paper);border:1px solid var(--line);border-radius:var(--r);padding:22px}
+.dl dt{color:var(--muted);font-size:14.5px}.dl dd{margin:0;font-weight:600}
+.docs{display:grid;gap:16px}
+.doc{background:var(--paper);border:1px solid var(--line);border-radius:var(--r);padding:20px;display:grid;gap:12px}
+.doc .row{display:flex;flex-wrap:wrap;gap:10px}
+.doc .pv{display:flex;gap:10px;overflow-x:auto}
+.doc .pv img{height:220px;width:auto;border:1px solid var(--line);border-radius:6px;cursor:zoom-in}
+.doc iframe{width:100%;height:520px;border:1px solid var(--line);border-radius:8px;background:#fff}
+
+/* review */
+.pending{outline:2px dashed var(--gold);outline-offset:4px;position:relative}
+.pending::after{content:"محجوب في النسخة العامة — بانتظار الشاهد";position:absolute;top:8px;inset-inline-start:8px;font-size:12px;font-weight:700;background:var(--gold);color:#fff;padding:3px 10px;border-radius:999px}
+.rv{background:var(--goldbg);color:var(--ink);font-size:14px;border-bottom:1px solid var(--line)}
+.rv .wrap{padding-block:10px}
+
+/* dialogs */
+dialog{border:0;padding:0;border-radius:18px;background:var(--paper);color:var(--ink);width:min(980px,94vw);max-height:92vh;box-shadow:0 30px 80px #0006}
+dialog::backdrop{background:#0b1a14b3}
+.dh{position:sticky;top:0;display:flex;align-items:start;gap:16px;padding:20px 24px;background:var(--paper);border-bottom:1px solid var(--line);z-index:1}
+.dh h3{font-size:24px}
+.x{margin-inline-start:auto;flex:none;width:44px;height:44px;border-radius:50%;border:1px solid var(--line);background:var(--bg);color:var(--ink);font-size:22px;cursor:pointer}
+.db{padding:22px 24px 28px;display:grid;gap:22px}
+.db h4{margin:0 0 6px;color:var(--gold);font-size:15px}
+.db ul{margin:0;padding-inline-start:20px}.db li{margin-bottom:4px}
+.dshots{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:12px}
+.dshots button{padding:0;border:1px solid var(--line);border-radius:10px;overflow:hidden;cursor:zoom-in;background:none}
+.dshots img{aspect-ratio:16/10;object-fit:cover;object-position:top;width:100%}
+.cols{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:22px}
+.ev a,.ev button{color:var(--green);font-weight:600;background:none;border:0;padding:0;font:inherit;cursor:pointer;text-decoration:underline;text-underline-offset:3px}
+.privacy{background:var(--goldbg);border-radius:10px;padding:10px 14px;font-size:14.5px}
+#lb{width:min(1200px,96vw);background:#0d1512;color:#eee}
+#lb .dh{background:#0d1512;border-color:#253029}#lb h3{color:#fff;font-size:18px}#lb .x{background:#1c2622;color:#fff;border-color:#2c3832}
+#lb .db{padding:12px}#lb img{width:100%;height:auto;max-height:74vh;object-fit:contain}
+#lb p{color:#b9c2bc;font-size:14px;padding:4px 10px}
+.lbnav{display:flex;gap:10px;justify-content:center;padding-bottom:6px}
+.lbnav button{min-height:44px;min-width:44px;border-radius:999px;border:1px solid #2c3832;background:#1c2622;color:#fff;font:600 15px inherit;padding:0 16px;cursor:pointer}
+
+footer{background:var(--deep);color:#d8e3dc;font-size:14.5px}
+footer .wrap{padding-block:36px;display:grid;gap:10px}
+footer b{color:#fff}
+
+.rev{opacity:0;transform:translateY(14px);transition:opacity .6s ease,transform .6s ease}
+.rev.in{opacity:1;transform:none}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important;scroll-behavior:auto!important}.rev{opacity:1;transform:none}}
+
+@media (max-width:900px){
+ .hero .wrap,.panel,.nom{grid-template-columns:minmax(0,1fr)}
+ .feat{grid-template-columns:minmax(0,1fr)}
+ .aicase{grid-template-columns:minmax(0,1fr) minmax(0,1fr)}
+}
+@media (max-width:600px){
+ body{font-size:16px}
+ .brand small{display:none}
+ .top .wrap{flex-wrap:wrap;gap:0;padding-block:6px}.nav{margin-inline-start:0;width:100%}
+ .arc{grid-template-columns:minmax(0,1fr)}.arc div{border-radius:10px!important}
+ .tabs .arr{display:none}.tabs button{flex:0 0 auto}
+ .stage{aspect-ratio:16/13}
+ .cols{grid-template-columns:minmax(0,1fr)}
+ .dl{grid-template-columns:minmax(0,1fr)}.dl dd{margin-bottom:6px}
+ .thumbs button{width:90px}
+ .dh,.db{padding-inline:16px}
+}
+</style>
+</head>
+<body>
+<a href="#story" class="btn sec sm" style="position:absolute;inset-inline-start:-9999px" onfocus="this.style.insetInlineStart='12px'" onblur="this.style.insetInlineStart='-9999px'">تخطَّ إلى المحتوى</a>
+<div id="rvbar"></div>
+<header class="top">
+ <div class="wrap">
+  <a class="brand" href="#top">ملف الترشّح لجائزة بصمة 2026<small>· مسار «إبداع» · فئة الأفراد</small></a>
+  <nav class="nav" aria-label="أقسام الصفحة" id="nav">
+   <a href="#story">التجربة</a><a href="#projects">المشاريع</a><a href="#results">النتائج</a><a href="#evidence">الشواهد</a><a href="#nomination">ملف الترشّح</a>
+  </nav>
+ </div>
+</header>
+
+<main id="top">
+<section class="hero">
+ <div class="wrap">
+  <div>
+   <span class="kicker" id="hLabel"></span>
+   <h1 id="hTitle"></h1>
+   <p class="sub" id="hSub"></p>
+   <p class="intro">أنشطة رقمية صمّمها معلّم المهارات الرقمية لطلاب يدرسون عن بُعد في مدارس ملحقة متباعدة،
+    تعالج المهارات غير المتقنة بمسارات قصيرة، وتتيح للمعلم والمدير متابعة تقدّم كل طالب أسبوعًا بأسبوع.</p>
+   <div class="cta">
+    <a class="btn pri" href="#story">استكشف التجربة</a>
+    <a class="btn sec" href="#evidence">اطّلع على الشواهد</a>
+   </div>
+   <ul class="meta" id="hMeta"></ul>
+  </div>
+  <div>
+   <div class="stage" aria-label="لقطتان من واجهتي مسارات المركزية وموقع المهارات الرقمية">
+    <figure class="frame f-main" style="margin:0"><div class="bar"><i></i><i></i><i></i><span>مسارات المركزية</span></div>
+     <img src="img/masarat-student.webp" alt="لوحة الطالب في منصة مسارات المركزية: مسارات تعويضية في سبع مواد" fetchpriority="high"></figure>
+    <figure class="frame f-side" style="margin:0"><div class="bar"><i></i><i></i><i></i><span>موقع المهارات الرقمية</span></div>
+     <img src="img/ds-home.webp" alt="الصفحة الرئيسة لموقع مادة المهارات الرقمية للصفوف الرابع إلى السادس"></figure>
+    <span class="tag t1">مسار لكل مهارة</span><span class="tag t2">مرجع للصفوف 4–6</span>
+   </div>
+   <p class="cap">لقطات من الواجهات المنشورة. بيانات «مسارات» في اللقطة افتراضية لوضع العرض.</p>
+  </div>
+ </div>
+</section>
+
+<section class="story band" id="story">
+ <div class="wrap">
+  <span class="kicker">التجربة</span>
+  <h2>من احتياج الطالب إلى الشاهد</h2>
+  <p class="lede">يدرس طلاب الصفوف الرابع إلى السادس في مدارس جبلة والجبيلي والحدق عن بُعد مع معلمي المدرسة المركزية. تتبع التجربة ثلاث خطوات تتكرر في كل مشروع.</p>
+  <div class="arc rev">
+   <div><b>الاحتياج</b><p>مهارة لم يتقنها الطالب، أو مرجع لا يصل إليه خارج الحصة.</p></div>
+   <div><b>النشاط الرقمي</b><p>شرح قصير، ونشاط تفاعلي، وتدريب بتصحيح فوري، ثم اختبار.</p></div>
+   <div><b>المتابعة والشاهد</b><p>نسبة إنجاز لكل طالب، وتقرير أسبوعي، وشهادة تُطبع عند الإكمال.</p></div>
+  </div>
+  <h3 style="margin-top:48px">رحلة الطالب في «مسارات المركزية»</h3>
+  <p class="lede" style="margin-top:6px">اختر محطة لترى ما يظهر للطالب وما يتابعه المعلم. المثال: مسار «مكوّنات الحاسب» في المهارات الرقمية.</p>
+  <div class="tabs" role="tablist" aria-label="محطات الرحلة" id="tabs"></div>
+  <div class="panel" role="tabpanel" id="panel" tabindex="0"></div>
+  <p class="note" id="jNote"></p>
+ </div>
+</section>
+
+<section class="band" id="ai" hidden></section>
+
+<section class="band" id="projects">
+ <div class="wrap">
+  <span class="kicker">معرض المشاريع</span>
+  <h2>سبعة أعمال، ومحوران</h2>
+  <p class="lede">«مسارات المركزية» وموقع المهارات الرقمية هما محور التجربة. افتح أي بطاقة لترى الاحتياج وما نُفّذ والدور والشاهد.</p>
+  <div class="feat" id="feat"></div>
+  <div class="grid" id="grid"></div>
+ </div>
+</section>
+
+<section class="band story" id="results">
+ <div class="wrap">
+  <span class="kicker">النتائج</span>
+  <h2>المشاركة والإكمال، بمصادرها</h2>
+  <p class="lede">كل رقم هنا مرتبط بالشاهد الذي يثبته. تُعرض الأرقام الموثقة فقط.</p>
+  <div class="res" id="res"></div>
+ </div>
+</section>
+
+<section class="band" id="evidence">
+ <div class="wrap">
+  <span class="kicker">الشواهد</span>
+  <h2>معرض الشواهد</h2>
+  <p class="lede">اضغط على أي صورة لتكبيرها. حُجبت أسماء الطلاب ومعرّفاتهم في جميع النماذج.</p>
+  <div class="chips" id="chips" role="group" aria-label="تصفية الشواهد"></div>
+  <div class="gal" id="gal"></div>
+ </div>
+</section>
+
+<section class="band story" id="nomination">
+ <div class="wrap">
+  <span class="kicker">ملف الترشّح</span>
+  <h2>ملف الترشّح لجائزة بصمة 2026</h2>
+  <div class="nom">
+   <dl class="dl" id="dl"></dl>
+   <div class="docs" id="docs"></div>
+  </div>
+ </div>
+</section>
+</main>
+
+<footer><div class="wrap"><p id="foot"></p><p><b>المدرسة المركزية للبنين بحائل</b> · الإدارة العامة للتعليم بمنطقة حائل · العام الدراسي 1448هـ</p></div></footer>
+
+<dialog id="pd" aria-labelledby="pdT"><div class="dh"><div><span class="kicker" id="pdK"></span><h3 id="pdT"></h3></div><button class="x" data-close aria-label="إغلاق">×</button></div><div class="db" id="pdB"></div></dialog>
+<dialog id="lb" aria-labelledby="lbT"><div class="dh"><h3 id="lbT"></h3><button class="x" data-close aria-label="إغلاق">×</button></div><div class="db"><img id="lbI" alt=""><p id="lbN"></p><div class="lbnav"><button id="lbP" aria-label="السابق">→ السابق</button><button id="lbX" aria-label="التالي">التالي ←</button></div></div></dialog>
+
+<script src="data.js"></script>
+<script>
+{
+const D=window.BASMA, M=D.meta;
+const REVIEW=location.hash==='#review';
+const $=s=>document.querySelector(s);
+const esc=s=>String(s??'').replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+const okLink=l=>l&&l.href&&(l.verified||l.image||(l.href&&!/^https?:/.test(l.href)));
+
+/* hero */
+$('#hLabel').textContent=M.label;$('#hTitle').textContent=M.title;$('#hSub').textContent=M.subtitle;
+$('#hMeta').innerHTML=[['المرشّح',M.nominee],['المسار',`«${M.track}»`],['الفئة',M.category]].map(([k,v])=>`<li>${k}: <b>${esc(v)}</b></li>`).join('');
+
+/* lightbox */
+let LB=[],LI=0;
+const lb=$('#lb');
+function showLB(){const g=LB[LI];$('#lbI').src=g.src;$('#lbI').alt=g.alt||g.title||'';$('#lbT').textContent=g.title||g.alt||'';$('#lbN').textContent=g.note||'';
+ $('#lbP').hidden=$('#lbX').hidden=LB.length<2;}
+function openLB(list,i){LB=list;LI=i||0;showLB();if(!lb.open)lb.showModal();}
+$('#lbP').onclick=()=>{LI=(LI-1+LB.length)%LB.length;showLB()};
+$('#lbX').onclick=()=>{LI=(LI+1)%LB.length;showLB()};
+lb.addEventListener('keydown',e=>{if(LB.length<2)return;if(e.key==='ArrowLeft')$('#lbX').click();if(e.key==='ArrowRight')$('#lbP').click();});
+document.querySelectorAll('dialog').forEach(d=>{d.addEventListener('click',e=>{if(e.target===d||e.target.closest('[data-close]'))d.close()});});
+
+/* journey */
+const J=D.journey;let cur=0,shot=0;
+$('#tabs').innerHTML=J.map((s,i)=>`${i?'<span class="arr" aria-hidden="true">←</span>':''}<button role="tab" id="tab-${s.id}" aria-controls="panel" aria-selected="${i===0}" tabindex="${i?-1:0}" data-i="${i}"><span class="n">${(i+1).toLocaleString('ar-SA')}</span>${esc(s.title)}</button>`).join('');
+function renderPanel(anim){
+ const s=J[cur];
+ $('#panel').setAttribute('aria-labelledby','tab-'+s.id);
+ $('#panel').innerHTML=`<div class="${anim?'fade':''}"><button class="shot" id="pShot" aria-label="تكبير: ${esc(s.shots[shot].alt)}"><img src="${s.shots[shot].src}" alt="${esc(s.shots[shot].alt)}"></button>
+  ${s.shots.length>1?`<div class="thumbs">${s.shots.map((x,i)=>`<button aria-pressed="${i===shot}" data-s="${i}" aria-label="لقطة ${i+1}: ${esc(x.alt)}"><img src="${x.src}" alt=""></button>`).join('')}</div>`:''}</div>
+  <div class="ptext ${anim?'fade':''}"><h3>${esc(s.title)}</h3><p class="lead">${esc(s.lead)}</p>
+   <div class="who"><div><b>ما يراه الطالب</b>${esc(s.student)}</div><div><b>ما يتابعه المعلم</b>${esc(s.teacher)}</div></div></div>`;
+ $('#pShot').onclick=()=>openLB(s.shots.map(x=>({src:x.src,title:s.title,alt:x.alt,note:x.alt})),shot);
+ $('#panel').querySelectorAll('.thumbs button').forEach(b=>b.onclick=()=>{shot=+b.dataset.s;renderPanel(false)});
+}
+function sel(i,focus){cur=i;shot=0;
+ $('#tabs').querySelectorAll('[role=tab]').forEach((b,k)=>{b.setAttribute('aria-selected',k===i);b.tabIndex=k===i?0:-1;if(k===i){if(focus)b.focus();b.scrollIntoView({block:'nearest',inline:'nearest'})}});
+ renderPanel(true);}
+$('#tabs').addEventListener('click',e=>{const b=e.target.closest('[role=tab]');if(b)sel(+b.dataset.i)});
+$('#tabs').addEventListener('keydown',e=>{const n=J.length;let i=cur;
+ if(e.key==='ArrowLeft')i=(cur+1)%n;else if(e.key==='ArrowRight')i=(cur-1+n)%n;else if(e.key==='Home')i=0;else if(e.key==='End')i=n-1;else return;
+ e.preventDefault();sel(i,true);});
+renderPanel(false);$('#jNote').textContent=D.journeyNote;
+
+/* AI section */
+const aiCases=(D.ai.cases||[]).filter(c=>c.evidence&&c.evidence.href);
+if((D.ai.enabled&&aiCases.length)||REVIEW){
+ const ai=$('#ai');ai.hidden=false;
+ const show=D.ai.enabled&&aiCases.length;
+ ai.innerHTML=`<div class="wrap ${show?'':'pending'}"><span class="kicker">الذكاء الاصطناعي</span><h2>أين استُخدم الذكاء الاصطناعي؟</h2><p class="lede">${esc(D.ai.intro)}</p>
+  ${show?aiCases.map(c=>`<div class="aicase">${[['الأداة',c.tool],['المهمة',c.task],['المخرج الأولي',c.draft],['مراجعة المعلم',c.review],['النشاط المنشور',c.published]].map(([k,v])=>`<div><b>${k}</b>${esc(v)}</div>`).join('')}</div><p class="ev" style="margin-top:10px"><a href="${esc(c.evidence.href)}" target="_blank" rel="noopener">${esc(c.evidence.label||'الشاهد')}</a></p>`).join(''):'<p class="note">لا توجد حالة موثقة بعد. أضف الحالة وشاهدها في data.js ثم فعّل ai.enabled.</p>'}</div>`;
+}
+
+/* projects */
+const P=D.projects.filter(p=>p.publish!==false);
+const card=p=>`<button class="card rev" data-p="${p.id}" aria-haspopup="dialog">
+ ${p.cover?`<div class="im"><img src="${p.cover}" alt="${esc(p.shots[0]?.alt||p.name)}" loading="lazy"></div>`:`<div class="im blank">${esc(p.kind)}</div>`}
+ <div class="bd"><span class="k">${esc(p.kind)}</span><h3>${esc(p.name)}</h3><p>${esc(p.summary)}</p><span class="more">التفاصيل والشواهد ←</span></div></button>`;
+$('#feat').innerHTML=P.filter(p=>p.featured).map(card).join('');
+$('#grid').innerHTML=P.filter(p=>!p.featured).map(card).join('');
+const pd=$('#pd');
+function openP(id){
+ const p=P.find(x=>x.id===id);
+ const ev=(p.evidence||[]).filter(e=>REVIEW||okLink(e));
+ const shots=p.shots||[];
+ $('#pdK').textContent=p.kind;$('#pdT').textContent=p.name;
+ $('#pdB').innerHTML=`
+  ${p.privacy?`<p class="privacy">${esc(p.privacy)}</p>`:''}
+  ${shots.length?`<div class="dshots">${shots.map((s,i)=>`<button data-i="${i}" aria-label="تكبير: ${esc(s.alt)}"><img src="${s.src}" alt="${esc(s.alt)}" loading="lazy"></button>`).join('')}</div>`:''}
+  <div class="cols"><div><h4>الاحتياج</h4><p>${esc(p.need)}</p></div><div><h4>دور محمد هليل الشمري</h4><p>${esc(p.role)}</p></div></div>
+  <div><h4>ما نُفّذ</h4><ul>${p.done.map(x=>`<li>${esc(x)}</li>`).join('')}</ul></div>
+  <div class="cols"><div><h4>أدوار الشركاء</h4><p>${esc(p.partners)}</p></div>
+   <div class="ev"><h4>الشاهد المتاح</h4>${ev.length?`<ul>${ev.map((e,i)=>`<li class="${okLink(e)?'':'pending'}" style="${okLink(e)?'':'padding-top:30px'}">${e.image?`<button data-ev="${i}">${esc(e.label)}</button>`:`<a href="${esc(e.href)}" target="_blank" rel="noopener">${esc(e.label)}</a>`}</li>`).join('')}</ul>`:`<p>${p.url&&p.url.verified?'الموقع المنشور نفسه هو الشاهد.':'يُضاف الشاهد عند توفره.'}</p>`}</div></div>
+  ${p.url&&p.url.verified&&p.url.href?`<div><a class="btn pri" href="${esc(p.url.href)}" target="_blank" rel="noopener">زيارة المشروع ↗</a></div>`:''}`;
+ $('#pdB').querySelectorAll('.dshots button').forEach(b=>b.onclick=()=>openLB(shots.map(s=>({src:s.src,title:p.name,note:s.alt,alt:s.alt})),+b.dataset.i));
+ $('#pdB').querySelectorAll('[data-ev]').forEach(b=>b.onclick=()=>{const e=ev[+b.dataset.ev];openLB([{src:e.href,title:e.label,alt:e.label,note:p.name}],0)});
+ pd.showModal();pd.querySelector('.x').focus();
+}
+document.querySelectorAll('[data-p]').forEach(b=>b.onclick=()=>openP(b.dataset.p));
+
+/* results */
+const R=D.results.filter(r=>r.publish!==false&&(REVIEW||r.source));
+$('#res').innerHTML=R.map(r=>`<article class="rc rev ${r.source?'':'pending'}" style="${r.source?'':'padding-top:44px'}">
+ <span class="t">${esc(r.type)}</span><div class="v">${esc(r.value)}</div><div class="l">${esc(r.label)}</div>
+ <p><b>${esc(r.project)}</b> — ${esc(r.detail)}</p>
+ <div class="src">المصدر: ${!r.source?'—':r.source.gallery?`<button data-r="${r.id}">${esc(r.source.label)}</button>`:`<a href="${esc(r.source.href)}" target="_blank" rel="noopener">${esc(r.source.label)} ↗</a>`}</div></article>`).join('');
+$('#res').querySelectorAll('[data-r]').forEach(b=>b.onclick=()=>{const r=R.find(x=>x.id===b.dataset.r);
+ openLB(r.source.gallery.map(src=>{const g=D.gallery.find(x=>x.src===src)||{};return {src,title:g.title||r.label,note:g.note||r.detail,alt:g.title||r.label}}),0)});
+
+/* gallery */
+const G=D.gallery.filter(g=>g.publish!==false);
+const groups=['الكل',...new Set(G.map(g=>g.group))];let gsel='الكل';
+function renderGal(){
+ const list=G.filter(g=>gsel==='الكل'||g.group===gsel);
+ $('#chips').innerHTML=groups.map(g=>`<button aria-pressed="${g===gsel}" data-g="${g}">${g}</button>`).join('');
+ $('#gal').innerHTML=list.map((g,i)=>`<figure class="gi"><button data-i="${i}" aria-label="تكبير: ${esc(g.title)}"><img src="${g.src}" alt="${esc(g.title)}. ${esc(g.note)}" loading="lazy"></button><figcaption><b>${esc(g.title)}</b>${esc(g.note)}</figcaption></figure>`).join('');
+ $('#chips').querySelectorAll('button').forEach(b=>b.onclick=()=>{gsel=b.dataset.g;renderGal()});
+ $('#gal').querySelectorAll('button').forEach(b=>b.onclick=()=>openLB(list.map(g=>({src:g.src,title:g.title,note:g.note,alt:g.title})),+b.dataset.i));
+}
+renderGal();
+
+/* nomination */
+$('#dl').innerHTML=[['الجائزة','جائزة بصمة — الدورة التاسعة 2026م'],['المسار',`«${M.track}»`],['فئة المتقدم',M.category],['المرشّح',M.nominee],['الجهة',M.school],['الإدارة',M.authority],['اسم العمل',M.title]].map(([k,v])=>`<dt>${k}</dt><dd>${esc(v)}</dd>`).join('');
+const DOCS=D.documents.filter(d=>REVIEW||d.file);
+$('#docs').innerHTML=DOCS.length?DOCS.map(d=>`<div class="doc ${d.file?'':'pending'}" style="${d.file?'':'padding-top:44px'}"><h3>${esc(d.title)}</h3><p style="color:var(--muted)">${esc(d.desc)}</p>
+ ${d.pages&&d.pages.length?`<div class="pv">${d.pages.map((s,i)=>`<img src="${s}" alt="${esc(d.title)} — صفحة ${i+1}" data-doc="${d.id}" data-i="${i}" tabindex="0">`).join('')}</div>`:d.file?`<iframe src="${esc(d.file)}" title="معاينة ${esc(d.title)}" loading="lazy"></iframe>`:''}
+ ${d.file?`<div class="row"><a class="btn pri sm" href="${esc(d.file)}" target="_blank" rel="noopener">فتح الملف</a><a class="btn sec sm" href="${esc(d.file)}" download>تحميل PDF</a></div>`:''}</div>`).join('')
+ :`<div class="doc"><p>يُرفق ملف العمل الرئيسي وملحق الشواهد عبر نموذج التسجيل الرسمي للجائزة، وتعرض هذه الصفحة الأعمال وشواهدها المنشورة.</p></div>`;
+$('#docs').querySelectorAll('[data-doc]').forEach(im=>{const go=()=>{const d=D.documents.find(x=>x.id===im.dataset.doc);openLB(d.pages.map((s,i)=>({src:s,title:d.title,note:'صفحة '+(i+1)})),+im.dataset.i)};im.onclick=go;im.onkeydown=e=>{if(e.key==='Enter')go()}});
+$('#foot').textContent=D.footnote;
+
+/* review banner */
+if(REVIEW){const pend=[...(D.results.filter(r=>!r.source).map(r=>'نتيجة: '+r.label)),...(D.ai.enabled?[]:['قسم الذكاء الاصطناعي']),...D.documents.filter(d=>!d.file).map(d=>d.title),...D.projects.flatMap(p=>(p.evidence||[]).filter(e=>!okLink(e)).map(e=>e.label+' — '+p.name))];
+ $('#rvbar').innerHTML=`<div class="rv"><div class="wrap"><b>وضع المراجعة:</b> تظهر العناصر المحجوبة بإطار ذهبي (${pend.length}): ${pend.map(esc).join(' · ')}</div></div>`;}
+
+/* reveal + nav highlight */
+const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}}),{rootMargin:'0px 0px -8% 0px'});
+document.querySelectorAll('.rev').forEach(el=>io.observe(el));
+const links=[...document.querySelectorAll('#nav a')];
+const so=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting)links.forEach(a=>a.classList.toggle('on',a.getAttribute('href')==='#'+e.target.id))}),{rootMargin:'-45% 0px -50% 0px'});
+['story','projects','results','evidence','nomination'].forEach(id=>so.observe(document.getElementById(id)));
+}
+</script>
+</body>
+</html>
