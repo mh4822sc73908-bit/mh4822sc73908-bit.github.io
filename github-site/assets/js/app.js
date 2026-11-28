@@ -161,7 +161,7 @@
     return '<section class="hero"><div class="container">' +
       '<div class="fade"><span class="eyebrow">' + esc(s.region) + ' · ' + esc(s.year) + '</span>' +
       '<h1>' + esc(s.name) + '</h1><div class="goldline"></div><p>' + esc(s.about) + '</p>' +
-      '<div class="btns"><a class="btn gold" href="#guides">الأدلة والأنظمة</a><a class="btn light" href="#evidence">توثيق الشواهد</a><a class="btn light" href="#stats">لوحة المؤشرات</a></div></div>' +
+      '<div class="btns"><a class="btn gold" href="#guides">الأدلة والأنظمة</a><a class="btn light" href="#evidence">توثيق الشواهد</a><a class="btn light" href="#stats">لوحة المؤشرات</a><a class="btn light" href="https://mh4822sc73908-bit.github.io/masarat/" target="_blank" rel="noopener">منصة مسارات ↗</a></div></div>' +
       '<div class="logo-card"><img src="assets/img/logo.jpg" alt="شعار المدرسة"></div>' +
       '</div></section>' +
       '<div class="container"><div class="kpis">' + st.kpis.map(function (k) {
@@ -176,7 +176,11 @@
 
       '<section class="block" style="padding-top:0"><div class="container">' +
       '<div class="sec-head"><div><h2>المبادرات والمنصات</h2><p>مبادرات نوعية تخدم طلاب المدارس الملحقة</p></div><a class="btn ghost sm" href="#initiatives">كل المبادرات</a></div>' +
-      '<div class="grid g4">' + D.initiatives.slice(0, 4).map(initCard).join('') + '</div></div></section>' +
+      '<div class="grid g4">' + D.initiatives.slice(0, 4).map(initCard).join('') + '</div>' +
+      '<div class="card masar-banner"><div class="mb-ic">' + icon('school') + '</div><div style="flex:1;min-width:220px"><span class="pill gold">متاحة للزوار</span><h3 style="margin:.4rem 0 .3rem">منصة مسارات المركزية للتعويض التعليمي</h3>' +
+      '<p class="muted" style="margin:0">مسارات قصيرة يعوّض بها الطالب الدروس التي فاتته: شرح ثم نشاط ثم تدريب ثم اختبار، ويتابعها المعلم والإدارة. يدخل الطالب برقم الدخول، ويستطيع الزائر الاطلاع على الخدمات وتجربتها.</p></div>' +
+      '<a class="btn primary" href="https://mh4822sc73908-bit.github.io/masarat/" target="_blank" rel="noopener">ادخل المنصة ↗</a></div>' +
+      '</div></section>' +
 
       (AUTH && !isStaff() ? '' : '<section class="block" style="padding-top:0"><div class="container"><div class="card" style="display:flex;gap:1.2rem;align-items:center;flex-wrap:wrap;border-inline-start:4px solid var(--accent)"><div style="flex:1;min-width:240px"><h3 style="font-size:1.2rem">إشعارات الطلاب وأولياء الأمور</h3><p class="muted" style="margin:0">' + ar(D.notifications.rounds.length) + ' جولات إشعار و' + ar(D.notifications.rounds.reduce(function (a, r) { return a + sumCount(r); }, 0)) + ' إشعارًا فرديًا صدرت هذا الفصل، آخرها: ' + esc(D.notifications.rounds[D.notifications.rounds.length - 1].title) + '.</p></div><a class="btn primary" href="#notifications">سجل الإشعارات</a></div></div></section>') +
       '<section class="block" style="padding-top:0"><div class="container grid g2">' +

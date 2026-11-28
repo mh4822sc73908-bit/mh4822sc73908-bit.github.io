@@ -290,3 +290,7 @@ html[data-theme="dark"] .note{background:#2A2414;border-color:#4A3F22;color:#E8D
 .lg-err{color:var(--danger);font-size:.88rem;min-height:1.2em;margin-bottom:.5rem}
 #userChip{display:flex;align-items:center;gap:.4rem;color:#fff;font-size:.8rem}
 #userChip button{border-color:rgba(255,255,255,.4)}
+
+.masar-banner{display:flex;gap:1.1rem;align-items:center;flex-wrap:wrap;margin-top:1.2rem;border-inline-start:4px solid var(--accent)}
+.masar-banner .mb-ic{width:56px;height:56px;border-radius:14px;display:grid;place-items:center;background:var(--soft);color:var(--primary,#0B5F58);flex:none}
+.masar-banner .mb-ic svg{width:28px;height:28px}
