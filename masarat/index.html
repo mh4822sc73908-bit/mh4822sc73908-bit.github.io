@@ -349,6 +349,30 @@ html,body{overflow-x:hidden}
 .pcards{display:none}.pcard{border:2px dashed #0f6b63;border-radius:14px;padding:12px;text-align:center;break-inside:avoid}.pc-t{color:#0f6b63;font-weight:bold;font-size:14px}.pc-n{font-size:18px;font-weight:bold;margin-top:4px}.pc-c{font-size:13px;color:#555}.pc-p{font-size:40px;font-weight:bold;letter-spacing:10px;margin:6px 0;direction:ltr}.pc-u{font-size:11px;color:#555;direction:ltr}
 @media print{.ptable{display:none!important}.pcards{display:grid!important;grid-template-columns:1fr 1fr 1fr;gap:10px}.demo,.top,main,.toast{display:none!important}.modal-scrim{position:static;background:none;padding:0;overflow:visible}.sheet{border:0;max-width:none;padding:0;border-radius:0}.sheet .toolbar{display:none}html,body{background:#fff}.kpi{break-inside:avoid}}
 @media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+
+/* ---- visitor mode ---- */
+.guest-cta{display:flex;flex-direction:column;gap:6px;border-top:1px dashed var(--line);padding-top:14px}
+.guest-cta .btn{justify-content:center;padding:10px}
+.gv-hero{background:linear-gradient(135deg,var(--teal-ink),#1a7fa8);color:#fff;border-radius:18px;padding:26px 24px;margin-bottom:18px}
+.gv-hero h2{font-family:var(--f-display);font-size:28px;margin:4px 0 8px;line-height:1.35}
+.gv-hero p{margin:0;max-width:70ch;opacity:.93}
+.gv-hero .steps{display:flex;gap:8px;flex-wrap:wrap;margin-top:12px}
+.gv-hero .steps span{border:1px solid rgba(255,255,255,.45);border-radius:99px;padding:2px 12px;font-size:13px}
+.gv-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:12px;margin-bottom:20px}
+.gv-card{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:16px;box-shadow:var(--shadow);display:flex;flex-direction:column;gap:6px}
+.gv-card .ic{width:40px;height:40px;border-radius:10px;background:var(--teal-soft);color:var(--teal-ink);display:grid;place-items:center;font-size:20px;font-weight:700}
+.gv-card h3{font-size:16.5px;margin:4px 0 0;color:var(--teal-ink)}
+.gv-card p{margin:0;color:var(--muted);font-size:14px;line-height:1.75}
+.gv-card .btn{margin-top:auto;align-self:flex-start}
+.gv-sec{font-family:var(--f-display);font-size:20px;margin:6px 0 10px}
+.gv-tours{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:12px;margin-bottom:20px}
+.gv-tour{background:var(--surface);border:1.5px solid var(--teal);border-radius:14px;padding:16px;display:flex;flex-direction:column;gap:8px}
+.gv-tour h3{margin:0;font-size:17px}
+.gv-tour p{margin:0;color:var(--muted);font-size:14px}
+.gv-tour .row{display:flex;gap:6px;flex-wrap:wrap}
+.gv-note{background:var(--warn-soft);border:1px solid color-mix(in srgb,var(--warn) 35%,transparent);border-radius:12px;padding:12px 14px;font-size:14px;margin-bottom:18px}
+.gv-subj{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:20px}
+.gv-subj span{border-radius:99px;padding:4px 14px;font-size:14px;color:#fff}
 </style>
 
 </head>
@@ -609,19 +633,21 @@ async function cloudLoad(prof){
   }
 }
 function cloudSaveProgress(email){
-  if(!CLOUD)return;
+  if(!CLOUD||S.guest)return;
   const o=S.prog[email]||{},recs={};for(const k in o)if(k!=="_last")recs[k]=o[k];
   fs.doc("progress/"+ekey(email)).set({email:ekey(email),recs,last:o._last||Date.now()}).catch(e=>toast("تعذر حفظ تقدمك: "+errTxt(e)));
 }
 function cloudSavePaths(list){
-  if(!CLOUD||!list.length)return Promise.resolve(true);
+  if(!CLOUD||S.guest||!list.length)return Promise.resolve(true);
   const b=fs.batch();
   list.forEach(p=>{const c={...p};delete c.id;c.match=JSON.stringify(p.match||[]);c.train=JSON.stringify(p.train||[]);c.quiz=JSON.stringify(p.quiz||[]);c.unit=p.unit||"";c.at=p.at||null;b.set(fs.doc("paths/"+p.id),c)});
   return b.commit().then(()=>true).catch(e=>{toast("تعذر حفظ المسار: "+errTxt(e));return false});
 }
-function cloudDeletePath(id){if(CLOUD)fs.doc("paths/"+id).delete().catch(e=>toast("تعذر حذف المسار: "+errTxt(e)))}
+function cloudDeletePath(id){if(CLOUD&&!S.guest)fs.doc("paths/"+id).delete().catch(e=>toast("تعذر حذف المسار: "+errTxt(e)))}
 async function onUser(u){
   if(S.settingUp)return;
+  if(S.guest&&!u)return;
+  if(S.guest&&u){S.guest=false}
   if(!u){
     S.user=null;S.meProf=null;
     try{const m=await fs.doc("meta/setup").get();S.view=m.exists?"login":"setup"}catch(e){S.view="login";S.loginErr="تعذر الاتصال بقاعدة البيانات: "+errTxt(e)}
@@ -829,7 +855,84 @@ async function saveStu(){
 if(CLOUD)auth.onAuthStateChanged(u=>onUser(u));
 
 /* ---------- shell ---------- */
+
+/* ---------- visitor (guest) mode: browse services with sample data, nothing is saved ---------- */
+const GUEST_BLOCK=new Set(["accounts","pins","addStu","addStuAgain","import","upload","upAgain","publish","askDel","del","mv","resetProg","saveStu","makePins","dlPins","dlCodes"]);
+function guestProgress(){
+  const prog={},now=Date.now();
+  S.data.students.forEach((st,si)=>{
+    const g=gradeOf(st.cls),r=rng(hash(st.email)),o={};let any=false;
+    S.paths.filter(p=>p.grades.includes(g)).forEach(p=>{
+      const lv=r();if(lv<.18)return;any=true;
+      const rec=blankRec();rec.content=true;rec.activity=Math.round(50+r()*50);
+      if(lv>.35){rec.training=Math.round(40+r()*60)}
+      if(lv>.5){rec.quiz=Math.round(40+r()*60);rec.attempts=1+Math.floor(r()*2);rec.quizHist=[rec.quiz]}
+      o[p.id]=rec});
+    if(any){o._last=now-Math.floor(r()*6)*864e5;prog[st.email]=o}
+  });
+  return prog;
+}
+function enterGuest(){
+  S.guest=true;S.loginErr="";S.drawer=null;S.modal=null;
+  S.data=demoData();S.paths=[...unitPaths(),...samplePaths()];S.prog=guestProgress();
+  S.user={role:"guest",name:"زائر"};S.view="guest";render();window.scrollTo(0,0);
+}
+function exitGuest(){
+  clearInterval(readTimer);S.guest=false;S.drawer=null;S.modal=null;S.user=null;
+  S.paths=[];S.prog={};S.data={source:"cloud",students:[],teachers:[]};S.view="login";render();window.scrollTo(0,0);
+}
+function guestTour(k,g){
+  clearInterval(readTimer);S.drawer=null;S.modal=null;
+  if(k==="home"){S.user={role:"guest",name:"زائر"};S.view="guest";render();window.scrollTo(0,0);return}
+  if(k==="student"){const gg=+g||4,cls={4:"رابع-1",5:"خامس-1",6:"سادس-1"}[gg];
+    const st={name:"زائر المنصة",email:"guest-"+gg+"@visitor",cls,school:"تجربة زائر"};
+    S.prog[st.email]=S.prog[st.email]||{};loginStudent(st)}
+  else if(k==="teacher"){loginStaff(S.data.teachers.find(t=>specToSubj(t.spec)==="digital"))}
+  else if(k==="admin"){loginStaff(S.data.teachers.find(t=>specToSubj(t.spec)==="admin"))}
+  window.scrollTo(0,0);
+}
+function guestBar(){
+  const v=S.view,r=S.user?.role;
+  const b=(k,l,on,g)=>`<button data-act="gTour" data-k="${k}"${g?` data-g="${g}"`:""} class="${on?"on":""}">${l}</button>`;
+  return `<div class="demo"><div class="wrap"><b>وضع الزائر</b><span class="src">بيانات نموذجية للاطلاع فقط، ولا يُحفظ أي شيء</span><span class="sp"></span>
+   ${b("home","خدمات المنصة",v==="guest")}${b("student","تجربة الطالب",r==="student",4)}${b("teacher","لوحة المعلم",r==="teacher")}${b("admin","لوحة الإدارة",r==="admin")}
+   <button data-act="gExit">تسجيل الدخول</button></div></div>`;
+}
+function viewGuest(){
+  const svc=[
+   ["م","مسار تعويضي لكل درس","لكل درس فات الطالب مسار قصير منظّم: يقرأ الشرح، ثم ينفّذ نشاطًا، ثم يتدرّب، ثم يُختبر."],
+   ["٪","تقييم واضح بالنسب",`المحتوى ٢٠٪ والنشاط ٢٠٪ والتدريب ٢٠٪ والاختبار ٤٠٪، ولا يكتمل المسار حتى يحقق الطالب ${PASS}٪ في الاختبار.`],
+   ["٧","سبع مواد دراسية","الرياضيات والعلوم واللغة العربية والإنجليزية والدراسات الإسلامية والاجتماعية والمهارات الرقمية للصفوف ٤–٦."],
+   ["ت","دروس تفاعلية","يرفع المعلم درسه بصيغة HTML فيتحول تلقائيًا إلى مسار بنشاط مطابقة وتدريب واختبار قصير."],
+   ["ع","متابعة المعلم","يرى المعلم تقدّم طلابه في مادته درسًا درسًا، ويعرف المتعثرين ومن لم يبدأ."],
+   ["إ","لوحة الإدارة والتقارير","يتابع مدير المدرسة إنجاز جميع الطلاب في المدارس الملحقة، ويستخرج تقريرًا قابلًا للتصدير."],
+   ["٤","دخول سهل للطالب","يدخل الطالب برقم من أربعة أرقام يصله عبر منصة مدرستي، دون بريد أو كلمة مرور معقدة."],
+   ["ح","حفظ آمن للتقدّم","يُحفظ تقدّم كل طالب في قاعدة بيانات المدرسة، فيكمل من حيث توقف على أي جهاز."]
+  ];
+  const nPaths=S.paths.length;
+  return `<div class="gv-hero"><div class="eyebrow" style="color:#bff0e9">المدرسة المركزية · حائل</div>
+   <h2>مسارات المركزية للتعويض التعليمي</h2>
+   <p>منصة تساعد طلاب المدارس الملحقة بالمدرسة المركزية على تعويض الدروس التي فاتتهم، بمسارات قصيرة يتابعها المعلم والإدارة لحظة بلحظة.</p>
+   <div class="steps"><span>المحتوى ٢٠٪</span><span>النشاط ٢٠٪</span><span>التدريب ٢٠٪</span><span>الاختبار ٤٠٪</span><span>النجاح ≥ ${PASS}٪</span></div></div>
+  <h2 class="gv-sec">خدمات المنصة</h2>
+  <div class="gv-grid">${svc.map(([ic,t,d])=>`<div class="gv-card"><span class="ic">${ic}</span><h3>${t}</h3><p>${d}</p></div>`).join("")}</div>
+  <h2 class="gv-sec">المواد المتاحة</h2>
+  <div class="gv-subj">${SUBJ.map(s=>`<span style="background:var(--c-${s.id})">${s.name}</span>`).join("")}</div>
+  <h2 class="gv-sec">جرّب المنصة بنفسك</h2>
+  <div class="gv-tours">
+   <div class="gv-tour"><h3>تجربة الطالب</h3><p>ادخل كطالب وجرّب مسارًا كاملًا: الشرح والنشاط والتدريب والاختبار. اختر الصف:</p>
+    <div class="row"><button class="btn pri" data-act="gTour" data-k="student" data-g="4">الصف الرابع</button><button class="btn pri" data-act="gTour" data-k="student" data-g="5">الصف الخامس</button><button class="btn pri" data-act="gTour" data-k="student" data-g="6">الصف السادس</button></div>
+    <p class="small">يشمل الصف الرابع دروس الوحدة الأولى في المهارات الرقمية من كتاب الطالب.</p></div>
+   <div class="gv-tour"><h3>لوحة المعلم</h3><p>اطّلع على ما يراه المعلم: مسارات مادته، وتقدّم طلابه، والمتعثرون منهم.</p>
+    <div class="row"><button class="btn" data-act="gTour" data-k="teacher">عرض لوحة المعلم</button></div></div>
+   <div class="gv-tour"><h3>لوحة الإدارة</h3><p>اطّلع على ما يراه مدير المدرسة: إنجاز الطلاب حسب المدرسة والصف والمادة، والتقرير العام.</p>
+    <div class="row"><button class="btn" data-act="gTour" data-k="admin">عرض لوحة الإدارة</button></div></div>
+  </div>
+  <div class="gv-note"><b>للعلم:</b> الأسماء والنتائج في وضع الزائر نموذجية وليست بيانات طلاب حقيقيين، و${nPaths} مسارًا معروضة للتجربة. لا يُحفظ أي تقدّم ولا تُتاح خدمات الرفع والإضافة والتعديل للزائر.</div>
+  <div style="text-align:center;margin-bottom:24px"><button class="btn pri" data-act="gExit" style="padding:10px 22px">طالب أو معلم؟ سجّل الدخول</button></div>`;
+}
 function demoBar(){
+  if(S.guest)return guestBar();
   if(CLOUD)return "";
   const v=S.view, role=S.user?.role;
   const b=(k,l,on)=>`<button data-act="demo" data-k="${k}" class="${on?"on":""}">${l}</button>`;
@@ -843,14 +946,14 @@ function demoBar(){
   </div></div>`;
 }
 function topBar(){
-  const u=S.user;const role={admin:"مدير المدرسة",teacher:"معلم "+(u.subj?SUBJ_BY[u.subj].name:""),student:"طالب · "+(u.cls||"")}[u.role];
+  const u=S.user;const role=({admin:"مدير المدرسة",teacher:"معلم "+(u.subj?SUBJ_BY[u.subj].name:""),student:"طالب · "+(u.cls||""),guest:"تصفح المنصة"}[u.role])+(S.guest&&u.role!=="guest"?" · نموذج للزائر":"");
   return `<header class="top"><div class="wrap">
    <div class="logo-tile"><img src="${LOGO}" alt="شعار المدرسة المركزية"></div>
    <div class="brand"><h1>مسارات المركزية</h1><p>للتعويض التعليمي · المدرسة المركزية بحائل</p></div>
    <div class="moe" title="موضع شعار وزارة التعليم الرسمي"><b>وزارة التعليم</b>Ministry of Education</div>
    <span class="sp"></span>
    <div class="who"><div class="avatar">${esc(initials(u.name))}</div><div><div class="n">${esc(u.name)}</div><div class="r">${esc(role)}</div></div></div>
-   ${CLOUD&&S.meProf&&S.user.role!==S.meProf.role?`<button class="btn sm" data-act="backMe">العودة إلى لوحتي</button>`:""}<button class="btn sm" data-act="logout">خروج</button>
+   ${CLOUD&&S.meProf&&S.user.role!==S.meProf.role?`<button class="btn sm" data-act="backMe">العودة إلى لوحتي</button>`:""}${S.guest?`<button class="btn sm" data-act="gExit">إنهاء الزيارة</button>`:`<button class="btn sm" data-act="logout">خروج</button>`}
   </div></header>`;
 }
 function render(){
@@ -858,7 +961,7 @@ function render(){
   if(S.view==="login")h+=viewLogin();
   else if(S.view==="setup")h+=viewSetup();
   else if(S.view==="loading")h+=viewLoading();
-  else{h+=topBar()+`<main><div class="wrap">`+({admin:viewAdmin,teacher:viewTeacher,student:viewStudent,subject:viewSubject,path:viewPath}[S.view])()+`</div></main>`}
+  else{h+=topBar()+`<main><div class="wrap">`+({admin:viewAdmin,teacher:viewTeacher,student:viewStudent,subject:viewSubject,path:viewPath,guest:viewGuest}[S.view])()+`</div></main>`}
   if(S.drawer)h+=viewDrawer();
   if(S.modal==="report")h+=viewReport();
   if(S.modal==="upload")h+=viewUpload();
@@ -897,7 +1000,8 @@ ${CLOUD?"":`     <button type="button" class="ms" data-act="msLogin"><svg viewBo
     ${CLOUD&&t!=="student"?`<div class="field"><label for="lgPw">كلمة المرور</label><input id="lgPw" class="ltr" type="password" inputmode="numeric" autocomplete="current-password" placeholder="المعلم: رقم الهوية نفسه"></div>`:""}
     <p class="err" id="lgErr">${esc(S.loginErr)}</p>
     <button class="btn pri" type="submit" style="justify-content:center;padding:11px">دخول</button>
-    ${CLOUD?`<p class="muted small" style="margin:0">${t==="student"?"اكتب رقم الدخول المكوّن من ٤ أرقام، المرسَل إليك في منصة مدرستي.":"المعلم: اسم المستخدم وكلمة المرور كلاهما رقم الهوية."}</p>`:`<div class="demo-acc"><b>حسابات للتجربة</b> <span class="muted">(${S.data.source==="demo"?"افتراضية":"من ملفك"})</span><div class="row">${ex}</div></div>`}
+    ${CLOUD?`<p class="muted small" style="margin:0">${t==="student"?"اكتب رقم الدخول المكوّن من ٤ أرقام، المرسَل إليك في منصة مدرستي.":"المعلم: اسم المستخدم وكلمة المرور كلاهما رقم الهوية."}</p>
+    <div class="guest-cta"><button type="button" class="btn" data-act="gEnter">تصفّح المنصة كزائر</button><span class="muted small" style="text-align:center">اطّلع على خدمات المنصة وجرّبها دون تسجيل دخول</span></div>`:`<div class="demo-acc"><b>حسابات للتجربة</b> <span class="muted">(${S.data.source==="demo"?"افتراضية":"من ملفك"})</span><div class="row">${ex}</div></div>`}
    </form></div></section>`;
 }
 function doLogin(v){
@@ -1312,6 +1416,10 @@ document.addEventListener("click",e=>{
   const el=e.target.closest("[data-act]");if(!el)return;
   if(el.dataset.act==="closeDrawer"||el.dataset.act==="closeModal"){if(e.target.closest("[data-stop]")&&!e.target.closest(".close,.btn.ghost"))return}
   const a=el.dataset.act,k=el.dataset.k;
+  if(a==="gEnter"){enterGuest();return}
+  if(a==="gExit"){exitGuest();return}
+  if(a==="gTour"){guestTour(k,el.dataset.g);return}
+  if(S.guest&&GUEST_BLOCK.has(a)){toast("هذه الخدمة متاحة للمعلم والإدارة بعد تسجيل الدخول");return}
   if(a!=="resetProg")S.confirmReset=false;
   switch(a){
    case "demo":
@@ -1327,7 +1435,7 @@ document.addEventListener("click",e=>{
    case "tab":S.loginTab=k;S.loginErr="";render();break;
    case "fill":$("#lgIn").value=el.dataset.v;break;
    case "msLogin":{const v=$("#lgIn").value;if(v)doLogin(v);else{S.loginErr="في نسخة البناء يُحوَّل الطالب إلى صفحة دخول Microsoft الرسمية. للتجربة الآن أدخل البريد الوزاري.";render()}break}
-   case "logout":clearInterval(readTimer);S.drawer=null;S.modal=null;if(CLOUD){auth.signOut()}else{S.user=null;S.view="login";render()}break;
+   case "logout":if(S.guest){exitGuest();break}clearInterval(readTimer);S.drawer=null;S.modal=null;if(CLOUD){auth.signOut()}else{S.user=null;S.view="login";render()}break;
    case "backMe":clearInterval(readTimer);S.drawer=null;S.modal=null;loginStaff({...S.meProf,id:S.meProf.nid,grades:S.meProf.grades||[4,5,6]});break;
    case "accounts":S.modal="accounts";S.acc=null;render();break;
    case "pickAccounts":$("#xlsFile").click();break;
