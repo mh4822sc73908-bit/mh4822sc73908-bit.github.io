@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>المدرسة المركزية للبنين بحائل — الموقع الرسمي 1448هـ</title>
+<meta name="description" content="الموقع الرسمي للمدرسة المركزية للبنين بحائل: الأدلة والتعاميم والتقارير والإحصائيات والأنشطة والمبادرات ومركز توثيق شواهد المعلمين.">
+<link rel="icon" href="assets/img/logo.jpg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@400;500;600;700&family=Noto+Kufi+Arabic:wght@600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/css/style.css">
+<script>try{var t=localStorage.getItem('mk-theme');if(t)document.documentElement.dataset.theme=t;var f=localStorage.getItem('mk-fs');if(f)document.documentElement.style.setProperty('--fs',f+'px')}catch(e){}</script>
+</head>
+<body>
+<a class="sr" href="#app">تخطَّ إلى المحتوى</a>
+
+<div class="govbar">
+  <div class="container">
+    <span>المملكة العربية السعودية · وزارة التعليم · الإدارة العامة للتعليم بمنطقة حائل</span>
+    <div class="tools">
+      <span id="today"></span>
+      <form class="search-box" id="searchForm" role="search"><input id="q" type="search" placeholder="ابحث في الموقع…" aria-label="بحث"><span aria-hidden="true">⌕</span></form>
+      <button type="button" id="fsDown" aria-label="تصغير الخط">ع-</button>
+      <button type="button" id="fsUp" aria-label="تكبير الخط">ع+</button>
+      <button type="button" id="themeBtn" aria-label="الوضع الداكن">◐</button>
+    </div>
+  </div>
+</div>
+
+<header class="site">
+  <div class="container">
+    <a class="brand" href="#home">
+      <img src="assets/img/logo.jpg" alt="شعار المدرسة المركزية">
+      <span><b>المدرسة المركزية للبنين بحائل</b><small>التعليم عن بُعد للمدارس الملحقة · 1448هـ</small></span>
+    </a>
+    <button class="burger" id="burger" aria-label="القائمة">☰</button>
+    <nav class="main" id="nav">
+      <a href="#home" data-r="">الرئيسية</a>
+      <a href="#about" data-r="about">عن المدرسة</a>
+      <a href="#guides" data-r="guides">الأدلة</a>
+      <a href="#circulars" data-r="circulars">التعاميم</a>
+      <a href="#reports" data-r="reports">التقارير</a>
+      <a href="#stats" data-r="stats">المؤشرات</a>
+      <a href="#activities" data-r="activities">الأنشطة</a>
+      <a href="#initiatives" data-r="initiatives">المبادرات</a>
+      <div class="more" id="more">
+        <button type="button" aria-haspopup="true">المزيد ▾</button>
+        <div class="menu">
+          <a href="#notifications" data-r="notifications">إشعارات الطلاب</a>
+          <a href="#achievements" data-r="achievements">الإنجازات</a>
+          <a href="#development" data-r="development">التطوير المهني</a>
+          <a href="#schedules" data-r="schedules">الجداول والاختبارات</a>
+          <a href="#contact" data-r="contact">تواصل معنا</a>
+        </div>
+      </div>
+      <a href="#evidence" data-r="evidence" class="cta">توثيق الشواهد</a>
+    </nav>
+  </div>
+</header>
+
+<main id="app" tabindex="-1"></main>
+
+<footer class="site">
+  <div class="container">
+    <div>
+      <h4>المدرسة المركزية للبنين بحائل</h4>
+      <p>مدرسة ابتدائية تقدّم التعليم الإلكتروني عن بُعد لطلاب الصفوف 4–6 في المدارس الملحقة: جبلة، والجبيلي، والحدق.</p>
+      <span class="v2030">رؤية السعودية 2030</span>
+    </div>
+    <div>
+      <h4>روابط سريعة</h4>
+      <ul>
+        <li><a href="#guides">الأدلة والأنظمة</a></li>
+        <li><a href="#reports">التقارير الأسبوعية</a></li>
+        <li><a href="#notifications">إشعارات الطلاب</a></li>
+        <li><a href="#evidence">توثيق الشواهد</a></li>
+        <li><a href="https://madrasati.sa" target="_blank" rel="noopener">منصة مدرستي</a></li>
+      </ul>
+    </div>
+    <div>
+      <h4>الإدارة</h4>
+      <ul>
+        <li>قائد المدرسة: أ. طلال خليف الشمري</li>
+        <li>وكيل المدرسة: أ. محمد هليل الشمري</li>
+      </ul>
+    </div>
+  </div>
+  <div class="bottom">© 1448هـ المدرسة المركزية للبنين بحائل — جميع الحقوق محفوظة · إعداد وتطوير: أ. محمد هليل الشمري</div>
+</footer>
+
+<div class="modal" id="modal" role="dialog" aria-modal="true">
+  <div class="box" id="modalBox">
+    <div class="mh"><h3 id="mTitle"></h3><a class="btn sm ghost" id="mDl" download>تحميل</a><a class="btn sm ghost" id="mOpen" target="_blank" rel="noopener">فتح في نافذة</a><button class="btn sm ghost" id="mClose" type="button">إغلاق ✕</button></div>
+    <div class="mb" id="mBody"></div>
+  </div>
+</div>
+<div class="toast" id="toast"></div>
+
+<script src="assets/js/data.js"></script>
+<script src="assets/js/users.js"></script>
+<script src="assets/js/app.js"></script>
+</body>
+</html>
