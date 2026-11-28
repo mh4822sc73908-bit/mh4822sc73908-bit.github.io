@@ -620,8 +620,16 @@
     return pageHead('تواصل معنا') + '<section class="block"><div class="container grid g2">' +
       '<div class="card"><h3>بيانات المدرسة</h3><table><tbody>' +
       [['الاسم', D.school.name], ['الجهة', D.school.region], ['قائد المدرسة', 'أ. ' + D.school.principal], ['وكيل المدرسة', 'أ. ' + D.school.deputy], ['منصة التعلم', 'منصة مدرستي']].map(function (r) { return '<tr><td class="muted">' + r[0] + '</td><td>' + esc(r[1]) + '</td></tr>'; }).join('') +
-      '</tbody></table><a class="btn primary" style="margin-top:1rem" href="https://madrasati.sa" target="_blank" rel="noopener">الدخول إلى منصة مدرستي ↗</a></div>' +
-      '<div class="card"><h3>استفسار</h3><p class="muted">يُكتب الاستفسار هنا ثم يُنسخ لإرساله عبر قنوات المدرسة الرسمية.</p><div class="form-row"><label for="cn">الاسم</label><input class="input" id="cn"></div><div class="form-row"><label for="cm">الاستفسار</label><textarea class="input" id="cm"></textarea></div><button class="btn primary" id="copyMsg">نسخ الرسالة</button></div>' +
+      '<tr><td class="muted">جوال المدرسة</td><td><a href="tel:+966536067250" dir="ltr">+966 53 606 7250</a></td></tr>' +
+      '</tbody></table><div style="display:flex;gap:.5rem;flex-wrap:wrap;margin-top:1rem"><a class="btn wa" href="https://wa.me/966536067250" target="_blank" rel="noopener">مراسلة المدرسة عبر واتساب</a><a class="btn ghost" href="https://madrasati.sa" target="_blank" rel="noopener">منصة مدرستي ↗</a></div></div>' +
+      '<div class="card"><h3>أرسل استفسارك</h3><p class="muted">املأ النموذج ثم اضغط «إرسال عبر واتساب»؛ تُفتح المحادثة مع جوال المدرسة والرسالة جاهزة، فاضغط إرسال في واتساب.</p>' +
+      '<div class="grid g2" style="gap:.6rem"><div class="form-row"><label for="cn">الاسم *</label><input class="input" id="cn" autocomplete="name"></div>' +
+      '<div class="form-row"><label for="cr">الصفة</label><select class="input" id="cr"><option>ولي أمر</option><option>طالب</option><option>معلم</option><option>مدرسة ملحقة</option><option>أخرى</option></select></div></div>' +
+      '<div class="grid g2" style="gap:.6rem"><div class="form-row"><label for="ct">نوع الرسالة</label><select class="input" id="ct"><option>استفسار</option><option>طلب</option><option>اقتراح</option><option>ملاحظة أو شكوى</option></select></div>' +
+      '<div class="form-row"><label for="cs">اسم الطالب والصف (إن وُجد)</label><input class="input" id="cs"></div></div>' +
+      '<div class="form-row"><label for="cm">نص الرسالة *</label><textarea class="input" id="cm" rows="4"></textarea></div>' +
+      '<div style="display:flex;gap:.5rem;flex-wrap:wrap"><a class="btn wa" id="waSend" href="https://wa.me/966536067250" target="_blank" rel="noopener">إرسال عبر واتساب</a><button class="btn ghost" id="copyMsg" type="button">نسخ الرسالة</button></div>' +
+      '<p class="muted" style="font-size:.82rem;margin:.6rem 0 0">لا يُحفظ شيء في الموقع؛ تصل الرسالة إلى واتساب المدرسة فقط.</p></div>' +
       '</div></section>';
   };
 
@@ -787,14 +795,26 @@
   }
   function closeModal() { $('#modal').classList.remove('open'); $('#mBody').innerHTML = ''; document.body.style.overflow = ''; }
   $('#mClose').onclick = closeModal;
+  function contactText() {
+    var g = function (id) { var el = $(id); return el ? el.value.trim() : ''; };
+    var t = 'السلام عليكم، رسالة من موقع المدرسة المركزية للبنين بحائل\n' +
+      'النوع: ' + g('#ct') + '\nالاسم: ' + g('#cn') + ' (' + g('#cr') + ')' +
+      (g('#cs') ? '\nالطالب والصف: ' + g('#cs') : '') + '\n\n' + g('#cm');
+    return t;
+  }
   $('#modal').addEventListener('click', function (e) { if (e.target.id === 'modal') closeModal(); });
   document.addEventListener('keydown', function (e) { if (e.key === 'Escape') closeModal(); });
   document.addEventListener('click', function (e) {
     var v = e.target.closest('[data-view]');
     if (v) { e.preventDefault(); openModal(v.dataset.title, v.dataset.view); }
     if (!e.target.closest('#more')) $('#more').classList.remove('open');
+    var wa = e.target.closest('#waSend');
+    if (wa) {
+      if (!$('#cn').value.trim() || !$('#cm').value.trim()) { e.preventDefault(); toast('اكتب الاسم ونص الرسالة'); return; }
+      wa.href = 'https://wa.me/966536067250?text=' + encodeURIComponent(contactText());
+    }
     if (e.target.id === 'copyMsg') {
-      var txt = 'الاسم: ' + $('#cn').value + '\nالاستفسار: ' + $('#cm').value;
+      var txt = contactText();
       (navigator.clipboard ? navigator.clipboard.writeText(txt) : Promise.reject()).then(function () { toast('تم النسخ'); }, function () { toast('انسخ النص يدويًا'); });
     }
   });
