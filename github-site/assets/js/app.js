@@ -15,7 +15,7 @@
   var STAFF = ['teacher', 'supervisor', 'principal', 'admin'];
   function role() { return AUTH ? (SES && SES.role) || null : 'admin'; }
   function isStaff() { return STAFF.indexOf(role()) > -1; }
-  var ACCESS = { circulars: STAFF, reports: STAFF, development: STAFF, evidence: STAFF, notifications: STAFF, me: ['student'], adminfiles: ['principal', 'admin'] };
+  var ACCESS = { circulars: STAFF, reports: STAFF, development: STAFF, evidence: STAFF, notifications: STAFF, me: ['student'], adminfiles: ['principal', 'admin'], myday: STAFF };
   function allowed(key) { if (!AUTH) return key !== 'me' && key !== 'adminfiles' || false; var a = ACCESS[key]; return !a || a.indexOf(role()) > -1; }
   function myTeacher() { return AUTH ? SES && SES.teacherId : null; }
   function canEditTeacher(tid) { if (!AUTH) return true; return role() === 'admin' || (role() === 'teacher' && SES.teacherId === tid); }
@@ -639,7 +639,86 @@
   }
 
   P.schedules = function () {
-    return libraryPage('الجداول والاختبارات', 'جداول الحصص الأسبوعية وجداول اختبارات المدارس الملحقة', D.schedules);
+    return pageHead('الجداول والاختبارات', 'جداول الحصص الأسبوعية وجداول اختبارات المدارس الملحقة') +
+      '<section class="block" style="padding-bottom:0"><div class="container grid g2">' +
+      '<div class="card tt-cta"><div><span class="pill gold">جديد</span><h3>شاشة المدرسة</h3><p class="muted">تعرض الحصة الحالية والوقت المتبقي، وتنبّه بصوت جرس قبل كل حصة بخمس دقائق وعند بدايتها، مع عرض المنصات والإنجازات وشهادات الشكر. افتحها على تلفزيون المدرسة بملء الشاشة.</p></div><a class="btn primary" href="screen.html" target="_blank" rel="noopener">فتح شاشة المدرسة ↗</a></div>' +
+      (allowed('myday') ? '<div class="card tt-cta"><div><span class="pill">للمعلمين</span><h3>جدولي اليوم</h3><p class="muted">حصصك اليوم والحصة القادمة، مع إضافة جدولك إلى تقويم الجوال لتصلك تنبيهات قبل كل حصة.</p></div><a class="btn primary" href="#myday">فتح جدولي</a></div>' : '') +
+      '</div></section>' + libraryPage('الجداول والاختبارات', 'جداول الحصص الأسبوعية وجداول اختبارات المدارس الملحقة', D.schedules).replace(/^[\s\S]*?(<section class="block">)/, '$1');
+  };
+
+  /* ---------- جدولي اليوم (للمعلمين) ---------- */
+  P.myday = function (arg) {
+    if (!window.TT) return pageHead('جدولي') + '<div class="container empty">تعذر تحميل الجدول</div>';
+    var T = TT.T, ids = Object.keys(T.teachers);
+    var tid = (arg && T.teachers[arg]) ? arg : (AUTH && SES && T.teachers[SES.teacherId] ? SES.teacherId : (ids.indexOf('hulail') > -1 ? 'hulail' : ids[0]));
+    var canPick = !AUTH || (SES && SES.role !== 'teacher');
+    var hm = function (x) { var a = x.split(':'), h = +a[0]; return (h > 12 ? h - 12 : h) + ':' + a[1]; };
+    function draw() {
+      var d = new Date(), di = TT.dayIdx(d), st = TT.state(d), t = TT.nowMin(d);
+      var list = di > -1 ? TT.teacherDay(tid, di) : [];
+      var head = '';
+      if (di < 0) head = '<div class="md-now off"><b>اليوم إجازة</b><span>نلقاك في أول يوم دراسي</span></div>';
+      else {
+        var cur = list.filter(function (x) { var b = TT.bellOf(x.p); return t >= TT.mins(b.from) && t < TT.mins(b.to); })[0];
+        var nx = list.filter(function (x) { return TT.mins(TT.bellOf(x.p).from) > t; })[0];
+        head = (cur ? '<div class="md-now on"><small>لديك الآن</small><b>' + esc(cur.subj) + ' — ' + esc(cur.cls) + '</b><span>الحصة ' + ar(cur.p) + ' · تنتهي ' + hm(TT.bellOf(cur.p).to) + '</span></div>' : '') +
+          (nx ? '<div class="md-now"><small>حصتك القادمة</small><b>' + esc(nx.subj) + ' — ' + esc(nx.cls) + '</b><span>الحصة ' + ar(nx.p) + ' · تبدأ ' + hm(TT.bellOf(nx.p).from) + ' (بعد ' + ar(Math.ceil(TT.mins(TT.bellOf(nx.p).from) - t)) + ' دقيقة)</span></div>'
+            : (!cur ? '<div class="md-now off"><b>' + (list.length ? 'انتهت حصصك لهذا اليوم' : 'لا توجد لديك حصص اليوم') + '</b><span>' + esc(T.dayNames[d.getDay()]) + '</span></div>' : ''));
+      }
+      var rows = list.map(function (x) { var b = TT.bellOf(x.p), f = TT.mins(b.from), e = TT.mins(b.to); var c = t >= e ? 'done' : (t >= f ? 'cur' : '');
+        return '<tr class="' + c + '"><td>الحصة ' + ar(x.p) + '</td><td dir="ltr" style="text-align:right">' + hm(b.from) + ' – ' + hm(b.to) + '</td><td><b>' + esc(x.subj) + '</b></td><td>' + esc(x.cls) + '</td><td>' + (c === 'done' ? '<span class="pill">انتهت</span>' : c === 'cur' ? '<span class="pill gold">جارية</span>' : '') + '</td></tr>'; }).join('');
+      var week = '<table class="md-week"><thead><tr><th>اليوم</th>' + [1, 2, 3, 4, 5, 6, 7].map(function (p) { return '<th>' + ar(p) + '<small dir="ltr">' + hm(TT.bellOf(p).from) + '</small></th>'; }).join('') + '</tr></thead><tbody>' +
+        T.days.map(function (g, k) { var L = TT.teacherDay(tid, k); return '<tr' + (k === di ? ' class="today"' : '') + '><th>' + T.dayNames[g] + '</th>' + [1, 2, 3, 4, 5, 6, 7].map(function (p) { var x = L.filter(function (y) { return y.p === p; })[0]; return '<td>' + (x ? '<b>' + esc(x.subj) + '</b><small>' + esc(x.cls) + '</small>' : '') + '</td>'; }).join('') + '</tr>'; }).join('') + '</tbody></table>';
+      var total = T.days.reduce(function (a, g, k) { return a + TT.teacherDay(tid, k).length; }, 0);
+      $('#mdBody').innerHTML = '<div class="grid g2" style="margin-bottom:1rem">' + head + '</div>' +
+        '<div class="card" style="margin-bottom:1rem"><h3>حصص اليوم</h3>' + (rows ? '<div class="table-wrap"><table><tbody>' + rows + '</tbody></table></div>' : '<p class="muted">لا توجد حصص.</p>') + '</div>' +
+        '<div class="card"><h3>جدولي الأسبوعي <span class="pill gold">' + ar(total) + ' حصة</span></h3><div class="table-wrap">' + week + '</div></div>';
+    }
+    function ics() {
+      var lines = ['BEGIN:VCALENDAR', 'VERSION:2.0', 'PRODID:-//Markazia Hail//Timetable//AR', 'CALSCALE:GREGORIAN', 'METHOD:PUBLISH', 'X-WR-CALNAME:جدول الحصص — المدرسة المركزية',
+        'BEGIN:VTIMEZONE', 'TZID:Asia/Riyadh', 'BEGIN:STANDARD', 'DTSTART:19700101T000000', 'TZOFFSETFROM:+0300', 'TZOFFSETTO:+0300', 'TZNAME:AST', 'END:STANDARD', 'END:VTIMEZONE'];
+      var base = new Date(), stamp = base.toISOString().replace(/[-:]/g, '').replace(/\.\d+Z$/, 'Z');
+      function p2(n) { return (n < 10 ? '0' : '') + n; }
+      T.days.forEach(function (g, k) {
+        var day = new Date(base); day.setDate(day.getDate() + ((g - day.getDay()) + 7) % 7);
+        var ymd = day.getFullYear() + p2(day.getMonth() + 1) + p2(day.getDate());
+        TT.teacherDay(tid, k).forEach(function (x) {
+          var b = TT.bellOf(x.p);
+          lines.push('BEGIN:VEVENT', 'UID:mk-' + tid + '-' + k + '-' + x.p + '@markazia-hail', 'DTSTAMP:' + stamp,
+            'DTSTART;TZID=Asia/Riyadh:' + ymd + 'T' + b.from.replace(':', '') + '00', 'DTEND;TZID=Asia/Riyadh:' + ymd + 'T' + b.to.replace(':', '') + '00',
+            'RRULE:FREQ=WEEKLY;UNTIL=20270121T235959Z', 'SUMMARY:' + x.subj + ' — ' + x.cls + ' (الحصة ' + x.p + ')', 'LOCATION:الفصل الافتراضي — منصة مدرستي',
+            'BEGIN:VALARM', 'ACTION:DISPLAY', 'DESCRIPTION:تبدأ حصة ' + x.subj + ' بعد 5 دقائق', 'TRIGGER:-PT5M', 'END:VALARM', 'END:VEVENT');
+        });
+      });
+      lines.push('END:VCALENDAR');
+      var blob = new Blob([lines.join('\r\n')], { type: 'text/calendar;charset=utf-8' }), a = document.createElement('a');
+      a.href = URL.createObjectURL(blob); a.download = 'جدولي-' + T.teachers[tid].split(' ')[0] + '.ics'; document.body.appendChild(a); a.click(); a.remove();
+      toast('افتح الملف على جوالك لإضافة الحصص إلى التقويم');
+    }
+    var notified = {};
+    function notifyLoop() {
+      if (!('Notification' in window) || Notification.permission !== 'granted') return;
+      var d = new Date(), di = TT.dayIdx(d); if (di < 0) return;
+      var t = TT.nowMin(d);
+      TT.teacherDay(tid, di).forEach(function (x) { var f = TT.mins(TT.bellOf(x.p).from), k = d.toDateString() + x.p;
+        if (f - t <= 5 && f - t > 0 && !notified[k]) { notified[k] = 1; try { new Notification('تبدأ حصتك بعد 5 دقائق', { body: x.subj + ' — ' + x.cls + ' (الحصة ' + x.p + ')', icon: 'assets/img/logo.jpg' }); } catch (e) { } } });
+    }
+    setTimeout(function () {
+      draw();
+      var timer = setInterval(function () { if (!$('#mdBody')) { clearInterval(timer); return; } draw(); notifyLoop(); }, 30000);
+      if ($('#mdT')) $('#mdT').onchange = function () { location.hash = '#myday-' + this.value; };
+      $('#mdIcs').onclick = ics;
+      $('#mdNotif').onclick = function () {
+        if (!('Notification' in window)) { toast('المتصفح لا يدعم التنبيهات، استخدم إضافة الجدول إلى التقويم'); return; }
+        Notification.requestPermission().then(function (p) { toast(p === 'granted' ? 'فُعّلت التنبيهات ما دامت الصفحة مفتوحة' : 'لم يُسمح بالتنبيهات'); });
+      };
+    });
+    return pageHead('جدولي اليوم', 'أ. ' + T.teachers[tid] + ' · الفصل الدراسي الأول 1448هـ') +
+      '<section class="block"><div class="container"><div class="toolbar">' +
+      (canPick ? '<select class="input" id="mdT" style="min-width:220px">' + ids.map(function (k) { return '<option value="' + k + '"' + (k === tid ? ' selected' : '') + '>' + esc(T.teachers[k]) + '</option>'; }).join('') + '</select>' : '') +
+      '<button class="btn primary" id="mdIcs" type="button">📅 أضف جدولي إلى تقويم الجوال</button><button class="btn ghost" id="mdNotif" type="button">🔔 تنبيهات المتصفح</button><a class="btn ghost" href="screen.html" target="_blank" rel="noopener">شاشة المدرسة ↗</a></div>' +
+      '<p class="muted" style="font-size:.85rem;margin:-.3rem 0 1rem">ملف التقويم يضيف حصصك الأسبوعية حتى نهاية الفصل مع تنبيه قبل كل حصة بخمس دقائق، ويعمل حتى لو أُغلق الموقع.</p>' +
+      '<div id="mdBody"></div></div></section>';
   };
 
   P.contact = function () {

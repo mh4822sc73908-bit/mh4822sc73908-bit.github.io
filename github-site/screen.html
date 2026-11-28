@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>شاشة المدرسة — المدرسة المركزية للبنين بحائل</title>
+<link rel="icon" href="assets/img/logo.jpg">
+<style>
+:root{--bg:#06302A;--bg2:#0A3F37;--card:rgba(255,255,255,.06);--line:rgba(255,255,255,.12);--ink:#F2F7F5;--muted:#A9C4BD;
+  --teal:#2FB5A2;--gold:#D8B46A;--warn:#F2A516;--good:#4CC47E;--red:#E5604F}
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{height:100%;overflow:hidden;background:var(--bg);color:var(--ink);font-family:"IBM Plex Sans Arabic","Segoe UI",Tahoma,sans-serif}
+body{background:radial-gradient(120% 90% at 100% 0%,#0E5348 0%,var(--bg) 55%,#041F1B 100%)}
+.wrap{height:100vh;display:grid;grid-template-rows:auto 1fr auto;gap:1.4vh;padding:2vh 2vw}
+/* top */
+.top{display:flex;align-items:center;gap:1.4vw}
+.top img{width:5.2vw;height:5.2vw;border-radius:1vw;background:#fff;object-fit:contain;padding:.3vw}
+.top .nm h1{font-size:2.1vw;font-weight:700}
+.top .nm p{font-size:1.05vw;color:var(--muted);margin-top:.2vh}
+.top .sp{flex:1}
+.dates{text-align:left;font-size:1.15vw;color:var(--muted);line-height:1.6}
+.dates b{color:var(--ink);font-weight:600}
+.clock{font-size:4.6vw;font-weight:700;letter-spacing:.1vw;direction:ltr;font-variant-numeric:tabular-nums;min-width:15vw;text-align:center;
+  background:var(--card);border:1px solid var(--line);border-radius:1.2vw;padding:.2vh 1.4vw;line-height:1.25}
+.clock small{font-size:2vw;color:var(--muted)}
+/* main */
+.main{display:grid;grid-template-columns:1.55fr 1fr;gap:1.4vw;min-height:0}
+.col{display:flex;flex-direction:column;gap:1.4vh;min-height:0}
+.panel{background:var(--card);border:1px solid var(--line);border-radius:1.4vw;padding:2vh 1.6vw}
+.status{position:relative;overflow:hidden}
+.status .lbl{font-size:1.25vw;color:var(--muted)}
+.status h2{font-size:3.6vw;line-height:1.25;margin:.4vh 0 .6vh}
+.status .row{display:flex;align-items:flex-end;gap:2vw;flex-wrap:wrap}
+.count{font-size:5.4vw;font-weight:700;direction:ltr;font-variant-numeric:tabular-nums;color:var(--gold);line-height:1}
+.count small{font-size:1.3vw;color:var(--muted);display:block;text-align:right;direction:rtl;font-weight:400;margin-bottom:.6vh}
+.next{font-size:1.5vw;color:var(--muted);margin-inline-start:auto;text-align:left}
+.next b{color:var(--ink)}
+.bar{height:1.1vh;border-radius:99px;background:rgba(255,255,255,.1);margin-top:1.8vh;overflow:hidden}
+.bar i{display:block;height:100%;background:linear-gradient(90deg,var(--teal),var(--gold));border-radius:99px;transition:width 1s linear}
+.status.brk .count{color:var(--teal)}
+.grades{display:grid;grid-template-columns:repeat(3,1fr);gap:1vw;flex:1;min-height:0}
+.gc{display:flex;flex-direction:column;gap:.8vh}
+.gc .gh{display:flex;align-items:center;gap:.6vw;font-size:1.3vw;color:var(--gold);font-weight:600}
+.gc .gh span{background:rgba(216,180,106,.16);border-radius:.6vw;padding:.1vh .7vw;font-size:1.05vw}
+.gc .now{flex:1;display:flex;flex-direction:column;justify-content:center;background:rgba(47,181,162,.12);border:1px solid rgba(47,181,162,.35);border-radius:1vw;padding:1.4vh 1vw}
+.gc .now .s{font-size:2.2vw;font-weight:700;line-height:1.3}
+.gc .now .t{font-size:1.25vw;color:var(--muted);margin-top:.4vh}
+.gc .now.empty{background:transparent;border-style:dashed}
+.gc .now.empty .s{font-size:1.4vw;color:var(--muted);font-weight:500}
+.gc .now.soon{background:rgba(216,180,106,.1);border-color:rgba(216,180,106,.4)}
+.gc .now .lb{font-size:1.05vw;color:var(--gold);margin-bottom:.4vh}
+.gc .nx{font-size:1.1vw;color:var(--muted)}
+.gc .nx b{color:var(--ink);font-weight:600}
+/* slides */
+.slides{position:relative;flex:1;min-height:0;display:flex;flex-direction:column;overflow:hidden;padding:0}
+.slide{position:absolute;inset:0;display:flex;flex-direction:column;opacity:0;transition:opacity .9s ease}
+.slide.on{opacity:1}
+.slide .im{flex:1;min-height:0;background:#fff center/contain no-repeat;border-radius:1.4vw 1.4vw 0 0}
+.slide .im.cover{background-size:cover}
+.slide .tx{padding:1.6vh 1.4vw 2.4vh}
+.slide .tag{display:inline-block;font-size:1vw;color:#082E28;background:var(--gold);border-radius:99px;padding:.15vh .8vw;font-weight:600}
+.slide h3{font-size:1.9vw;margin:.8vh 0 .3vh;line-height:1.35}
+.slide p{font-size:1.15vw;color:var(--muted);line-height:1.6;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.kpis{flex:1;display:grid;grid-template-columns:repeat(2,1fr);gap:1vw;padding:2vh 1.4vw 0}
+.kpis div{background:rgba(255,255,255,.05);border:1px solid var(--line);border-radius:1vw;display:flex;flex-direction:column;justify-content:center;align-items:center}
+.kpis b{font-size:3.6vw;color:var(--gold);line-height:1.1}
+.kpis span{font-size:1.15vw;color:var(--muted)}
+.dots{position:absolute;bottom:.9vh;inset-inline:0;display:flex;justify-content:center;gap:.4vw;z-index:2}
+.dots i{width:.5vw;height:.5vw;border-radius:50%;background:rgba(255,255,255,.25)}
+.dots i.on{background:var(--gold)}
+/* timeline */
+.tl{display:flex;gap:.5vw}
+.tl div{flex:1;border-radius:.8vw;padding:.9vh .4vw;text-align:center;background:var(--card);border:1px solid var(--line);font-size:1vw;color:var(--muted)}
+.tl div b{display:block;font-size:1.15vw;color:var(--ink);font-weight:600}
+.tl div.g{flex:.35;font-size:.8vw;padding:.9vh .1vw}
+.tl div.g b{font-size:.85vw;color:var(--muted)}
+.tl div.done{opacity:.45}
+.tl div.cur{background:var(--teal);border-color:var(--teal);color:#06302A}
+.tl div.cur b{color:#06302A}
+.tl div.b{background:rgba(216,180,106,.1);border-color:rgba(216,180,106,.3)}
+.tl div.b.cur{background:var(--gold);border-color:var(--gold)}
+/* off-hours */
+.off{grid-column:1/-1;display:grid;grid-template-columns:1fr 1.15fr;gap:1.4vw;min-height:0}
+.off .msg{display:flex;flex-direction:column;justify-content:center;gap:1.4vh}
+.off .msg h2{font-size:4vw;line-height:1.25}
+.off .msg p{font-size:1.6vw;color:var(--muted)}
+/* alerts */
+.banner{position:fixed;top:0;inset-inline:0;z-index:20;background:var(--warn);color:#2A1A00;font-size:1.9vw;font-weight:700;text-align:center;padding:1.4vh 2vw;
+  transform:translateY(-110%);transition:transform .5s}
+.banner.on{transform:none;animation:pulse 1.6s ease-in-out infinite}
+@keyframes pulse{50%{filter:brightness(1.12)}}
+.flash{position:fixed;inset:0;z-index:30;background:linear-gradient(135deg,#0E7A6B,#06302A);display:none;flex-direction:column;align-items:center;justify-content:center;gap:3vh;text-align:center}
+.flash.on{display:flex;animation:fin .6s}
+@keyframes fin{from{opacity:0;transform:scale(1.04)}}
+.flash .bell{font-size:7vw;animation:ring 1s ease-in-out infinite;transform-origin:50% 0}
+@keyframes ring{25%{transform:rotate(14deg)}75%{transform:rotate(-14deg)}}
+.flash h2{font-size:5.4vw}
+.flash .fl{display:flex;gap:1.4vw}
+.flash .fl div{background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.25);border-radius:1.2vw;padding:2vh 2vw;min-width:19vw}
+.flash .fl b{display:block;font-size:1.4vw;color:var(--gold)}
+.flash .fl span{display:block;font-size:2.4vw;font-weight:700;margin-top:.6vh}
+.flash .fl small{font-size:1.3vw;color:var(--muted)}
+.start{position:fixed;inset:0;z-index:40;background:rgba(4,31,27,.94);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2.4vh;text-align:center}
+.start img{width:9vw;border-radius:1.4vw;background:#fff;padding:.4vw}
+.start h2{font-size:2.6vw}
+.start p{font-size:1.3vw;color:var(--muted);max-width:60vw;line-height:1.7}
+.start button{font:inherit;font-size:1.8vw;font-weight:700;background:var(--gold);color:#082E28;border:0;border-radius:1vw;padding:1.6vh 3vw;cursor:pointer}
+.start a{color:var(--muted);font-size:1.1vw}
+.hidden{display:none!important}
+.test{position:fixed;bottom:.6vh;left:.8vw;font-size:.9vw;background:var(--red);color:#fff;border-radius:.4vw;padding:.2vh .6vw;z-index:50}
+@media (max-aspect-ratio:4/3){ /* شاشة عمودية أو جوال */
+  .main{grid-template-columns:1fr}.grades{grid-template-columns:1fr}.slides{min-height:40vh}
+  .clock{font-size:7vw}.top .nm h1{font-size:3.6vw}.status h2{font-size:6vw}.count{font-size:9vw}
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header class="top">
+    <img src="assets/img/logo.jpg" alt="شعار المدرسة">
+    <div class="nm"><h1>المدرسة المركزية للبنين بحائل</h1><p>التعليم عن بُعد للمدارس الملحقة: جبلة · الجبيلي · الحدق</p></div>
+    <div class="sp"></div>
+    <div class="dates"><b id="dH"></b><br><span id="dG"></span></div>
+    <div class="clock" id="clock">--:--<small>:--</small></div>
+  </header>
+  <main class="main" id="main"></main>
+  <footer class="tl" id="tl"></footer>
+</div>
+<div class="banner" id="banner"></div>
+<div class="flash" id="flash"></div>
+<div class="start" id="start">
+  <img src="assets/img/logo.jpg" alt="">
+  <h2>شاشة المدرسة المركزية</h2>
+  <p>تعرض الحصة الحالية والوقت المتبقي، وتنبّه قبل بداية كل حصة بخمس دقائق وعند بدايتها بصوت جرس، مع عرض متتابع للمنصات والإنجازات وشهادات الشكر والتقدير.</p>
+  <button id="go" type="button">تشغيل الشاشة 🔔</button>
+  <a href="index.html">العودة إلى موقع المدرسة</a>
+</div>
+
+<script src="assets/js/data.js"></script>
+<script src="assets/js/timetable.js"></script>
+<script>
+(function () {
+  'use strict';
+  var D = window.SITE_DATA || {}, T = TT.T, $ = function (s) { return document.querySelector(s); };
+  function esc(s) { return String(s == null ? '' : s).replace(/[&<>"']/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]; }); }
+  function pad(n) { return (n < 10 ? '0' : '') + n; }
+  function hm(s) { var a = s.split(':'), h = +a[0]; return (h > 12 ? h - 12 : h) + ':' + a[1]; }
+  function mmss(m) { var s = Math.max(0, Math.round(m * 60)); return Math.floor(s / 60) + ':' + pad(s % 60); }
+  function tname(id) { var n = T.teachers[id] || ''; var p = n.split(' '); return p.length > 2 ? p[0] + ' ' + p[p.length - 1] : n; }
+
+  /* ---- وقت تجريبي: screen.html?t=09:47&d=2 (d: 0=الأحد … 4=الخميس) ---- */
+  var qs = new URLSearchParams(location.search), offset = 0, TEST = qs.has('t');
+  if (TEST) {
+    var r = new Date(), f = new Date(r), a = qs.get('t').split(':');
+    if (qs.has('d')) f.setDate(f.getDate() + ((+qs.get('d') - f.getDay()) + 7) % 7);
+    f.setHours(+a[0], +a[1], +(a[2] || 0), 0); offset = f - r;
+    var tb = document.createElement('div'); tb.className = 'test'; tb.textContent = 'وضع تجريبي'; document.body.appendChild(tb);
+  }
+  function now() { return new Date(Date.now() + offset); }
+
+  /* ---- الصوت ---- */
+  var AC = null;
+  function tone(freq, start, dur, vol) {
+    var o = AC.createOscillator(), g = AC.createGain();
+    o.type = 'sine'; o.frequency.value = freq; o.connect(g); g.connect(AC.destination);
+    var t = AC.currentTime + start; g.gain.setValueAtTime(0, t); g.gain.linearRampToValueAtTime(vol, t + .02); g.gain.exponentialRampToValueAtTime(.0001, t + dur);
+    o.start(t); o.stop(t + dur + .05);
+  }
+  function chime(strong) {
+    if (!AC) return;
+    try {
+      if (AC.state === 'suspended') AC.resume();
+      var seq = strong ? [784, 659, 523, 784, 659, 523] : [880, 660];
+      seq.forEach(function (f, i) { tone(f, i * .55, 1.4, strong ? .35 : .22); });
+    } catch (e) { }
+  }
+
+  /* ---- التاريخ ---- */
+  function dates(d) {
+    try { $('#dH').textContent = d.toLocaleDateString('ar-SA-u-ca-islamic-umalqura', { weekday: 'long', day: 'numeric', month: 'long', year: 'numeric' }); } catch (e) { $('#dH').textContent = T.dayNames[d.getDay()]; }
+    try { $('#dG').textContent = d.toLocaleDateString('ar-SA-u-ca-gregory-nu-latn', { day: 'numeric', month: 'long', year: 'numeric' }) + 'م'; } catch (e) { }
+  }
+
+  /* ---- العرض المتتابع ---- */
+  var SL = [];
+  (function buildSlides() {
+    var plat = (D.initiatives || []).filter(function (i) { return i.cover; }).map(function (i) { return { tag: 'منصاتنا ومبادراتنا', title: i.title, sub: i.sub || i.desc, img: i.cover }; });
+    var ach = (D.achievements || []).filter(function (a) { return a.img; }).map(function (a) { return { tag: 'إنجازاتنا', title: a.title, sub: a.desc, img: a.img }; });
+    var certs = [];
+    (D.certificates || []).forEach(function (g) {
+      var tag = g.key === 'teacher-day' ? 'شكر وتقدير' : 'شهادات التكريم';
+      g.items.forEach(function (src, n) { certs.push({ tag: tag, title: g.title, sub: g.desc + ' — شهادة ' + (n + 1) + ' من ' + g.items.length, img: src }); });
+    });
+    var kp = (D.stats && D.stats.kpis) ? [{ kpi: D.stats.kpis }] : [];
+    /* تناوب: منصة، شهادة، إنجاز، شهادة، … ومؤشرات كل دورة */
+    var lists = [plat, certs, ach, certs], idx = [0, 0, 0, 0], total = plat.length + certs.length + ach.length, guard = 0;
+    while (SL.length < total + kp.length && guard++ < 400) {
+      for (var k = 0; k < lists.length; k++) {
+        var L = lists[k], j = k === 3 ? 1 : k;
+        if (idx[j] < L.length) { SL.push(L[idx[j]++]); }
+      }
+      if (SL.length && SL.length % 8 === 0 && kp.length) SL.push(kp[0]);
+      if (idx[0] >= plat.length && idx[1] >= certs.length && idx[2] >= ach.length) break;
+    }
+    if (kp.length && SL.indexOf(kp[0]) < 0) SL.push(kp[0]);
+  })();
+  var si = 0;
+  function slidesHTML() {
+    return '<div class="panel slides" id="slides">' + SL.map(function (s, i) {
+      if (s.kpi) return '<div class="slide" data-i="' + i + '"><div class="kpis">' + s.kpi.map(function (k) { return '<div><b>' + esc(k.value) + '</b><span>' + esc(k.label) + '</span></div>'; }).join('') +
+        '</div><div class="tx"><span class="tag">المدرسة بالأرقام</span><h3>مؤشرات المدرسة المركزية</h3><p>الفصل الدراسي الأول 1448هـ</p></div></div>';
+      return '<div class="slide" data-i="' + i + '"><div class="im" data-bg="' + esc(s.img) + '"></div><div class="tx"><span class="tag">' + esc(s.tag) + '</span><h3>' + esc(s.title) + '</h3><p>' + esc(s.sub || '') + '</p></div></div>';
+    }).join('') + '<div class="dots">' + SL.slice(0, Math.min(SL.length, 24)).map(function () { return '<i></i>'; }).join('') + '</div></div>';
+  }
+  function showSlide() {
+    var box = $('#slides'); if (!box || !SL.length) return;
+    var all = box.querySelectorAll('.slide');
+    all.forEach(function (el) { el.classList.remove('on'); });
+    var el = all[si % SL.length]; if (!el) return;
+    var im = el.querySelector('.im'); if (im && !im.style.backgroundImage) im.style.backgroundImage = 'url("' + im.dataset.bg + '")';
+    var nx = all[(si + 1) % SL.length] && all[(si + 1) % SL.length].querySelector('.im'); if (nx && !nx.style.backgroundImage) nx.style.backgroundImage = 'url("' + nx.dataset.bg + '")';
+    el.classList.add('on');
+    var dots = box.querySelectorAll('.dots i'), n = dots.length; dots.forEach(function (d, k) { d.classList.toggle('on', k === (si % SL.length) % n); });
+  }
+  setInterval(function () { si = (si + 1) % Math.max(1, SL.length); showSlide(); }, 9000);
+
+  /* ---- الحالة ---- */
+  var layout = '', lastKey = '', warned = {}, rang = {};
+  function gradeCards(st) {
+    var di = st.di, p = st.cur && st.cur.p, nxt = st.next && st.next.p;
+    return '<div class="grades">' + Object.keys(T.grades).map(function (g) {
+      var G = T.grades[g], c = p ? TT.cell(g, di, p) : null, n = nxt ? TT.cell(g, di, nxt) : null;
+      var nowH, nxH;
+      if (st.kind === 'period') {
+        nowH = c ? '<div class="now"><div class="s">' + esc(c[0]) + '</div><div class="t">أ. ' + esc(tname(c[1])) + '</div></div>' : '<div class="now empty"><div class="s">لا توجد حصة</div></div>';
+        nxH = n ? 'التالية: <b>' + esc(n[0]) + '</b> — أ. ' + esc(tname(n[1])) : (nxt ? 'التالية: لا توجد حصة' : 'آخر حصة اليوم');
+      } else { /* انتقال أو راحة: نعرض الحصة القادمة */
+        nowH = n ? '<div class="now soon"><div class="lb">التالية · تبدأ ' + hm(st.next.from) + '</div><div class="s">' + esc(n[0]) + '</div><div class="t">أ. ' + esc(tname(n[1])) + '</div></div>'
+          : '<div class="now empty"><div class="s">' + (nxt ? 'لا توجد حصة' : 'انتهت حصص الصف') + '</div></div>';
+        nxH = esc(st.cur.name) + ' حتى ' + hm(st.cur.to);
+      }
+      return '<div class="gc"><div class="gh">' + esc(G.name) + ' <span>' + esc(G.cls) + '</span></div>' + nowH + '<div class="nx">' + nxH + '</div></div>';
+    }).join('') + '</div>';
+  }
+  function timeline(st) {
+    if (st.di < 0 || !st.slots) { $('#tl').innerHTML = ''; return; }
+    var t = TT.nowMin(now());
+    $('#tl').innerHTML = st.slots.map(function (b) {
+      var cls = b.p ? '' : (b.gap ? 'g' : 'b'), f = TT.mins(b.from), e = TT.mins(b.to);
+      cls += t >= e ? ' done' : (t >= f ? ' cur' : '');
+      var lab = b.p ? 'الحصة ' + b.p : (b.gap ? '' : b.name);
+      return '<div class="' + cls + '"><b>' + esc(lab || '·') + '</b>' + (b.gap ? '' : '<span dir="ltr">' + hm(b.from) + ' – ' + hm(b.to) + '</span>') + '</div>';
+    }).join('');
+  }
+  function nextSchoolDay(d) {
+    for (var k = 1; k <= 7; k++) { var x = new Date(d); x.setDate(x.getDate() + k); if (TT.dayIdx(x) >= 0) return x; }
+    return null;
+  }
+  function render(st, d) {
+    var key = st.kind + '|' + (st.cur ? st.cur.from : '') + '|' + st.di;
+    if (key !== lastKey) {
+      lastKey = key;
+      if (st.kind === 'off' || st.kind === 'after' || st.kind === 'before') {
+        var title, sub;
+        if (st.kind === 'before') { title = 'صباح الخير'; sub = 'يبدأ اليوم الدراسي بالحصة الأولى الساعة ' + hm(st.next.from); }
+        else {
+          var nd = nextSchoolDay(d), first = T.bell[0];
+          title = st.kind === 'after' ? 'انتهى اليوم الدراسي' : 'إجازة نهاية الأسبوع';
+          sub = nd ? 'أقرب يوم دراسي: ' + T.dayNames[nd.getDay()] + '، والحصة الأولى الساعة ' + hm(first.from) : '';
+        }
+        $('#main').innerHTML = '<section class="off"><div class="msg panel"><div class="lbl" style="font-size:1.3vw;color:var(--muted)">' + esc(T.dayNames[d.getDay()]) + '</div><h2>' + title + '</h2><p>' + esc(sub) + '</p>' +
+          (st.kind === 'before' ? '<div class="count" id="cnt" style="margin-top:2vh">' + mmss(st.until) + '</div>' : '') + '</div>' + slidesHTML() + '</section>';
+      } else {
+        $('#main').innerHTML = '<section class="col"><div class="panel status' + (st.kind === 'break' ? ' brk' : '') + '"><div class="lbl">' + (st.kind === 'period' ? 'الآن' : 'الآن · استراحة') + '</div>' +
+          '<h2>' + esc(st.cur.name) + '</h2><div class="row"><div class="count"><small>الوقت المتبقي</small><span id="cnt">' + mmss(st.left) + '</span></div>' +
+          '<div class="next" id="nxt"></div></div><div class="bar"><i id="bar"></i></div></div>' + gradeCards(st) + '</section>' + '<section class="col">' + slidesHTML() + '</section>';
+      }
+      showSlide(); timeline(st);
+    }
+    var c = $('#cnt');
+    if (c) c.textContent = mmss(st.kind === 'before' ? st.until : st.left);
+    if ($('#bar') && st.len) $('#bar').style.width = (100 - st.left / st.len * 100).toFixed(1) + '%';
+    if ($('#nxt')) $('#nxt').innerHTML = st.next ? 'التالية: <b>' + esc(st.next.name) + '</b><br>تبدأ ' + hm(st.next.from) + ' (بعد ' + Math.ceil(st.until) + ' د)' : '<b>آخر حصة اليوم</b>';
+  }
+  function alerts(st, d) {
+    var dayKey = d.toDateString();
+    /* تنبيه قبل خمس دقائق */
+    var b = $('#banner');
+    if (st.next && st.until != null && st.until <= 5 && st.until > 0) {
+      var p = st.next.p, k = dayKey + p;
+      var list = Object.keys(T.grades).map(function (g) { var c = TT.cell(g, st.di, p); return c ? T.grades[g].cls + ': ' + c[0] : null; }).filter(Boolean).join('  ·  ');
+      b.innerHTML = '⏰ ' + esc(st.next.name) + ' تبدأ بعد ' + mmss(st.until) + (list ? '  —  ' + esc(list) : '');
+      b.classList.add('on');
+      if (!warned[k]) { warned[k] = 1; chime(false); }
+    } else b.classList.remove('on');
+    /* عند بداية الحصة */
+    if (st.kind === 'period' && st.len - st.left < 0.35) {
+      var k2 = dayKey + 'P' + st.cur.p;
+      if (!rang[k2]) {
+        rang[k2] = 1; chime(true);
+        var F = $('#flash');
+        F.innerHTML = '<div class="bell">🔔</div><h2>بدأت ' + esc(st.cur.name) + '</h2><div class="fl">' + Object.keys(T.grades).map(function (g) {
+          var c = TT.cell(g, st.di, st.cur.p);
+          return '<div><b>' + esc(T.grades[g].name) + '</b><span>' + esc(c ? c[0] : '—') + '</span><small>' + (c ? 'أ. ' + esc(tname(c[1])) : 'لا توجد حصة') + '</small></div>';
+        }).join('') + '</div><p style="font-size:1.4vw;color:var(--muted)" dir="ltr">' + hm(st.cur.from) + ' – ' + hm(st.cur.to) + '</p>';
+        F.classList.add('on');
+        setTimeout(function () { F.classList.remove('on'); }, 20000);
+      }
+    }
+  }
+  function tick() {
+    var d = now();
+    var h12 = d.getHours() % 12 || 12;
+    $('#clock').innerHTML = h12 + ':' + pad(d.getMinutes()) + '<small>:' + pad(d.getSeconds()) + ' ' + (d.getHours() < 12 ? 'ص' : 'م') + '</small>';
+    if (d.getSeconds() === 0 || !$('#dH').textContent) dates(d);
+    var st = TT.state(d);
+    render(st, d); alerts(st, d);
+    if (!TEST && d.getHours() === 3 && d.getMinutes() === 0 && d.getSeconds() < 2) location.reload(); /* تحديث يومي */
+  }
+
+  /* ---- التشغيل ---- */
+  var wake = null;
+  function keepAwake() { try { if (navigator.wakeLock) navigator.wakeLock.request('screen').then(function (w) { wake = w; }).catch(function () { }); } catch (e) { } }
+  document.addEventListener('visibilitychange', function () { if (document.visibilityState === 'visible') keepAwake(); });
+  $('#go').onclick = function () {
+    try { AC = new (window.AudioContext || window.webkitAudioContext)(); chime(false); } catch (e) { }
+    try { var el = document.documentElement; (el.requestFullscreen || el.webkitRequestFullscreen || function () { }).call(el); } catch (e) { }
+    keepAwake(); $('#start').classList.add('hidden');
+  };
+  document.addEventListener('dblclick', function () { try { if (!document.fullscreenElement) document.documentElement.requestFullscreen(); else document.exitFullscreen(); } catch (e) { } });
+  tick(); setInterval(tick, 1000);
+})();
+</script>
+</body>
+</html>
