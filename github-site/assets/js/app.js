@@ -15,7 +15,7 @@
   var STAFF = ['teacher', 'supervisor', 'principal', 'admin'];
   function role() { return AUTH ? (SES && SES.role) || null : 'admin'; }
   function isStaff() { return STAFF.indexOf(role()) > -1; }
-  var ACCESS = { circulars: STAFF, reports: STAFF, development: STAFF, evidence: STAFF, notifications: STAFF, me: ['student'], adminfiles: ['principal', 'admin'], myday: STAFF };
+  var ACCESS = { circulars: STAFF, reports: STAFF, development: STAFF, evidence: STAFF, notifications: STAFF, me: ['student'], adminfiles: ['principal', 'admin'], myday: STAFF, weekly: ['principal', 'admin'] };
   function allowed(key) { if (!AUTH) return key !== 'me' && key !== 'adminfiles' || false; var a = ACCESS[key]; return !a || a.indexOf(role()) > -1; }
   function myTeacher() { return AUTH ? SES && SES.teacherId : null; }
   function canEditTeacher(tid) { if (!AUTH) return true; return role() === 'admin' || (role() === 'teacher' && SES.teacherId === tid); }
@@ -396,6 +396,7 @@ function libraryPage(title, sub, list, key) {
     if (!SES || !SES.adminFiles) return '';
     setTimeout(function () { $$('[data-adf]').forEach(function (b) { b.onclick = function () { var f = SES.adminFiles[+b.dataset.adf]; openSecure(f.title, f); }; }); });
     return pageHead('الملفات الإدارية', 'ملفات تحتوي بيانات شخصية (أرقام هوية أو تواصل) — متاحة لمدير المدرسة ومدير الموقع فقط') +
+      '<section class="block" style="padding-bottom:0"><div class="container"><div class="card tt-cta"><div><span class="pill gold">نموذج</span><h3>التقرير الأسبوعي الموحد لمتابعة التشغيل والبث</h3><p class="muted">تعبئة التقرير ثم معاينته بصفحاته على ترويسة الوزارة وطباعته أو حفظه PDF.</p></div><a class="btn primary" href="#weekly">فتح النموذج</a></div></div></section>' +
       '<section class="block"><div class="container grid g3">' + SES.adminFiles.map(function (f, i) { return '<div class="card doc"><div class="ico">PDF</div><div class="body"><h3>' + esc(f.title) + '</h3><div class="meta">ملف مشفّر</div><div class="actions"><button class="btn sm primary" data-adf="' + i + '">عرض</button></div></div></div>'; }).join('') + '</div></section>';
   };
 
@@ -666,6 +667,13 @@ function libraryPage(title, sub, list, key) {
       '<div class="card tt-cta"><div><span class="pill gold">جديد</span><h3>شاشة المدرسة</h3><p class="muted">تعرض الحصة الحالية والوقت المتبقي، وتنبّه بصوت جرس قبل كل حصة بخمس دقائق وعند بدايتها، مع عرض المنصات والإنجازات وشهادات الشكر. افتحها على تلفزيون المدرسة بملء الشاشة.</p></div><a class="btn primary" href="screen.html" target="_blank" rel="noopener">فتح شاشة المدرسة ↗</a></div>' +
       (allowed('myday') ? '<div class="card tt-cta"><div><span class="pill">للمعلمين</span><h3>جدولي اليوم</h3><p class="muted">حصصك اليوم والحصة القادمة، مع إضافة جدولك إلى تقويم الجوال لتصلك تنبيهات قبل كل حصة.</p></div><a class="btn primary" href="#myday">فتح جدولي</a></div>' : '') +
       '</div></section>' + libraryPage('الجداول والاختبارات', 'جداول الحصص الأسبوعية وجداول اختبارات المدارس الملحقة', D.schedules).replace(/^[\s\S]*?(<section class="block">)/, '$1');
+  };
+
+  /* ---------- التقرير الأسبوعي الموحد (المدير والوكيل) ---------- */
+  P.weekly = function () {
+    setTimeout(function () { if (window.WEEKLY && $('#wkRoot')) WEEKLY.mount($('#wkRoot'), { D: D, esc: esc, toast: toast }); });
+    return pageHead('التقرير الأسبوعي الموحد', 'متابعة تشغيل المدارس المركزية والبث للمدارس المستقبلة — للمدير والوكيل') +
+      '<section class="block"><div class="container" id="wkRoot"><div class="empty">جارٍ التحميل…</div></div></section>';
   };
 
   /* ---------- جدولي اليوم (للمعلمين) ---------- */
