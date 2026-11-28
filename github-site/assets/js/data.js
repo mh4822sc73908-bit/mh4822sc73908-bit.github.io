@@ -1008,7 +1008,7 @@ window.SITE_DATA = {
    "target": "طلاب المدارس الملحقة",
    "result": "خطط علاجية فردية",
    "cover": "docs/initiatives/masarat-guide.jpg",
-   "link": "",
+   "link": "https://mh4822sc73908-bit.github.io/masarat/",
    "files": []
   },
   {

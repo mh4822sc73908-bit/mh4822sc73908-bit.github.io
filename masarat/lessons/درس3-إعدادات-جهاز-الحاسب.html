@@ -1,0 +1,311 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>الدرس الثالث: إعدادات جهاز الحاسب</title>
+<meta name="masar-grades" content="4">
+<meta name="masar-unit" content="الوحدة الأولى: تعلم الأساسيات">
+<style>
+:root{--teal:#11897f;--teal-d:#0b5f58;--teal-s:#e2f3f0;--ink:#16302d;--mut:#5b706d;--line:#d8e3e0;--bg:#f5faf9;
+--good:#1e8a4c;--good-s:#e1f3e8;--bad:#c43c3c;--bad-s:#fbe4e2;--sun:#f2a516;--sky:#2b8dbf}
+*{box-sizing:border-box}
+body{margin:0;font-family:Tahoma,"Segoe UI",Arial,sans-serif;background:var(--bg);color:var(--ink);line-height:1.85;font-size:17px}
+.wrap{max-width:920px;margin:0 auto;padding:16px}
+.hero{background:linear-gradient(135deg,#0b5f58,#1a7fa8);color:#fff;border-radius:18px;padding:22px 24px;position:relative;overflow:hidden}
+.hero::after{content:"";position:absolute;inset-inline-start:-60px;top:-60px;width:240px;height:240px;border-radius:50%;
+ background:repeating-radial-gradient(circle,rgba(255,255,255,.18) 0 3px,transparent 3px 14px)}
+.hero .unit{font-size:14px;opacity:.9}
+.hero h1{margin:4px 0 10px;font-size:30px;line-height:1.3}
+.goals{background:rgba(255,255,255,.14);border-radius:12px;padding:10px 14px;position:relative;z-index:1}
+.goals b{display:block;margin-bottom:2px}
+.goals ul{margin:0;padding-inline-start:20px}
+section.card{background:#fff;border:1px solid var(--line);border-radius:16px;padding:18px 20px;margin-top:16px}
+h2{font-size:22px;color:var(--teal-d);margin:0 0 8px;display:flex;align-items:center;gap:10px}
+h2 .n{background:var(--teal);color:#fff;border-radius:9px;min-width:32px;height:32px;display:inline-grid;place-items:center;font-size:16px}
+h3{font-size:18px;color:var(--teal-d);margin:14px 0 6px}
+p{margin:6px 0}
+.hint{background:#fff7e6;border:1px solid #f6d79a;border-radius:12px;padding:10px 14px;font-size:15.5px}
+.hint b{color:#9a5b00}
+.info{background:var(--teal-s);border-radius:12px;padding:10px 14px;font-size:15.5px}
+.steps{counter-reset:s;list-style:none;padding:0;margin:8px 0;display:grid;gap:6px}
+.steps li{counter-increment:s;display:flex;gap:10px;align-items:flex-start;background:#f8fbfb;border:1px solid var(--line);border-radius:10px;padding:8px 12px}
+.steps li::before{content:counter(s);background:var(--sky);color:#fff;border-radius:50%;min-width:26px;height:26px;display:grid;place-items:center;font-size:14px;margin-top:3px}
+.en{direction:ltr;unicode-bidi:isolate;font-family:"Segoe UI",Arial,sans-serif;color:var(--mut);font-size:.9em}
+.btn{font:inherit;font-size:15px;border:1.5px solid var(--teal);background:#fff;color:var(--teal-d);border-radius:10px;padding:6px 14px;cursor:pointer}
+.btn:hover{background:var(--teal-s)}
+.btn.pri{background:var(--teal);color:#fff}
+.btn.on{background:var(--teal);color:#fff}
+.btn:disabled{opacity:.45;cursor:not-allowed}
+.row{display:flex;gap:8px;flex-wrap:wrap;align-items:center}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:10px}
+.dev{border:1.5px solid var(--line);border-radius:14px;background:#fff;padding:10px;text-align:center;cursor:pointer;font:inherit;color:inherit;transition:.15s}
+.dev:hover{border-color:var(--teal);transform:translateY(-2px)}
+.dev svg{width:64px;height:64px;display:block;margin:0 auto 4px}
+.dev .nm{font-weight:bold;display:block}
+.dev .more{display:none;font-size:14px;margin-top:6px;border-top:1px dashed var(--line);padding-top:6px}
+.dev.open .more{display:block}
+.dev.open{border-color:var(--teal);background:#fbfefd}
+.tag{display:inline-block;border-radius:99px;padding:0 10px;font-size:13px;font-weight:bold}
+.tag.main{background:#e4edff;color:#2f5fc4}.tag.ext{background:#fdeee0;color:#b0560c}
+.fb{min-height:1.6em;font-weight:bold;margin-top:6px}
+.fb.ok{color:var(--good)}.fb.no{color:var(--bad)}
+.score{font-weight:bold;color:var(--teal-d)}
+.bins{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:10px}
+.bin{border:2px dashed var(--line);border-radius:14px;padding:10px;min-height:120px;cursor:pointer;background:#fbfdfd}
+.bin:hover{border-color:var(--teal)}
+.bin h4{margin:0 0 6px;font-size:16px}
+.bin .items{display:flex;flex-wrap:wrap;gap:6px}
+.chip{display:inline-flex;align-items:center;gap:4px;border:1.5px solid var(--line);border-radius:10px;padding:3px 10px;background:#fff;font:inherit;font-size:15px;cursor:pointer;color:inherit}
+.chip svg{width:26px;height:26px}
+.chip.sel{border-color:var(--teal);background:var(--teal-s)}
+.chip.done{border-color:var(--good);background:var(--good-s);cursor:default}
+.chip.wrong{border-color:var(--bad);background:var(--bad-s)}
+.task{border:1px solid var(--line);border-radius:12px;padding:10px;margin-top:8px}
+.task .q{font-weight:bold;margin-bottom:6px}
+.terms{display:grid;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:8px}
+.flip{border:1.5px solid var(--line);border-radius:12px;padding:12px;text-align:center;cursor:pointer;background:#fff;font:inherit;color:inherit;min-height:64px}
+.flip.back{background:var(--teal-s);border-color:var(--teal)}
+.hist{background:#fdf0f5;border:1px solid #f1c3d5;border-radius:12px;padding:10px 14px;font-size:15.5px}
+.hist b{color:#a8336a}
+[data-masar]{display:none}
+@media (max-width:560px){.bins{grid-template-columns:1fr}.hero h1{font-size:24px}}
+</style>
+</head>
+<body>
+<div class="wrap">
+<header class="hero"><div class="unit">المهارات الرقمية · الصف الرابع الابتدائي · الوحدة الأولى: تعلم الأساسيات</div><h1>الدرس الثالث: إعدادات جهاز الحاسب</h1>
+<div class="goals"><b>ستتعلم في هذا الدرس:</b><ul><li>تغيير التاريخ والوقت والمنطقة الزمنية.</li><li>تغيير دقة الشاشة.</li><li>تخصيص خلفية سطح المكتب.</li><li>ضبط أصوات النظام.</li><li>إعدادات الهاتف والجهاز اللوحي.</li></ul></div></header>
+
+<style>
+.mock{position:relative;aspect-ratio:16/10;max-width:520px;width:100%;border-radius:10px;overflow:hidden;border:8px solid #2f3e46;background:linear-gradient(160deg,#0a3d7a,#1c6fd1);direction:ltr;transition:background .3s}
+.mock .icons{position:absolute;right:2%;top:3%;display:flex;flex-direction:column;gap:4%;align-items:center;transition:.3s}
+.mock .icons div{background:#f2c14e;border-radius:3px;transition:.3s}
+.mock .bar{position:absolute;left:0;right:0;bottom:0;background:#0e1a2b;display:flex;align-items:center;justify-content:space-between;padding:0 2%;transition:.3s}
+.mock .bar i{background:#7fc3ff;display:inline-block;transition:.3s}
+.mock .clock{color:#fff;font-size:11px;text-align:center;line-height:1.25}
+.res{display:flex;gap:6px;flex-wrap:wrap;margin:10px 0}
+.dlg{display:none;margin-top:8px;background:#1b5fb0;color:#fff;border-radius:10px;padding:10px 14px}
+.dlg.show{display:block}
+.dlg .btn{background:#fff}
+.bgs{display:flex;gap:8px;flex-wrap:wrap;margin-top:8px}
+.bgs button{width:80px;height:50px;border-radius:8px;border:3px solid transparent;cursor:pointer}
+.bgs button.on{border-color:var(--sun)}
+.mixer{display:flex;gap:24px;align-items:flex-end;margin-top:10px;flex-wrap:wrap}
+.mixer .ch{display:flex;flex-direction:column;align-items:center;gap:6px;background:#f5f8fa;border:1px solid var(--line);border-radius:12px;padding:10px 14px}
+.mixer input[type=range]{writing-mode:vertical-lr;direction:rtl;height:130px}
+.sel{font:inherit;border:1.5px solid var(--line);border-radius:10px;padding:5px 10px;background:#fff}
+.cmp{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.cmp>div{border:1px solid var(--line);border-radius:12px;padding:10px 14px}
+@media (max-width:560px){.cmp{grid-template-columns:1fr}}
+table.sk{width:100%;border-collapse:collapse;font-size:15.5px}
+table.sk td,table.sk th{border-bottom:1px solid var(--line);padding:6px 8px;text-align:start}
+.proj li{margin:4px 0}
+</style>
+
+<section class="card">
+<h2><span class="n">1</span>التاريخ والوقت</h2>
+<p>اضغط على التاريخ والوقت في الجانب السفلي الأيسر من شريط المهام، فتظهر الساعة والتقويم.</p>
+<h3>لتغيير التاريخ والوقت في حاسبك</h3>
+<ol class="steps">
+ <li>اضغط بزر الفأرة الأيمن على التاريخ والوقت في شريط المهام.</li>
+ <li>اضغط على <b>ضبط التاريخ / الوقت</b> <span class="en">(Adjust date/time)</span>.</li>
+ <li>في نافذة <b>الإعدادات</b> <span class="en">(Settings)</span> اضغط على زر <b>تغيير</b> <span class="en">(Change)</span>.</li>
+ <li>حدّد التاريخ والوقت اللذين تريدهما، ثم اضغط <b>تغيير</b>.</li>
+ <li>إذا سافرت، يمكنك اختيار الدولة من قسم <b>المنطقة الزمنية</b> <span class="en">(Time Zone)</span>.</li>
+</ol>
+<h3>جرّب: اضبط ساعة الحاسب</h3>
+<div class="row">
+ <label>الساعة <select class="sel" id="hh"></select></label>
+ <label>الدقيقة <select class="sel" id="mm"></select></label>
+ <label>المنطقة الزمنية <select class="sel" id="tz">
+  <option value="3">الرياض، الكويت (UTC+03:00)</option><option value="4">دبي، مسقط (UTC+04:00)</option>
+  <option value="2">القاهرة (UTC+02:00)</option><option value="0">لندن (UTC+00:00)</option></select></label>
+ <button class="btn pri" id="setT">تغيير</button>
+</div>
+<div style="margin-top:10px;display:inline-flex;gap:10px;align-items:center;background:#0e1a2b;color:#fff;border-radius:8px;padding:6px 14px">
+ <span style="font-size:12px">ENG</span><span id="tbClock" style="text-align:center;line-height:1.3;font-size:14px"></span></div>
+<div class="fb" id="tFb"></div>
+<div class="hist"><b>لمحة تاريخية:</b> تغيّر دول كثيرة الوقت إلى التوقيت الصيفي في الربيع والصيف لتوفير الطاقة. وتعود الفكرة إلى بنجامين فرانكلين عام 1784، واعتُمدت على نطاق واسع في الحرب العالمية الأولى.</div>
+</section>
+
+<section class="card">
+<h2><span class="n">2</span>إعدادات الشاشة</h2>
+<p>تستخدم أجهزة الحاسب وحدة <b>البكسل</b> لإظهار النصوص والصور على الشاشة، ويرمز عدد البكسلات إلى <b>دقة الشاشة</b>. الشاشة الأعلى دقة تُظهر النصوص والصور بوضوح أكبر، والأقل دقة تُظهرها بحجم أكبر.</p>
+<h3>لتغيير دقة الشاشة</h3>
+<ol class="steps">
+ <li>اضغط بزر الفأرة الأيمن على مساحة فارغة على سطح المكتب.</li>
+ <li>اضغط على <b>إعدادات العرض</b> <span class="en">(Display settings)</span>.</li>
+ <li>في قسم <b>جهاز العرض</b> اضغط على السهم بجوار <b>الدقة</b> <span class="en">(Resolution)</span> واختر الدقة.</li>
+ <li>اضغط <b>الاحتفاظ بالتغييرات</b> <span class="en">(Keep changes)</span> أو <b>إرجاع</b> <span class="en">(Revert)</span>.</li>
+</ol>
+<h3>جرّب: غيّر الدقة ولاحظ حجم الأيقونات</h3>
+<div class="res" id="res"></div>
+<div class="mock" id="mock"><div class="icons" id="icons"><div></div><div></div><div></div><div></div></div><div class="bar" id="bar"><span><i></i> <i></i> <i></i></span><span class="clock" id="mClock"></span></div></div>
+<div class="dlg" id="dlg">هل ترغب في الاحتفاظ بإعدادات العرض هذه؟<div class="row" style="margin-top:6px"><button class="btn" id="keep">الاحتفاظ بالتغييرات</button><button class="btn" id="revert">إرجاع</button></div></div>
+<div class="fb" id="resFb"></div>
+<div class="hint"><b>انتبه:</b> لكل شاشة دقة محددة تناسبها. ومن الخطأ أن تظن أن اختيار أعلى دقة يعني دائماً رسومات أفضل على الشاشة.</div>
+</section>
+
+<section class="card">
+<h2><span class="n">3</span>تغيير مظهر سطح المكتب</h2>
+<p>لكل حاسب سطح مكتب، ويستطيع كل مستخدم أن يخصّصه بالصور والألوان التي يحبها.</p>
+<ol class="steps">
+ <li>اضغط بزر الفأرة الأيمن على مساحة فارغة على سطح المكتب.</li>
+ <li>اضغط على <b>تخصيص</b> <span class="en">(Personalize)</span>.</li>
+ <li>من نافذة الإعدادات اضغط على <b>الخلفية</b> <span class="en">(Background)</span> واختر الصورة التي تعجبك.</li>
+</ol>
+<p>جرّب: اختر خلفية جديدة لسطح المكتب في الشاشة أعلاه.</p>
+<div class="bgs" id="bgs"></div>
+</section>
+
+<section class="card">
+<h2><span class="n">4</span>أصوات النظام</h2>
+<p>ابحث عن أيقونة مكبر الصوت في الجانب الأيسر من شريط المهام.</p>
+<ol class="steps">
+ <li>اضغط بزر الفأرة الأيمن على أيقونة السماعة في شريط المهام.</li>
+ <li>اضغط على <b>فتح خالط مستوى الصوت</b> <span class="en">(Open Volume Mixer)</span>.</li>
+ <li>اسحب شريط التمرير لأعلى أو لأسفل لتغيير مستوى الصوت.</li>
+</ol>
+<h3>جرّب خالط مستوى الصوت</h3>
+<div class="mixer">
+ <div class="ch"><b>مكبرات الصوت</b><span class="en">Speakers</span><input type="range" min="0" max="100" value="60" id="v1" aria-label="مستوى مكبرات الصوت"><span id="v1t"></span></div>
+ <div class="ch"><b>أصوات النظام</b><span class="en">System Sounds</span><input type="range" min="0" max="100" value="40" id="v2" aria-label="مستوى أصوات النظام"><span id="v2t"></span></div>
+ <button class="btn pri" id="beep">استمع إلى نغمة</button>
+</div>
+<p class="hint" style="margin-top:10px"><b>فكرة:</b> يمكنك أيضاً استخدام عجلة الفأرة لتغيير مستوى الصوت بعد فتح شريط التمرير.</p>
+</section>
+
+<section class="card">
+<h2><span class="n">5</span>برامج أخرى: الهاتف والجهاز اللوحي</h2>
+<div class="cmp">
+ <div><h3>أبل آي أو إس <span class="en">(Apple iOS)</span></h3><p>كل تطبيق أيقونة على الشاشة، ويمكنك نقل الأيقونة داخل المجلدات. ومن تطبيق <b>الإعدادات</b> تضبط: الأصوات، والتاريخ والوقت (من «عام»)، وخلفية الشاشة، وشاشة العرض والإضاءة.</p></div>
+ <div><h3>جوجل أندرويد <span class="en">(Google Android)</span></h3><p>لإنشاء اختصار: ابحث عن التطبيق، واضغط عليه باستمرار، ثم اسحب رمزه إلى المكان الذي تريده. ولضبط النظام اضغط أيقونة <b>الإعدادات</b> <span class="en">(Settings)</span>.</p></div>
+</div>
+<div class="hint" style="margin-top:10px"><b>تنبيه:</b> كن حذراً عند حذف الملفات في الجهاز اللوحي أو الهاتف، فنظاما أندرويد وآي أو إس <b>لا يحتويان على سلة محذوفات</b>. وتتحكم بالصوت فيهما بسهولة من الأزرار على جانب الجهاز.</div>
+</section>
+
+<section class="card">
+<h2><span class="n">6</span>مشروع الوحدة</h2>
+<p>اعمل مع مجموعتك لتنظيم مجلدات المشروعات وتغيير بعض إعدادات الحاسب:</p>
+<ol class="proj">
+ <li>أنشئ ثلاثة مجلدات على سطح المكتب وسمّها: «المستندات» و«الصور» و«مقاطع الفيديو».</li>
+ <li>أنشئ داخل كل منها مجلدات فرعية لكل من المعلمين والطلبة.</li>
+ <li>افتح برنامج الرسام وارسم مع مجموعتك موضوع «أجزاء الحاسب» ثم احفظه.</li>
+ <li>استخدم الرسم الذي أنشأته خلفيةً لسطح المكتب.</li>
+</ol>
+</section>
+
+<section class="card">
+<h2><span class="n">7</span>في الختام</h2>
+<h3>جدول المهارات: قيّم نفسك</h3>
+<table class="sk" id="skills"></table>
+<h3>المصطلحات</h3>
+<p>اضغط على البطاقة لترى المصطلح بالإنجليزية.</p>
+<div class="terms" id="terms"></div>
+</section>
+
+</div>
+
+<ul data-masar="match">
+ <li>ضبط التاريخ / الوقت | تغيير ساعة الحاسب وتاريخه</li>
+ <li>المنطقة الزمنية | نغيّرها عند السفر إلى دولة أخرى</li>
+ <li>الدقة | عدد البكسلات على الشاشة</li>
+ <li>تخصيص | تغيير خلفية سطح المكتب</li>
+ <li>خالط مستوى الصوت | رفع الصوت أو خفضه</li>
+</ul>
+<ol data-masar="training">
+ <li>لتغيير دقة الشاشة نضغط بالزر الأيمن على سطح المكتب ثم نختار: | *إعدادات العرض | تخصيص | ضبط التاريخ / الوقت</li>
+ <li>بعد اختيار دقة جديدة نريد الإبقاء عليها نضغط: | *الاحتفاظ بالتغييرات | إرجاع | إلغاء الأمر</li>
+ <li>أيقونة مكبر الصوت توجد في: | *شريط المهام | سلة المحذوفات | الحاسبة</li>
+ <li>نظاما أندرويد وآي أو إس: | *لا يحتويان على سلة محذوفات | يحتويان على سلة محذوفات | لا يحتويان على إعدادات</li>
+</ol>
+<ol data-masar="quiz">
+ <li>لتغيير التاريخ والوقت نضغط بالزر الأيمن على التاريخ والوقت ثم نختار: | *ضبط التاريخ / الوقت | تخصيص | إعدادات العرض | فتح خالط مستوى الصوت</li>
+ <li>الوحدة التي تستخدمها الشاشة لإظهار النصوص والصور: | *البكسل | المتر | اللتر | الجرام</li>
+ <li>الشاشة الأقل دقة تُظهر النصوص والصور: | *بحجم أكبر | بوضوح أكبر | بألوان أكثر | لا تظهرها</li>
+ <li>لتغيير خلفية سطح المكتب نضغط على: | *تخصيص ثم الخلفية | إعدادات العرض | ضبط التاريخ / الوقت | سلة المحذوفات</li>
+ <li>لتغيير مستوى الصوت نفتح: | *خالط مستوى الصوت | الحاسبة | مستكشف الملفات | الرسام</li>
+ <li>إذا سافرت إلى دولة أخرى يمكنك تغيير: | *المنطقة الزمنية | دقة الشاشة | الخلفية | امتداد الملف</li>
+</ol>
+
+<script>
+const ICON={
+monitor:'<svg viewBox="0 0 64 64"><rect x="6" y="8" width="52" height="34" rx="3" fill="#2f3e46"/><rect x="10" y="12" width="44" height="26" fill="#4fb3e8"/><path d="M14 32 C24 22 34 34 50 20" stroke="#bfe8ff" stroke-width="2" fill="none"/><rect x="28" y="42" width="8" height="8" fill="#9aa5ab"/><rect x="18" y="50" width="28" height="5" rx="2" fill="#c3cbcf"/></svg>',
+case:'<svg viewBox="0 0 64 64"><rect x="18" y="4" width="28" height="56" rx="3" fill="#e8ecef" stroke="#9aa5ab" stroke-width="2"/><rect x="22" y="10" width="20" height="5" fill="#9aa5ab"/><rect x="22" y="18" width="20" height="3" fill="#c3cbcf"/><circle cx="32" cy="34" r="4" fill="#3fbf6b"/><g fill="#9aa5ab"><rect x="24" y="46" width="16" height="2"/><rect x="24" y="50" width="16" height="2"/><rect x="24" y="54" width="16" height="2"/></g></svg>',
+keyboard:'<svg viewBox="0 0 64 64"><rect x="4" y="20" width="56" height="26" rx="3" fill="#eef1f3" stroke="#9aa5ab" stroke-width="2"/><g fill="#9aa5ab"><rect x="9" y="25" width="5" height="4"/><rect x="16" y="25" width="5" height="4"/><rect x="23" y="25" width="5" height="4"/><rect x="30" y="25" width="5" height="4"/><rect x="37" y="25" width="5" height="4"/><rect x="44" y="25" width="5" height="4"/><rect x="51" y="25" width="4" height="4"/><rect x="9" y="31" width="5" height="4"/><rect x="16" y="31" width="5" height="4"/><rect x="23" y="31" width="5" height="4"/><rect x="30" y="31" width="5" height="4"/><rect x="37" y="31" width="5" height="4"/><rect x="44" y="31" width="11" height="4"/><rect x="16" y="38" width="32" height="4"/></g></svg>',
+mouse:'<svg viewBox="0 0 64 64"><rect x="18" y="8" width="28" height="46" rx="14" fill="#eef1f3" stroke="#9aa5ab" stroke-width="2"/><line x1="32" y1="9" x2="32" y2="26" stroke="#9aa5ab" stroke-width="2"/><rect x="30" y="14" width="4" height="8" rx="2" fill="#6c7a80"/><path d="M8 4 Q20 2 32 9" stroke="#6c7a80" stroke-width="2" fill="none"/></svg>',
+printer:'<svg viewBox="0 0 64 64"><rect x="18" y="6" width="28" height="16" fill="#fff" stroke="#9aa5ab" stroke-width="2"/><rect x="6" y="20" width="52" height="24" rx="4" fill="#3b464c"/><rect x="12" y="26" width="12" height="7" fill="#9fe08a"/><circle cx="48" cy="30" r="2.5" fill="#ccc"/><rect x="16" y="40" width="32" height="18" fill="#fff" stroke="#9aa5ab" stroke-width="2"/><rect x="21" y="45" width="22" height="2" fill="#c3cbcf"/><rect x="21" y="50" width="16" height="2" fill="#c3cbcf"/></svg>',
+mic:'<svg viewBox="0 0 64 64"><rect x="36" y="4" width="9" height="20" rx="4.5" transform="rotate(30 40 14)" fill="#6c7a80"/><path d="M36 22 Q28 34 32 46" stroke="#3b464c" stroke-width="3" fill="none"/><ellipse cx="32" cy="54" rx="16" ry="5" fill="#3b464c"/><rect x="28" y="46" width="8" height="6" fill="#3b464c"/></svg>',
+speakers:'<svg viewBox="0 0 64 64"><rect x="6" y="12" width="22" height="42" rx="3" fill="#eef1f3" stroke="#9aa5ab" stroke-width="2"/><circle cx="17" cy="24" r="5" fill="#9aa5ab"/><circle cx="17" cy="42" r="8" fill="#6c7a80"/><rect x="36" y="12" width="22" height="42" rx="3" fill="#eef1f3" stroke="#9aa5ab" stroke-width="2"/><circle cx="47" cy="24" r="5" fill="#9aa5ab"/><circle cx="47" cy="42" r="8" fill="#6c7a80"/></svg>',
+webcam:'<svg viewBox="0 0 64 64"><circle cx="32" cy="24" r="16" fill="#eef1f3" stroke="#9aa5ab" stroke-width="2"/><circle cx="32" cy="24" r="9" fill="#3b464c"/><circle cx="32" cy="24" r="4" fill="#4fb3e8"/><circle cx="35" cy="21" r="1.5" fill="#fff"/><path d="M22 52 Q32 36 42 52 Z" fill="#9aa5ab"/><rect x="18" y="52" width="28" height="5" rx="2" fill="#6c7a80"/></svg>',
+scanner:'<svg viewBox="0 0 64 64"><path d="M8 20 L52 6 L56 12 L12 26 Z" fill="#dfe5e8" stroke="#9aa5ab" stroke-width="2"/><rect x="6" y="30" width="52" height="18" rx="3" fill="#eef1f3" stroke="#9aa5ab" stroke-width="2"/><rect x="10" y="33" width="44" height="5" fill="#bfe8ff"/><circle cx="48" cy="43" r="2" fill="#3fbf6b"/></svg>',
+headphones:'<svg viewBox="0 0 64 64"><path d="M12 38 V30 A20 20 0 0 1 52 30 V38" stroke="#3b464c" stroke-width="5" fill="none"/><rect x="6" y="34" width="14" height="22" rx="6" fill="#d23b3b"/><rect x="44" y="34" width="14" height="22" rx="6" fill="#d23b3b"/></svg>',
+camera:'<svg viewBox="0 0 64 64"><rect x="6" y="16" width="52" height="36" rx="5" fill="#8fa3ad"/><rect x="12" y="12" width="14" height="6" rx="2" fill="#6c7a80"/><circle cx="38" cy="34" r="13" fill="#3b464c"/><circle cx="38" cy="34" r="8" fill="#4fb3e8"/><rect x="11" y="22" width="9" height="5" fill="#9fe08a"/></svg>',
+folder:'<svg viewBox="0 0 64 64"><path d="M4 16 h20 l6 6 h30 v32 H4z" fill="#f2c14e"/><path d="M4 24 h56 v30 H4z" fill="#f7d371"/></svg>',
+doc:'<svg viewBox="0 0 64 64"><path d="M14 4 h26 l12 12 v44 H14z" fill="#fff" stroke="#9aa5ab" stroke-width="2"/><rect x="18" y="26" width="22" height="18" rx="2" fill="#2b5fb9"/><text x="29" y="40" font-size="13" font-family="Arial" font-weight="bold" fill="#fff" text-anchor="middle">W</text></svg>',
+txt:'<svg viewBox="0 0 64 64"><path d="M14 4 h26 l12 12 v44 H14z" fill="#fff" stroke="#9aa5ab" stroke-width="2"/><g fill="#c3cbcf"><rect x="20" y="24" width="26" height="2"/><rect x="20" y="30" width="26" height="2"/><rect x="20" y="36" width="26" height="2"/><rect x="20" y="42" width="18" height="2"/></g></svg>',
+ppt:'<svg viewBox="0 0 64 64"><path d="M14 4 h26 l12 12 v44 H14z" fill="#fff" stroke="#9aa5ab" stroke-width="2"/><rect x="18" y="26" width="22" height="18" rx="2" fill="#c8512f"/><text x="29" y="40" font-size="13" font-family="Arial" font-weight="bold" fill="#fff" text-anchor="middle">P</text></svg>',
+img:'<svg viewBox="0 0 64 64"><rect x="6" y="10" width="52" height="44" rx="3" fill="#e8f6ff" stroke="#9aa5ab" stroke-width="2"/><circle cx="46" cy="22" r="5" fill="#f2c14e"/><path d="M8 50 L24 30 L36 44 L44 36 L56 50 Z" fill="#3fa36b"/></svg>',
+audio:'<svg viewBox="0 0 64 64"><path d="M14 4 h26 l12 12 v44 H14z" fill="#fff" stroke="#9aa5ab" stroke-width="2"/><path d="M28 44 V24 L42 20 V40" stroke="#8b55d0" stroke-width="3" fill="none"/><circle cx="25" cy="44" r="4" fill="#8b55d0"/><circle cx="39" cy="40" r="4" fill="#8b55d0"/></svg>',
+video:'<svg viewBox="0 0 64 64"><rect x="6" y="12" width="52" height="40" rx="4" fill="#3b464c"/><path d="M27 23 L41 32 L27 41 Z" fill="#fff"/></svg>'
+};
+function ic(n){return ICON[n]||''}
+function shuffle(a){a=a.slice();for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]]}return a}
+function fb(el,ok,msg){el.className='fb '+(ok?'ok':'no');el.textContent=msg}
+
+
+const AR=n=>String(n).replace(/\d/g,d=>'٠١٢٣٤٥٦٧٨٩'[d]);
+const pad=n=>String(n).padStart(2,'0');
+const hh=document.getElementById('hh'),mm=document.getElementById('mm');
+for(let i=0;i<24;i++)hh.innerHTML+=`<option value="${i}">${pad(i)}</option>`;
+for(let i=0;i<60;i+=5)mm.innerHTML+=`<option value="${i}">${pad(i)}</option>`;
+hh.value=9;mm.value=30;
+let T={h:9,m:30,tz:3};
+function clockTxt(){const h=((T.h%24)+24)%24;const h12=h%12||12;return `${AR(pad(h12))}:${AR(pad(T.m))} ${h<12?'ص':'م'}<br>${AR('2026/10/06')}`}
+function drawClock(){document.getElementById('tbClock').innerHTML=clockTxt();document.getElementById('mClock').innerHTML=clockTxt()}
+document.getElementById('setT').onclick=()=>{const tz=+document.getElementById('tz').value;
+ const nh=+hh.value,nm=+mm.value;const moved=tz!==T.tz;T={h:nh+(tz-3),m:nm,tz};
+ drawClock();fb(document.getElementById('tFb'),true,moved?`تغيّرت المنطقة الزمنية، فأصبح فرق الساعة ${AR(Math.abs(tz-3))} عن توقيت الرياض.`:'تم ضبط الساعة.')};
+drawClock();
+
+/* resolution */
+const RES=[[800,600,'SVGA'],[1024,768,'XGA'],[1280,1024,'SXGA'],[1600,1200,'UXGA']];
+let curR=2,prevR=2;
+function applyR(i){const s=[1.9,1.45,1.15,0.9][i];const ic=document.getElementById('icons');
+ ic.querySelectorAll('div').forEach(d=>{d.style.width=(22*s)+'px';d.style.height=(18*s)+'px'});
+ const bar=document.getElementById('bar');bar.style.height=(24*s)+'px';bar.querySelectorAll('i').forEach(x=>{x.style.width=(14*s)+'px';x.style.height=(14*s)+'px'});
+ document.getElementById('mClock').style.fontSize=(9*s)+'px';
+ document.querySelectorAll('#res .btn').forEach((b,j)=>b.classList.toggle('on',j===i))}
+document.getElementById('res').innerHTML=RES.map((r,i)=>`<button class="btn" data-i="${i}"><span class="en">${r[0]} × ${r[1]}</span></button>`).join('');
+document.getElementById('res').addEventListener('click',e=>{const b=e.target.closest('.btn');if(!b)return;prevR=curR;curR=+b.dataset.i;applyR(curR);
+ document.getElementById('dlg').classList.add('show');
+ fb(document.getElementById('resFb'),true,curR>prevR?'دقة أعلى: الأيقونات أصغر وأكثر وضوحاً.':curR<prevR?'دقة أقل: الأيقونات أكبر حجماً.':'الدقة نفسها.')});
+document.getElementById('keep').onclick=()=>{document.getElementById('dlg').classList.remove('show');fb(document.getElementById('resFb'),true,'تم الاحتفاظ بالدقة الجديدة.')};
+document.getElementById('revert').onclick=()=>{curR=prevR;applyR(curR);document.getElementById('dlg').classList.remove('show');fb(document.getElementById('resFb'),true,'تم إرجاع الدقة السابقة.')};
+applyR(curR);
+
+/* backgrounds */
+const BG=['linear-gradient(160deg,#0a3d7a,#1c6fd1)','linear-gradient(180deg,#0b4d6e,#36a3c9 60%,#e8d9a8)','linear-gradient(180deg,#0b0b2b,#2c1f5e 60%,#f28a3c)','linear-gradient(180deg,#5aa9e6,#c9e7f7 55%,#d9b77a)','linear-gradient(160deg,#2f6b3a,#8cc152)'];
+document.getElementById('bgs').innerHTML=BG.map((b,i)=>`<button style="background:${b}" data-i="${i}" class="${i?'':'on'}" aria-label="خلفية ${i+1}"></button>`).join('');
+document.getElementById('bgs').addEventListener('click',e=>{const b=e.target.closest('button');if(!b)return;document.getElementById('mock').style.background=BG[+b.dataset.i];
+ document.querySelectorAll('#bgs button').forEach(x=>x.classList.toggle('on',x===b))});
+
+/* volume */
+function vt(id){const v=+document.getElementById(id).value;document.getElementById(id+'t').textContent=v===0?'صامت':AR(v)}
+['v1','v2'].forEach(id=>{document.getElementById(id).addEventListener('input',()=>vt(id));vt(id)});
+let actx;document.getElementById('beep').onclick=()=>{try{actx=actx||new (window.AudioContext||window.webkitAudioContext)();
+ const o=actx.createOscillator(),g=actx.createGain();o.frequency.value=660;g.gain.value=(+document.getElementById('v1').value/100)*(+document.getElementById('v2').value/100)*0.6;
+ o.connect(g);g.connect(actx.destination);o.start();o.stop(actx.currentTime+0.35)}catch(_){}};
+
+/* skills + terms */
+const SK=['التمييز بين مكونات الحاسب والأجهزة الملحقة به.','استخدام أحد البرامج الموجودة على جهاز الحاسب.','إنشاء الملفات والمجلدات.','تغيير إعدادات التاريخ والوقت.','تغيير إعدادات شاشة الحاسب.','تغيير إعدادات أصوات النظام.'];
+document.getElementById('skills').innerHTML='<tr><th>المهارة</th><th>أتقن</th><th>لم أتقن</th></tr>'+SK.map((s,i)=>`<tr><td>${i+1}. ${s}</td><td><input type="radio" name="s${i}" aria-label="أتقن"></td><td><input type="radio" name="s${i}" aria-label="لم أتقن"></td></tr>`).join('');
+const TR=[['شاشة','Monitor'],['ملف','File'],['مجلد','Folder'],['سلة المحذوفات','Recycle bin'],['صندوق الحاسب','Computer case'],['لوحة المفاتيح','Keyboard'],['دقة الشاشة','Screen resolution'],['مكبر الصوت','Speaker'],['كاميرا الويب','Webcam']];
+document.getElementById('terms').innerHTML=TR.map((t,i)=>`<button class="flip" data-i="${i}">${t[0]}</button>`).join('');
+document.getElementById('terms').addEventListener('click',e=>{const b=e.target.closest('.flip');if(!b)return;const t=TR[+b.dataset.i];const back=b.classList.toggle('back');
+ b.innerHTML=back?`<span class="en" style="color:var(--teal-d);font-weight:bold">${t[1]}</span>`:t[0]});
+
+</script>
+</body>
+</html>

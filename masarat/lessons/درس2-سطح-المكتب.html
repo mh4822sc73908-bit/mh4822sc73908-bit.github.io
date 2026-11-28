@@ -1,0 +1,362 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>الدرس الثاني: سطح المكتب</title>
+<meta name="masar-grades" content="4">
+<meta name="masar-unit" content="الوحدة الأولى: تعلم الأساسيات">
+<style>
+:root{--teal:#11897f;--teal-d:#0b5f58;--teal-s:#e2f3f0;--ink:#16302d;--mut:#5b706d;--line:#d8e3e0;--bg:#f5faf9;
+--good:#1e8a4c;--good-s:#e1f3e8;--bad:#c43c3c;--bad-s:#fbe4e2;--sun:#f2a516;--sky:#2b8dbf}
+*{box-sizing:border-box}
+body{margin:0;font-family:Tahoma,"Segoe UI",Arial,sans-serif;background:var(--bg);color:var(--ink);line-height:1.85;font-size:17px}
+.wrap{max-width:920px;margin:0 auto;padding:16px}
+.hero{background:linear-gradient(135deg,#0b5f58,#1a7fa8);color:#fff;border-radius:18px;padding:22px 24px;position:relative;overflow:hidden}
+.hero::after{content:"";position:absolute;inset-inline-start:-60px;top:-60px;width:240px;height:240px;border-radius:50%;
+ background:repeating-radial-gradient(circle,rgba(255,255,255,.18) 0 3px,transparent 3px 14px)}
+.hero .unit{font-size:14px;opacity:.9}
+.hero h1{margin:4px 0 10px;font-size:30px;line-height:1.3}
+.goals{background:rgba(255,255,255,.14);border-radius:12px;padding:10px 14px;position:relative;z-index:1}
+.goals b{display:block;margin-bottom:2px}
+.goals ul{margin:0;padding-inline-start:20px}
+section.card{background:#fff;border:1px solid var(--line);border-radius:16px;padding:18px 20px;margin-top:16px}
+h2{font-size:22px;color:var(--teal-d);margin:0 0 8px;display:flex;align-items:center;gap:10px}
+h2 .n{background:var(--teal);color:#fff;border-radius:9px;min-width:32px;height:32px;display:inline-grid;place-items:center;font-size:16px}
+h3{font-size:18px;color:var(--teal-d);margin:14px 0 6px}
+p{margin:6px 0}
+.hint{background:#fff7e6;border:1px solid #f6d79a;border-radius:12px;padding:10px 14px;font-size:15.5px}
+.hint b{color:#9a5b00}
+.info{background:var(--teal-s);border-radius:12px;padding:10px 14px;font-size:15.5px}
+.steps{counter-reset:s;list-style:none;padding:0;margin:8px 0;display:grid;gap:6px}
+.steps li{counter-increment:s;display:flex;gap:10px;align-items:flex-start;background:#f8fbfb;border:1px solid var(--line);border-radius:10px;padding:8px 12px}
+.steps li::before{content:counter(s);background:var(--sky);color:#fff;border-radius:50%;min-width:26px;height:26px;display:grid;place-items:center;font-size:14px;margin-top:3px}
+.en{direction:ltr;unicode-bidi:isolate;font-family:"Segoe UI",Arial,sans-serif;color:var(--mut);font-size:.9em}
+.btn{font:inherit;font-size:15px;border:1.5px solid var(--teal);background:#fff;color:var(--teal-d);border-radius:10px;padding:6px 14px;cursor:pointer}
+.btn:hover{background:var(--teal-s)}
+.btn.pri{background:var(--teal);color:#fff}
+.btn.on{background:var(--teal);color:#fff}
+.btn:disabled{opacity:.45;cursor:not-allowed}
+.row{display:flex;gap:8px;flex-wrap:wrap;align-items:center}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:10px}
+.dev{border:1.5px solid var(--line);border-radius:14px;background:#fff;padding:10px;text-align:center;cursor:pointer;font:inherit;color:inherit;transition:.15s}
+.dev:hover{border-color:var(--teal);transform:translateY(-2px)}
+.dev svg{width:64px;height:64px;display:block;margin:0 auto 4px}
+.dev .nm{font-weight:bold;display:block}
+.dev .more{display:none;font-size:14px;margin-top:6px;border-top:1px dashed var(--line);padding-top:6px}
+.dev.open .more{display:block}
+.dev.open{border-color:var(--teal);background:#fbfefd}
+.tag{display:inline-block;border-radius:99px;padding:0 10px;font-size:13px;font-weight:bold}
+.tag.main{background:#e4edff;color:#2f5fc4}.tag.ext{background:#fdeee0;color:#b0560c}
+.fb{min-height:1.6em;font-weight:bold;margin-top:6px}
+.fb.ok{color:var(--good)}.fb.no{color:var(--bad)}
+.score{font-weight:bold;color:var(--teal-d)}
+.bins{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:10px}
+.bin{border:2px dashed var(--line);border-radius:14px;padding:10px;min-height:120px;cursor:pointer;background:#fbfdfd}
+.bin:hover{border-color:var(--teal)}
+.bin h4{margin:0 0 6px;font-size:16px}
+.bin .items{display:flex;flex-wrap:wrap;gap:6px}
+.chip{display:inline-flex;align-items:center;gap:4px;border:1.5px solid var(--line);border-radius:10px;padding:3px 10px;background:#fff;font:inherit;font-size:15px;cursor:pointer;color:inherit}
+.chip svg{width:26px;height:26px}
+.chip.sel{border-color:var(--teal);background:var(--teal-s)}
+.chip.done{border-color:var(--good);background:var(--good-s);cursor:default}
+.chip.wrong{border-color:var(--bad);background:var(--bad-s)}
+.task{border:1px solid var(--line);border-radius:12px;padding:10px;margin-top:8px}
+.task .q{font-weight:bold;margin-bottom:6px}
+.terms{display:grid;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:8px}
+.flip{border:1.5px solid var(--line);border-radius:12px;padding:12px;text-align:center;cursor:pointer;background:#fff;font:inherit;color:inherit;min-height:64px}
+.flip.back{background:var(--teal-s);border-color:var(--teal)}
+.hist{background:#fdf0f5;border:1px solid #f1c3d5;border-radius:12px;padding:10px 14px;font-size:15.5px}
+.hist b{color:#a8336a}
+[data-masar]{display:none}
+@media (max-width:560px){.bins{grid-template-columns:1fr}.hero h1{font-size:24px}}
+</style>
+</head>
+<body>
+<div class="wrap">
+<header class="hero"><div class="unit">المهارات الرقمية · الصف الرابع الابتدائي · الوحدة الأولى: تعلم الأساسيات</div><h1>الدرس الثاني: سطح المكتب</h1>
+<div class="goals"><b>ستتعلم في هذا الدرس:</b><ul><li>أجزاء سطح المكتب في ويندوز.</li><li>الملفات وأنواعها وأسماؤها وامتداداتها.</li><li>إنشاء الملفات وفتحها وحذفها.</li><li>المجلدات الرئيسة والفرعية، ونسخ الملفات ونقلها.</li><li>استخدام البرامج والبحث عن مساعدة.</li></ul></div></header>
+
+<style>
+.desk{position:relative;aspect-ratio:16/9;max-width:100%;border-radius:12px;overflow:hidden;background:linear-gradient(160deg,#0a3d7a,#1c6fd1 55%,#0a3d7a);direction:ltr;user-select:none}
+.desk .win{position:absolute;left:38%;top:16%;width:24%;height:52%;display:grid;grid-template-columns:1fr 1fr;gap:4%;transform:perspective(400px) rotateY(-18deg);opacity:.55}
+.desk .win i{background:#7fc3ff}
+.tb{position:absolute;left:0;right:0;bottom:0;height:12%;background:#0e1a2b;display:flex;align-items:center;padding:0 1.5%;gap:1.5%}
+.hs{position:absolute;border:0;background:transparent;cursor:pointer;padding:0;color:#fff;font:inherit;width:24px;height:24px;transform:translate(-50%,-50%)}
+.hs .dot{width:22px;height:22px;border-radius:50%;background:#f2a516;color:#16302d;font-size:13px;font-weight:bold;display:grid;place-items:center;box-shadow:0 0 0 4px rgba(242,165,22,.35);animation:pulse 1.6s infinite}
+.hs.seen .dot{background:#3fbf6b;box-shadow:none;animation:none}
+@keyframes pulse{50%{box-shadow:0 0 0 8px rgba(242,165,22,.1)}}
+@media (prefers-reduced-motion:reduce){.hs .dot{animation:none}}
+.deskInfo{margin-top:10px;min-height:56px}
+.tree{font-size:16px}
+.tree ul{list-style:none;padding-inline-start:24px;margin:4px 0;border-inline-start:2px dashed var(--line)}
+.tree li{margin:4px 0}
+.tree .f{display:inline-flex;align-items:center;gap:6px}
+.tree svg{width:24px;height:24px}
+.anat{display:flex;gap:4px;align-items:flex-end;justify-content:center;flex-wrap:wrap;margin-top:10px;direction:ltr}
+.anat span{border-radius:8px;padding:4px 10px;font-weight:bold}
+.anat .nmP{background:#e4edff;color:#2f5fc4}.anat .dt{background:#f2a516;color:#fff}.anat .ex{background:#fdeee0;color:#b0560c}
+input.t{font:inherit;border:1.5px solid var(--line);border-radius:10px;padding:6px 12px;min-width:0;width:240px;max-width:100%}
+.fold{border:2px solid var(--line);border-radius:12px;padding:8px;min-height:110px;background:#fffbea}
+.fold h4{margin:0 0 6px;display:flex;align-items:center;gap:6px;font-size:16px}
+.fold h4 svg{width:28px;height:28px}
+.file{display:inline-flex;align-items:center;gap:4px;background:#fff;border:1px solid var(--line);border-radius:8px;padding:2px 8px;margin:3px;font-size:15px;transition:.3s}
+.file svg{width:24px;height:24px}
+.file.ghost{opacity:.35;border-style:dashed}
+.calc{width:240px;max-width:100%;background:#eef3f6;border:1px solid var(--line);border-radius:12px;padding:10px;direction:ltr}
+.calc .scr{background:#fff;border-radius:8px;padding:6px 10px;text-align:right;font-size:26px;font-family:"Segoe UI",Arial;min-height:46px;overflow:hidden;white-space:nowrap}
+.calc .keys{display:grid;grid-template-columns:repeat(4,1fr);gap:6px;margin-top:8px}
+.calc button{font:inherit;font-size:18px;padding:8px 0;border:0;border-radius:8px;background:#fff;cursor:pointer}
+.calc button.op{background:#d9ecf7}.calc button.eq{background:var(--teal);color:#fff}
+.order{display:flex;flex-direction:column;gap:6px;margin-top:8px}
+.order .chip{justify-content:flex-start}
+.order .chip .num{background:var(--teal);color:#fff;border-radius:50%;width:24px;height:24px;display:inline-grid;place-items:center;font-size:13px}
+</style>
+
+<section class="card">
+<h2><span class="n">1</span>سطح المكتب</h2>
+<p>عند بدء تشغيل الحاسب تظهر الشاشة الرئيسة لنظام التشغيل <b>مايكروسوفت ويندوز</b> <span class="en">(Microsoft Windows)</span>. تسمى هذه النافذة <b>سطح المكتب</b> <span class="en">(Desktop)</span>، وتتكون من شريط المهام، ومساحة العمل، وبعض الرموز، وزر بدء.</p>
+<p>اضغط على النقاط البرتقالية لتكتشف أجزاء سطح المكتب.</p>
+<div class="desk" id="desk">
+ <div class="win"><i></i><i></i><i></i><i></i></div>
+ <div style="position:absolute;right:3%;top:5%;width:7%;text-align:center;color:#fff;font-size:11px"><svg viewBox="0 0 40 40" width="34"><path d="M10 12h20l-2 24H12z" fill="#cfe6f5" stroke="#fff"/><rect x="8" y="9" width="24" height="3" fill="#e8f3fb"/><path d="M16 20l4-3 4 3M20 17v10" stroke="#2b8dbf" stroke-width="2" fill="none"/></svg><div>سلة المحذوفات</div></div>
+ <div class="tb">
+  <svg viewBox="0 0 20 20" width="22" style="flex:none"><rect x="1" y="1" width="8" height="8" fill="#7fc3ff"/><rect x="11" y="1" width="8" height="8" fill="#7fc3ff"/><rect x="1" y="11" width="8" height="8" fill="#7fc3ff"/><rect x="11" y="11" width="8" height="8" fill="#7fc3ff"/></svg>
+  <svg viewBox="0 0 20 20" width="18" style="flex:none"><circle cx="8" cy="8" r="5" stroke="#fff" stroke-width="2" fill="none"/><line x1="12" y1="12" x2="17" y2="17" stroke="#fff" stroke-width="2"/></svg>
+  <svg viewBox="0 0 20 20" width="22" style="flex:none"><path d="M2 5h6l2 2h8v10H2z" fill="#f2c14e"/></svg>
+  <svg viewBox="0 0 20 20" width="22" style="flex:none"><circle cx="10" cy="10" r="8" fill="#1fa0c9"/><circle cx="11" cy="11" r="4" fill="#3fd18a"/></svg>
+  <span style="flex:1"></span>
+  <span style="color:#fff;font-size:11px">ENG</span>
+  <svg viewBox="0 0 20 20" width="16"><path d="M3 8h3l4-4v12l-4-4H3z" fill="#fff"/><path d="M13 7q3 3 0 6" stroke="#fff" fill="none"/></svg>
+  <svg viewBox="0 0 20 20" width="16"><rect x="2" y="5" width="14" height="9" stroke="#fff" fill="none"/><rect x="7" y="15" width="4" height="2" fill="#fff"/></svg>
+  <span style="color:#fff;font-size:11px;line-height:1.2;text-align:center" id="clk">١٢:٠٠<br>٢٠٢٦/١٠/٦</span>
+ </div>
+</div>
+<div class="deskInfo info" id="deskInfo">اضغط على أي نقطة لتعرف اسم الجزء ووظيفته.</div>
+<p class="score" id="deskCount"></p>
+</section>
+
+<section class="card">
+<h2><span class="n">2</span>الملفات</h2>
+<p>المهمة الرئيسة للحاسب هي إدارة البيانات والمعلومات. تسمى البيانات المخزنة في الحاسب <b>الملفات</b> <span class="en">(Files)</span>. قد يكون الملف نصاً، أو صورة، أو ملفاً صوتياً، أو عرضاً تقديمياً، أو فيديو. ولكل نوع أيقونة تساعدك على معرفته.</p>
+<div class="grid" id="ftypes"></div>
+<h3>اسم الملف</h3>
+<p>احفظ ملفاتك بأسماء فريدة تناسب محتواها، لتجدها بسهولة وتعرف ما فيها. وتجنّب الأسماء العامة مثل «ملف1» و«ملفي».</p>
+<h3>امتداد الملف</h3>
+<p>لكل ملف <b>امتداد</b> يشير إلى نوعه، وتوجد دائماً <b>نقطة</b> بين اسم الملف وامتداده. اكتب اسم ملف وشاهد أجزاءه:</p>
+<div class="row"><input class="t" id="fname" value="النحو.docx" dir="auto" aria-label="اسم الملف"></div>
+<div class="anat" id="anat"></div>
+<div class="fb" id="fnameFb"></div>
+<h3>نقل الملفات</h3>
+<p>تُخزَّن الملفات على الحاسب أو الهاتف الذكي أو ذاكرة الكاميرا الرقمية. ويمكن نقلها بين الأجهزة بتوصيلها ببعض، أو عبر الشبكة المحلية، أو عبر التخزين السحابي.</p>
+</section>
+
+<section class="card">
+<h2><span class="n">3</span>إنشاء الملفات وفتحها وحذفها</h2>
+<p>نستخدم برامج مختلفة لإنشاء الملفات حسب نوعها: مستند في <b>مايكروسوفت وورد</b>، وصورة في <b>الرسام</b> <span class="en">(Paint)</span>.</p>
+<h3>لإنشاء ملف صورة باستخدام الرسام</h3>
+<ol class="steps">
+ <li>اضغط زر <b>بدء</b> <span class="en">(Start)</span> ثم <b>البرامج الملحقة لويندوز</b>.</li>
+ <li>اضغط على <b>الرسام</b> <span class="en">(Paint)</span> وارسم ما يعجبك.</li>
+ <li>اضغط <b>ملف</b> <span class="en">(File)</span> ثم <b>حفظ</b> <span class="en">(Save)</span>.</li>
+ <li>اكتب اسم الملف ثم اضغط <b>حفظ</b>.</li>
+</ol>
+<h3>فتح ملف</h3>
+<p>حدد موقع الملف واضغط عليه <b>ضغطة مزدوجة</b>، أو اضغط عليه بزر الفأرة الأيمن واختر <b>فتح</b> <span class="en">(Open)</span>.</p>
+<h3>حذف ملف</h3>
+<p>اضغط بزر الفأرة الأيمن على الملف، ثم اختر <b>حذف</b> <span class="en">(Delete)</span>. يذهب الملف إلى <b>سلة المحذوفات</b>.</p>
+<div class="hist"><b>لمحة تاريخية:</b> استُخدم مصطلح «ملف» لأول مرة للإشارة إلى تخزين البيانات في الحاسب عام 1950.</div>
+</section>
+
+<section class="card">
+<h2><span class="n">4</span>المجلدات</h2>
+<p><b>المجلد</b> <span class="en">(Folder)</span> مساحة تخزينية على القرص الصلب تحفظ فيها ملفاتك وبرامجك وتنظمها.</p>
+<h3>لإنشاء مجلد جديد</h3>
+<ol class="steps">
+ <li>اضغط زر <b>بدء</b> ثم <b>المستندات</b> <span class="en">(Documents)</span>.</li>
+ <li>اضغط بزر الفأرة الأيمن على منطقة فارغة.</li>
+ <li>اختر <b>جديد</b> <span class="en">(New)</span> ثم <b>مجلد</b> <span class="en">(Folder)</span>.</li>
+ <li>اكتب اسماً للمجلد ثم اضغط <b>Enter</b>.</li>
+</ol>
+<h3>نشاط: رتّب خطوات إنشاء مجلد على سطح المكتب</h3>
+<p>اضغط على الخطوات بالترتيب الصحيح.</p>
+<div class="order" id="order"></div>
+<div class="fb" id="orderFb"></div>
+<div class="row"><button class="btn" id="orderReset">أعد الترتيب</button></div>
+
+<h3>اسم المجلد</h3>
+<p>يُفضَّل أن يصف اسم المجلد محتوياته. ولإعادة تسميته: اضغط بزر الفأرة الأيمن عليه، واختر <b>إعادة التسمية</b> <span class="en">(Rename)</span>، واكتب الاسم الجديد، ثم اضغط <b>Enter</b>.</p>
+<div class="info">يمكنك استخدام الحروف والأرقام في اسم المجلد، لكن <b>لا تستخدم الرموز</b> <span class="en">/ \ : * ? " &lt; &gt; |</span> وينطبق ذلك على أسماء الملفات.</div>
+<p style="margin-top:8px">جرّب: اكتب اسم مجلد وتحقق هل هو مقبول.</p>
+<div class="row"><input class="t" id="foldName" value="الصيف / الشتاء" dir="auto" aria-label="اسم المجلد"><button class="btn pri" id="foldCheck">تحقّق</button></div>
+<div class="fb" id="foldFb"></div>
+
+<h3>المجلدات الرئيسة والمجلدات الفرعية</h3>
+<p><b>المجلد الفرعي</b> مجلد داخل مجلد آخر. مثال: داخل مجلد «المواد الدراسية» خمسة مجلدات فرعية. وتستخدم زر الخلف <span class="en">(Back)</span> للعودة إلى المجلد الرئيس.</p>
+<div class="tree"><div class="f"><svg viewBox="0 0 64 64" width="24" height="24"><path d="M4 16 h20 l6 6 h30 v32 H4z" fill="#f2c14e"/><path d="M4 24 h56 v30 H4z" fill="#f7d371"/></svg> <b>المواد الدراسية</b></div>
+ <ul><li class="f"><svg viewBox="0 0 64 64" width="24" height="24"><path d="M4 16 h20 l6 6 h30 v32 H4z" fill="#f2c14e"/><path d="M4 24 h56 v30 H4z" fill="#f7d371"/></svg> توحيد</li><li class="f"><svg viewBox="0 0 64 64" width="24" height="24"><path d="M4 16 h20 l6 6 h30 v32 H4z" fill="#f2c14e"/><path d="M4 24 h56 v30 H4z" fill="#f7d371"/></svg> رياضيات</li><li class="f"><svg viewBox="0 0 64 64" width="24" height="24"><path d="M4 16 h20 l6 6 h30 v32 H4z" fill="#f2c14e"/><path d="M4 24 h56 v30 H4z" fill="#f7d371"/></svg> علوم</li><li class="f"><svg viewBox="0 0 64 64" width="24" height="24"><path d="M4 16 h20 l6 6 h30 v32 H4z" fill="#f2c14e"/><path d="M4 24 h56 v30 H4z" fill="#f7d371"/></svg> قراءة</li><li class="f"><svg viewBox="0 0 64 64" width="24" height="24"><path d="M4 16 h20 l6 6 h30 v32 H4z" fill="#f2c14e"/><path d="M4 24 h56 v30 H4z" fill="#f7d371"/></svg> كتابة</li></ul></div>
+</section>
+
+<section class="card">
+<h2><span class="n">5</span>نسخ الملف ونقله</h2>
+<p><b>النسخ</b> <span class="en">(Copy)</span>: إنشاء نسخة جديدة من الملف مع بقاء الأصل في مكانه.<br><b>النقل</b> <span class="en">(Cut ثم Paste)</span>: نقل الملف من مكان إلى آخر مع حذفه من المكان الأصلي.</p>
+<p>جرّب بنفسك على ملف «الدرس 1»:</p>
+<div class="bins">
+ <div class="fold" id="fa"><h4><svg viewBox="0 0 64 64" width="24" height="24"><path d="M4 16 h20 l6 6 h30 v32 H4z" fill="#f2c14e"/><path d="M4 24 h56 v30 H4z" fill="#f7d371"/></svg> المواد الدراسية</h4><div class="items"></div></div>
+ <div class="fold" id="fb2"><h4><svg viewBox="0 0 64 64" width="24" height="24"><path d="M4 16 h20 l6 6 h30 v32 H4z" fill="#f2c14e"/><path d="M4 24 h56 v30 H4z" fill="#f7d371"/></svg> علوم</h4><div class="items"></div></div>
+</div>
+<div class="row" style="margin-top:10px"><button class="btn" id="bCopy">نسخ ثم لصق في «علوم»</button><button class="btn" id="bCut">قص ثم لصق في «علوم»</button><button class="btn" id="bReset">إعادة</button></div>
+<div class="fb" id="cfb"></div>
+<div class="hint"><b>معلومة:</b> سحب المجلد أو الملف وإفلاته في موقع آخر على الحاسب نفسه ينقله، أما سحبه إلى جهاز تخزين ملحق فيعمل نسخة منه.</div>
+</section>
+
+<section class="card">
+<h2><span class="n">6</span>استخدام البرامج: الحاسبة</h2>
+<p>يحتوي الحاسب على برامج كثيرة للعمل أو الترفيه، منها <b>الحاسبة</b> <span class="en">(Calculator)</span> لإجراء الحسابات.</p>
+<ol class="steps"><li>اضغط زر <b>بدء</b> <span class="en">(Start)</span>.</li><li>مرّر قائمة التطبيقات للأسفل واضغط على <b>الحاسبة</b>.</li><li>ستعمل الحاسبة، ويمكنك الآن إجراء عملية حسابية.</li></ol>
+<p>ويمكنك أيضاً فتحها بالضغط على زر البحث وكتابة اسمها، أو من رمزها على شريط المهام أو سطح المكتب.</p>
+<h3>جرّب الحاسبة</h3>
+<div class="calc"><div class="scr" id="scr">0</div><div class="keys" id="keys"></div></div>
+<div class="hint" style="margin-top:10px"><b>معلومة:</b> يمكنك كتابة الأرقام من مفاتيح الأرقام في الجزء الأيمن من لوحة المفاتيح، بعد التأكد من تشغيل زر <span class="en">Num Lock</span>.</div>
+</section>
+
+<section class="card">
+<h2><span class="n">7</span>البحث عن مساعدة</h2>
+<ol class="steps">
+ <li>اضغط زر <b>بدء</b>، ثم اضغط على <b>الحصول على التعليمات</b> <span class="en">(Get Help)</span>.</li>
+ <li>صف مشكلتك، مثل: «لا أستطيع الطباعة»، ثم اضغط <b>إرسال الرسالة</b>.</li>
+ <li>أكّد المشكلة بالضغط على <b>نعم</b>، ثم اختر أحد الحلول المقترحة.</li>
+ <li>اقرأ الخطوات واتبعها بعناية لحل مشكلتك.</li>
+</ol>
+</section>
+
+</div>
+
+<ul data-masar="match">
+ <li>سلة المحذوفات | تذهب إليها الملفات المحذوفة</li>
+ <li>زر بدء | يفتح قائمة البرامج</li>
+ <li>المجلد | مساحة لحفظ الملفات وتنظيمها</li>
+ <li>النسخ | نسخة جديدة مع بقاء الأصل</li>
+ <li>النقل | نقل الملف وحذفه من مكانه الأصلي</li>
+</ul>
+<ol data-masar="training">
+ <li>لإنشاء ملف صورة نستخدم برنامج: | *الرسام | الحاسبة | الحصول على التعليمات</li>
+ <li>لحذف ملف نضغط عليه بزر الفأرة الأيمن ثم نختار: | *حذف | فتح | نسخ</li>
+ <li>إذا أردت أن يصبح لديك مجلدان متطابقان تختار: | *نسخ | قص | حذف</li>
+ <li>بين اسم الملف وامتداده توجد دائماً: | *نقطة | فاصلة | مسافة</li>
+</ol>
+<ol data-masar="quiz">
+ <li>تسمى النافذة الرئيسة التي تظهر عند تشغيل ويندوز: | *سطح المكتب | شريط المهام | سلة المحذوفات | مستكشف الملفات</li>
+ <li>في اسم الملف «النحو.docx» الامتداد هو: | *docx | النحو | النقطة | الأيقونة</li>
+ <li>نقل الملف يعني: | *نقله إلى مكان آخر مع حذفه من مكانه الأصلي | إنشاء نسخة مع بقاء الأصل | حذفه نهائياً | تغيير اسمه</li>
+ <li>أيّ أسماء المجلدات الآتية مقبول؟ | *المنزل | أعلى/أسفل | الصيف / الشتاء | &lt;المصاريف&gt;</li>
+ <li>المجلد الفرعي هو: | *مجلد داخل مجلد آخر | ملف صورة | برنامج للرسم | سلة المحذوفات</li>
+ <li>لفتح ملف نضغط عليه: | *ضغطة مزدوجة | ضغطة بالزر الأيمن ثم حذف | سحبه إلى سلة المحذوفات | ضغطة على زر Num Lock</li>
+</ol>
+
+<script>
+const ICON={
+monitor:'<svg viewBox="0 0 64 64"><rect x="6" y="8" width="52" height="34" rx="3" fill="#2f3e46"/><rect x="10" y="12" width="44" height="26" fill="#4fb3e8"/><path d="M14 32 C24 22 34 34 50 20" stroke="#bfe8ff" stroke-width="2" fill="none"/><rect x="28" y="42" width="8" height="8" fill="#9aa5ab"/><rect x="18" y="50" width="28" height="5" rx="2" fill="#c3cbcf"/></svg>',
+case:'<svg viewBox="0 0 64 64"><rect x="18" y="4" width="28" height="56" rx="3" fill="#e8ecef" stroke="#9aa5ab" stroke-width="2"/><rect x="22" y="10" width="20" height="5" fill="#9aa5ab"/><rect x="22" y="18" width="20" height="3" fill="#c3cbcf"/><circle cx="32" cy="34" r="4" fill="#3fbf6b"/><g fill="#9aa5ab"><rect x="24" y="46" width="16" height="2"/><rect x="24" y="50" width="16" height="2"/><rect x="24" y="54" width="16" height="2"/></g></svg>',
+keyboard:'<svg viewBox="0 0 64 64"><rect x="4" y="20" width="56" height="26" rx="3" fill="#eef1f3" stroke="#9aa5ab" stroke-width="2"/><g fill="#9aa5ab"><rect x="9" y="25" width="5" height="4"/><rect x="16" y="25" width="5" height="4"/><rect x="23" y="25" width="5" height="4"/><rect x="30" y="25" width="5" height="4"/><rect x="37" y="25" width="5" height="4"/><rect x="44" y="25" width="5" height="4"/><rect x="51" y="25" width="4" height="4"/><rect x="9" y="31" width="5" height="4"/><rect x="16" y="31" width="5" height="4"/><rect x="23" y="31" width="5" height="4"/><rect x="30" y="31" width="5" height="4"/><rect x="37" y="31" width="5" height="4"/><rect x="44" y="31" width="11" height="4"/><rect x="16" y="38" width="32" height="4"/></g></svg>',
+mouse:'<svg viewBox="0 0 64 64"><rect x="18" y="8" width="28" height="46" rx="14" fill="#eef1f3" stroke="#9aa5ab" stroke-width="2"/><line x1="32" y1="9" x2="32" y2="26" stroke="#9aa5ab" stroke-width="2"/><rect x="30" y="14" width="4" height="8" rx="2" fill="#6c7a80"/><path d="M8 4 Q20 2 32 9" stroke="#6c7a80" stroke-width="2" fill="none"/></svg>',
+printer:'<svg viewBox="0 0 64 64"><rect x="18" y="6" width="28" height="16" fill="#fff" stroke="#9aa5ab" stroke-width="2"/><rect x="6" y="20" width="52" height="24" rx="4" fill="#3b464c"/><rect x="12" y="26" width="12" height="7" fill="#9fe08a"/><circle cx="48" cy="30" r="2.5" fill="#ccc"/><rect x="16" y="40" width="32" height="18" fill="#fff" stroke="#9aa5ab" stroke-width="2"/><rect x="21" y="45" width="22" height="2" fill="#c3cbcf"/><rect x="21" y="50" width="16" height="2" fill="#c3cbcf"/></svg>',
+mic:'<svg viewBox="0 0 64 64"><rect x="36" y="4" width="9" height="20" rx="4.5" transform="rotate(30 40 14)" fill="#6c7a80"/><path d="M36 22 Q28 34 32 46" stroke="#3b464c" stroke-width="3" fill="none"/><ellipse cx="32" cy="54" rx="16" ry="5" fill="#3b464c"/><rect x="28" y="46" width="8" height="6" fill="#3b464c"/></svg>',
+speakers:'<svg viewBox="0 0 64 64"><rect x="6" y="12" width="22" height="42" rx="3" fill="#eef1f3" stroke="#9aa5ab" stroke-width="2"/><circle cx="17" cy="24" r="5" fill="#9aa5ab"/><circle cx="17" cy="42" r="8" fill="#6c7a80"/><rect x="36" y="12" width="22" height="42" rx="3" fill="#eef1f3" stroke="#9aa5ab" stroke-width="2"/><circle cx="47" cy="24" r="5" fill="#9aa5ab"/><circle cx="47" cy="42" r="8" fill="#6c7a80"/></svg>',
+webcam:'<svg viewBox="0 0 64 64"><circle cx="32" cy="24" r="16" fill="#eef1f3" stroke="#9aa5ab" stroke-width="2"/><circle cx="32" cy="24" r="9" fill="#3b464c"/><circle cx="32" cy="24" r="4" fill="#4fb3e8"/><circle cx="35" cy="21" r="1.5" fill="#fff"/><path d="M22 52 Q32 36 42 52 Z" fill="#9aa5ab"/><rect x="18" y="52" width="28" height="5" rx="2" fill="#6c7a80"/></svg>',
+scanner:'<svg viewBox="0 0 64 64"><path d="M8 20 L52 6 L56 12 L12 26 Z" fill="#dfe5e8" stroke="#9aa5ab" stroke-width="2"/><rect x="6" y="30" width="52" height="18" rx="3" fill="#eef1f3" stroke="#9aa5ab" stroke-width="2"/><rect x="10" y="33" width="44" height="5" fill="#bfe8ff"/><circle cx="48" cy="43" r="2" fill="#3fbf6b"/></svg>',
+headphones:'<svg viewBox="0 0 64 64"><path d="M12 38 V30 A20 20 0 0 1 52 30 V38" stroke="#3b464c" stroke-width="5" fill="none"/><rect x="6" y="34" width="14" height="22" rx="6" fill="#d23b3b"/><rect x="44" y="34" width="14" height="22" rx="6" fill="#d23b3b"/></svg>',
+camera:'<svg viewBox="0 0 64 64"><rect x="6" y="16" width="52" height="36" rx="5" fill="#8fa3ad"/><rect x="12" y="12" width="14" height="6" rx="2" fill="#6c7a80"/><circle cx="38" cy="34" r="13" fill="#3b464c"/><circle cx="38" cy="34" r="8" fill="#4fb3e8"/><rect x="11" y="22" width="9" height="5" fill="#9fe08a"/></svg>',
+folder:'<svg viewBox="0 0 64 64"><path d="M4 16 h20 l6 6 h30 v32 H4z" fill="#f2c14e"/><path d="M4 24 h56 v30 H4z" fill="#f7d371"/></svg>',
+doc:'<svg viewBox="0 0 64 64"><path d="M14 4 h26 l12 12 v44 H14z" fill="#fff" stroke="#9aa5ab" stroke-width="2"/><rect x="18" y="26" width="22" height="18" rx="2" fill="#2b5fb9"/><text x="29" y="40" font-size="13" font-family="Arial" font-weight="bold" fill="#fff" text-anchor="middle">W</text></svg>',
+txt:'<svg viewBox="0 0 64 64"><path d="M14 4 h26 l12 12 v44 H14z" fill="#fff" stroke="#9aa5ab" stroke-width="2"/><g fill="#c3cbcf"><rect x="20" y="24" width="26" height="2"/><rect x="20" y="30" width="26" height="2"/><rect x="20" y="36" width="26" height="2"/><rect x="20" y="42" width="18" height="2"/></g></svg>',
+ppt:'<svg viewBox="0 0 64 64"><path d="M14 4 h26 l12 12 v44 H14z" fill="#fff" stroke="#9aa5ab" stroke-width="2"/><rect x="18" y="26" width="22" height="18" rx="2" fill="#c8512f"/><text x="29" y="40" font-size="13" font-family="Arial" font-weight="bold" fill="#fff" text-anchor="middle">P</text></svg>',
+img:'<svg viewBox="0 0 64 64"><rect x="6" y="10" width="52" height="44" rx="3" fill="#e8f6ff" stroke="#9aa5ab" stroke-width="2"/><circle cx="46" cy="22" r="5" fill="#f2c14e"/><path d="M8 50 L24 30 L36 44 L44 36 L56 50 Z" fill="#3fa36b"/></svg>',
+audio:'<svg viewBox="0 0 64 64"><path d="M14 4 h26 l12 12 v44 H14z" fill="#fff" stroke="#9aa5ab" stroke-width="2"/><path d="M28 44 V24 L42 20 V40" stroke="#8b55d0" stroke-width="3" fill="none"/><circle cx="25" cy="44" r="4" fill="#8b55d0"/><circle cx="39" cy="40" r="4" fill="#8b55d0"/></svg>',
+video:'<svg viewBox="0 0 64 64"><rect x="6" y="12" width="52" height="40" rx="4" fill="#3b464c"/><path d="M27 23 L41 32 L27 41 Z" fill="#fff"/></svg>'
+};
+function ic(n){return ICON[n]||''}
+function shuffle(a){a=a.slice();for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]]}return a}
+function fb(el,ok,msg){el.className='fb '+(ok?'ok':'no');el.textContent=msg}
+
+
+/* desktop hotspots (positions in % of the desktop box, LTR) */
+const HS=[
+ {x:94,y:12,t:'سلة المحذوفات',d:'تذهب إليها الملفات التي نحذفها، ويمكن استعادتها منها.'},
+ {x:2.6,y:94,t:'زر بدء',d:'يفتح قائمة البرامج والإعدادات.'},
+ {x:9.5,y:94,t:'مستكشف الملفات',d:'نتصفح منه الملفات والمجلدات الموجودة في الحاسب.'},
+ {x:13.5,y:94,t:'متصفح مايكروسوفت إيدج',d:'برنامج لتصفح مواقع الإنترنت.'},
+ {x:45,y:94,t:'شريط المهام',d:'الشريط السفلي الذي تظهر عليه البرامج المفتوحة وبعض الرموز.'},
+ {x:85,y:94,t:'التحكم بمستوى الصوت',d:'نرفع منه صوت الحاسب أو نخفضه.'},
+ {x:88.5,y:94,t:'الاتصال بالإنترنت',d:'يبين هل الحاسب متصل بالإنترنت.'},
+ {x:95,y:94,t:'التاريخ / الوقت',d:'يعرض الساعة وتاريخ اليوم.'}
+];
+const desk=document.getElementById('desk'),seenD=new Set();
+HS.forEach((h,i)=>{const b=document.createElement('button');b.className='hs';b.style.left=h.x+'%';b.style.top=h.y+'%';b.setAttribute('aria-label',h.t);
+ b.innerHTML=`<span class="dot">${i+1}</span>`;
+ b.onclick=()=>{seenD.add(i);b.classList.add('seen');document.getElementById('deskInfo').innerHTML=`<b>${h.t}:</b> ${h.d}`;
+  document.getElementById('deskCount').textContent=seenD.size===HS.length?'رائع! اكتشفت جميع أجزاء سطح المكتب.':`اكتشفت ${seenD.size} من ${HS.length} أجزاء`};
+ desk.appendChild(b)});
+document.getElementById('deskCount').textContent=`اكتشفت 0 من ${HS.length} أجزاء`;
+
+/* file types */
+const FT=[['txt','ملف نصي','.txt'],['doc','ملف مستند','.docx'],['ppt','ملف عرض تقديمي','.pptx'],['img','ملف صورة','.png'],['audio','ملف صوتي','.mp3'],['video','ملف فيديو','.mp4']];
+document.getElementById('ftypes').innerHTML=FT.map(f=>`<div class="dev" style="cursor:default">${ic(f[0])}<span class="nm">${f[1]}</span><span class="en">${f[2]}</span></div>`).join('');
+
+/* file name anatomy */
+const KIND={docx:'مستند وورد',txt:'ملف نصي',pptx:'عرض تقديمي',png:'صورة',jpg:'صورة',mp3:'ملف صوتي',mp4:'فيديو'};
+function anat(){const v=document.getElementById('fname').value.trim(),a=document.getElementById('anat'),f=document.getElementById('fnameFb');
+ const i=v.lastIndexOf('.');
+ if(i<=0||i===v.length-1){a.innerHTML='';fb(f,false,'لا يوجد امتداد. تذكّر: نقطة بين الاسم والامتداد، مثل: رحلتي.png');return}
+ const n=v.slice(0,i),e=v.slice(i+1);
+ a.innerHTML=`<div style="text-align:center"><span class="nmP">${n.replace(/</g,'&lt;')}</span><div class="en">الاسم</div></div><div style="text-align:center"><span class="dt">.</span><div class="en">النقطة</div></div><div style="text-align:center"><span class="ex">${e.replace(/</g,'&lt;')}</span><div class="en">الامتداد</div></div>`;
+ if(/^(ملف|ملفي|file)\d*$/i.test(n))fb(f,false,'الاسم عام جداً! اختر اسماً يصف محتوى الملف.');
+ else fb(f,true,KIND[e.toLowerCase()]?`نوع الملف: ${KIND[e.toLowerCase()]}`:'اسم مناسب.');}
+document.getElementById('fname').addEventListener('input',anat);anat();
+
+/* folder name checker */
+document.getElementById('foldCheck').onclick=()=>{const v=document.getElementById('foldName').value,f=document.getElementById('foldFb');
+ const bad=[...new Set(v.match(/[\\/:*?"<>|]/g)||[])];
+ if(!v.trim())fb(f,false,'اكتب اسماً أولاً.');
+ else if(bad.length)fb(f,false,`اسم غير مقبول: يحتوي على الرمز ${bad.join(' ')}`);
+ else fb(f,true,'اسم مقبول.')};
+
+/* ordering */
+const ORD=['اضغط بزر الفأرة الأيمن على سطح المكتب','اضغط «جديد»','اضغط على «مجلد»','اكتب اسم المجلد','اضغط Enter'];
+let next=0;
+function ordInit(){next=0;document.getElementById('orderFb').textContent='';
+ document.getElementById('order').innerHTML=shuffle(ORD.map((s,i)=>i)).map(i=>`<button class="chip" data-i="${i}"><span class="num">؟</span>${ORD[i]}</button>`).join('')}
+document.getElementById('order').addEventListener('click',e=>{const c=e.target.closest('.chip');if(!c||c.classList.contains('done'))return;const f=document.getElementById('orderFb');
+ if(+c.dataset.i===next){c.classList.add('done');c.querySelector('.num').textContent=next+1;next++;fb(f,true,next===ORD.length?'أحسنت! هذا هو الترتيب الصحيح.':'صحيح، ما الخطوة التالية؟')}
+ else{c.classList.add('wrong');setTimeout(()=>c.classList.remove('wrong'),500);fb(f,false,'ليست هذه الخطوة التالية، فكّر مرة أخرى.')}});
+document.getElementById('orderReset').onclick=ordInit;ordInit();
+
+/* copy vs move */
+const FILE=`<span class="file">${ic('doc')}الدرس 1</span>`;
+function cReset(){document.querySelector('#fa .items').innerHTML=FILE;document.querySelector('#fb2 .items').innerHTML='';document.getElementById('cfb').textContent=''}
+document.getElementById('bCopy').onclick=()=>{cReset();document.querySelector('#fb2 .items').innerHTML=FILE;fb(document.getElementById('cfb'),true,'نسخ: أصبح الملف في المجلدين، وبقي الأصل في مكانه.')};
+document.getElementById('bCut').onclick=()=>{cReset();const a=document.querySelector('#fa .items');a.innerHTML=FILE.replace('class="file"','class="file ghost"');
+ setTimeout(()=>{a.innerHTML='';document.querySelector('#fb2 .items').innerHTML=FILE},450);fb(document.getElementById('cfb'),true,'نقل: انتقل الملف إلى «علوم» وحُذف من مكانه الأصلي.')};
+document.getElementById('bReset').onclick=cReset;cReset();
+
+/* calculator */
+const K=['C','⌫','%','÷','7','8','9','×','4','5','6','−','1','2','3','+','0','.','±','='];
+let cur='0',acc=null,op=null,fresh=false;
+const scr=document.getElementById('scr');
+function show(){scr.textContent=cur}
+function calc(a,b,o){return o==='+'?a+b:o==='−'?a-b:o==='×'?a*b:o==='÷'?(b===0?NaN:a/b):b}
+document.getElementById('keys').innerHTML=K.map(k=>`<button class="${'÷×−+%'.includes(k)?'op':k==='='?'eq':''}" data-k="${k}">${k}</button>`).join('');
+document.getElementById('keys').addEventListener('click',e=>{const k=e.target.dataset.k;if(!k)return;
+ if(/[0-9]/.test(k)){cur=(cur==='0'||fresh)?k:cur+k;fresh=false}
+ else if(k==='.'){if(fresh){cur='0';fresh=false}if(!cur.includes('.'))cur+='.'}
+ else if(k==='C'){cur='0';acc=null;op=null}
+ else if(k==='⌫'){cur=cur.length>1?cur.slice(0,-1):'0'}
+ else if(k==='±'){cur=String(-parseFloat(cur))}
+ else if(k==='%'){cur=String(parseFloat(cur)/100)}
+ else if(k==='='){if(op!=null){const r=calc(acc,parseFloat(cur),op);cur=isNaN(r)?'لا يمكن القسمة على صفر':String(+r.toFixed(10));acc=null;op=null;fresh=true}}
+ else{if(op!=null&&!fresh){acc=calc(acc,parseFloat(cur),op);cur=String(+acc.toFixed(10))}else acc=parseFloat(cur);op=k;fresh=true}
+ show()});
+
+</script>
+</body>
+</html>

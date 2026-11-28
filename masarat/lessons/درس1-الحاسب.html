@@ -1,0 +1,256 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>الدرس الأول: الحاسب</title>
+<meta name="masar-grades" content="4">
+<meta name="masar-unit" content="الوحدة الأولى: تعلم الأساسيات">
+<style>
+:root{--teal:#11897f;--teal-d:#0b5f58;--teal-s:#e2f3f0;--ink:#16302d;--mut:#5b706d;--line:#d8e3e0;--bg:#f5faf9;
+--good:#1e8a4c;--good-s:#e1f3e8;--bad:#c43c3c;--bad-s:#fbe4e2;--sun:#f2a516;--sky:#2b8dbf}
+*{box-sizing:border-box}
+body{margin:0;font-family:Tahoma,"Segoe UI",Arial,sans-serif;background:var(--bg);color:var(--ink);line-height:1.85;font-size:17px}
+.wrap{max-width:920px;margin:0 auto;padding:16px}
+.hero{background:linear-gradient(135deg,#0b5f58,#1a7fa8);color:#fff;border-radius:18px;padding:22px 24px;position:relative;overflow:hidden}
+.hero::after{content:"";position:absolute;inset-inline-start:-60px;top:-60px;width:240px;height:240px;border-radius:50%;
+ background:repeating-radial-gradient(circle,rgba(255,255,255,.18) 0 3px,transparent 3px 14px)}
+.hero .unit{font-size:14px;opacity:.9}
+.hero h1{margin:4px 0 10px;font-size:30px;line-height:1.3}
+.goals{background:rgba(255,255,255,.14);border-radius:12px;padding:10px 14px;position:relative;z-index:1}
+.goals b{display:block;margin-bottom:2px}
+.goals ul{margin:0;padding-inline-start:20px}
+section.card{background:#fff;border:1px solid var(--line);border-radius:16px;padding:18px 20px;margin-top:16px}
+h2{font-size:22px;color:var(--teal-d);margin:0 0 8px;display:flex;align-items:center;gap:10px}
+h2 .n{background:var(--teal);color:#fff;border-radius:9px;min-width:32px;height:32px;display:inline-grid;place-items:center;font-size:16px}
+h3{font-size:18px;color:var(--teal-d);margin:14px 0 6px}
+p{margin:6px 0}
+.hint{background:#fff7e6;border:1px solid #f6d79a;border-radius:12px;padding:10px 14px;font-size:15.5px}
+.hint b{color:#9a5b00}
+.info{background:var(--teal-s);border-radius:12px;padding:10px 14px;font-size:15.5px}
+.steps{counter-reset:s;list-style:none;padding:0;margin:8px 0;display:grid;gap:6px}
+.steps li{counter-increment:s;display:flex;gap:10px;align-items:flex-start;background:#f8fbfb;border:1px solid var(--line);border-radius:10px;padding:8px 12px}
+.steps li::before{content:counter(s);background:var(--sky);color:#fff;border-radius:50%;min-width:26px;height:26px;display:grid;place-items:center;font-size:14px;margin-top:3px}
+.en{direction:ltr;unicode-bidi:isolate;font-family:"Segoe UI",Arial,sans-serif;color:var(--mut);font-size:.9em}
+.btn{font:inherit;font-size:15px;border:1.5px solid var(--teal);background:#fff;color:var(--teal-d);border-radius:10px;padding:6px 14px;cursor:pointer}
+.btn:hover{background:var(--teal-s)}
+.btn.pri{background:var(--teal);color:#fff}
+.btn.on{background:var(--teal);color:#fff}
+.btn:disabled{opacity:.45;cursor:not-allowed}
+.row{display:flex;gap:8px;flex-wrap:wrap;align-items:center}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:10px}
+.dev{border:1.5px solid var(--line);border-radius:14px;background:#fff;padding:10px;text-align:center;cursor:pointer;font:inherit;color:inherit;transition:.15s}
+.dev:hover{border-color:var(--teal);transform:translateY(-2px)}
+.dev svg{width:64px;height:64px;display:block;margin:0 auto 4px}
+.dev .nm{font-weight:bold;display:block}
+.dev .more{display:none;font-size:14px;margin-top:6px;border-top:1px dashed var(--line);padding-top:6px}
+.dev.open .more{display:block}
+.dev.open{border-color:var(--teal);background:#fbfefd}
+.tag{display:inline-block;border-radius:99px;padding:0 10px;font-size:13px;font-weight:bold}
+.tag.main{background:#e4edff;color:#2f5fc4}.tag.ext{background:#fdeee0;color:#b0560c}
+.fb{min-height:1.6em;font-weight:bold;margin-top:6px}
+.fb.ok{color:var(--good)}.fb.no{color:var(--bad)}
+.score{font-weight:bold;color:var(--teal-d)}
+.bins{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:10px}
+.bin{border:2px dashed var(--line);border-radius:14px;padding:10px;min-height:120px;cursor:pointer;background:#fbfdfd}
+.bin:hover{border-color:var(--teal)}
+.bin h4{margin:0 0 6px;font-size:16px}
+.bin .items{display:flex;flex-wrap:wrap;gap:6px}
+.chip{display:inline-flex;align-items:center;gap:4px;border:1.5px solid var(--line);border-radius:10px;padding:3px 10px;background:#fff;font:inherit;font-size:15px;cursor:pointer;color:inherit}
+.chip svg{width:26px;height:26px}
+.chip.sel{border-color:var(--teal);background:var(--teal-s)}
+.chip.done{border-color:var(--good);background:var(--good-s);cursor:default}
+.chip.wrong{border-color:var(--bad);background:var(--bad-s)}
+.task{border:1px solid var(--line);border-radius:12px;padding:10px;margin-top:8px}
+.task .q{font-weight:bold;margin-bottom:6px}
+.terms{display:grid;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:8px}
+.flip{border:1.5px solid var(--line);border-radius:12px;padding:12px;text-align:center;cursor:pointer;background:#fff;font:inherit;color:inherit;min-height:64px}
+.flip.back{background:var(--teal-s);border-color:var(--teal)}
+.hist{background:#fdf0f5;border:1px solid #f1c3d5;border-radius:12px;padding:10px 14px;font-size:15.5px}
+.hist b{color:#a8336a}
+[data-masar]{display:none}
+@media (max-width:560px){.bins{grid-template-columns:1fr}.hero h1{font-size:24px}}
+</style>
+</head>
+<body>
+<div class="wrap">
+<header class="hero"><div class="unit">المهارات الرقمية · الصف الرابع الابتدائي · الوحدة الأولى: تعلم الأساسيات</div><h1>الدرس الأول: الحاسب</h1>
+<div class="goals"><b>ستتعلم في هذا الدرس:</b><ul><li>ما الحاسب، وما الحاسب المكتبي.</li><li>المكونات الرئيسة للحاسب المكتبي.</li><li>الأجهزة الملحقة بالحاسب واستخداماتها.</li><li>الطباعة وطرق توصيل الطابعة.</li></ul></div></header>
+
+<section class="card">
+<h2><span class="n">1</span>ما الحاسب؟</h2>
+<p>الحاسب أحد أنواع الأجهزة الإلكترونية، يتبع <b>تعليمات محددة</b> ويتخذ القرارات ويقوم بالكثير من الأمور المفيدة.</p>
+<p>نستخدمه لكتابة النصوص، ورسم الصور وتنسيقها، وإرسال رسائل البريد الإلكتروني، وغير ذلك من المهام.</p>
+<h3>الحاسب المكتبي</h3>
+<p>هناك أنواع كثيرة من الحواسيب تختلف في حجمها وقدراتها، و<b>الحاسب المكتبي</b> أكثرها شيوعاً. يتكوّن من مجموعة أجهزة متصلة ببعضها تمكّنه من أداء المهام المختلفة.</p>
+<div class="hint"><b>فكّر:</b> اذكر ثلاثة أشياء مفيدة تستطيع القيام بها باستخدام الحاسب.</div>
+</section>
+
+<section class="card">
+<h2><span class="n">2</span>تعرّف على الأجهزة</h2>
+<p>اضغط على كل جهاز لتعرف اسمه بالإنجليزية واستخدامه ونوعه.</p>
+<div class="grid" id="devGrid"></div>
+<p style="margin-top:10px"><span class="tag main">مكوّن رئيس</span> الأجهزة الأساسية للحاسب المكتبي · <span class="tag ext">جهاز ملحق</span> أجهزة نضيفها للحاسب لمهام إضافية</p>
+<p class="score" id="devCount"></p>
+</section>
+
+<section class="card">
+<h2><span class="n">3</span>نشاط: صنّف الأجهزة</h2>
+<p>اختر جهازاً، ثم اضغط على المجموعة التي ينتمي إليها.</p>
+<div class="row" id="sortPool"></div>
+<div class="bins">
+ <div class="bin" data-bin="main"><h4>١. مكوّنات الحاسب الرئيسة</h4><div class="items"></div></div>
+ <div class="bin" data-bin="ext"><h4>٢. الأجهزة الملحقة بالحاسب</h4><div class="items"></div></div>
+</div>
+<div class="fb" id="sortFb"></div>
+<div class="row"><button class="btn" id="sortReset">أعد النشاط</button></div>
+</section>
+
+<section class="card">
+<h2><span class="n">4</span>ماذا أحتاج لأنفّذ المهمة؟</h2>
+<p>اختر الجهاز المناسب لكل مهمة.</p>
+<div id="tasks"></div>
+</section>
+
+<section class="card">
+<h2><span class="n">5</span>الطباعة</h2>
+<p>يمكنك طباعة النصوص والأرقام والصور والرسومات على الورق باستخدام جهاز ملحق بالحاسب اسمه <b>الطابعة</b>. توصَّل الطابعة بالحاسب عن طريق سلك <b>يو إس بي</b> <span class="en">(USB)</span> أو عن طريق <b>الشبكة اللاسلكية</b> <span class="en">(Wireless network)</span>.</p>
+<div class="info">لطباعة أي مستند تأكد أولاً أن الحاسب متصل بالطابعة، وأن الطابعة تعمل.</div>
+<h3>جرّب: اطبع صورة الجمل</h3>
+<div class="row" style="margin-top:6px">
+ <button class="btn" id="tConn">توصيل الطابعة بالحاسب</button>
+ <button class="btn" id="tPow">تشغيل الطابعة</button>
+ <button class="btn pri" id="tPrint">طباعة</button>
+</div>
+<div style="display:flex;gap:16px;align-items:flex-end;margin-top:12px;flex-wrap:wrap">
+ <div id="prn" style="width:110px"></div>
+ <div id="paper" style="width:120px;height:90px;border:1px dashed var(--line);border-radius:6px;display:grid;place-items:center;color:var(--mut);font-size:13px;background:#fff">الورقة</div>
+</div>
+<div class="fb" id="printFb"></div>
+<p>ويمكنك الطباعة على أحجام مختلفة من الورق، وعلى الملصقات أو المغلفات أيضاً.</p>
+</section>
+
+<section class="card">
+<h2><span class="n">6</span>تذكّر</h2>
+<ul>
+<li>المكوّنات الرئيسة للحاسب المكتبي: <b>صندوق الحاسب، الشاشة، لوحة المفاتيح، الفأرة</b>.</li>
+<li>من الأجهزة الملحقة: <b>الطابعة، الميكروفون، مكبر الصوت، كاميرا الويب، الماسح الضوئي، سماعات الأذن، الكاميرا الرقمية</b>.</li>
+</ul>
+</section>
+
+</div>
+
+<ul data-masar="match">
+ <li>لوحة المفاتيح | كتابة نص</li>
+ <li>الفأرة | تحريك المؤشر</li>
+ <li>الماسح الضوئي | مسح المستندات والصور</li>
+ <li>الميكروفون | تسجيل الصوت</li>
+ <li>كاميرا الويب | التواصل المرئي عبر الإنترنت</li>
+</ul>
+<ol data-masar="training">
+ <li>الشاشة من: | *مكونات الحاسب الرئيسة | الأجهزة الملحقة بالحاسب</li>
+ <li>الميكروفون من: | *الأجهزة الملحقة بالحاسب | مكونات الحاسب الرئيسة</li>
+ <li>لإدخال صورة إلى الحاسب نستخدم: | *الماسح الضوئي | الميكروفون | سماعات الأذن</li>
+ <li>قبل طباعة أي مستند تأكد أن: | *الحاسب متصل بالطابعة والطابعة تعمل | الشاشة مطفأة | السماعات متصلة</li>
+</ol>
+<ol data-masar="quiz">
+ <li>الحاسب جهاز إلكتروني: | *يتبع تعليمات محددة ويتخذ القرارات | يعمل دون أي تعليمات | يستخدم للاتصال الهاتفي فقط | لا يستطيع كتابة النصوص</li>
+ <li>أيّ مما يلي من مكونات الحاسب المكتبي الرئيسة؟ | *لوحة المفاتيح | الطابعة | الماسح الضوئي | كاميرا الويب</li>
+ <li>الجهاز الذي نستخدمه لمسح المستندات والصور: | *الماسح الضوئي | الميكروفون | مكبر الصوت | الشاشة</li>
+ <li>توصَّل الطابعة بالحاسب عن طريق: | *سلك USB أو الشبكة اللاسلكية | سماعات الأذن | الميكروفون | كاميرا الويب</li>
+ <li>للتواصل المرئي عبر الإنترنت نحتاج إلى: | *كاميرا الويب | الطابعة | الماسح الضوئي | الفأرة</li>
+ <li>للاستماع إلى الملفات الصوتية نستخدم: | *سماعات الأذن | الماسح الضوئي | الطابعة | الفأرة</li>
+</ol>
+
+<script>
+const ICON={
+monitor:'<svg viewBox="0 0 64 64"><rect x="6" y="8" width="52" height="34" rx="3" fill="#2f3e46"/><rect x="10" y="12" width="44" height="26" fill="#4fb3e8"/><path d="M14 32 C24 22 34 34 50 20" stroke="#bfe8ff" stroke-width="2" fill="none"/><rect x="28" y="42" width="8" height="8" fill="#9aa5ab"/><rect x="18" y="50" width="28" height="5" rx="2" fill="#c3cbcf"/></svg>',
+case:'<svg viewBox="0 0 64 64"><rect x="18" y="4" width="28" height="56" rx="3" fill="#e8ecef" stroke="#9aa5ab" stroke-width="2"/><rect x="22" y="10" width="20" height="5" fill="#9aa5ab"/><rect x="22" y="18" width="20" height="3" fill="#c3cbcf"/><circle cx="32" cy="34" r="4" fill="#3fbf6b"/><g fill="#9aa5ab"><rect x="24" y="46" width="16" height="2"/><rect x="24" y="50" width="16" height="2"/><rect x="24" y="54" width="16" height="2"/></g></svg>',
+keyboard:'<svg viewBox="0 0 64 64"><rect x="4" y="20" width="56" height="26" rx="3" fill="#eef1f3" stroke="#9aa5ab" stroke-width="2"/><g fill="#9aa5ab"><rect x="9" y="25" width="5" height="4"/><rect x="16" y="25" width="5" height="4"/><rect x="23" y="25" width="5" height="4"/><rect x="30" y="25" width="5" height="4"/><rect x="37" y="25" width="5" height="4"/><rect x="44" y="25" width="5" height="4"/><rect x="51" y="25" width="4" height="4"/><rect x="9" y="31" width="5" height="4"/><rect x="16" y="31" width="5" height="4"/><rect x="23" y="31" width="5" height="4"/><rect x="30" y="31" width="5" height="4"/><rect x="37" y="31" width="5" height="4"/><rect x="44" y="31" width="11" height="4"/><rect x="16" y="38" width="32" height="4"/></g></svg>',
+mouse:'<svg viewBox="0 0 64 64"><rect x="18" y="8" width="28" height="46" rx="14" fill="#eef1f3" stroke="#9aa5ab" stroke-width="2"/><line x1="32" y1="9" x2="32" y2="26" stroke="#9aa5ab" stroke-width="2"/><rect x="30" y="14" width="4" height="8" rx="2" fill="#6c7a80"/><path d="M8 4 Q20 2 32 9" stroke="#6c7a80" stroke-width="2" fill="none"/></svg>',
+printer:'<svg viewBox="0 0 64 64"><rect x="18" y="6" width="28" height="16" fill="#fff" stroke="#9aa5ab" stroke-width="2"/><rect x="6" y="20" width="52" height="24" rx="4" fill="#3b464c"/><rect x="12" y="26" width="12" height="7" fill="#9fe08a"/><circle cx="48" cy="30" r="2.5" fill="#ccc"/><rect x="16" y="40" width="32" height="18" fill="#fff" stroke="#9aa5ab" stroke-width="2"/><rect x="21" y="45" width="22" height="2" fill="#c3cbcf"/><rect x="21" y="50" width="16" height="2" fill="#c3cbcf"/></svg>',
+mic:'<svg viewBox="0 0 64 64"><rect x="36" y="4" width="9" height="20" rx="4.5" transform="rotate(30 40 14)" fill="#6c7a80"/><path d="M36 22 Q28 34 32 46" stroke="#3b464c" stroke-width="3" fill="none"/><ellipse cx="32" cy="54" rx="16" ry="5" fill="#3b464c"/><rect x="28" y="46" width="8" height="6" fill="#3b464c"/></svg>',
+speakers:'<svg viewBox="0 0 64 64"><rect x="6" y="12" width="22" height="42" rx="3" fill="#eef1f3" stroke="#9aa5ab" stroke-width="2"/><circle cx="17" cy="24" r="5" fill="#9aa5ab"/><circle cx="17" cy="42" r="8" fill="#6c7a80"/><rect x="36" y="12" width="22" height="42" rx="3" fill="#eef1f3" stroke="#9aa5ab" stroke-width="2"/><circle cx="47" cy="24" r="5" fill="#9aa5ab"/><circle cx="47" cy="42" r="8" fill="#6c7a80"/></svg>',
+webcam:'<svg viewBox="0 0 64 64"><circle cx="32" cy="24" r="16" fill="#eef1f3" stroke="#9aa5ab" stroke-width="2"/><circle cx="32" cy="24" r="9" fill="#3b464c"/><circle cx="32" cy="24" r="4" fill="#4fb3e8"/><circle cx="35" cy="21" r="1.5" fill="#fff"/><path d="M22 52 Q32 36 42 52 Z" fill="#9aa5ab"/><rect x="18" y="52" width="28" height="5" rx="2" fill="#6c7a80"/></svg>',
+scanner:'<svg viewBox="0 0 64 64"><path d="M8 20 L52 6 L56 12 L12 26 Z" fill="#dfe5e8" stroke="#9aa5ab" stroke-width="2"/><rect x="6" y="30" width="52" height="18" rx="3" fill="#eef1f3" stroke="#9aa5ab" stroke-width="2"/><rect x="10" y="33" width="44" height="5" fill="#bfe8ff"/><circle cx="48" cy="43" r="2" fill="#3fbf6b"/></svg>',
+headphones:'<svg viewBox="0 0 64 64"><path d="M12 38 V30 A20 20 0 0 1 52 30 V38" stroke="#3b464c" stroke-width="5" fill="none"/><rect x="6" y="34" width="14" height="22" rx="6" fill="#d23b3b"/><rect x="44" y="34" width="14" height="22" rx="6" fill="#d23b3b"/></svg>',
+camera:'<svg viewBox="0 0 64 64"><rect x="6" y="16" width="52" height="36" rx="5" fill="#8fa3ad"/><rect x="12" y="12" width="14" height="6" rx="2" fill="#6c7a80"/><circle cx="38" cy="34" r="13" fill="#3b464c"/><circle cx="38" cy="34" r="8" fill="#4fb3e8"/><rect x="11" y="22" width="9" height="5" fill="#9fe08a"/></svg>',
+folder:'<svg viewBox="0 0 64 64"><path d="M4 16 h20 l6 6 h30 v32 H4z" fill="#f2c14e"/><path d="M4 24 h56 v30 H4z" fill="#f7d371"/></svg>',
+doc:'<svg viewBox="0 0 64 64"><path d="M14 4 h26 l12 12 v44 H14z" fill="#fff" stroke="#9aa5ab" stroke-width="2"/><rect x="18" y="26" width="22" height="18" rx="2" fill="#2b5fb9"/><text x="29" y="40" font-size="13" font-family="Arial" font-weight="bold" fill="#fff" text-anchor="middle">W</text></svg>',
+txt:'<svg viewBox="0 0 64 64"><path d="M14 4 h26 l12 12 v44 H14z" fill="#fff" stroke="#9aa5ab" stroke-width="2"/><g fill="#c3cbcf"><rect x="20" y="24" width="26" height="2"/><rect x="20" y="30" width="26" height="2"/><rect x="20" y="36" width="26" height="2"/><rect x="20" y="42" width="18" height="2"/></g></svg>',
+ppt:'<svg viewBox="0 0 64 64"><path d="M14 4 h26 l12 12 v44 H14z" fill="#fff" stroke="#9aa5ab" stroke-width="2"/><rect x="18" y="26" width="22" height="18" rx="2" fill="#c8512f"/><text x="29" y="40" font-size="13" font-family="Arial" font-weight="bold" fill="#fff" text-anchor="middle">P</text></svg>',
+img:'<svg viewBox="0 0 64 64"><rect x="6" y="10" width="52" height="44" rx="3" fill="#e8f6ff" stroke="#9aa5ab" stroke-width="2"/><circle cx="46" cy="22" r="5" fill="#f2c14e"/><path d="M8 50 L24 30 L36 44 L44 36 L56 50 Z" fill="#3fa36b"/></svg>',
+audio:'<svg viewBox="0 0 64 64"><path d="M14 4 h26 l12 12 v44 H14z" fill="#fff" stroke="#9aa5ab" stroke-width="2"/><path d="M28 44 V24 L42 20 V40" stroke="#8b55d0" stroke-width="3" fill="none"/><circle cx="25" cy="44" r="4" fill="#8b55d0"/><circle cx="39" cy="40" r="4" fill="#8b55d0"/></svg>',
+video:'<svg viewBox="0 0 64 64"><rect x="6" y="12" width="52" height="40" rx="4" fill="#3b464c"/><path d="M27 23 L41 32 L27 41 Z" fill="#fff"/></svg>'
+};
+function ic(n){return ICON[n]||''}
+function shuffle(a){a=a.slice();for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]]}return a}
+function fb(el,ok,msg){el.className='fb '+(ok?'ok':'no');el.textContent=msg}
+
+
+const DEV=[
+ {k:'case',ar:'صندوق الحاسب',en:'Computer Case',t:'main',use:'يحتوي على أجزاء الحاسب الداخلية التي تشغّله.'},
+ {k:'monitor',ar:'الشاشة',en:'Monitor',t:'main',use:'عرض شاشات البرامج.'},
+ {k:'keyboard',ar:'لوحة المفاتيح',en:'Keyboard',t:'main',use:'كتابة النصوص والأرقام.'},
+ {k:'mouse',ar:'الفأرة',en:'Mouse',t:'main',use:'تحريك المؤشر والضغط على الأشياء.'},
+ {k:'printer',ar:'الطابعة',en:'Printer',t:'ext',use:'طباعة صفحة على الورق.'},
+ {k:'mic',ar:'الميكروفون',en:'Microphone',t:'ext',use:'تسجيل الصوت.'},
+ {k:'speakers',ar:'مكبر الصوت',en:'Speakers',t:'ext',use:'الاستماع إلى الملفات الصوتية.'},
+ {k:'webcam',ar:'كاميرا الويب',en:'Webcam',t:'ext',use:'التواصل المرئي عبر الإنترنت.'},
+ {k:'scanner',ar:'الماسح الضوئي',en:'Scanner',t:'ext',use:'مسح المستندات والصور وإدخالها للحاسب.'},
+ {k:'headphones',ar:'سماعات الأذن',en:'Headphones',t:'ext',use:'الاستماع إلى الملفات الصوتية.'},
+ {k:'camera',ar:'الكاميرا الرقمية',en:'Digital Camera',t:'ext',use:'التقاط الصور أو مقاطع الفيديو.'}
+];
+const TAGS={main:'<span class="tag main">مكوّن رئيس</span>',ext:'<span class="tag ext">جهاز ملحق</span>'};
+const seen=new Set();
+const g=document.getElementById('devGrid');
+g.innerHTML=DEV.map((d,i)=>`<button class="dev" data-i="${i}">${ic(d.k)}<span class="nm">${d.ar}</span><span class="en">${d.en}</span><div class="more">${TAGS[d.t]}<div>${d.use}</div></div></button>`).join('');
+function cnt(){document.getElementById('devCount').textContent=seen.size===DEV.length?'أحسنت! تعرّفت على جميع الأجهزة.':`تعرّفت على ${seen.size} من ${DEV.length} أجهزة`}
+g.addEventListener('click',e=>{const b=e.target.closest('.dev');if(!b)return;b.classList.toggle('open');seen.add(+b.dataset.i);cnt()});cnt();
+
+/* sorting */
+let sel=null,done=0,err=0;
+function sortInit(){sel=null;done=0;err=0;
+ document.querySelectorAll('.bin .items').forEach(x=>x.innerHTML='');
+ const pool=document.getElementById('sortPool');
+ pool.innerHTML=shuffle(DEV.map((d,i)=>i)).map(i=>`<button class="chip" data-i="${i}">${ic(DEV[i].k)}${DEV[i].ar}</button>`).join('');
+ document.getElementById('sortFb').textContent='';}
+document.getElementById('sortPool').addEventListener('click',e=>{const c=e.target.closest('.chip');if(!c)return;
+ document.querySelectorAll('#sortPool .chip').forEach(x=>x.classList.remove('sel','wrong'));c.classList.add('sel');sel=c});
+document.querySelectorAll('.bin').forEach(bin=>bin.addEventListener('click',()=>{
+ const f=document.getElementById('sortFb');if(!sel){fb(f,false,'اختر جهازاً أولاً.');return}
+ const d=DEV[+sel.dataset.i];
+ if(d.t===bin.dataset.bin){sel.classList.remove('sel');sel.classList.add('done');bin.querySelector('.items').appendChild(sel);sel=null;done++;
+   fb(f,true,done===DEV.length?`ممتاز! صنّفت جميع الأجهزة (أخطاء: ${err}).`:`صحيح: ${d.ar} ${d.t==='main'?'من المكونات الرئيسة':'جهاز ملحق'}.`)}
+ else{err++;sel.classList.add('wrong');fb(f,false,`حاول مرة أخرى: ${d.ar} ليس في هذه المجموعة.`)}
+}));
+document.getElementById('sortReset').onclick=sortInit;sortInit();
+
+/* tasks */
+const TASKS=[
+ {q:'كتابة أرقام وحروف',o:['camera','mouse','webcam','keyboard'],a:'keyboard'},
+ {q:'إدخال صورة إلى الحاسب',o:['keyboard','mic','mouse','scanner'],a:'scanner'},
+ {q:'الاستماع إلى الملفات الصوتية',o:['headphones','printer','monitor','mouse'],a:'headphones'},
+ {q:'طباعة صفحة',o:['printer','monitor','speakers','scanner'],a:'printer'}
+];
+const nm=k=>DEV.find(d=>d.k===k)?.ar||k;
+document.getElementById('tasks').innerHTML=TASKS.map((t,i)=>`<div class="task"><div class="q">${t.q}</div><div class="row">${t.o.map(k=>`<button class="chip" data-t="${i}" data-k="${k}">${ic(k)}${nm(k)}</button>`).join('')}</div><div class="fb" id="tf${i}"></div></div>`).join('');
+document.getElementById('tasks').addEventListener('click',e=>{const c=e.target.closest('.chip');if(!c)return;const t=TASKS[+c.dataset.t];const f=document.getElementById('tf'+c.dataset.t);
+ if(c.dataset.k===t.a){c.classList.add('done');fb(f,true,'إجابة صحيحة!')}else{c.classList.add('wrong');fb(f,false,'ليس هذا الجهاز، جرّب غيره.')}});
+
+/* printing */
+let conn=false,pow=false;
+const pf=document.getElementById('printFb');
+document.getElementById('tConn').onclick=e=>{conn=!conn;e.target.classList.toggle('on',conn)};
+document.getElementById('tPow').onclick=e=>{pow=!pow;e.target.classList.toggle('on',pow)};
+document.getElementById('tPrint').onclick=()=>{
+ const p=document.getElementById('paper');
+ if(!conn){fb(pf,false,'الحاسب غير متصل بالطابعة. وصّلها أولاً.');return}
+ if(!pow){fb(pf,false,'الطابعة لا تعمل. شغّلها أولاً.');return}
+ p.innerHTML='<svg viewBox="0 0 120 90" width="110"><rect width="120" height="90" fill="#e9f6ff"/><circle cx="98" cy="18" r="9" fill="#f2c14e"/><path d="M0 78 H120 V90 H0z" fill="#e8c27a"/><path d="M28 72 q-2-18 10-22 q4-14 14-8 q6-10 14-2 q10-2 12 10 q8 4 6 22 h-6 v-12 h-6 v12 h-6 v-12 h-24 v12 h-6 v-12 h-4 v12z" fill="#a8693a"/></svg>';
+ fb(pf,true,'تمت الطباعة بنجاح!')};
+document.getElementById('prn').innerHTML=ic('printer');
+
+</script>
+</body>
+</html>
