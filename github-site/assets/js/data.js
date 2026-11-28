@@ -1134,8 +1134,8 @@ window.SITE_DATA = {
    "owner": "أ. محمد هليل الشمري",
    "target": "طلاب الصفوف 4–6",
    "result": "",
-   "cover": "docs/schedules/digital-skills-timetable.jpg",
-   "link": "",
+   "cover": "docs/initiatives/digital-skills-site.jpg",
+   "link": "https://mh4822sc73908-bit.github.io/",
    "files": []
   }
  ],
