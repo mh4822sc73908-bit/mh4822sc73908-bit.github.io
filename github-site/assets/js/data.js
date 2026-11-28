@@ -118,8 +118,8 @@ window.SITE_DATA = {
     "icon": "layers"
    },
    {
-    "label": "مبادرات",
-    "value": 7,
+    "label": "مبادرات ومنصات",
+    "value": 9,
     "icon": "spark"
    },
    {
@@ -875,7 +875,7 @@ window.SITE_DATA = {
    "gallery": [
     "docs/activities/multiplication-guide.jpg"
    ],
-   "link": "https://markaziahail.netlify.app/",
+   "link": "https://mh4822sc73908-bit.github.io/multiplication/",
    "files": []
   },
   {
@@ -987,7 +987,7 @@ window.SITE_DATA = {
    "target": "طلاب الصفوف 4–6",
    "result": "شهادات إتمام للطلاب المشاركين",
    "cover": "docs/initiatives/article34-poster.jpg",
-   "link": "https://markaziahail.netlify.app/mowaten/",
+   "link": "https://mh4822sc73908-bit.github.io/mowaten/",
    "files": [
     {
      "title": "تقرير تفعيل برنامج المادة 34",
@@ -1075,25 +1075,57 @@ window.SITE_DATA = {
    ]
   },
   {
-   "title": "تطبيقات الذكاء الاصطناعي في التعليم",
-   "sub": "المشاركة في جائزة بصمة 2026 – مسار إبداع",
-   "desc": "توظيف أدوات الذكاء الاصطناعي في بناء منصات ومحتوى تعليمي وأدوات إدارية للمدرسة.",
+   "title": "اليوم العالمي للطفل «نحن أمانة»",
+   "sub": "رحلة تفاعلية للاحتفاء باليوم العالمي للطفل",
+   "desc": "موقع تفاعلي لطلاب المدرسة المركزية والمدارس الملحقة للتعريف بحقوق الطفل وواجباته، بمهام ونجوم تحفيزية ولوحة للمعلم ودليل طالب مصوّر.",
    "owner": "أ. محمد هليل الشمري",
-   "target": "المعلمون والطلاب",
-   "result": "ملف مشاركة في جائزة بصمة",
-   "cover": "docs/initiatives/basma.jpg",
-   "link": "",
+   "target": "طلاب الصفوف 4–6",
+   "result": "مشاركة الطلاب وتحفيزهم بالنجوم",
+   "cover": "docs/activities/childday-cover.jpg",
+   "link": "https://mh4822sc73908-bit.github.io/childday/",
    "files": [
     {
-     "title": "ملف العمل الرئيسي – بصمة 2026",
-     "file": "docs/initiatives/basma-2026.pdf",
-     "cat": "ملف",
+     "title": "دليل الطالب – يوم الطفل",
+     "file": "docs/activities/childday-guide.pdf",
+     "cat": "دليل",
      "desc": "",
      "source": "",
-     "size": 2990617,
-     "date": "2026-11-23"
+     "size": 415225,
+     "date": "2026-11-17"
     }
    ]
+  },
+  {
+   "title": "منهجية العمل مع المدارس الملحقة",
+   "sub": "نماذج مرفقات وثيقة تنظيم العمل",
+   "desc": "أربعة نماذج تفاعلية لكل مدرسة ملحقة: بطاقة البيانات وقائمة الطلاب، ومصفوفة المسؤوليات، والاحتياجات والمعوقات، وخطة المتابعة؛ تعبّئها المدرسة الملحقة قبل الاجتماع وتُستكمل مع المدرسة المركزية.",
+   "owner": "المدرسة المركزية",
+   "target": "مديرو المدارس الملحقة",
+   "result": "وثيقة تنظيم عمل موحّدة لكل مدرسة",
+   "cover": "",
+   "link": "https://mh4822sc73908-bit.github.io/markazia/markazia-attachments.html",
+   "files": [
+    {
+     "title": "وثيقة ومنهجية العمل مع المدارس الملحقة",
+     "file": "docs/guides/work-methodology.pdf",
+     "cat": "دليل",
+     "desc": "",
+     "source": "",
+     "size": 9639140,
+     "date": "2026-11-07"
+    }
+   ]
+  },
+  {
+   "title": "مهرجان جدول الضرب",
+   "sub": "سباقات وتحديات… ومن يحفظ الجدول يفوز!",
+   "desc": "منصة ألعاب تعليمية لحفظ جدول الضرب من 1 إلى 12: سباق الإجابة، ومطابقة البطاقات، وتحدي الفريقين، مع شهادات إتقان للطلاب المتميزين. إعداد أ. فريح عبدالله الشمري.",
+   "owner": "أ. فريح عبدالله الشمري",
+   "target": "طلاب الصفوف 4–6",
+   "result": "شهادات إتقان جدول الضرب",
+   "cover": "docs/activities/multiplication-guide.jpg",
+   "link": "https://mh4822sc73908-bit.github.io/multiplication/",
+   "files": []
   },
   {
    "title": "موقع مادة المهارات الرقمية",
