@@ -2123,5 +2123,58 @@ window.SITE_DATA = {
    "file": "",
    "img": ""
   }
+ ],
+ "certificates": [
+  {
+   "key": "teacher-day",
+   "title": "شهادات شكر وتقدير — اليوم العالمي للمعلم",
+   "short": "اليوم العالمي للمعلم",
+   "who": "المعلمون",
+   "date": "أكتوبر 2026",
+   "desc": "شهادات شكر وتقدير من إدارة المدرسة لمنسوبيها بمناسبة يوم المعلم، تقديرًا لعطائهم في بناء العقول وغرس القيم.",
+   "items": [
+    "docs/certificates/teacher-day-01.jpg",
+    "docs/certificates/teacher-day-02.jpg",
+    "docs/certificates/teacher-day-03.jpg",
+    "docs/certificates/teacher-day-04.jpg",
+    "docs/certificates/teacher-day-05.jpg",
+    "docs/certificates/teacher-day-06.jpg",
+    "docs/certificates/teacher-day-07.jpg",
+    "docs/certificates/teacher-day-08.jpg",
+    "docs/certificates/teacher-day-09.jpg",
+    "docs/certificates/teacher-day-10.jpg"
+   ]
+  },
+  {
+   "key": "child-day",
+   "title": "شهادات مشاركة — اليوم العالمي للطفل «نحن أمانة»",
+   "short": "اليوم العالمي للطفل",
+   "who": "الطلاب",
+   "date": "18 نوفمبر 2026",
+   "desc": "شهادات مشاركة للطلاب في أنشطة الاحتفاء باليوم العالمي للطفل في مدرستي جبلة والجبيلي.",
+   "items": [
+    "docs/certificates/child-day-01.jpg",
+    "docs/certificates/child-day-02.jpg",
+    "docs/certificates/child-day-03.jpg",
+    "docs/certificates/child-day-04.jpg",
+    "docs/certificates/child-day-05.jpg",
+    "docs/certificates/child-day-06.jpg",
+    "docs/certificates/child-day-07.jpg",
+    "docs/certificates/child-day-08.jpg"
+   ]
+  },
+  {
+   "key": "multiplication",
+   "title": "شهادات إتقان — مهرجان جدول الضرب",
+   "short": "مهرجان جدول الضرب",
+   "who": "الطلاب",
+   "date": "21 أكتوبر 2026",
+   "desc": "شهادات إتقان جدول الضرب للطلاب المتفوقين في المهرجان (9 من 10 في الاختبار).",
+   "items": [
+    "docs/certificates/multiplication-01.jpg",
+    "docs/certificates/multiplication-02.jpg",
+    "docs/certificates/multiplication-03.jpg"
+   ]
+  }
  ]
 };

@@ -324,8 +324,34 @@
     return pageHead('الإنجازات والجوائز', 'أبرز ما حققته المدرسة ومنسوبوها وطلابها خلال الفصل الدراسي الأول') +
       '<section class="block"><div class="container grid g3">' + D.achievements.map(function (a, n) {
         return '<div class="card media fade"><div class="thumb ' + (a.img ? 'contain' : '') + '" style="' + (a.img ? 'background-image:url(\'' + esc(a.img) + '\')' : 'background:linear-gradient(135deg,#0F5C4E,#13877A);color:#fff') + '">' + (a.img ? '' : '<span style="font-size:2.4rem">🏅</span>') + '</div><div class="in"><span class="pill gold">إنجاز ' + ar(n + 1) + '</span><h3 style="margin-top:.35rem">' + esc(a.title) + '</h3><p class="muted" style="font-size:.9rem;margin:0">' + esc(a.desc) + '</p>' + (a.file ? '<button class="btn sm ghost" style="margin-top:.6rem" data-view="' + esc(a.file) + '" data-title="' + esc(a.title) + '">عرض الشاهد</button>' : '') + '</div></div>';
-      }).join('') + '</div></section>';
+      }).join('') + '</div></section>' + certSection();
   };
+
+  function certSection() {
+    var G = D.certificates || [];
+    if (!G.length) return '';
+    var total = G.reduce(function (a, g) { return a + g.items.length; }, 0);
+    setTimeout(function () {
+      var cur = 'all';
+      function draw() {
+        $('#certBody').innerHTML = G.filter(function (g) { return cur === 'all' || g.key === cur; }).map(function (g) {
+          return '<div class="cert-group fade"><div class="sec-head" style="margin-bottom:.8rem"><div><h3 style="margin:0">' + esc(g.title) + '</h3><p class="muted" style="margin:.25rem 0 0;font-size:.9rem">' + esc(g.desc) + '</p></div>' +
+            '<div style="display:flex;gap:.35rem;flex-wrap:wrap"><span class="pill">' + esc(g.who) + '</span><span class="pill gold">' + ar(g.items.length) + ' شهادة</span><span class="pill">' + esc(g.date) + '</span></div></div>' +
+            '<div class="cert-grid">' + g.items.map(function (src, n) {
+              var t = g.short + ' — شهادة ' + ar(n + 1);
+              return '<a href="javascript:void 0" class="cert-th" data-view="' + esc(src) + '" data-title="' + esc(t) + '"><img loading="lazy" src="' + esc(src) + '" alt="' + esc(t) + '"><span>شهادة ' + ar(n + 1) + '</span></a>';
+            }).join('') + '</div></div>';
+        }).join('');
+      }
+      $$('#certChips .chip').forEach(function (c) { c.onclick = function () { $$('#certChips .chip').forEach(function (x) { x.classList.remove('on'); }); c.classList.add('on'); cur = c.dataset.c; draw(); }; });
+      draw();
+    });
+    return '<section class="block" style="padding-top:0"><div class="container">' +
+      '<div class="sec-head"><div><h2>شهادات التكريم حسب الموضوع</h2><p>' + ar(total) + ' شهادة في ' + ar(G.length) + ' مناسبات · اضغط على الشهادة لعرضها بالحجم الكامل</p></div></div>' +
+      '<div class="toolbar" id="certChips"><button class="chip on" data-c="all">الكل</button>' + G.map(function (g) { return '<button class="chip" data-c="' + g.key + '">' + esc(g.short) + ' (' + ar(g.items.length) + ')</button>'; }).join('') + '</div>' +
+      '<div id="certBody"></div>' +
+      '<p class="muted" style="font-size:.82rem;margin-top:.6rem">حُجبت أسماء الطلاب في الشهادات المنشورة حفاظًا على خصوصيتهم.</p></div></section>';
+  }
 
   P.me = function () {
     if (!SES || !SES.me) return '';

@@ -297,3 +297,10 @@ html[data-theme="dark"] .note{background:#2A2414;border-color:#4A3F22;color:#E8D
 
 .btn.wa{background:#1F8F4E;color:#fff;border-color:#1F8F4E}
 .btn.wa:hover{background:#18733F}
+
+.cert-group{margin-bottom:1.8rem}
+.cert-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(190px,1fr));gap:.8rem}
+.cert-th{display:block;background:var(--card);border:1px solid var(--line);border-radius:10px;overflow:hidden;text-decoration:none;color:var(--ink);transition:transform .15s,box-shadow .15s}
+.cert-th:hover{transform:translateY(-2px);box-shadow:0 6px 18px rgba(15,92,78,.12)}
+.cert-th img{display:block;width:100%;aspect-ratio:4/3;object-fit:contain;background:#F7F9F8}
+.cert-th span{display:block;padding:.4rem .6rem;font-size:.82rem;border-top:1px solid var(--line)}
