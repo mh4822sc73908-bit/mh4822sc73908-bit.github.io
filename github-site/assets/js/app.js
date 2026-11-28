@@ -224,11 +224,33 @@
       '</div></div></div></section>' +
       '<section class="block" style="padding-top:0"><div class="container"><div class="sec-head"><div><h2>فريق العمل</h2></div></div><div class="grid g3">' +
       D.adminStaff.map(function (t) { return '<div class="card"><div class="person"><div class="avatar" style="background:#F5EDDD;color:#7A5F2C">' + esc(initials(t.name)) + '</div><div><h3>' + esc(t.name) + '</h3><span class="pill gold">' + esc(t.role) + '</span></div></div></div>'; }).join('') +
-      D.teachers.map(function (t) { return '<div class="card"><div class="person"><div class="avatar">' + esc(initials(t.name)) + '</div><div><h3>' + esc(t.name) + '</h3><div class="meta">' + esc(t.subject) + '</div><span class="pill" style="margin-top:.3rem">' + esc(t.role) + '</span></div></div></div>'; }).join('') +
-      '</div></div></section>';
+      D.teachers.map(function (t) { return '<div class="card"><div class="person"><div class="avatar">' + esc(initials(t.name)) + '</div><div><h3>' + esc(t.name) + '</h3><div class="meta">' + esc(t.subject) + '</div><div style="display:flex;gap:.3rem;flex-wrap:wrap;margin-top:.3rem">' + (t.rank ? '<span class="pill gold">' + esc(t.rank) + '</span>' : '') + '<span class="pill">' + esc(t.role) + '</span></div></div></div></div>'; }).join('') +
+      '</div></div></section>' + teacherRecords();
   };
 
-  function libraryPage(title, sub, list, key) {
+    function hijriNow() {
+    try {
+      var parts = new Intl.DateTimeFormat('en-u-ca-islamic-umalqura-nu-latn', { year: 'numeric', month: 'numeric', day: 'numeric' }).formatToParts(new Date()), o = {};
+      parts.forEach(function (x) { o[x.type] = parseInt(x.value, 10); });
+      if (o.year) return [o.year, o.month, o.day];
+    } catch (e) { }
+    return [1448, 6, 1];
+  }
+  function teacherRecords() {
+    if (AUTH && !isStaff()) return '';
+    var H = hijriNow(), rows = D.teachers.filter(function (t) { return t.start; }).slice().sort(function (a, b) {
+      var x = a.start.split('/').reverse().join(''), y = b.start.split('/').reverse().join(''); return x < y ? -1 : 1; });
+    var ranks = {}; D.teachers.forEach(function (t) { if (t.rank) ranks[t.rank] = (ranks[t.rank] || 0) + 1; });
+    return '<section class="block" style="padding-top:0"><div class="container"><div class="sec-head"><div><h2>البيانات الوظيفية للمعلمين</h2><p>الرتبة وتاريخ المباشرة وسنوات الخدمة · تظهر لمنسوبي المدرسة فقط</p></div>' +
+      '<div style="display:flex;gap:.35rem;flex-wrap:wrap">' + ['معلم خبير', 'معلم متقدم', 'معلم ممارس'].filter(function (r) { return ranks[r]; }).map(function (r) { return '<span class="pill gold">' + r + ': ' + ar(ranks[r]) + '</span>'; }).join('') + '</div></div>' +
+      '<div class="table-wrap"><table><thead><tr><th>#</th><th>الاسم</th><th>التخصص</th><th>الرتبة</th><th>تاريخ المباشرة</th><th>سنوات الخدمة</th></tr></thead><tbody>' +
+      rows.map(function (t, n) {
+        var d = t.start.split('/').map(Number), yrs = H[0] - d[2] - ((H[1] < d[1] || (H[1] === d[1] && H[2] < d[0])) ? 1 : 0);
+        return '<tr><td>' + ar(n + 1) + '</td><td><b>' + esc(t.fullName || t.name) + '</b></td><td>' + esc(t.subject) + '</td><td><span class="pill' + (t.rank === 'معلم خبير' ? ' gold' : '') + '">' + esc(t.rank) + '</span></td><td>' + esc(t.start) + 'هـ</td><td>' + ar(yrs) + ' سنة</td></tr>';
+      }).join('') + '</tbody></table></div></div></section>';
+  }
+
+function libraryPage(title, sub, list, key) {
     if (AUTH && !isStaff() && list === D.guides) list = list.filter(function (d) { return d.cat === 'أدلة الطالب والأسرة' || d.cat === 'أدلة الموجهين'; });
     var cats = ['الكل'].concat(list.map(function (d) { return d.cat; }).filter(function (v, i, a) { return a.indexOf(v) === i; }));
     setTimeout(function () {
