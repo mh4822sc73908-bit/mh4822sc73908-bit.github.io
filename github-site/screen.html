@@ -146,7 +146,11 @@ body{background:radial-gradient(120% 90% at 100% 0%,#0E5348 0%,var(--bg) 55%,#04
   function pad(n) { return (n < 10 ? '0' : '') + n; }
   function hm(s) { var a = s.split(':'), h = +a[0]; return (h > 12 ? h - 12 : h) + ':' + a[1]; }
   function mmss(m) { var s = Math.max(0, Math.round(m * 60)); return Math.floor(s / 60) + ':' + pad(s % 60); }
-  function tname(id) { var n = T.teachers[id] || ''; var p = n.split(' '); return p.length > 2 ? p[0] + ' ' + p[p.length - 1] : n; }
+  function short(n) { var p = n.split(' '); return p.length > 2 ? p[0] + ' ' + p[p.length - 1] : n; }
+  function tname(id) { /* «محمد الشمري» يتكرر، فنعرض الاسم كاملًا عند التشابه */
+    var n = T.teachers[id] || '', s = short(n), dup = Object.keys(T.teachers).some(function (k) { return k !== id && short(T.teachers[k]) === s; });
+    return dup ? n : s;
+  }
 
   /* ---- وقت تجريبي: screen.html?t=09:47&d=2 (d: 0=الأحد … 4=الخميس) ---- */
   var qs = new URLSearchParams(location.search), offset = 0, TEST = qs.has('t');
@@ -271,7 +275,7 @@ body{background:radial-gradient(120% 90% at 100% 0%,#0E5348 0%,var(--bg) 55%,#04
         $('#main').innerHTML = '<section class="off"><div class="msg panel"><div class="lbl" style="font-size:1.3vw;color:var(--muted)">' + esc(T.dayNames[d.getDay()]) + '</div><h2>' + title + '</h2><p>' + esc(sub) + '</p>' +
           (st.kind === 'before' ? '<div class="count" id="cnt" style="margin-top:2vh">' + mmss(st.until) + '</div>' : '') + '</div>' + slidesHTML() + '</section>';
       } else {
-        $('#main').innerHTML = '<section class="col"><div class="panel status' + (st.kind === 'break' ? ' brk' : '') + '"><div class="lbl">' + (st.kind === 'period' ? 'الآن' : 'الآن · استراحة') + '</div>' +
+        $('#main').innerHTML = '<section class="col"><div class="panel status' + (st.kind === 'break' ? ' brk' : '') + '"><div class="lbl">' + (st.kind === 'period' ? 'الآن' : (st.cur.gap ? 'الآن · وقت الانتقال بين الحصص' : 'الآن · استراحة')) + '</div>' +
           '<h2>' + esc(st.cur.name) + '</h2><div class="row"><div class="count"><small>الوقت المتبقي</small><span id="cnt">' + mmss(st.left) + '</span></div>' +
           '<div class="next" id="nxt"></div></div><div class="bar"><i id="bar"></i></div></div>' + gradeCards(st) + '</section>' + '<section class="col">' + slidesHTML() + '</section>';
       }
